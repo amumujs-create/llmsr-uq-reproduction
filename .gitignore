@@ -1,0 +1,27 @@
+# Local environments, downloads, and experiment outputs are never published.
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+data/
+models/
+cache/
+outputs/
+results/
+logs/
+*.log
+*.part
+*.npz
+*.npy
+*.parquet
+*.gguf
+*.safetensors
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+local_*.json

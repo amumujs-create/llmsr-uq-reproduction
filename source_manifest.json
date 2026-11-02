@@ -1,0 +1,132 @@
+{
+  "repository": "https://github.com/MostafaCham/LLM-SR-UQ",
+  "commit": "b58630470144a3da6944c8f45bdbef63af38d460",
+  "retrieval": "GitHub connector at fixed commit; no source modifications",
+  "files": [
+    {
+      "path": "LICENSE",
+      "git_blob_sha": "443d12fddccc2e0af4e3366cafb1eed7a6fcd9ee",
+      "bytes": 1074
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha": "14c411517f3be33d14b9933d984077c1bc4328ef",
+      "bytes": 6104
+    },
+    {
+      "path": "benchmark/__init__.py",
+      "git_blob_sha": "6b7251ee956548b2175781a0b12f1bf4e1a1954f",
+      "bytes": 1337
+    },
+    {
+      "path": "benchmark/complexity.py",
+      "git_blob_sha": "ac03262fa2419af28baed1ff16ad7265b3b5a91e",
+      "bytes": 4198
+    },
+    {
+      "path": "benchmark/expressions.py",
+      "git_blob_sha": "23d0a6d4d4cac1e69c41ab361c9f8387822fa0d7",
+      "bytes": 3324
+    },
+    {
+      "path": "benchmark/loader.py",
+      "git_blob_sha": "9d87b201492da6af874d3f9945f6ac2543564b09",
+      "bytes": 7015
+    },
+    {
+      "path": "benchmark/metrics.py",
+      "git_blob_sha": "a0b16d34d39c5359df0e515291c894b60598bf0f",
+      "bytes": 15371
+    },
+    {
+      "path": "bma_conformal.py",
+      "git_blob_sha": "ade505d911e8a7a941cac180db90e77f1a571ecb",
+      "bytes": 9141
+    },
+    {
+      "path": "canonical.py",
+      "git_blob_sha": "612b0b92bc15beb586d14f8fe28b1e59185859f0",
+      "bytes": 2496
+    },
+    {
+      "path": "critic.py",
+      "git_blob_sha": "f3b0f61eae8d3efac99c88354b312bc1853c4a6e",
+      "bytes": 29887
+    },
+    {
+      "path": "dev_set.json",
+      "git_blob_sha": "4c711499b3562479d6b38dc0b5b3bfcac39607d9",
+      "bytes": 969
+    },
+    {
+      "path": "devset.py",
+      "git_blob_sha": "aeaef1eff2ded50a1ac61e501aa461850e480916",
+      "bytes": 3318
+    },
+    {
+      "path": "diagnostics.py",
+      "git_blob_sha": "8a57efc28fc5e1dfe3f5bcc921d14fe1e4ccf6ad",
+      "bytes": 13739
+    },
+    {
+      "path": "equation_program.py",
+      "git_blob_sha": "60829c55f34c672a4eca9ceb738059aa7756ed11",
+      "bytes": 4120
+    },
+    {
+      "path": "grammar.py",
+      "git_blob_sha": "6a042762f45a58a5f0b8708e7bf700b4811cf1a1",
+      "bytes": 9768
+    },
+    {
+      "path": "hypothesis_generators.py",
+      "git_blob_sha": "ca5679d11d4ba78197602c39735ac64857d68e99",
+      "bytes": 8046
+    },
+    {
+      "path": "llmsr_pipeline.py",
+      "git_blob_sha": "26a7fb288ad9d4fe5e0b78d80f442db5b2123782",
+      "bytes": 19356
+    },
+    {
+      "path": "parameter_inference.py",
+      "git_blob_sha": "c987812c167976dbe61973c82744ec97abac27f0",
+      "bytes": 7413
+    },
+    {
+      "path": "posterior_buffer.py",
+      "git_blob_sha": "e08569b7f90399efd832ed0d57b52fe837388424",
+      "bytes": 6878
+    },
+    {
+      "path": "reporting.py",
+      "git_blob_sha": "f8c99eb381e42525e476d6f5239dc0af1978d09a",
+      "bytes": 9745
+    },
+    {
+      "path": "requirements.txt",
+      "git_blob_sha": "abe6fc0211c41ef09b305f924b63dc712d80a8f0",
+      "bytes": 98
+    },
+    {
+      "path": "run_benchmark.py",
+      "git_blob_sha": "adb0baef1ff8b0a7aa2bd6fb9565a7ec37238d6c",
+      "bytes": 35275
+    },
+    {
+      "path": "scripts/serve_vllm.sh",
+      "git_blob_sha": "01ba34b2cc28c635a915cbc3dcd007757f08061d",
+      "bytes": 384
+    },
+    {
+      "path": "threadcap.py",
+      "git_blob_sha": "78b5f556b0f84b595b34cdb91be0ca36a508edf6",
+      "bytes": 297
+    },
+    {
+      "path": "utils.py",
+      "git_blob_sha": "cc3c549233deb5db04d03d0cc2fdd10284d2901a",
+      "bytes": 742
+    }
+  ]
+}

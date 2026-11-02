@@ -1,0 +1,37 @@
+{
+  "repository": "pkuHaowei/llm-srbench",
+  "revision": "f4101e201952bb35cab8332b6dcf337b6df02aa8",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 11752,
+      "sha256": "ce30d888171b50e082018a8ae859b40bf0809dc889eb308040300cb5a64dacaa",
+      "url": "https://huggingface.co/datasets/pkuHaowei/llm-srbench/resolve/f4101e201952bb35cab8332b6dcf337b6df02aa8/README.md"
+    },
+    {
+      "path": "lsr_synth_bio_pop_growth/train-00000-of-00001.parquet",
+      "bytes": 2167007,
+      "sha256": "94e1d9a332e60d195cbf17b15b46d734595b6a1701baf866c0532070457bc6e8",
+      "url": "https://huggingface.co/datasets/pkuHaowei/llm-srbench/resolve/f4101e201952bb35cab8332b6dcf337b6df02aa8/lsr_synth_bio_pop_growth/train-00000-of-00001.parquet"
+    },
+    {
+      "path": "lsr_synth_chem_react/train-00000-of-00001.parquet",
+      "bytes": 3249980,
+      "sha256": "c501a4e256652f27dcc5f9f89b3a14046cbe13a9d7c91f1da17501868ee3a79d",
+      "url": "https://huggingface.co/datasets/pkuHaowei/llm-srbench/resolve/f4101e201952bb35cab8332b6dcf337b6df02aa8/lsr_synth_chem_react/train-00000-of-00001.parquet"
+    },
+    {
+      "path": "lsr_synth_matsci/train-00000-of-00001.parquet",
+      "bytes": 1527209,
+      "sha256": "8fed1baa370bac1f1f01d2175e1a79e9a41f99d5a7ba91a6c99e0ae8288d2f05",
+      "url": "https://huggingface.co/datasets/pkuHaowei/llm-srbench/resolve/f4101e201952bb35cab8332b6dcf337b6df02aa8/lsr_synth_matsci/train-00000-of-00001.parquet"
+    },
+    {
+      "path": "lsr_synth_phys_osc/train-00000-of-00001.parquet",
+      "bytes": 5675432,
+      "sha256": "bd2ef725293f4383e6c487d37c633368f22c3e9fec32ee80b84091700eba8cc4",
+      "url": "https://huggingface.co/datasets/pkuHaowei/llm-srbench/resolve/f4101e201952bb35cab8332b6dcf337b6df02aa8/lsr_synth_phys_osc/train-00000-of-00001.parquet"
+    }
+  ],
+  "note": "Public mirror used by the original code; no fitting or LLM calls."
+}

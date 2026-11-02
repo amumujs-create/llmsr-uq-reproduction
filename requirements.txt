@@ -1,0 +1,12 @@
+# Analysis/fitting environment: Python 3.11.
+# Direct versions validated in the local macOS smoke run; Linux is not yet validated.
+# Install vLLM in a SEPARATE environment (see README).
+numpy==1.26.4
+scipy==1.17.1
+torch==2.15.0
+sympy==1.14.0
+scikit-learn==1.9.1
+datasets==3.6.0
+pyarrow==19.0.1
+pandas==3.0.6
+openai==3.42.1
