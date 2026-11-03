@@ -91,6 +91,57 @@ SINDy는 배경 방법으로, SINDy와 conformal을 결합한 연구는 이전 �
 | S5 | Fasel, *Sparse Identification of Nonlinear Dynamics with Conformal Prediction*, 2025. [arXiv](https://arxiv.org/abs/2507.11739) | 초록 | E-SINDy + conformal. 외삽 포함률 미확인 |
 | — | Reuter & Olivetti de França, *Are you sure? … Survey of Uncertainty Quantification in Symbolic Regression*, 2026. [arXiv](https://arxiv.org/abs/2606.06567) | 앞부분 본문 | SR의 UQ가 덜 연구됐다는 서술. 확인 범위에 LLM 기반 SR UQ 없음 |
 
+## C3. 구별되지 않는 식과 물리 지식 검토에서 추가한 자료 — 2026-11-03
+
+상세 비교는 [별도 기록](reviews/2026-11-03-indistinguishable-candidates.md)에 있다.
+
+| 자료 | 확인 수준 | 쟁점 |
+|---|---|---|
+| Kronberger et al., *Shape-constrained Symbolic Regression*, Evol. Comput. 2022. [arXiv](https://arxiv.org/abs/2103.15624) | 초록 | 형상 제약으로 외삽 개선 |
+| Xiao et al., *Prior-Guided Symbolic Regression* (PG-SR), 2026 preprint. [HTML](https://arxiv.org/html/2602.13021) | 본문 §3–4 | LLM 추출·전문가 검토 제약 프로그램, OOD NMSE, 틀린 prior 1문제 |
+| Yang et al., *Think like a Scientist* (KeplerAgent), 2026 preprint. [HTML](https://arxiv.org/html/2602.12259v1) | 본문 일부 | 대칭성 추론으로 SR 제약. 별도 외삽 분할 없음 |
+| Tenachi et al., 단위 제약 deep SR, 2023. [arXiv](https://arxiv.org/abs/2303.03192) | 검색 요약 | 단위 제약만으로 복원 보장 안 됨 |
+| Bartlett, Desmond, Ferreira, *Priors for symbolic regression*, 2023. [arXiv](https://arxiv.org/abs/2304.06333) | 초록 | 언어모델 기반 함수 prior와 Bayesian 모델 선택 |
+| Box & Hill(1967) 등 경쟁 모델 판별 실험설계. [배경](https://link.springer.com/article/10.1007/s00180-023-01370-4) | 검색 요약 | 갈라지는 지점에서 측정하는 규칙은 고전적 |
+
+## C4. 외삽 실패 원인 분해 검토에서 추가한 자료 — 2026-11-03
+
+상세 비교는 [별도 기록](reviews/2026-11-03-failure-attribution.md)에 있다.
+
+| 자료 | 확인 수준 | 쟁점 |
+|---|---|---|
+| Wang et al., *When Good Equations Get Bad Scores* (SAGE-Fit), 2026 preprint. [HTML](https://arxiv.org/html/2605.23272v2) | 본문 앞부분 | 피팅 불안정이 좋은 구조를 탈락시킴. OOD 분할·oracle 없음 |
+| Xie et al., *Language models guide symbolic equation discovery by controlling search* (LLM-PySR), 2026. [arXiv](https://arxiv.org/abs/2607.04156) | 초록 | LLM 역할 비교 |
+| Saveliev et al., *Influence-Guided Symbolic Regression* (IGSR), ICML 2026 표기. [arXiv](https://arxiv.org/abs/2605.29184) | 초록 | 항별 기여도 피드백 |
+| *In-Context Symbolic Regression*, ACL SRW 2024. [원문](https://aclanthology.org/2024.acl-srw.49.pdf) | 검색 요약 | 기호 탐색과 피팅 분리 |
+| *Towards Diverse Scientific Hypothesis Search with Large Language Models*, 2026. [HTML](https://arxiv.org/html/2606.10587) | 검색 결과 | 가설 다양성. 외삽에서 갈라지는 경쟁 가설 생성과는 다름 |
+
+## C5. 외삽 실패 원인 분해 재검토에서 추가한 자료 — 2026-11-03
+
+상세 비교는 [재검토 절](reviews/2026-11-03-failure-attribution.md)에 있다.
+
+| 자료 | 확인 수준 | 쟁점 |
+|---|---|---|
+| Li et al., *From Score to Diagnosis* (PostDiag), 2026-10 preprint. [HTML](https://arxiv.org/html/2610.24535) | 본문 §3–4 | 정답 없는 bootstrap 편향·분산 진단과 상태별 LLM 수리. 관측 데이터만 사용 |
+| Kabra et al., *SurfaceBench*, TMLR 표기. [arXiv](https://arxiv.org/abs/2511.10833) | 초록·검색 요약 | 탐색 실패 vs 피팅 실패 |
+| Zhao et al., *A-SR*, 2026-08 preprint. [arXiv](https://arxiv.org/abs/2608.04872) | 초록 | 실패 흔적의 역할별 분배 |
+| STRIDE, Deliberate Evolution, DrSR | 검색 요약 | 자기반성·진단형 SR 에이전트 |
+| LLM-AutoSciLab, 2026 preprint. [arXiv](https://arxiv.org/abs/2605.24043) | 검색 요약 | 교과서식 단순 형태로의 수렴, 판별 실험 |
+| Zhang et al., *Which Agent Causes Task Failures and When?*, ICML 2025. [PMLR](https://proceedings.mlr.press/v267/zhang25cq.html) | 초록 | LLM 에이전트 실패 원인 추적 |
+
+## C6. 물리 행동 모듈 설계 검토에서 추가한 자료 — 2026-11-03
+
+상세 비교는 [별도 기록](reviews/2026-11-03-behavior-modules.md)에 있다.
+
+| 자료 | 확인 수준 | 쟁점 |
+|---|---|---|
+| von Rueden et al., *Informed Machine Learning*, IEEE TKDE 2023. [arXiv](https://arxiv.org/abs/1903.12394) | 검색 요약 | 지식 종류·통합 위치 분류 |
+| von Kurnatowski et al., *Compensating data shortages in manufacturing with monotonicity knowledge*, 2021. [HTML](https://arxiv.org/html/2010.15955v2) | 본문 | 전문가 단조성 지식. 외삽 평가 없음 |
+| Capstick et al., *AutoElicit*, ICML 2025. [PMLR](https://proceedings.mlr.press/v267/capstick25a.html) | 초록 | LLM prior 추출 |
+| Zhu, *Incorporating LLM Priors into Tabular Learners*, 2023. [arXiv](https://arxiv.org/abs/2311.11628) | 검색 요약 | LLM 단조 방향 |
+| Li, Fox, Goodman, *Automated Statistical Model Discovery with Language Models* (BoxLM), ICML 2024. [HTML](https://arxiv.org/html/2402.17879) | 본문 | LLM 모델 제안·비평, 커널 조립, ODE 외삽 구간 |
+| *PiT-PO*, 2026. [arXiv](https://arxiv.org/abs/2602.10576) | 검색 요약 | 물리 타당성 제약을 LLM 강화학습에 사용 |
+
 ## D. 현재 후보의 상태
 
 | 후보 | 제안 내용 | 가장 가까운 비교 축 | 현재 상태 |
@@ -99,6 +150,7 @@ SINDy는 배경 방법으로, SINDy와 conformal을 결합한 연구는 이전 �
 | 외삽에서 중요해지는 약한 항 보존 | 관측에서의 검출 가능성과 목표에서의 영향력을 분리하여 항 선택·신뢰 조절 | UQ-SINDy, E-SINDy, 모델 평균, prediction profile likelihood | 전달된 대화에서 추천 철회. 연구 가능성의 부정 판정이 아니라 추천 근거 미확보 상태로 보관 |
 | 핵심 feature 누락 해결 | 관측되지 않는 필수 변수의 효과를 LLM으로 보완 | 잠재변수·식별가능성 접근, LLMPhy 등 | 사용자가 우선순위를 두지 않은 별도 문제 |
 | 탐색 반복 간 불일치를 외삽 경보로 사용 | 같은 데이터로 독립 LLM 탐색을 반복하고 OOD 예측 불일치가 오차를 예측하는지 평가 | LLM-SR-UQ(단일 탐색 σ_S), ProAug, Kotanchek trust metric | 조건부 유지. 진단 연구로 기여 형태 한정. 파일럿 미실행 |
+| 외삽 실패 원인 분해와 학습 구간 진단의 사각지대 | 외삽 실패를 원인별로 분해하고, 학습 구간 진단이 놓치는 실패를 외부 정보로 진단 | PostDiag, SurfaceBench, SAGE-Fit, A-SR | 정답 없는 진단·처방은 PostDiag와 겹쳐 범위 축소. 분석 미실행 |
 | LLM-SR-UQ 재현 | 같은 예측에서 구간을 비교하고 반복 탐색 민감도 확인 | 원논문·저자 코드 | 별도 기존 작업. 새 연구 후보의 성능 검증으로 해석하지 않음 |
 
 시뮬레이션 우선은 평가 경로다. 단순 함수 회귀는 선택적 진단이며, 후속 노트의 cubic 실험 제안을 사용자가 승인한 새 주제로 바꾸지 않는다.
