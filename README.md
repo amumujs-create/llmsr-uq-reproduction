@@ -5,7 +5,7 @@
 - [논문](https://arxiv.org/abs/2610.42024) · [저자 공식 코드](https://github.com/MostafaCham/LLM-SR-UQ)
 - 원본 코드 commit: `b58630470144a3da6944c8f45bdbef63af38d460`.
 - `upstream/`의 25개 파일은 원본 그대로입니다. 해시로 검증합니다.
-- **현재 검증 범위:** M4 16GB에서 Llama-3.1-8B-Instruct Q4_K_M로 개발 문제 1개, 2회 탐색의 실행 완료. **BF16 실행과 논문 전체 성능은 아직 재현 검증하지 않았습니다.**
+- **현재 검증 범위:** M4 16GB에서 Llama-3.1-8B-Instruct Q4_K_M로 개발 문제 1개, 2회 탐색의 실행 완료. 2026-11-03 Linux 확인은 Python 3.11.18, PyTorch 2.15.0, NVIDIA H200 MIG 2g.35gb(BF16 가능)에서 의존성 설치, 단위 테스트 16개, 원본 25개 파일과 데이터 5개 파일의 해시 검사까지다. **BF16 탐색 실행과 논문 전체 성능은 아직 재현 검증하지 않았습니다.**
 - 이 저장소의 실행기는 A1을 대상으로 합니다. A0/A2/A3 전체 실험의 재현 패키지는 아닙니다.
 
 ## 연구 아이디어와 선행연구 검토
@@ -34,7 +34,7 @@ python scripts/fetch_data.py
 python scripts/verify_setup.py --offline --require-data
 ```
 
-`requirements.txt`는 로컬 실행에서 검증한 직접 의존성 버전을 고정합니다. Linux/NVIDIA에서의 설치는 아직 실측 검증하지 않았습니다. 저자 저장소에는 전체 dependency lock이 없으므로 저자와 완전히 같은 환경이라고 주장하지 않습니다.
+`requirements.txt`는 macOS 스모크와 2026-11-03 Linux/NVIDIA 설치에서 확인한 직접 의존성 버전을 고정합니다. Linux에서는 `pip check`, `python -m unittest discover -s tests`(16개 통과), `verify_setup.py --offline --require-data`가 통과했다. PyTorch가 해당 MIG 장치를 보고 BF16을 지원한다고 표시했다. vLLM 서버는 설치하지 않았고, 이 GPU 컴퓨터에서는 huggingface.co 접속이 막혀 데이터 파일을 그 자리에서 받지 못했다. 데이터는 다른 컴퓨터에서 받아 고정 해시와 일치한 뒤에 검사했다. Llama-3.1-8B-Instruct는 접근 권한이 필요해 BF16 가중치는 받지 못했다. 저자 저장소에는 전체 dependency lock이 없으므로 저자와 완전히 같은 환경이라고 주장하지 않습니다.
 
 원본은 NumPy 1.x를 사용합니다. 최신 PyArrow를 임의로 설치하면 NumPy 2 요구사항과 충돌할 수 있어 `datasets==3.6.0`, `pyarrow==19.0.1`을 함께 고정했습니다.
 
