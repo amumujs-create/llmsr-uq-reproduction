@@ -79,6 +79,18 @@ W5–W7의 설명명을 독립적으로 확인한 정식 제목으로 오인하�
 
 SINDy는 배경 방법으로, SINDy와 conformal을 결합한 연구는 이전 논의의 키워드로 언급되었다. 이 기록에서 정확한 논문을 식별할 근거가 없는 항목에는 제목·DOI를 임의로 붙이지 않는다.
 
+## C2. 탐색 반복 간 불일치 후보 검토에서 추가한 자료 — 2026-11-03
+
+상세 비교는 [별도 기록](reviews/2026-11-03-search-disagreement.md)에 있다.
+
+| ID | 자료 | 확인 수준 | 쟁점 |
+|---|---|---|---|
+| S2 | *Programmatic Context Augmentation for LLM-based Symbolic Regression*, 2026. [arXiv](https://arxiv.org/abs/2605.03101) | §4.1, §4.4.2 확인 | LLM-SR의 seed 민감도(3회 반복 NMSE 수 자릿수 차이). 불확실성 신호로는 사용하지 않음 |
+| S3 | Kotanchek et al., *Trustable symbolic regression models*, GPTP V, 2007. [Springer](https://link.springer.com/chapter/10.1007/978-0-387-76308-8_12) · [2021 후속](https://gpbib.cs.ucl.ac.uk/gp-html/Kotanchek_2021_GPTP.html) | 서지·요약 | 기호식 앙상블 합의를 신뢰 지표로 쓰는 개념의 원형 |
+| S4 | Haut et al., *Active Learning in Genetic Programming*, 2023. [arXiv](https://arxiv.org/abs/2308.00672) | 검색 요약 | 앙상블 불확실성으로 측정점 선택 |
+| S5 | Fasel, *Sparse Identification of Nonlinear Dynamics with Conformal Prediction*, 2025. [arXiv](https://arxiv.org/abs/2507.11739) | 초록 | E-SINDy + conformal. 외삽 포함률 미확인 |
+| — | Reuter & Olivetti de França, *Are you sure? … Survey of Uncertainty Quantification in Symbolic Regression*, 2026. [arXiv](https://arxiv.org/abs/2606.06567) | 앞부분 본문 | SR의 UQ가 덜 연구됐다는 서술. 확인 범위에 LLM 기반 SR UQ 없음 |
+
 ## D. 현재 후보의 상태
 
 | 후보 | 제안 내용 | 가장 가까운 비교 축 | 현재 상태 |
@@ -86,6 +98,7 @@ SINDy는 배경 방법으로, SINDy와 conformal을 결합한 연구는 이전 �
 | 조건부 물리 지식 전달 | LLM이 식·가정·적용 조건을 제공하고 신경망에 선택적으로 전달 | PDNN, KernelMix, adaptive PINN, GenCANN, LLM prior | 차별점 미확정. 넓은 방향은 유지하되 확정 추천으로 취급하지 않음 |
 | 외삽에서 중요해지는 약한 항 보존 | 관측에서의 검출 가능성과 목표에서의 영향력을 분리하여 항 선택·신뢰 조절 | UQ-SINDy, E-SINDy, 모델 평균, prediction profile likelihood | 전달된 대화에서 추천 철회. 연구 가능성의 부정 판정이 아니라 추천 근거 미확보 상태로 보관 |
 | 핵심 feature 누락 해결 | 관측되지 않는 필수 변수의 효과를 LLM으로 보완 | 잠재변수·식별가능성 접근, LLMPhy 등 | 사용자가 우선순위를 두지 않은 별도 문제 |
+| 탐색 반복 간 불일치를 외삽 경보로 사용 | 같은 데이터로 독립 LLM 탐색을 반복하고 OOD 예측 불일치가 오차를 예측하는지 평가 | LLM-SR-UQ(단일 탐색 σ_S), ProAug, Kotanchek trust metric | 조건부 유지. 진단 연구로 기여 형태 한정. 파일럿 미실행 |
 | LLM-SR-UQ 재현 | 같은 예측에서 구간을 비교하고 반복 탐색 민감도 확인 | 원논문·저자 코드 | 별도 기존 작업. 새 연구 후보의 성능 검증으로 해석하지 않음 |
 
 시뮬레이션 우선은 평가 경로다. 단순 함수 회귀는 선택적 진단이며, 후속 노트의 cubic 실험 제안을 사용자가 승인한 새 주제로 바꾸지 않는다.
