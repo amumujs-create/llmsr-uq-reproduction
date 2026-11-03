@@ -10,6 +10,9 @@
 
 ## 연구 아이디어와 선행연구 검토
 
+- [지금까지의 검색·검토 자료 통합 기록](docs/research/literature-map.md)
+- [전달된 8편 실험조건 비교와 보류한 약한 물리항 후보](docs/research/reviews/2026-11-03-weak-term-candidate.md)
+
 외삽 예측에 LLM의 물리 지식을 활용하는 후속 연구는 [연구 방향 문서](docs/research/README.md)에 기록합니다.
 
 - [선행연구와의 겹침 검토 (2026-11-03)](docs/research/reviews/2026-11-03-overlap.md)
