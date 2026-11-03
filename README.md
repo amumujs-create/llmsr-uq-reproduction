@@ -8,6 +8,16 @@
 - **현재 검증 범위:** M4 16GB에서 Llama-3.1-8B-Instruct Q4_K_M로 개발 문제 1개, 2회 탐색의 실행 완료. **BF16 실행과 논문 전체 성능은 아직 재현 검증하지 않았습니다.**
 - 이 저장소의 실행기는 A1을 대상으로 합니다. A0/A2/A3 전체 실험의 재현 패키지는 아닙니다.
 
+## 연구 아이디어와 선행연구 검토
+
+외삽 예측에 LLM의 물리 지식을 활용하는 후속 연구는 [연구 방향 문서](docs/research/README.md)에 기록합니다.
+
+- [선행연구와의 겹침 검토 (2026-11-03)](docs/research/reviews/2026-11-03-overlap.md)
+- [최소 실험 계획과 진행·중단 기준](docs/research/pilot-plan.md)
+- [대화에서 발전한 아이디어와 결정 기록](docs/research/decision-log.md)
+
+현재는 가설과 실험 설계 단계이며, 아래 재현 실행기로 새 연구 방법의 효과를 검증했다는 뜻은 아닙니다.
+
 ## 1. 가져오기와 실험 환경 설치
 
 Python **3.11**, Linux 또는 macOS를 사용하세요. 원본 timeout 코드가 POSIX signal을 사용하므로 Windows에서는 WSL2/Linux를 사용합니다.
