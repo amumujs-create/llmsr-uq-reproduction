@@ -11,6 +11,7 @@
 - [학습 구간에서 구별되지 않는 식과 물리 지식의 선행연구 비교](reviews/2026-11-03-indistinguishable-candidates.md)
 - [외삽 실패의 모듈별 원인 분해 후보](reviews/2026-11-03-failure-attribution.md)
 - [LLM 추천 물리 행동 모듈과 외삽 점 예측 — 겹침 검토](reviews/2026-11-03-behavior-modules.md)
+- [미리 준비한 LLM 경쟁 가설과 소수 관측 레짐 확정 — 겹침 검토](reviews/2026-11-03-prepared-hypotheses.md)
 - [선행연구 겹침 검토 — 2026-11-03](reviews/2026-11-03-overlap.md)
 - [최소 실험과 진행·중단 기준](pilot-plan.md)
 - [박사 연구 및 SCI(E) 논문 가능성 판단](publication-assessment.md)

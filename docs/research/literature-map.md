@@ -142,6 +142,18 @@ SINDy는 배경 방법으로, SINDy와 conformal을 결합한 연구는 이전 �
 | Li, Fox, Goodman, *Automated Statistical Model Discovery with Language Models* (BoxLM), ICML 2024. [HTML](https://arxiv.org/html/2402.17879) | 본문 | LLM 모델 제안·비평, 커널 조립, ODE 외삽 구간 |
 | *PiT-PO*, 2026. [arXiv](https://arxiv.org/abs/2602.10576) | 검색 요약 | 물리 타당성 제약을 LLM 강화학습에 사용 |
 
+## C7. 준비된 가설과 소수 관측 확정 검토에서 추가한 자료 — 2026-11-03
+
+상세 비교는 [별도 기록](reviews/2026-11-03-prepared-hypotheses.md)에 있다.
+
+| 자료 | 확인 수준 | 쟁점 |
+|---|---|---|
+| Kabra et al., *LLM-AutoSciLab*, 2026-05 preprint. [arXiv](https://arxiv.org/abs/2605.24043) | 초록 | LLM 가설 + 판별 실험, 2–5배 표본 효율 |
+| Serrano et al., *Test-time Generalization for Physics through Neural Operator Splitting*, 2026. [HTML](https://arxiv.org/html/2602.00884v2) | 본문 일부 | 대상 궤적으로 학습 분포 연산자 조합 |
+| Chen et al., *HypoSpace*, 2025–2026. [arXiv](https://arxiv.org/abs/2510.15614) | 초록 | LLM 가설 집합 재현율 |
+| Chan & Mora Jimenez, *Prior or Feedback?*, NeurIPS 2026 목록. [NeurIPS](https://neurips.cc/virtual/2026/156586) | 검색 요약 | LLM prior와 피드백으로 신경 연산자 적응 |
+| 모델 선택용 실험설계. [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC3946009/) | 검색 요약 | 경쟁 가설 판별 실험 |
+
 ## D. 현재 후보의 상태
 
 | 후보 | 제안 내용 | 가장 가까운 비교 축 | 현재 상태 |
