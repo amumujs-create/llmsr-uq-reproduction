@@ -13,6 +13,11 @@
 - [LLM 추천 물리 행동 모듈과 외삽 점 예측 — 겹침 검토](reviews/2026-11-03-behavior-modules.md)
 - [미리 준비한 LLM 경쟁 가설과 소수 관측 레짐 확정 — 겹침 검토](reviews/2026-11-03-prepared-hypotheses.md)
 - **[CCPP 외삽: 학습 창과 물리 prior의 효과, 설계 가정](ccpp-extrapolation.md)** — 현재 주 실험 설계
+- 기존 실험 감사 원본 (2026-11-03~04):
+  - [저장소 전체 실험의 활용 가능성 감사](audit/2026-11-03-salvage-ledger.md)
+  - [코드 검토와 외삽 성능 중심 연구 방향](audit/2026-11-03-code-review-and-directions.md)
+  - [CCPP 외삽 방향 분석 (원본)](audit/2026-11-04-ccpp-direction-analysis.md)
+  - [CCPP 설계 근거와 가정 (원본)](audit/2026-11-04-ccpp-design-rationale.md)
 - [선행연구 겹침 검토 — 2026-11-03](reviews/2026-11-03-overlap.md)
 - [최소 실험과 진행·중단 기준](pilot-plan.md)
 - [박사 연구 및 SCI(E) 논문 가능성 판단](publication-assessment.md)
