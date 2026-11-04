@@ -74,8 +74,9 @@ def jobs(summaries: dict) -> list[dict]:
     return out
 
 
-def call_openai(base_url, model, messages, temperature, seed, max_tokens, timeout=600):
-    body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "seed": seed}
+def call_openai(base_url, model, messages, temperature, seed, max_tokens, extra=None, timeout=600):
+    body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "seed": seed,
+            **(extra or {})}
     req = urllib.request.Request(f"{base_url.rstrip('/')}/chat/completions", data=json.dumps(body).encode(),
                                  headers={"Content-Type": "application/json",
                                           "Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY', 'EMPTY')}"})
@@ -105,9 +106,15 @@ def main():
     p.add_argument("--out", required=True)
     p.add_argument("--samples", type=int, default=N_SAMPLES)
     p.add_argument("--max-tokens", type=int, default=4096, help="large enough for reasoning models")
+    p.add_argument("--extra-body", default="{}", help='e.g. \'{"reasoning_effort": "none"}\' (Ollama) or '
+                   '\'{"chat_template_kwargs": {"enable_thinking": false}}\' (vLLM + Qwen)')
+    p.add_argument("--data", choices=("D0", "D1", "all"), default="all", help="restrict to one data condition")
+    p.add_argument("--tag", default=None, help="model label in ids/output (defaults to --model)")
     a = p.parse_args()
     summaries = window_summaries(a.xlsx)
-    job_list = jobs(summaries)
+    job_list = [j for j in jobs(summaries) if a.data == "all" or j["data"] == a.data]
+    extra = json.loads(a.extra_body)
+    tag = a.tag or a.model
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
@@ -117,17 +124,17 @@ def main():
         for j in job_list:
             for k in range(a.samples + 1):
                 temp = 0.0 if k == a.samples else TEMP
-                cid = f'{a.model}|{j["world"]}|{j["level"]}|{j["data"]}|{j["setting"]}|{k}'
+                cid = f'{tag}|{j["world"]}|{j["level"]}|{j["data"]}|{j["setting"]}|{k}'
                 if cid in done:
                     continue
                 t0 = time.time()
                 try:
                     text, reasoning = (call_mock(j["messages"], temp, k) if a.backend == "mock"
-                                       else call_openai(a.base_url, a.model, j["messages"], temp, k, a.max_tokens))
+                                       else call_openai(a.base_url, a.model, j["messages"], temp, k, a.max_tokens, extra))
                     err = None
                 except Exception as e:  # recorded, not retried
                     text, reasoning, err = None, None, f"{type(e).__name__}: {e}"
-                f.write(json.dumps({"id": cid, "model": a.model, "world": j["world"], "level": j["level"],
+                f.write(json.dumps({"id": cid, "model": a.model, "tag": tag, "extra_body": extra, "world": j["world"], "level": j["level"],
                                     "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
                                     "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
                                     "seconds": round(time.time() - t0, 3)}) + "\n")

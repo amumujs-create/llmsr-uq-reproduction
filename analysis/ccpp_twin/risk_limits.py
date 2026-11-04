@@ -43,7 +43,9 @@ def coef_prior_fit(X, y, slope_target, rng):
     return fit(X, y, CP_GRID[int(np.argmin(cv))])
 
 
-def run(x, reps):
+def run(x, reps, external=None, builtin=True):
+    """external: {module: {name: [(side, at_c), ...]}} statements to evaluate in addition to (or instead of) the
+    built-in ones; used to score LLM statements on the same worlds, windows, reps and seeds."""
     worlds = [w for w in build_worlds(x)[0] if w["noise"] > 0]
     at, ap, rh = x["AT"], x["AP"], x["RH"]
     wins = windows(at)
@@ -53,10 +55,11 @@ def run(x, reps):
         clean = simulate(at, ap, rh, v, world["cfg"])["pe_clean"]
         feats = np.column_stack([at, v, ap, rh])
         wname = f'{world["module"]}|{world["vmode"]}|{world["noise"]}'
-        stmts = statements(world["module"])
+        stmts = statements(world["module"]) if builtin else {}
+        stmts.update((external or {}).get(world["module"], {}))
         # Exploratory (not pre-registered): a fully wrong statement that names only the opposite side.
         swap = {"cap_mild": [("above", 24.0)], "cap_strong": [("above", 24.0)], "evap": [("below", 9.0)]}
-        if world["module"] in swap:
+        if builtin and world["module"] in swap:
             stmts["swap"] = swap[world["module"]]
         for wd in wins:
             up = wd["setting"].endswith("->hot")
