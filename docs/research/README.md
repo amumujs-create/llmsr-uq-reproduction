@@ -14,6 +14,7 @@
 - [미리 준비한 LLM 경쟁 가설과 소수 관측 레짐 확정 — 겹침 검토](reviews/2026-11-03-prepared-hypotheses.md)
 - **[CCPP 외삽: 학습 창과 물리 prior의 효과, 설계 가정](ccpp-extrapolation.md)** — 현재 주 실험 설계
 - [CCPP 쌍둥이 시뮬레이터 설계와 v0 결과](ccpp-twin-design.md)
+- [CCPP 쌍둥이 격자 실험: 사전 등록과 결과](ccpp-twin-grid.md)
 - 기존 실험 감사 원본 (2026-11-03~04):
   - [저장소 전체 실험의 활용 가능성 감사](audit/2026-11-03-salvage-ledger.md)
   - [코드 검토와 외삽 성능 중심 연구 방향](audit/2026-11-03-code-review-and-directions.md)

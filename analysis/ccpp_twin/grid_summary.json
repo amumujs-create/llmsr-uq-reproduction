@@ -1,0 +1,7487 @@
+{
+ "winmap": [
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.1,
+   "diff_mean": 3.824352615,
+   "raw_linear": 3.8487391321,
+   "density_linear": 7.223612301,
+   "proportional": 7.6730917472,
+   "ridge": 3.5789026949,
+   "mlp": 70.4261897853,
+   "xgboost": 18.1498000419,
+   "persistence": 20.3962000972,
+   "diff_ci": [
+    -1.2106029939,
+    7.3141282668
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.1,
+   "diff_mean": 6.081719468,
+   "raw_linear": 6.6290217612,
+   "density_linear": 11.9079711955,
+   "proportional": 12.7107412292,
+   "ridge": 6.1450796703,
+   "mlp": 121.0108030719,
+   "xgboost": 31.3846961414,
+   "persistence": 34.8544689609,
+   "diff_ci": [
+    -2.1691423118,
+    11.7109333037
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.15,
+   "diff_mean": 8.2778288144,
+   "raw_linear": 9.5369480005,
+   "density_linear": 16.6915297392,
+   "proportional": 17.8147768149,
+   "ridge": 8.7989354419,
+   "mlp": 170.2336898976,
+   "xgboost": 44.3614484426,
+   "persistence": 48.5120228887,
+   "diff_ci": [
+    -3.423882288,
+    16.2109278427
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.15,
+   "diff_mean": 9.4640350296,
+   "raw_linear": 12.7908376144,
+   "density_linear": 20.8226530568,
+   "proportional": 22.254872644,
+   "ridge": 11.7580666261,
+   "mlp": 219.8976794686,
+   "xgboost": 56.6598980396,
+   "persistence": 61.3105223756,
+   "diff_ci": [
+    -6.0029296958,
+    20.1602905394
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.912711546,
+   "raw_linear": 1.5736918349,
+   "density_linear": 5.0451797521,
+   "proportional": 8.4864033809,
+   "ridge": 1.5729666076,
+   "mlp": 15.9436923106,
+   "xgboost": 17.3233697288,
+   "persistence": 24.0264501431,
+   "diff_ci": [
+    4.5757356396,
+    8.0628069384
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.1822728074,
+   "raw_linear": 2.6223235749,
+   "density_linear": 8.3122699105,
+   "proportional": 13.8045963822,
+   "ridge": 2.6091520696,
+   "mlp": 26.7836320458,
+   "xgboost": 30.666275529,
+   "persistence": 38.1526803295,
+   "diff_ci": [
+    7.4621445343,
+    13.382835097
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.6854816058,
+   "raw_linear": 3.9380144122,
+   "density_linear": 11.1815352409,
+   "proportional": 18.6234960181,
+   "ridge": 3.8734692203,
+   "mlp": 38.1496807071,
+   "xgboost": 43.2637113967,
+   "persistence": 51.5003905407,
+   "diff_ci": [
+    9.4490758561,
+    18.3439946885
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.1740285703,
+   "raw_linear": 5.7687350491,
+   "density_linear": 13.6369715993,
+   "proportional": 22.9427636194,
+   "ridge": 5.5491468814,
+   "mlp": 50.609473284,
+   "xgboost": 55.5549548258,
+   "persistence": 64.0246122733,
+   "diff_ci": [
+    10.3194486088,
+    22.274610817
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.6639602068,
+   "raw_linear": 1.0343546227,
+   "density_linear": 2.531431316,
+   "proportional": 10.6983148295,
+   "ridge": 1.0069631601,
+   "mlp": 3.3483173474,
+   "xgboost": 17.1199287134,
+   "persistence": 29.2918801642,
+   "diff_ci": [
+    8.568872633,
+    10.2088719851
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 13.4149800444,
+   "raw_linear": 2.1557640744,
+   "density_linear": 3.4755899447,
+   "proportional": 15.5707441187,
+   "ridge": 2.1139982346,
+   "mlp": 5.3071872395,
+   "xgboost": 29.7848258457,
+   "persistence": 42.6202678423,
+   "diff_ci": [
+    11.9224408171,
+    14.2250580155
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 16.0386565897,
+   "raw_linear": 3.9046210228,
+   "density_linear": 4.1563892583,
+   "proportional": 19.9432776125,
+   "ridge": 3.8492179077,
+   "mlp": 6.8839418068,
+   "xgboost": 42.0285476469,
+   "persistence": 55.1357890786,
+   "diff_ci": [
+    14.1649930168,
+    17.155552256
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.05,
+   "diff_mean": 3.5118029935,
+   "raw_linear": 3.4784218999,
+   "density_linear": 4.9342942334,
+   "proportional": 6.9902248933,
+   "ridge": 3.4105490824,
+   "mlp": 89.6389161803,
+   "xgboost": 16.778362161,
+   "persistence": 18.4760901522,
+   "diff_ci": [
+    -0.0318912003,
+    5.3645969912
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.05,
+   "diff_mean": 6.6347569541,
+   "raw_linear": 5.7380068401,
+   "density_linear": 8.8329360958,
+   "proportional": 12.3727637942,
+   "ridge": 5.7026413665,
+   "mlp": 156.4262106484,
+   "xgboost": 30.1338693547,
+   "persistence": 31.9393661979,
+   "diff_ci": [
+    0.9730182061,
+    10.3615211094
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.1593532547,
+   "raw_linear": 8.0056704995,
+   "density_linear": 13.0142081902,
+   "proportional": 18.1650237542,
+   "ridge": 8.1490032258,
+   "mlp": 225.5095284685,
+   "xgboost": 44.629446508,
+   "persistence": 46.5709346991,
+   "diff_ci": [
+    2.4333291786,
+    16.2073345418
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.0,
+   "diff_mean": 13.4266199018,
+   "raw_linear": 10.2110755562,
+   "density_linear": 16.89358086,
+   "proportional": 23.637695458,
+   "ridge": 10.5811599862,
+   "mlp": 289.394207259,
+   "xgboost": 58.6905919518,
+   "persistence": 60.7272271364,
+   "diff_ci": [
+    3.7498350686,
+    21.9430369101
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 5.8782929623,
+   "raw_linear": 2.1366615361,
+   "density_linear": 3.0016081223,
+   "proportional": 8.0149544984,
+   "ridge": 2.2224555742,
+   "mlp": 19.0504578428,
+   "xgboost": 16.6422194744,
+   "persistence": 20.9708922796,
+   "diff_ci": [
+    2.7040171657,
+    7.4684536751
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.0789513391,
+   "raw_linear": 3.6133419788,
+   "density_linear": 5.3676033985,
+   "proportional": 13.692293318,
+   "ridge": 3.7702821329,
+   "mlp": 31.9396724703,
+   "xgboost": 30.0523263655,
+   "persistence": 34.8316015138,
+   "diff_ci": [
+    4.4157439333,
+    13.1723311553
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.0540394929,
+   "raw_linear": 5.1717081824,
+   "density_linear": 7.25708543,
+   "proportional": 19.2257476753,
+   "ridge": 5.4626406894,
+   "mlp": 44.7010908443,
+   "xgboost": 43.8528486431,
+   "persistence": 49.2755593042,
+   "diff_ci": [
+    5.7169492353,
+    18.8299618096
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.9566942261,
+   "raw_linear": 6.9463974817,
+   "density_linear": 9.3613610256,
+   "proportional": 24.9030917078,
+   "ridge": 7.429094752,
+   "mlp": 57.5816256185,
+   "xgboost": 58.2074816353,
+   "persistence": 63.8143287324,
+   "diff_ci": [
+    6.7848687947,
+    24.5893004335
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.4875353439,
+   "raw_linear": 1.1093669358,
+   "density_linear": 2.2533574451,
+   "proportional": 10.5969022797,
+   "ridge": 1.1327427886,
+   "mlp": 4.5456540918,
+   "xgboost": 16.9687663141,
+   "persistence": 27.1111973969,
+   "diff_ci": [
+    8.9583426715,
+    10.1975106558
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 13.9027006791,
+   "raw_linear": 2.1587439648,
+   "density_linear": 2.8244388954,
+   "proportional": 16.061444644,
+   "ridge": 2.2002733852,
+   "mlp": 7.8311423744,
+   "xgboost": 30.4492721763,
+   "persistence": 41.5244409769,
+   "diff_ci": [
+    13.0890237107,
+    14.9187269291
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 18.117531494,
+   "raw_linear": 3.5571091197,
+   "density_linear": 3.6834288982,
+   "proportional": 21.6746406137,
+   "ridge": 3.6153474644,
+   "mlp": 11.5260513348,
+   "xgboost": 44.4961362222,
+   "persistence": 56.0552516609,
+   "diff_ci": [
+    17.0291623536,
+    19.441765679
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.05,
+   "diff_mean": 4.7725271806,
+   "raw_linear": 3.2805065574,
+   "density_linear": 4.976192445,
+   "proportional": 8.053033738,
+   "ridge": 3.1503055429,
+   "mlp": 57.0689693984,
+   "xgboost": 17.4485297065,
+   "persistence": 21.526492452,
+   "diff_ci": [
+    -0.5612136004,
+    7.1812623571
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.05,
+   "diff_mean": 8.2632029352,
+   "raw_linear": 5.2900081217,
+   "density_linear": 8.2279050345,
+   "proportional": 13.5532110569,
+   "ridge": 5.2722135937,
+   "mlp": 101.8439207366,
+   "xgboost": 31.5927398256,
+   "persistence": 36.2595524521,
+   "diff_ci": [
+    -0.9669913054,
+    12.736163466
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.05,
+   "diff_mean": 11.1419507074,
+   "raw_linear": 7.1713334284,
+   "density_linear": 11.6453595595,
+   "proportional": 18.3132841358,
+   "ridge": 7.1960771746,
+   "mlp": 145.6005985429,
+   "xgboost": 43.0439128557,
+   "persistence": 46.6394852024,
+   "diff_ci": [
+    -1.8522796228,
+    17.5662063901
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.3243067395,
+   "raw_linear": 1.2335327754,
+   "density_linear": 3.4969814095,
+   "proportional": 9.5578395149,
+   "ridge": 1.2623202133,
+   "mlp": 19.9817480703,
+   "xgboost": 17.6716868411,
+   "persistence": 25.2705586537,
+   "diff_ci": [
+    5.9942273607,
+    9.3998465225
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 13.0124335508,
+   "raw_linear": 1.9572035415,
+   "density_linear": 5.4177293227,
+   "proportional": 14.9696370923,
+   "ridge": 2.1084466301,
+   "mlp": 34.0110340074,
+   "xgboost": 31.423057133,
+   "persistence": 39.3536884311,
+   "diff_ci": [
+    8.9977500788,
+    14.9287585736
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.4720496338,
+   "raw_linear": 1.1818705242,
+   "density_linear": 1.8886468978,
+   "proportional": 12.653920158,
+   "ridge": 1.2102701267,
+   "mlp": 3.7731760167,
+   "xgboost": 17.5640571903,
+   "persistence": 33.9730535655,
+   "diff_ci": [
+    10.3635441876,
+    12.2053648114
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 15.6352077659,
+   "raw_linear": 2.0219571845,
+   "density_linear": 3.5115867029,
+   "proportional": 17.6571649504,
+   "ridge": 2.0626703919,
+   "mlp": 5.9810986516,
+   "xgboost": 30.2074780265,
+   "persistence": 44.6272358608,
+   "diff_ci": [
+    14.1625913963,
+    16.6294939944
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.0,
+   "diff_mean": 3.8775609373,
+   "raw_linear": 3.6955458051,
+   "density_linear": 4.5463267915,
+   "proportional": 7.5731067424,
+   "ridge": 3.5988670714,
+   "mlp": 54.0462897208,
+   "xgboost": 16.3273407081,
+   "persistence": 20.2587837462,
+   "diff_ci": [
+    0.2090921407,
+    7.0280468377
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.1,
+   "diff_mean": 5.6865756562,
+   "raw_linear": 6.0229184128,
+   "density_linear": 6.8965870698,
+   "proportional": 11.709494069,
+   "ridge": 5.7733593194,
+   "mlp": 91.6084194396,
+   "xgboost": 27.1891648284,
+   "persistence": 31.6679829821,
+   "diff_ci": [
+    -0.7628099435,
+    10.9731917031
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.6304833998,
+   "raw_linear": 1.902307174,
+   "density_linear": 2.4274135707,
+   "proportional": 8.5327905738,
+   "ridge": 1.7610899793,
+   "mlp": 17.8289617001,
+   "xgboost": 15.8840940077,
+   "persistence": 22.7600272725,
+   "diff_ci": [
+    4.6826487792,
+    8.200443014
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.0324734294,
+   "raw_linear": 3.3998518662,
+   "density_linear": 3.2872386658,
+   "proportional": 12.4323252956,
+   "ridge": 3.1347491405,
+   "mlp": 28.0893195431,
+   "xgboost": 26.3116089649,
+   "persistence": 33.5534432295,
+   "diff_ci": [
+    6.0068079757,
+    11.5357672538
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.9870370381,
+   "raw_linear": 1.303894455,
+   "density_linear": 1.2256483717,
+   "proportional": 10.2909314931,
+   "ridge": 1.279652012,
+   "mlp": 3.0858798902,
+   "xgboost": 15.3111839586,
+   "persistence": 27.6127430725,
+   "diff_ci": [
+    8.1629773472,
+    9.8842648702
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.05,
+   "diff_mean": 4.8341452051,
+   "raw_linear": 3.4031578503,
+   "density_linear": 7.3377313926,
+   "proportional": 8.2373030554,
+   "ridge": 3.2103847601,
+   "mlp": 51.8984948757,
+   "xgboost": 18.3664821245,
+   "persistence": 20.9898931546,
+   "diff_ci": [
+    0.0673752437,
+    7.731061916
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.05,
+   "diff_mean": 8.5189310278,
+   "raw_linear": 6.2731319977,
+   "density_linear": 13.2063878437,
+   "proportional": 14.7920630255,
+   "ridge": 5.7688495907,
+   "mlp": 89.1443162546,
+   "xgboost": 32.7883765099,
+   "persistence": 36.9585030037,
+   "diff_ci": [
+    -1.3522837972,
+    13.7791870286
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.05,
+   "diff_mean": 12.2246253148,
+   "raw_linear": 9.3594946071,
+   "density_linear": 19.3523533532,
+   "proportional": 21.5841199219,
+   "ridge": 8.4868431089,
+   "mlp": 123.2603393923,
+   "xgboost": 47.4985401353,
+   "persistence": 52.3896908591,
+   "diff_ci": [
+    -3.4733869336,
+    19.6607638208
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.05,
+   "diff_mean": 14.40397965,
+   "raw_linear": 12.5820870905,
+   "density_linear": 24.1385778986,
+   "proportional": 26.9860667405,
+   "ridge": 11.2764987981,
+   "mlp": 157.3514744269,
+   "xgboost": 61.1746454741,
+   "persistence": 66.2011571603,
+   "diff_ci": [
+    -6.6728913024,
+    24.9089705045
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.4706489114,
+   "raw_linear": 1.8394306421,
+   "density_linear": 5.9637324305,
+   "proportional": 9.3100795535,
+   "ridge": 1.8476905785,
+   "mlp": 26.5865790143,
+   "xgboost": 18.4300844607,
+   "persistence": 24.8484030414,
+   "diff_ci": [
+    5.9112529782,
+    9.2656158658
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 13.3960769016,
+   "raw_linear": 3.3468645536,
+   "density_linear": 11.3569078677,
+   "proportional": 16.7429414552,
+   "ridge": 3.2772355589,
+   "mlp": 52.2902952006,
+   "xgboost": 33.4940847184,
+   "persistence": 41.1383946799,
+   "diff_ci": [
+    10.1903818697,
+    16.6174814189
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.8814371285,
+   "raw_linear": 4.8912411598,
+   "density_linear": 15.4356517359,
+   "proportional": 22.7726782883,
+   "ridge": 4.6787576317,
+   "mlp": 74.6973394459,
+   "xgboost": 47.3790975265,
+   "persistence": 55.7667289749,
+   "diff_ci": [
+    12.7609128643,
+    22.3799976024
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 21.1765373133,
+   "raw_linear": 6.7354282401,
+   "density_linear": 18.7138708557,
+   "proportional": 27.9119655534,
+   "ridge": 6.390190628,
+   "mlp": 94.5183167117,
+   "xgboost": 60.3069300615,
+   "persistence": 69.1693645588,
+   "diff_ci": [
+    13.8934171723,
+    26.78434785
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.4467983383,
+   "raw_linear": 1.0319309179,
+   "density_linear": 4.9827925862,
+   "proportional": 13.4787292562,
+   "ridge": 1.0121204778,
+   "mlp": 4.5953591756,
+   "xgboost": 18.2423418546,
+   "persistence": 32.0718454479,
+   "diff_ci": [
+    11.6041367388,
+    13.2272283268
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.4274967242,
+   "raw_linear": 2.1268155959,
+   "density_linear": 6.8402935468,
+   "proportional": 19.5543123202,
+   "ridge": 2.0935043961,
+   "mlp": 7.2404198843,
+   "xgboost": 31.8763612016,
+   "persistence": 46.6800114904,
+   "diff_ci": [
+    16.026672671,
+    18.6526021234
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 20.8323606389,
+   "raw_linear": 3.9106991322,
+   "density_linear": 8.0598628871,
+   "proportional": 24.7430597712,
+   "ridge": 3.8653138497,
+   "mlp": 9.8206020291,
+   "xgboost": 44.7137033688,
+   "persistence": 60.0705012832,
+   "diff_ci": [
+    18.9604945871,
+    22.5459112104
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.2722599209,
+   "raw_linear": 3.1561255934,
+   "density_linear": 5.5545289342,
+   "proportional": 8.4283855143,
+   "ridge": 3.614238788,
+   "mlp": 57.2053909421,
+   "xgboost": 16.6404349326,
+   "persistence": 19.7446509736,
+   "diff_ci": [
+    -0.1360443211,
+    7.8478841874
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.05,
+   "diff_mean": 9.8720641499,
+   "raw_linear": 5.3062556484,
+   "density_linear": 9.9292240307,
+   "proportional": 15.1783197982,
+   "ridge": 6.2608770985,
+   "mlp": 99.9210243602,
+   "xgboost": 30.5052736101,
+   "persistence": 34.5274621413,
+   "diff_ci": [
+    0.6044600982,
+    14.1671284899
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.0,
+   "diff_mean": 15.2800481827,
+   "raw_linear": 7.7287667839,
+   "density_linear": 15.0312149023,
+   "proportional": 23.0088149666,
+   "ridge": 9.2472458794,
+   "mlp": 143.6740142507,
+   "xgboost": 46.546881994,
+   "persistence": 51.1763180436,
+   "diff_ci": [
+    2.0346538392,
+    21.2426915754
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.0,
+   "diff_mean": 19.1448658135,
+   "raw_linear": 9.9074883516,
+   "density_linear": 18.5948097638,
+   "proportional": 29.0523541651,
+   "ridge": 12.1827932613,
+   "mlp": 185.715224531,
+   "xgboost": 61.0444357128,
+   "persistence": 65.8574453749,
+   "diff_ci": [
+    2.7987898521,
+    27.0271366344
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.9469075541,
+   "raw_linear": 1.6664163372,
+   "density_linear": 3.7062147808,
+   "proportional": 9.6133238913,
+   "ridge": 1.8339500261,
+   "mlp": 23.1779645037,
+   "xgboost": 16.8022636648,
+   "persistence": 22.403900645,
+   "diff_ci": [
+    5.9221981739,
+    9.3283474548
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.6697074389,
+   "raw_linear": 2.5845123675,
+   "density_linear": 7.1707562863,
+   "proportional": 17.2542198063,
+   "ridge": 2.9528975153,
+   "mlp": 39.0979490441,
+   "xgboost": 31.6513091288,
+   "persistence": 38.1927061578,
+   "diff_ci": [
+    11.5879659125,
+    16.6926651442
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 20.2926464606,
+   "raw_linear": 3.7120247461,
+   "density_linear": 9.3447606392,
+   "proportional": 24.0046712067,
+   "ridge": 4.3156005041,
+   "mlp": 55.2951425958,
+   "xgboost": 46.7604003531,
+   "persistence": 53.8433745261,
+   "diff_ci": [
+    16.1311675333,
+    23.1125183603
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 24.9887442811,
+   "raw_linear": 5.1185013806,
+   "density_linear": 11.0744653512,
+   "proportional": 30.1072456617,
+   "ridge": 5.9244806023,
+   "mlp": 70.5480465276,
+   "xgboost": 61.5456746317,
+   "persistence": 68.7551091744,
+   "diff_ci": [
+    19.794424788,
+    28.8376619306
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.5896443242,
+   "raw_linear": 1.1615337485,
+   "density_linear": 3.847075746,
+   "proportional": 13.7511780727,
+   "ridge": 1.1851903684,
+   "mlp": 4.8383984166,
+   "xgboost": 18.1835407795,
+   "persistence": 30.0945563634,
+   "diff_ci": [
+    11.7745619002,
+    13.3388523563
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 18.2136090563,
+   "raw_linear": 2.1921002686,
+   "density_linear": 4.2836079425,
+   "proportional": 20.4057093249,
+   "ridge": 2.2438534994,
+   "mlp": 7.5621339139,
+   "xgboost": 32.8835527238,
+   "persistence": 45.7107145183,
+   "diff_ci": [
+    16.869904478,
+    19.4942150716
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 22.8826068507,
+   "raw_linear": 3.5520383829,
+   "density_linear": 4.5433282107,
+   "proportional": 26.4346452336,
+   "ridge": 3.6320065492,
+   "mlp": 10.9057396017,
+   "xgboost": 47.5652360741,
+   "persistence": 60.6153583447,
+   "diff_ci": [
+    21.0512494709,
+    24.9273078703
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.05,
+   "diff_mean": 7.5563430937,
+   "raw_linear": 2.9226125333,
+   "density_linear": 8.0669891418,
+   "proportional": 10.478955627,
+   "ridge": 3.231686286,
+   "mlp": 38.7106931782,
+   "xgboost": 18.0436919718,
+   "persistence": 23.9001954494,
+   "diff_ci": [
+    1.7637765074,
+    10.5201435881
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.05,
+   "diff_mean": 11.5662008396,
+   "raw_linear": 4.8167458867,
+   "density_linear": 12.2428896527,
+   "proportional": 16.3829467263,
+   "ridge": 5.435112653,
+   "mlp": 66.1996604122,
+   "xgboost": 32.5362917113,
+   "persistence": 39.0463978798,
+   "diff_ci": [
+    1.2069759126,
+    16.4132025035
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.05,
+   "diff_mean": 14.9894065665,
+   "raw_linear": 6.5369067638,
+   "density_linear": 16.3510695124,
+   "proportional": 21.5263133303,
+   "ridge": 7.3688984685,
+   "mlp": 92.4681833663,
+   "xgboost": 44.7314099971,
+   "persistence": 49.8110767389,
+   "diff_ci": [
+    -0.2857319066,
+    21.3481084187
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.7291612219,
+   "raw_linear": 1.5844765241,
+   "density_linear": 5.3619694384,
+   "proportional": 12.3136377459,
+   "ridge": 1.6827269298,
+   "mlp": 20.5600218873,
+   "xgboost": 17.932553382,
+   "persistence": 27.9733922789,
+   "diff_ci": [
+    9.1701185369,
+    12.0013668748
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 15.466868803,
+   "raw_linear": 2.5257538141,
+   "density_linear": 7.0351081513,
+   "proportional": 17.9926226171,
+   "ridge": 2.7307305197,
+   "mlp": 33.8296239313,
+   "xgboost": 31.9719578433,
+   "persistence": 42.3279005532,
+   "diff_ci": [
+    12.6444598438,
+    17.421232873
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.6671158919,
+   "raw_linear": 0.8013699796,
+   "density_linear": 2.1006340419,
+   "proportional": 15.4684858716,
+   "ridge": 0.8268857646,
+   "mlp": 3.0293214962,
+   "xgboost": 18.2047002326,
+   "persistence": 36.739542429,
+   "diff_ci": [
+    13.7444450804,
+    15.2171729075
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 19.2438797681,
+   "raw_linear": 1.493619081,
+   "density_linear": 2.2570834033,
+   "proportional": 20.7374988491,
+   "ridge": 1.5406303802,
+   "mlp": 4.6320859905,
+   "xgboost": 30.8837807418,
+   "persistence": 47.6696514148,
+   "diff_ci": [
+    17.7742852536,
+    20.4573119055
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.6266225417,
+   "raw_linear": 3.7379760002,
+   "density_linear": 7.1405986189,
+   "proportional": 9.3645985419,
+   "ridge": 3.4770749798,
+   "mlp": 49.0476034006,
+   "xgboost": 17.2481337129,
+   "persistence": 21.9526069697,
+   "diff_ci": [
+    -2.2245353288,
+    9.3118127146
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.1,
+   "diff_mean": 7.8092110248,
+   "raw_linear": 6.2454193142,
+   "density_linear": 10.4665132828,
+   "proportional": 14.054630339,
+   "ridge": 5.6102498625,
+   "mlp": 84.5646232559,
+   "xgboost": 28.9585872341,
+   "persistence": 33.9541921409,
+   "diff_ci": [
+    -5.2895899735,
+    14.2973798969
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.9536596321,
+   "raw_linear": 1.6302406869,
+   "density_linear": 4.1892553587,
+   "proportional": 10.5839003191,
+   "ridge": 1.604285011,
+   "mlp": 15.0126315826,
+   "xgboost": 15.9735032292,
+   "persistence": 24.7365351904,
+   "diff_ci": [
+    6.4888266386,
+    10.4572156121
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.1472581835,
+   "raw_linear": 2.81844098,
+   "density_linear": 5.272644193,
+   "proportional": 14.9656991635,
+   "ridge": 2.6529488643,
+   "mlp": 24.7718686885,
+   "xgboost": 26.982772574,
+   "persistence": 36.02957474,
+   "diff_ci": [
+    8.0541588087,
+    14.5055317222
+   ]
+  },
+  {
+   "module": "base",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.094773402,
+   "raw_linear": 1.5721268518,
+   "density_linear": 1.5606388488,
+   "proportional": 12.6669002538,
+   "ridge": 1.5445627819,
+   "mlp": 3.4216030983,
+   "xgboost": 15.2199949465,
+   "persistence": 29.9418026089,
+   "diff_ci": [
+    10.0334433922,
+    11.8713342506
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.9,
+   "diff_mean": -5.6686186668,
+   "raw_linear": 10.4924117166,
+   "density_linear": 12.071913871,
+   "proportional": 4.8237930498,
+   "ridge": 12.0154794129,
+   "mlp": 67.1558072402,
+   "xgboost": 16.3552447267,
+   "persistence": 17.4922045468,
+   "diff_ci": [
+    -13.289018356,
+    0.1834802987
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.9,
+   "diff_mean": -9.7560033183,
+   "raw_linear": 19.6574853549,
+   "density_linear": 22.5193742905,
+   "proportional": 9.9014820365,
+   "ridge": 22.323491562,
+   "mlp": 117.4857956549,
+   "xgboost": 30.2418616566,
+   "persistence": 31.918207636,
+   "diff_ci": [
+    -22.7018120871,
+    0.2407678498
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.9,
+   "diff_mean": -13.2145942877,
+   "raw_linear": 28.2676486117,
+   "density_linear": 32.5499394525,
+   "proportional": 15.053054324,
+   "ridge": 32.0324532716,
+   "mlp": 167.1193570831,
+   "xgboost": 43.4548636114,
+   "persistence": 45.5661598345,
+   "diff_ci": [
+    -31.4261560797,
+    0.9484569246
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.85,
+   "diff_mean": -16.5672283551,
+   "raw_linear": 36.1100734733,
+   "density_linear": 41.8044517278,
+   "proportional": 19.5428451182,
+   "ridge": 40.9588941716,
+   "mlp": 216.0781877254,
+   "xgboost": 55.8631940049,
+   "persistence": 58.3623530797,
+   "diff_ci": [
+    -40.1662417366,
+    1.5819314194
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.4,
+   "diff_mean": 0.2900690861,
+   "raw_linear": 6.7002688786,
+   "density_linear": 10.178466927,
+   "proportional": 6.9903379646,
+   "ridge": 6.9503348328,
+   "mlp": 18.4804070467,
+   "xgboost": 16.9366633096,
+   "persistence": 22.4917093408,
+   "diff_ci": [
+    -2.4923023215,
+    3.0067580568
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.25,
+   "diff_mean": 1.1253659768,
+   "raw_linear": 11.2060935349,
+   "density_linear": 17.3382438441,
+   "proportional": 12.3314595117,
+   "ridge": 11.6081967355,
+   "mlp": 30.028920962,
+   "xgboost": 30.341770271,
+   "persistence": 36.6027916283,
+   "diff_ci": [
+    -3.2765166593,
+    5.435483835
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.2,
+   "diff_mean": 1.9988340388,
+   "raw_linear": 15.1772826939,
+   "density_linear": 23.9395703487,
+   "proportional": 17.1761167327,
+   "ridge": 15.7277635652,
+   "mlp": 41.0964516612,
+   "xgboost": 43.0689598775,
+   "persistence": 49.9479682721,
+   "diff_ci": [
+    -4.0263966464,
+    7.9676191741
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.15,
+   "diff_mean": 3.0531443914,
+   "raw_linear": 18.4676291052,
+   "density_linear": 29.9718516171,
+   "proportional": 21.5207734966,
+   "ridge": 19.164219391,
+   "mlp": 50.9285291875,
+   "xgboost": 55.1443031923,
+   "persistence": 62.4709405354,
+   "diff_ci": [
+    -4.5891297852,
+    10.7468109133
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.1439090607,
+   "raw_linear": 2.0769664502,
+   "density_linear": 4.9619213348,
+   "proportional": 10.2208755109,
+   "ridge": 2.1025719437,
+   "mlp": 3.3727324079,
+   "xgboost": 17.1736740041,
+   "persistence": 28.7957491806,
+   "diff_ci": [
+    7.0360741909,
+    9.0026376018
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.4486282359,
+   "raw_linear": 2.6525667505,
+   "density_linear": 7.3930292961,
+   "proportional": 15.1011949864,
+   "ridge": 2.689946075,
+   "mlp": 5.3896121103,
+   "xgboost": 29.7528418835,
+   "persistence": 42.1225936017,
+   "diff_ci": [
+    10.8418871028,
+    13.68564107
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 16.9078399244,
+   "raw_linear": 2.5739682175,
+   "density_linear": 9.4393145609,
+   "proportional": 19.4818081419,
+   "ridge": 2.621985267,
+   "mlp": 6.9677457296,
+   "xgboost": 41.8129289122,
+   "persistence": 54.6374908642,
+   "diff_ci": [
+    14.8556511146,
+    18.4740693305
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.05,
+   "diff_mean": 3.4151053355,
+   "raw_linear": 3.5888662423,
+   "density_linear": 4.3367337982,
+   "proportional": 7.0039715778,
+   "ridge": 3.4178729108,
+   "mlp": 63.3037810375,
+   "xgboost": 16.5648677661,
+   "persistence": 18.4893793042,
+   "diff_ci": [
+    -0.508078396,
+    6.3506468571
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.05,
+   "diff_mean": 6.4678412121,
+   "raw_linear": 5.9189435386,
+   "density_linear": 7.7449871473,
+   "proportional": 12.3867847507,
+   "ridge": 5.7489456752,
+   "mlp": 109.2366006434,
+   "xgboost": 29.8867857134,
+   "persistence": 31.9527183904,
+   "diff_ci": [
+    -0.225920785,
+    10.9942974876
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.05,
+   "diff_mean": 9.9043756674,
+   "raw_linear": 8.2745652803,
+   "density_linear": 11.4101761017,
+   "proportional": 18.1789409477,
+   "ridge": 8.1928771753,
+   "mlp": 155.1047792016,
+   "xgboost": 44.3705346324,
+   "persistence": 46.5838740911,
+   "diff_ci": [
+    0.5351937694,
+    16.1723317301
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.05,
+   "diff_mean": 13.0604455511,
+   "raw_linear": 10.4661467538,
+   "density_linear": 14.6621369055,
+   "proportional": 23.5265923049,
+   "ridge": 10.5425069887,
+   "mlp": 199.5734790372,
+   "xgboost": 58.2980392167,
+   "persistence": 60.6092752684,
+   "diff_ci": [
+    0.9428554869,
+    21.628198112
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.0513413797,
+   "raw_linear": 1.9621725465,
+   "density_linear": 2.6980956233,
+   "proportional": 8.0135139262,
+   "ridge": 2.069153331,
+   "mlp": 22.6484824893,
+   "xgboost": 16.6727165043,
+   "persistence": 20.9694918001,
+   "diff_ci": [
+    3.4685660733,
+    7.5007199759
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.3733509487,
+   "raw_linear": 3.3174295275,
+   "density_linear": 4.8777484268,
+   "proportional": 13.6907804763,
+   "ridge": 3.5130036401,
+   "mlp": 38.806886091,
+   "xgboost": 30.1187889175,
+   "persistence": 34.8301718565,
+   "diff_ci": [
+    5.8259398636,
+    12.9256191341
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.4202233127,
+   "raw_linear": 4.799641251,
+   "density_linear": 6.5510839166,
+   "proportional": 19.2198645638,
+   "ridge": 5.1159401168,
+   "mlp": 54.1982158032,
+   "xgboost": 44.1707619607,
+   "persistence": 49.2696680195,
+   "diff_ci": [
+    7.7380884594,
+    18.1055326198
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.8177435478,
+   "raw_linear": 6.0269913873,
+   "density_linear": 7.6614816926,
+   "proportional": 23.8447349351,
+   "ridge": 6.4100782779,
+   "mlp": 69.7820348979,
+   "xgboost": 57.5149161036,
+   "persistence": 62.7184370309,
+   "diff_ci": [
+    9.4171076796,
+    22.4605977122
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.6025639621,
+   "raw_linear": 1.0529551521,
+   "density_linear": 2.2997220247,
+   "proportional": 10.6555191142,
+   "ridge": 1.0745973858,
+   "mlp": 4.8549101502,
+   "xgboost": 17.0601063471,
+   "persistence": 27.1674152055,
+   "diff_ci": [
+    8.7939698371,
+    10.1818217518
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.0837642796,
+   "raw_linear": 2.0332862815,
+   "density_linear": 2.8652363193,
+   "proportional": 16.117050561,
+   "ridge": 2.0739841985,
+   "mlp": 8.3313607704,
+   "xgboost": 30.6710911188,
+   "persistence": 41.5764620218,
+   "diff_ci": [
+    12.7568454876,
+    15.25970351
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 18.2030385505,
+   "raw_linear": 2.4767739141,
+   "density_linear": 3.2616612708,
+   "proportional": 20.6798124646,
+   "ridge": 2.5274111591,
+   "mlp": 11.6376144987,
+   "xgboost": 43.7715468165,
+   "persistence": 55.0122158913,
+   "diff_ci": [
+    16.4939464242,
+    19.6077807231
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.189396682,
+   "raw_linear": 2.9692747947,
+   "density_linear": 5.905390695,
+   "proportional": 8.1586714767,
+   "ridge": 3.4614929852,
+   "mlp": 57.1154309607,
+   "xgboost": 17.7212836535,
+   "persistence": 21.6281447473,
+   "diff_ci": [
+    0.6548343308,
+    7.6526478097
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.05,
+   "diff_mean": 8.0621206964,
+   "raw_linear": 4.7340136568,
+   "density_linear": 9.0027913086,
+   "proportional": 12.7961343533,
+   "ridge": 5.4085320084,
+   "mlp": 100.4453592398,
+   "xgboost": 31.0556679063,
+   "persistence": 35.4448982681,
+   "diff_ci": [
+    0.4884572115,
+    11.5892050617
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.2,
+   "diff_mean": 3.0955688984,
+   "raw_linear": 7.8397909391,
+   "density_linear": 7.6302945,
+   "proportional": 10.9353598374,
+   "ridge": 6.9424022249,
+   "mlp": 143.8406242272,
+   "xgboost": 35.1463960032,
+   "persistence": 38.3954501739,
+   "diff_ci": [
+    -12.8762214321,
+    7.7528048629
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.1283219413,
+   "raw_linear": 1.4961304747,
+   "density_linear": 3.1439227079,
+   "proportional": 9.6244524159,
+   "ridge": 1.4914019923,
+   "mlp": 14.9089098194,
+   "xgboost": 16.8578281625,
+   "persistence": 25.3332295642,
+   "diff_ci": [
+    6.341830432,
+    9.4127451552
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.192279279,
+   "raw_linear": 2.9678166465,
+   "density_linear": 3.9615424397,
+   "proportional": 13.1600959255,
+   "ridge": 2.8387407856,
+   "mlp": 26.0498042214,
+   "xgboost": 28.711176821,
+   "persistence": 37.4108691525,
+   "diff_ci": [
+    8.2150552555,
+    11.6816241421
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.4670694595,
+   "raw_linear": 0.9274181819,
+   "density_linear": 1.9312675165,
+   "proportional": 12.3944876413,
+   "ridge": 0.9465928513,
+   "mlp": 3.7827341243,
+   "xgboost": 17.3252111315,
+   "persistence": 33.6899523767,
+   "diff_ci": [
+    10.6514248918,
+    12.0770589238
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.7982040842,
+   "raw_linear": 4.0930727356,
+   "density_linear": 4.6509986508,
+   "proportional": 12.8912768198,
+   "ridge": 4.0605672415,
+   "mlp": 4.9271606119,
+   "xgboost": 25.4384251699,
+   "persistence": 39.5282069987,
+   "diff_ci": [
+    7.4684597814,
+    9.8109634682
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.1,
+   "diff_mean": 3.9284099634,
+   "raw_linear": 3.5798826409,
+   "density_linear": 4.258673666,
+   "proportional": 7.5082926044,
+   "ridge": 3.3556613446,
+   "mlp": 61.5373866852,
+   "xgboost": 16.6147016607,
+   "persistence": 20.1920590139,
+   "diff_ci": [
+    -0.3771092471,
+    6.9916703769
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.1,
+   "diff_mean": 5.7380979205,
+   "raw_linear": 5.9072162278,
+   "density_linear": 6.4700121939,
+   "proportional": 11.6453141483,
+   "ridge": 5.4246925118,
+   "mlp": 103.332643021,
+   "xgboost": 27.8840350718,
+   "persistence": 31.6007890842,
+   "diff_ci": [
+    -1.0740973878,
+    11.1467376379
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.2242525919,
+   "raw_linear": 1.2085910232,
+   "density_linear": 2.6508245628,
+   "proportional": 8.4328436151,
+   "ridge": 1.0660234285,
+   "mlp": 14.4454928135,
+   "xgboost": 15.6977768542,
+   "persistence": 22.6567979969,
+   "diff_ci": [
+    5.0268017297,
+    8.1127914852
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.9426518958,
+   "raw_linear": 2.3908297813,
+   "density_linear": 3.6782649059,
+   "proportional": 12.3334816772,
+   "ridge": 2.092586486,
+   "mlp": 23.2461471654,
+   "xgboost": 26.6788003704,
+   "persistence": 33.4496883523,
+   "diff_ci": [
+    6.3612317683,
+    11.8445952259
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.2394301925,
+   "raw_linear": 1.0774343986,
+   "density_linear": 1.318607602,
+   "proportional": 10.3168645911,
+   "ridge": 1.0563906844,
+   "mlp": 2.9879942708,
+   "xgboost": 15.9452714972,
+   "persistence": 27.6396991524,
+   "diff_ci": [
+    7.968910377,
+    10.1265140133
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.95,
+   "diff_mean": -6.787420093,
+   "raw_linear": 12.0858906287,
+   "density_linear": 11.8383463132,
+   "proportional": 5.2984705357,
+   "ridge": 13.52491148,
+   "mlp": 59.8410709848,
+   "xgboost": 16.5111231856,
+   "persistence": 17.9782870923,
+   "diff_ci": [
+    -12.7014622546,
+    0.5838734466
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.95,
+   "diff_mean": -10.6611371295,
+   "raw_linear": 22.5651126664,
+   "density_linear": 23.2807562424,
+   "proportional": 11.903975537,
+   "ridge": 25.1526280192,
+   "mlp": 107.2103803543,
+   "xgboost": 31.4171140582,
+   "persistence": 33.9158066538,
+   "diff_ci": [
+    -21.505818613,
+    1.8053833552
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.95,
+   "diff_mean": -13.763232958,
+   "raw_linear": 32.4929282994,
+   "density_linear": 34.5846057507,
+   "proportional": 18.7296953414,
+   "ridge": 36.1991843046,
+   "mlp": 152.1779810462,
+   "xgboost": 46.3666501783,
+   "persistence": 49.3368635847,
+   "diff_ci": [
+    -30.5941400794,
+    4.1021908763
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.9,
+   "diff_mean": -17.2591738083,
+   "raw_linear": 41.4377972474,
+   "density_linear": 44.3728947902,
+   "proportional": 24.1786234391,
+   "ridge": 46.2367921467,
+   "mlp": 195.5089623745,
+   "xgboost": 59.9077752074,
+   "persistence": 63.1453158935,
+   "diff_ci": [
+    -38.8925215309,
+    5.4182302649
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.5,
+   "diff_mean": 0.3057657739,
+   "raw_linear": 7.6096007657,
+   "density_linear": 10.9480830384,
+   "proportional": 7.9153665396,
+   "ridge": 8.091841154,
+   "mlp": 21.1043149423,
+   "xgboost": 18.1511624503,
+   "persistence": 23.4039741065,
+   "diff_ci": [
+    -1.8599659495,
+    3.1330123285
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.15,
+   "diff_mean": 2.6918810122,
+   "raw_linear": 12.6719191105,
+   "density_linear": 20.1603315568,
+   "proportional": 15.3638001228,
+   "ridge": 13.4464558729,
+   "mlp": 30.4029725947,
+   "xgboost": 33.6687309094,
+   "persistence": 39.6804274262,
+   "diff_ci": [
+    -1.0395874311,
+    7.5407198906
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.1,
+   "diff_mean": 4.3944473978,
+   "raw_linear": 17.019466383,
+   "density_linear": 27.9182630953,
+   "proportional": 21.4139137807,
+   "ridge": 18.0832748103,
+   "mlp": 40.446561786,
+   "xgboost": 47.7548357909,
+   "persistence": 54.3063269397,
+   "diff_ci": [
+    -0.9314443073,
+    11.0277569614
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.965740973,
+   "raw_linear": 20.6087204531,
+   "density_linear": 34.7154962634,
+   "proportional": 26.5744614261,
+   "ridge": 21.9584976276,
+   "mlp": 48.623796166,
+   "xgboost": 60.9475943979,
+   "persistence": 67.7073297677,
+   "diff_ci": [
+    -0.700507074,
+    14.4022209907
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.9142759713,
+   "raw_linear": 2.0259960973,
+   "density_linear": 7.2615746325,
+   "proportional": 12.9402720686,
+   "ridge": 2.0580532415,
+   "mlp": 5.0227715432,
+   "xgboost": 18.0527900434,
+   "persistence": 31.5084129065,
+   "diff_ci": [
+    9.8847074744,
+    11.742980825
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 16.5203005305,
+   "raw_linear": 2.502146948,
+   "density_linear": 10.6054526084,
+   "proportional": 19.0224474784,
+   "ridge": 2.5487592743,
+   "mlp": 7.4935214449,
+   "xgboost": 31.5404796161,
+   "persistence": 46.1148029991,
+   "diff_ci": [
+    14.8989964217,
+    17.9090806288
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 21.879685496,
+   "raw_linear": 2.3393433012,
+   "density_linear": 13.2070931388,
+   "proportional": 24.2190287972,
+   "ridge": 2.3968931231,
+   "mlp": 9.4966457993,
+   "xgboost": 44.2955399002,
+   "persistence": 59.5043484753,
+   "diff_ci": [
+    19.7139305561,
+    23.5344145684
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.6150332414,
+   "raw_linear": 3.6773494713,
+   "density_linear": 5.4724223877,
+   "proportional": 8.2923827127,
+   "ridge": 3.560206443,
+   "mlp": 58.2986628766,
+   "xgboost": 15.7011010193,
+   "persistence": 19.610554338,
+   "diff_ci": [
+    1.5523311981,
+    7.4339614101
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.1924311583,
+   "raw_linear": 5.844587363,
+   "density_linear": 10.0735612366,
+   "proportional": 15.0370185213,
+   "ridge": 5.7954428485,
+   "mlp": 99.3116966482,
+   "xgboost": 29.8155329258,
+   "persistence": 34.3919221206,
+   "diff_ci": [
+    3.9509841999,
+    13.8437010367
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.917644719,
+   "raw_linear": 7.9455068864,
+   "density_linear": 15.5388822763,
+   "proportional": 22.8631516055,
+   "ridge": 8.1504864102,
+   "mlp": 138.4502212507,
+   "xgboost": 46.2350850855,
+   "persistence": 51.0400403421,
+   "diff_ci": [
+    6.4958522856,
+    21.6106309004
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.0,
+   "diff_mean": 18.8525013317,
+   "raw_linear": 9.925531449,
+   "density_linear": 19.1735823112,
+   "proportional": 28.7780327807,
+   "ridge": 10.567948174,
+   "mlp": 176.6880147327,
+   "xgboost": 60.6545305935,
+   "persistence": 65.5900851033,
+   "diff_ci": [
+    7.2711545261,
+    27.3977898769
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.1862330822,
+   "raw_linear": 1.644098364,
+   "density_linear": 4.1323620857,
+   "proportional": 9.8303314462,
+   "ridge": 1.8440236086,
+   "mlp": 27.1183976547,
+   "xgboost": 17.4639536965,
+   "persistence": 22.6163108678,
+   "diff_ci": [
+    5.3931179172,
+    9.6338530693
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.883947779,
+   "raw_linear": 2.5946759547,
+   "density_linear": 7.8140448042,
+   "proportional": 17.4786237337,
+   "ridge": 3.0203459967,
+   "mlp": 47.8499391542,
+   "xgboost": 32.4091908951,
+   "persistence": 38.4066979299,
+   "diff_ci": [
+    10.0529773449,
+    17.127635918
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 20.4913183537,
+   "raw_linear": 3.7392270504,
+   "density_linear": 10.1953145817,
+   "proportional": 24.2305454041,
+   "ridge": 4.6149347673,
+   "mlp": 65.9666174509,
+   "xgboost": 47.5967565383,
+   "persistence": 54.0535986745,
+   "diff_ci": [
+    13.2210443729,
+    23.6230563731
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 24.670619713,
+   "raw_linear": 4.6083010037,
+   "density_linear": 11.2558664229,
+   "proportional": 29.2789207168,
+   "ridge": 5.7383258291,
+   "mlp": 84.2200722994,
+   "xgboost": 61.326041323,
+   "persistence": 67.8728658744,
+   "diff_ci": [
+    15.5463303551,
+    28.4186855933
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.5003708677,
+   "raw_linear": 1.286055834,
+   "density_linear": 4.0023054732,
+   "proportional": 13.7864267017,
+   "ridge": 1.3110866473,
+   "mlp": 3.7007063042,
+   "xgboost": 18.0528175644,
+   "persistence": 30.128579628,
+   "diff_ci": [
+    11.7832135095,
+    13.4906235389
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.9402487376,
+   "raw_linear": 2.4974014321,
+   "density_linear": 4.5586063248,
+   "proportional": 20.4376501697,
+   "ridge": 2.5427969455,
+   "mlp": 5.4450300082,
+   "xgboost": 32.5503070471,
+   "persistence": 45.7404355427,
+   "diff_ci": [
+    16.7924880782,
+    19.6616652849
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 22.3721180649,
+   "raw_linear": 3.0368646585,
+   "density_linear": 4.33656721,
+   "proportional": 25.4089827234,
+   "ridge": 3.1001218416,
+   "mlp": 7.3379874944,
+   "xgboost": 46.0014724233,
+   "persistence": 59.54764774,
+   "diff_ci": [
+    20.9202315319,
+    24.3160999151
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.3792449042,
+   "raw_linear": 3.0985166088,
+   "density_linear": 8.4384075323,
+   "proportional": 10.477761513,
+   "ridge": 3.3780143885,
+   "mlp": 43.9971283299,
+   "xgboost": 19.1639686495,
+   "persistence": 23.8987268284,
+   "diff_ci": [
+    2.7466921033,
+    10.4555884548
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.4613357411,
+   "raw_linear": 5.0509510982,
+   "density_linear": 12.0557028362,
+   "proportional": 15.5122868393,
+   "ridge": 5.3035601044,
+   "mlp": 75.8650669878,
+   "xgboost": 33.1088701343,
+   "persistence": 38.127006096,
+   "diff_ci": [
+    3.2049709274,
+    15.1941743982
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.2,
+   "diff_mean": 4.7314833136,
+   "raw_linear": 9.1015568455,
+   "density_linear": 10.1872925615,
+   "proportional": 13.833040159,
+   "ridge": 7.8766671894,
+   "mlp": 108.2607008432,
+   "xgboost": 37.4299075022,
+   "persistence": 41.4282244388,
+   "diff_ci": [
+    -9.0404701879,
+    9.8068701881
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.9541421905,
+   "raw_linear": 1.234320616,
+   "density_linear": 5.1166138037,
+   "proportional": 12.1884628065,
+   "ridge": 1.3492337809,
+   "mlp": 20.7126347193,
+   "xgboost": 17.8981786798,
+   "persistence": 27.8514278653,
+   "diff_ci": [
+    9.4141008444,
+    12.1391190795
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 13.6535821522,
+   "raw_linear": 2.3122670951,
+   "density_linear": 5.3493295826,
+   "proportional": 15.9658492473,
+   "ridge": 2.2783074767,
+   "mlp": 34.7320335567,
+   "xgboost": 29.8619913334,
+   "persistence": 40.1942225616,
+   "diff_ci": [
+    11.7068073321,
+    14.6914949399
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.3574079967,
+   "raw_linear": 0.7685766609,
+   "density_linear": 2.3071332301,
+   "proportional": 15.1259846576,
+   "ridge": 0.7903354975,
+   "mlp": 2.8123798584,
+   "xgboost": 16.9384467571,
+   "persistence": 36.3785538414,
+   "diff_ci": [
+    13.5963060905,
+    14.8492076901
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.5537311873,
+   "raw_linear": 4.2264255005,
+   "density_linear": 5.824094456,
+   "proportional": 15.7801566878,
+   "ridge": 4.1845361826,
+   "mlp": 4.3858163833,
+   "xgboost": 24.9657808241,
+   "persistence": 42.4590525338,
+   "diff_ci": [
+    10.6396179384,
+    12.4770956586
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.7173284269,
+   "raw_linear": 3.8028085474,
+   "density_linear": 7.6929768502,
+   "proportional": 9.5201369744,
+   "ridge": 3.3318869678,
+   "mlp": 35.1534009087,
+   "xgboost": 16.1734991592,
+   "persistence": 22.1142249334,
+   "diff_ci": [
+    -3.0585550074,
+    8.6126681436
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.05,
+   "diff_mean": 7.9095646429,
+   "raw_linear": 6.3005342596,
+   "density_linear": 11.2587926782,
+   "proportional": 14.2100989025,
+   "ridge": 5.3610515004,
+   "mlp": 60.3248163847,
+   "xgboost": 27.3090051324,
+   "persistence": 34.1171617116,
+   "diff_ci": [
+    -6.4184274383,
+    12.8875170012
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.9953011893,
+   "raw_linear": 1.6213434197,
+   "density_linear": 3.9771107723,
+   "proportional": 10.616644609,
+   "ridge": 1.5644807138,
+   "mlp": 16.9852705491,
+   "xgboost": 16.9218386796,
+   "persistence": 24.7705366024,
+   "diff_ci": [
+    6.5190243454,
+    10.4520101949
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.1750472802,
+   "raw_linear": 2.8232408394,
+   "density_linear": 4.9332294747,
+   "proportional": 14.9982881196,
+   "ridge": 2.6413966625,
+   "mlp": 26.2797494454,
+   "xgboost": 28.2594054232,
+   "persistence": 36.0637934985,
+   "diff_ci": [
+    8.1601341054,
+    14.7454582254
+   ]
+  },
+  {
+   "module": "cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.5425526803,
+   "raw_linear": 1.1948272687,
+   "density_linear": 1.6019568081,
+   "proportional": 12.737379949,
+   "ridge": 1.1717598744,
+   "mlp": 2.9569958824,
+   "xgboost": 15.4194561413,
+   "persistence": 30.0152245702,
+   "diff_ci": [
+    10.3644447673,
+    12.4677612297
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 1.0,
+   "diff_mean": -9.083167035,
+   "raw_linear": 10.8991300628,
+   "density_linear": 10.4236873559,
+   "proportional": 1.8159630278,
+   "ridge": 11.2256957086,
+   "mlp": 59.1357894541,
+   "xgboost": 10.811644161,
+   "persistence": 11.0961002812,
+   "diff_ci": [
+    -18.0753283213,
+    -2.8422945958
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 1.0,
+   "diff_mean": -20.8778227338,
+   "raw_linear": 24.5342333901,
+   "density_linear": 24.1778485672,
+   "proportional": 3.6564106562,
+   "ridge": 25.4026217137,
+   "mlp": 102.2305319015,
+   "xgboost": 24.7889912584,
+   "persistence": 25.3500461069,
+   "diff_ci": [
+    -36.7489119608,
+    -7.6986005846
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 1.0,
+   "diff_mean": -28.8938567339,
+   "raw_linear": 37.7668160916,
+   "density_linear": 37.3426769966,
+   "proportional": 8.8729593577,
+   "ridge": 39.0245610848,
+   "mlp": 144.9037865548,
+   "xgboost": 38.4078284189,
+   "persistence": 38.9666158878,
+   "diff_ci": [
+    -51.3283129298,
+    -9.9784334574
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.95,
+   "diff_mean": -36.7166509958,
+   "raw_linear": 50.1857897362,
+   "density_linear": 49.6894667115,
+   "proportional": 13.4691387404,
+   "ridge": 51.8500407783,
+   "mlp": 187.668194538,
+   "xgboost": 50.9432057295,
+   "persistence": 51.7559241518,
+   "diff_ci": [
+    -65.6916170326,
+    -12.0307440892
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 1.0,
+   "diff_mean": -13.1738480623,
+   "raw_linear": 15.744764159,
+   "density_linear": 15.1755709397,
+   "proportional": 2.5709160967,
+   "ridge": 16.5863207852,
+   "mlp": 22.3307638376,
+   "xgboost": 16.7981152512,
+   "persistence": 17.9045462188,
+   "diff_ci": [
+    -15.6128166499,
+    -11.2091630705
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 1.0,
+   "diff_mean": -20.6258908009,
+   "raw_linear": 28.541752937,
+   "density_linear": 27.6876013978,
+   "proportional": 7.9158621362,
+   "ridge": 29.8717650664,
+   "mlp": 38.1810034436,
+   "xgboost": 30.57121844,
+   "persistence": 31.9501481256,
+   "diff_ci": [
+    -24.6262137681,
+    -17.4423229904
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 1.0,
+   "diff_mean": -27.8329324136,
+   "raw_linear": 40.6647391908,
+   "density_linear": 39.5327218366,
+   "proportional": 12.8318067772,
+   "ridge": 42.4778632491,
+   "mlp": 53.5087221464,
+   "xgboost": 43.479127316,
+   "persistence": 45.2857657037,
+   "diff_ci": [
+    -33.2311998058,
+    -23.558268248
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 1.0,
+   "diff_mean": -34.7899588241,
+   "raw_linear": 52.0407673753,
+   "density_linear": 50.6158209875,
+   "proportional": 17.2508085512,
+   "ridge": 54.3208470484,
+   "mlp": 67.8292796284,
+   "xgboost": 55.6590644555,
+   "persistence": 57.8043405243,
+   "diff_ci": [
+    -41.4852490555,
+    -29.4880415621
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.9,
+   "diff_mean": -0.53254582,
+   "raw_linear": 8.9569179811,
+   "density_linear": 10.5241269171,
+   "proportional": 8.424372161,
+   "ridge": 9.0114810844,
+   "mlp": 3.4223366209,
+   "xgboost": 16.6361411966,
+   "persistence": 26.9275563181,
+   "diff_ci": [
+    -1.220751589,
+    0.1313544766
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.75,
+   "diff_mean": -0.3925807881,
+   "raw_linear": 13.7255441336,
+   "density_linear": 16.3938390053,
+   "proportional": 13.3329633455,
+   "ridge": 13.8056028081,
+   "mlp": 5.2222953425,
+   "xgboost": 29.1414348508,
+   "persistence": 40.2479497046,
+   "diff_ci": [
+    -1.4135764756,
+    0.5929104663
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.6,
+   "diff_mean": -0.0663376911,
+   "raw_linear": 17.8099482655,
+   "density_linear": 21.7272848786,
+   "proportional": 17.7436105743,
+   "ridge": 17.9144944229,
+   "mlp": 6.7396587663,
+   "xgboost": 41.1984797657,
+   "persistence": 52.7603292975,
+   "diff_ci": [
+    -1.4434071141,
+    1.2675576543
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.05,
+   "diff_mean": 4.3836420848,
+   "raw_linear": 2.6900083141,
+   "density_linear": 4.310857366,
+   "proportional": 7.073650399,
+   "ridge": 2.8942381434,
+   "mlp": 63.8129270468,
+   "xgboost": 16.7926238552,
+   "persistence": 18.5571308414,
+   "diff_ci": [
+    0.0487865422,
+    6.7743697099
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.05,
+   "diff_mean": 7.9784627637,
+   "raw_linear": 4.4798970565,
+   "density_linear": 7.6834916703,
+   "proportional": 12.4583598202,
+   "ridge": 4.9971472444,
+   "mlp": 108.5099950856,
+   "xgboost": 29.8680847712,
+   "persistence": 32.0210348988,
+   "diff_ci": [
+    0.1837168239,
+    11.7420910534
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.05,
+   "diff_mean": 11.92094339,
+   "raw_linear": 6.3225780565,
+   "density_linear": 11.2919980151,
+   "proportional": 18.2435214465,
+   "ridge": 7.3376563409,
+   "mlp": 153.9913301643,
+   "xgboost": 44.3512693318,
+   "persistence": 46.6432106422,
+   "diff_ci": [
+    0.3844843179,
+    17.4565930426
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.05,
+   "diff_mean": 14.1450394241,
+   "raw_linear": 8.1691280586,
+   "density_linear": 13.3559601637,
+   "proportional": 22.3141674828,
+   "ridge": 9.1924007157,
+   "mlp": 195.6252158224,
+   "xgboost": 56.8016838312,
+   "persistence": 59.3230358774,
+   "diff_ci": [
+    0.0308059308,
+    20.5979565181
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.6648030292,
+   "raw_linear": 1.2966510044,
+   "density_linear": 2.6798579138,
+   "proportional": 7.9614540335,
+   "ridge": 1.4288863017,
+   "mlp": 17.1929428593,
+   "xgboost": 16.4340663963,
+   "persistence": 20.9191158107,
+   "diff_ci": [
+    4.8564786783,
+    7.8472407369
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.3738627943,
+   "raw_linear": 2.2633218769,
+   "density_linear": 4.9114184635,
+   "proportional": 13.6371846712,
+   "ridge": 2.5233280639,
+   "mlp": 29.0521822895,
+   "xgboost": 30.0342534206,
+   "persistence": 34.7792241664,
+   "diff_ci": [
+    8.1699496654,
+    13.1213999888
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 15.7045396601,
+   "raw_linear": 3.3718862161,
+   "density_linear": 6.5670494218,
+   "proportional": 19.0764258762,
+   "ridge": 3.7939790622,
+   "mlp": 40.2909307385,
+   "xgboost": 43.9596574636,
+   "persistence": 49.127259364,
+   "diff_ci": [
+    10.9274364098,
+    18.08563212
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.840876758,
+   "raw_linear": 4.355750548,
+   "density_linear": 5.0964393787,
+   "proportional": 19.196627306,
+   "ridge": 4.2415673309,
+   "mlp": 53.4490874434,
+   "xgboost": 52.7253688902,
+   "persistence": 57.9123935698,
+   "diff_ci": [
+    10.8172401878,
+    16.9234033097
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.5398572197,
+   "raw_linear": 1.0401762886,
+   "density_linear": 2.2439728065,
+   "proportional": 10.5800335083,
+   "ridge": 1.0590630587,
+   "mlp": 4.0177962294,
+   "xgboost": 16.9720315648,
+   "persistence": 27.0949947281,
+   "diff_ci": [
+    8.8810815441,
+    10.1516731418
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.0435521099,
+   "raw_linear": 1.9071538135,
+   "density_linear": 2.7522276764,
+   "proportional": 15.9507059234,
+   "ridge": 1.9462916053,
+   "mlp": 6.9000534723,
+   "xgboost": 30.5660530235,
+   "persistence": 41.4113529343,
+   "diff_ci": [
+    12.9940630596,
+    15.3772826617
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.3758398607,
+   "raw_linear": 3.6593471979,
+   "density_linear": 4.5646597299,
+   "proportional": 16.0351870586,
+   "ridge": 3.6189714961,
+   "mlp": 8.0616437913,
+   "xgboost": 39.0418885919,
+   "persistence": 50.1781979259,
+   "diff_ci": [
+    10.7769755559,
+    13.422497641
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.05,
+   "diff_mean": 3.9213072472,
+   "raw_linear": 3.9953814296,
+   "density_linear": 5.2482358655,
+   "proportional": 7.9166886768,
+   "ridge": 4.0358419913,
+   "mlp": 69.446931562,
+   "xgboost": 16.8854095428,
+   "persistence": 21.3879192495,
+   "diff_ci": [
+    -0.109051069,
+    7.1703104801
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.4,
+   "diff_mean": 0.9028941139,
+   "raw_linear": 7.6172423645,
+   "density_linear": 5.1367663485,
+   "proportional": 8.5201364784,
+   "ridge": 6.8532971913,
+   "mlp": 122.3811955051,
+   "xgboost": 25.8538679403,
+   "persistence": 30.8357623395,
+   "diff_ci": [
+    -8.2625373412,
+    5.7443660525
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.95,
+   "diff_mean": -10.9103533068,
+   "raw_linear": 15.5643314358,
+   "density_linear": 6.8409967434,
+   "proportional": 4.653978129,
+   "ridge": 13.6662284844,
+   "mlp": 178.8577371867,
+   "xgboost": 26.9553072053,
+   "persistence": 30.1953926812,
+   "diff_ci": [
+    -27.3803856053,
+    0.0819613413
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.2137752361,
+   "raw_linear": 1.169533426,
+   "density_linear": 3.3404478722,
+   "proportional": 9.3833086621,
+   "ridge": 1.1456711386,
+   "mlp": 13.9767129194,
+   "xgboost": 17.0277022435,
+   "persistence": 25.0737710301,
+   "diff_ci": [
+    6.3509308181,
+    9.050495664
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.6,
+   "diff_mean": -0.0459558432,
+   "raw_linear": 7.645355843,
+   "density_linear": 4.6695747431,
+   "proportional": 7.5993999998,
+   "ridge": 7.3019161082,
+   "mlp": 22.6077521472,
+   "xgboost": 23.1790645126,
+   "persistence": 31.4140397411,
+   "diff_ci": [
+    -3.1943566439,
+    3.8599621565
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.7113869539,
+   "raw_linear": 2.4506632133,
+   "density_linear": 3.5392844433,
+   "proportional": 10.1620501673,
+   "ridge": 2.4312673821,
+   "mlp": 3.3888745194,
+   "xgboost": 15.1213825341,
+   "persistence": 31.2387554795,
+   "diff_ci": [
+    6.6994828575,
+    8.4883052732
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 1.0,
+   "diff_mean": -5.1504170338,
+   "raw_linear": 11.1369874247,
+   "density_linear": 10.6331487528,
+   "proportional": 5.986570391,
+   "ridge": 11.0965583984,
+   "mlp": 8.8779880794,
+   "xgboost": 18.0179402706,
+   "persistence": 31.9350612053,
+   "diff_ci": [
+    -6.5021202416,
+    -3.9750995691
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.05,
+   "diff_mean": 3.8786995354,
+   "raw_linear": 3.6840298548,
+   "density_linear": 5.575046924,
+   "proportional": 7.5627293902,
+   "ridge": 3.8141418165,
+   "mlp": 53.0149498197,
+   "xgboost": 16.8581502895,
+   "persistence": 20.2480852775,
+   "diff_ci": [
+    0.271947786,
+    7.2417731151
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.7652141363,
+   "raw_linear": 5.9339891585,
+   "density_linear": 8.5362221948,
+   "proportional": 11.6992032948,
+   "ridge": 6.0185589442,
+   "mlp": 88.9804343477,
+   "xgboost": 28.4315029411,
+   "persistence": 31.6572024267,
+   "diff_ci": [
+    -0.9767835752,
+    11.0827865512
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.9083954807,
+   "raw_linear": 1.5684668292,
+   "density_linear": 3.0407189494,
+   "proportional": 8.4768623099,
+   "ridge": 1.4874101441,
+   "mlp": 15.2564627413,
+   "xgboost": 16.5342542628,
+   "persistence": 22.7022453131,
+   "diff_ci": [
+    4.8419439545,
+    8.5221020556
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.6227431439,
+   "raw_linear": 2.7542828977,
+   "density_linear": 4.2420977257,
+   "proportional": 12.3770260417,
+   "ridge": 2.5297334178,
+   "mlp": 25.3034811345,
+   "xgboost": 27.5744303404,
+   "persistence": 33.4953765154,
+   "diff_ci": [
+    6.1966716321,
+    11.6836962006
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.2990751181,
+   "raw_linear": 0.9988910391,
+   "density_linear": 1.375922046,
+   "proportional": 10.2979661571,
+   "ridge": 0.9761459593,
+   "mlp": 3.7177427897,
+   "xgboost": 15.5753553277,
+   "persistence": 27.6200616338,
+   "diff_ci": [
+    8.4448638475,
+    9.9707150181
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 1.0,
+   "diff_mean": -11.1241926935,
+   "raw_linear": 12.8545994241,
+   "density_linear": 10.4359299708,
+   "proportional": 1.7304067306,
+   "ridge": 12.1778357211,
+   "mlp": 66.7683968625,
+   "xgboost": 12.0040155318,
+   "persistence": 11.4560265859,
+   "diff_ci": [
+    -18.4497865864,
+    -4.0409212151
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 1.0,
+   "diff_mean": -22.6399457385,
+   "raw_linear": 28.3065886464,
+   "density_linear": 25.4507845744,
+   "proportional": 5.6666429079,
+   "ridge": 27.7135560962,
+   "mlp": 115.0098433149,
+   "xgboost": 27.464422223,
+   "persistence": 27.2261405083,
+   "diff_ci": [
+    -34.9823587858,
+    -8.9421390447
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 1.0,
+   "diff_mean": -30.5681656176,
+   "raw_linear": 43.0309884508,
+   "density_linear": 40.1512692717,
+   "proportional": 12.4628228332,
+   "ridge": 42.665741118,
+   "mlp": 161.539078978,
+   "xgboost": 42.7080856559,
+   "persistence": 42.6147571936,
+   "diff_ci": [
+    -47.9481624489,
+    -10.1167330148
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 1.0,
+   "diff_mean": -38.9556117003,
+   "raw_linear": 56.9577251887,
+   "density_linear": 53.2791371857,
+   "proportional": 18.0021134884,
+   "ridge": 56.5120712339,
+   "mlp": 205.7064453253,
+   "xgboost": 56.6369020423,
+   "persistence": 56.4145523606,
+   "diff_ci": [
+    -61.3000241674,
+    -12.8263523772
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 1.0,
+   "diff_mean": -12.0494174043,
+   "raw_linear": 15.4026773038,
+   "density_linear": 15.4946414907,
+   "proportional": 3.3532598996,
+   "ridge": 16.3755482109,
+   "mlp": 27.0735800323,
+   "xgboost": 16.6682580621,
+   "persistence": 18.5521200699,
+   "diff_ci": [
+    -14.5868833456,
+    -7.7359406581
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 1.0,
+   "diff_mean": -17.2243290858,
+   "raw_linear": 27.9541967208,
+   "density_linear": 29.9803039007,
+   "proportional": 10.7298676349,
+   "ridge": 30.0119020169,
+   "mlp": 47.0193211125,
+   "xgboost": 31.5412585167,
+   "persistence": 34.7624079392,
+   "diff_ci": [
+    -22.0950126398,
+    -9.2058134394
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 1.0,
+   "diff_mean": -22.957431682,
+   "raw_linear": 39.7916492562,
+   "density_linear": 42.9170166579,
+   "proportional": 16.8342175742,
+   "ridge": 42.7021849267,
+   "mlp": 65.4503030249,
+   "xgboost": 45.3945035801,
+   "persistence": 49.3780132922,
+   "diff_ci": [
+    -29.7551883254,
+    -11.6655820504
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 1.0,
+   "diff_mean": -28.7994384404,
+   "raw_linear": 50.8610469971,
+   "density_linear": 54.6959318761,
+   "proportional": 22.0616085566,
+   "ridge": 54.5085968773,
+   "mlp": 80.5070395598,
+   "xgboost": 58.4805828024,
+   "persistence": 62.7726588141,
+   "diff_ci": [
+    -37.2341512852,
+    -14.3848010161
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.1,
+   "diff_mean": 2.3606294972,
+   "raw_linear": 8.8065190546,
+   "density_linear": 13.0897956062,
+   "proportional": 11.1671485519,
+   "ridge": 8.8549222425,
+   "mlp": 5.647583454,
+   "xgboost": 18.2246377284,
+   "persistence": 29.6492073485,
+   "diff_ci": [
+    -0.2329866689,
+    3.9427072362
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.05,
+   "diff_mean": 3.8597460127,
+   "raw_linear": 13.4081649516,
+   "density_linear": 20.0921754337,
+   "proportional": 17.2679109643,
+   "ridge": 13.4789192719,
+   "mlp": 9.059283106,
+   "xgboost": 31.9710557804,
+   "persistence": 44.2491132635,
+   "diff_ci": [
+    -0.0215061656,
+    6.2811292143
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.05,
+   "diff_mean": 5.1292508767,
+   "raw_linear": 17.3601593335,
+   "density_linear": 26.1745014435,
+   "proportional": 22.4894102101,
+   "ridge": 17.4531317758,
+   "mlp": 12.9405315085,
+   "xgboost": 45.023017875,
+   "persistence": 57.6353435447,
+   "diff_ci": [
+    0.1682800959,
+    8.2247297945
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.1,
+   "diff_mean": 4.8552464661,
+   "raw_linear": 3.6822362047,
+   "density_linear": 5.5153525801,
+   "proportional": 8.5374826708,
+   "ridge": 3.7857286167,
+   "mlp": 46.667845883,
+   "xgboost": 16.9318430085,
+   "persistence": 19.8519367121,
+   "diff_ci": [
+    -0.4726980638,
+    8.1774377584
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.1,
+   "diff_mean": 9.3013224866,
+   "raw_linear": 5.9899868493,
+   "density_linear": 9.9717873879,
+   "proportional": 15.2913093359,
+   "ridge": 6.4219178697,
+   "mlp": 79.8063026282,
+   "xgboost": 30.8604338966,
+   "persistence": 34.6358426128,
+   "diff_ci": [
+    -0.1973485971,
+    14.8607549892
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.05,
+   "diff_mean": 14.7470901055,
+   "raw_linear": 8.3688574975,
+   "density_linear": 15.2562103022,
+   "proportional": 23.1159476029,
+   "ridge": 9.2806404417,
+   "mlp": 116.1459533547,
+   "xgboost": 47.0841141059,
+   "persistence": 51.2754880814,
+   "diff_ci": [
+    0.5399545194,
+    22.6250126211
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.1,
+   "diff_mean": 16.9770946042,
+   "raw_linear": 10.7697905954,
+   "density_linear": 17.549097533,
+   "proportional": 27.7468851996,
+   "ridge": 11.6499847261,
+   "mlp": 144.0198175935,
+   "xgboost": 60.2190269543,
+   "persistence": 64.4776571435,
+   "diff_ci": [
+    -0.7341525216,
+    26.5452458856
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.00826004,
+   "raw_linear": 1.6801578595,
+   "density_linear": 3.2841635941,
+   "proportional": 9.6884178996,
+   "ridge": 1.670076312,
+   "mlp": 22.5128914931,
+   "xgboost": 15.6051676922,
+   "persistence": 22.4774646396,
+   "diff_ci": [
+    6.1370377869,
+    9.2451800624
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 14.771696918,
+   "raw_linear": 2.5599640125,
+   "density_linear": 6.3201132646,
+   "proportional": 17.3316609305,
+   "ridge": 2.5767040586,
+   "mlp": 35.7455135999,
+   "xgboost": 30.2559194527,
+   "persistence": 38.2665151797,
+   "diff_ci": [
+    11.8367865532,
+    16.4722796747
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 20.6491273392,
+   "raw_linear": 3.3421422116,
+   "density_linear": 7.93742086,
+   "proportional": 23.9912695509,
+   "ridge": 3.4336745135,
+   "mlp": 47.6536486129,
+   "xgboost": 45.0782658572,
+   "persistence": 53.8217527306,
+   "diff_ci": [
+    15.7415012729,
+    22.9299648629
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 17.9707824217,
+   "raw_linear": 6.5124575533,
+   "density_linear": 6.0068803301,
+   "proportional": 24.483239975,
+   "ridge": 6.0514864893,
+   "mlp": 64.9923381754,
+   "xgboost": 54.1275593197,
+   "persistence": 62.9586116937,
+   "diff_ci": [
+    13.5233785847,
+    21.8715291511
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.7006215156,
+   "raw_linear": 1.0790166135,
+   "density_linear": 3.7473164219,
+   "proportional": 13.7796381291,
+   "ridge": 1.1025121751,
+   "mlp": 3.9924906381,
+   "xgboost": 17.0721839593,
+   "persistence": 30.1220150431,
+   "diff_ci": [
+    11.6109336752,
+    13.2786728585
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 18.3899045639,
+   "raw_linear": 1.9519104196,
+   "density_linear": 4.0186740272,
+   "proportional": 20.3418149835,
+   "ridge": 1.9980161877,
+   "mlp": 5.9849443954,
+   "xgboost": 31.3104652544,
+   "persistence": 45.6417443158,
+   "diff_ci": [
+    16.5727643811,
+    19.5853009354
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 16.9048107828,
+   "raw_linear": 3.8737589989,
+   "density_linear": 4.681806132,
+   "proportional": 20.7785697817,
+   "ridge": 3.8290369126,
+   "mlp": 7.6751598533,
+   "xgboost": 40.1197003812,
+   "persistence": 54.7618816509,
+   "diff_ci": [
+    14.6926450415,
+    18.1929569378
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.6141595847,
+   "raw_linear": 2.7776628678,
+   "density_linear": 7.8170243363,
+   "proportional": 10.3918224525,
+   "ridge": 2.8117339953,
+   "mlp": 36.7386982081,
+   "xgboost": 18.9207649132,
+   "persistence": 23.8088662116,
+   "diff_ci": [
+    1.57061616,
+    9.9744137839
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.15,
+   "diff_mean": 4.2289574296,
+   "raw_linear": 7.0800684464,
+   "density_linear": 7.564089603,
+   "proportional": 11.3090258761,
+   "ridge": 5.8830001064,
+   "mlp": 65.6053494557,
+   "xgboost": 28.3792008166,
+   "persistence": 33.6550107327,
+   "diff_ci": [
+    -7.8622218235,
+    9.1037340405
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.95,
+   "diff_mean": -10.8451943072,
+   "raw_linear": 17.4875062987,
+   "density_linear": 6.7556905943,
+   "proportional": 6.6423119916,
+   "ridge": 15.0396470579,
+   "mlp": 96.4585808791,
+   "xgboost": 29.1576966649,
+   "persistence": 33.3366845761,
+   "diff_ci": [
+    -28.1636542942,
+    -0.7970329592
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.2026833271,
+   "raw_linear": 1.7204366293,
+   "density_linear": 4.881760182,
+   "proportional": 11.9231199564,
+   "ridge": 1.8655824537,
+   "mlp": 15.5767595969,
+   "xgboost": 18.5681767947,
+   "persistence": 27.5689399477,
+   "diff_ci": [
+    8.2911071661,
+    11.2260594141
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.1,
+   "diff_mean": 3.5159362003,
+   "raw_linear": 6.7203457671,
+   "density_linear": 4.5190419042,
+   "proportional": 10.2362819674,
+   "ridge": 6.329207291,
+   "mlp": 26.0143039215,
+   "xgboost": 25.0171155133,
+   "persistence": 34.1479175815,
+   "diff_ci": [
+    -2.0429390864,
+    6.3098159458
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.3832097661,
+   "raw_linear": 2.4663433735,
+   "density_linear": 4.3938135403,
+   "proportional": 12.8495531397,
+   "ridge": 2.4436108849,
+   "mlp": 3.0947806071,
+   "xgboost": 15.6337615071,
+   "persistence": 33.9170808868,
+   "diff_ci": [
+    9.7094800675,
+    11.1394392575
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 1.0,
+   "diff_mean": -2.6769512393,
+   "raw_linear": 11.2013113556,
+   "density_linear": 12.2209057501,
+   "proportional": 8.5243601163,
+   "ridge": 11.1501602361,
+   "mlp": 9.6679229448,
+   "xgboost": 18.5249267742,
+   "persistence": 34.8201329927,
+   "diff_ci": [
+    -4.194749477,
+    -1.1046057174
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.0979746876,
+   "raw_linear": 3.5509200847,
+   "density_linear": 6.7168831685,
+   "proportional": 9.6488947723,
+   "ridge": 3.1048088337,
+   "mlp": 47.2287836554,
+   "xgboost": 17.2291312563,
+   "persistence": 22.2478970362,
+   "diff_ci": [
+    1.829224319,
+    9.2066568769
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.4174736783,
+   "raw_linear": 5.9212990944,
+   "density_linear": 9.6054571563,
+   "proportional": 14.3387727728,
+   "ridge": 5.0169478053,
+   "mlp": 79.1208354905,
+   "xgboost": 28.4863252872,
+   "persistence": 34.2519693693,
+   "diff_ci": [
+    0.9191408159,
+    13.7615271497
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.0,
+   "diff_mean": 9.4251020286,
+   "raw_linear": 1.3434640787,
+   "density_linear": 4.0390228019,
+   "proportional": 10.7685661073,
+   "ridge": 1.2016836069,
+   "mlp": 16.3763813186,
+   "xgboost": 16.1181509308,
+   "persistence": 24.9282127392,
+   "diff_ci": [
+    7.1091669677,
+    10.5347168527
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 0.0,
+   "diff_mean": 12.5361167136,
+   "raw_linear": 2.6131624479,
+   "density_linear": 4.9546233633,
+   "proportional": 15.1492791615,
+   "ridge": 2.3356368225,
+   "mlp": 25.3401247648,
+   "xgboost": 27.2333464282,
+   "persistence": 36.2223985784,
+   "diff_ci": [
+    8.9050606792,
+    14.992079481
+   ]
+  },
+  {
+   "module": "cap_strong",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.5007585482,
+   "raw_linear": 1.2455862308,
+   "density_linear": 1.5644254224,
+   "proportional": 12.746344779,
+   "ridge": 1.2197053533,
+   "mlp": 2.7061245351,
+   "xgboost": 16.0117895809,
+   "persistence": 30.0245659399,
+   "diff_ci": [
+    10.598599977,
+    12.5367346385
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.15,
+   "diff_mean": 3.3057159198,
+   "raw_linear": 4.0795397738,
+   "density_linear": 6.6691335668,
+   "proportional": 7.3852556936,
+   "ridge": 4.0757663338,
+   "mlp": 77.281095841,
+   "xgboost": 17.5940668449,
+   "persistence": 20.1073014566,
+   "diff_ci": [
+    -0.6944694016,
+    6.0459843542
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.2,
+   "diff_mean": 5.0674944888,
+   "raw_linear": 6.7547856846,
+   "density_linear": 10.5543907685,
+   "proportional": 11.8222801734,
+   "ridge": 6.7307686713,
+   "mlp": 134.78530919,
+   "xgboost": 30.2911040586,
+   "persistence": 33.950947184,
+   "diff_ci": [
+    -1.1529312831,
+    10.4045813149
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.25,
+   "diff_mean": 4.9097439392,
+   "raw_linear": 9.9207593079,
+   "density_linear": 13.0824181991,
+   "proportional": 14.8305032471,
+   "ridge": 9.588545519,
+   "mlp": 191.6163119091,
+   "xgboost": 41.0647829668,
+   "persistence": 45.452901946,
+   "diff_ci": [
+    -5.4502166763,
+    13.1009737045
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.5,
+   "diff_mean": -0.7424669094,
+   "raw_linear": 15.1692136915,
+   "density_linear": 12.3711617101,
+   "proportional": 14.4267467821,
+   "ridge": 14.2456372391,
+   "mlp": 245.4879849906,
+   "xgboost": 48.0896882177,
+   "persistence": 53.1757805213,
+   "diff_ci": [
+    -17.0555012517,
+    10.1155236748
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.6453442676,
+   "raw_linear": 1.5396435648,
+   "density_linear": 4.763564666,
+   "proportional": 8.1849878324,
+   "ridge": 1.4234040308,
+   "mlp": 21.5178427207,
+   "xgboost": 17.3167191627,
+   "persistence": 23.7260702266,
+   "diff_ci": [
+    5.0376711001,
+    7.6641858129
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.4876660141,
+   "raw_linear": 3.8660482311,
+   "density_linear": 6.9351569634,
+   "proportional": 12.3537142452,
+   "ridge": 3.6502587808,
+   "mlp": 36.8628811224,
+   "xgboost": 29.4940180166,
+   "persistence": 36.6717929182,
+   "diff_ci": [
+    6.2056480822,
+    10.443152784
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.4535590838,
+   "raw_linear": 9.2933759244,
+   "density_linear": 6.707958973,
+   "proportional": 13.7469350082,
+   "ridge": 8.9840980819,
+   "mlp": 51.8634959898,
+   "xgboost": 38.3440989393,
+   "persistence": 46.4579958375,
+   "diff_ci": [
+    1.3145737904,
+    7.6750213735
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.95,
+   "diff_mean": -4.5106866546,
+   "raw_linear": 17.1692511666,
+   "density_linear": 5.0900225616,
+   "proportional": 12.658564512,
+   "ridge": 16.7631711238,
+   "mlp": 68.1292601468,
+   "xgboost": 44.3260680912,
+   "persistence": 53.3826463509,
+   "diff_ci": [
+    -8.6760108987,
+    -0.0846188991
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.0033693753,
+   "raw_linear": 2.3428904236,
+   "density_linear": 1.8270365338,
+   "proportional": 9.3462597989,
+   "ridge": 2.317634258,
+   "mlp": 3.2758610593,
+   "xgboost": 15.6853946339,
+   "persistence": 27.9031744545,
+   "diff_ci": [
+    5.8459217283,
+    7.6193382855
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 3.6766304519,
+   "raw_linear": 7.1754676199,
+   "density_linear": 3.1853075946,
+   "proportional": 10.8520980717,
+   "ridge": 7.1363524805,
+   "mlp": 5.3833014076,
+   "xgboost": 24.6702633887,
+   "persistence": 37.6896290821,
+   "diff_ci": [
+    2.0149668216,
+    4.7488780566
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 1.0,
+   "diff_mean": -4.4321977022,
+   "raw_linear": 14.3240051708,
+   "density_linear": 7.3891296499,
+   "proportional": 9.8918074687,
+   "ridge": 14.2704803624,
+   "mlp": 8.3110907924,
+   "xgboost": 31.1385567978,
+   "persistence": 44.6096886242,
+   "diff_ci": [
+    -6.6383217437,
+    -2.8809897798
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.65,
+   "diff_mean": -0.7118870113,
+   "raw_linear": 3.8145286067,
+   "density_linear": 4.4602952327,
+   "proportional": 3.1026415954,
+   "ridge": 3.8008920576,
+   "mlp": 57.0177676388,
+   "xgboost": 11.9626596515,
+   "persistence": 10.7699963698,
+   "diff_ci": [
+    -3.6768958067,
+    1.1026983577
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 1.0,
+   "diff_mean": -5.6489348901,
+   "raw_linear": 7.0620235554,
+   "density_linear": 4.3048132236,
+   "proportional": 1.4130886652,
+   "ridge": 7.1754170377,
+   "mlp": 98.3072242544,
+   "xgboost": 22.2559641462,
+   "persistence": 20.450034307,
+   "diff_ci": [
+    -11.4709082597,
+    -2.4189529931
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.8,
+   "diff_mean": -5.2023980394,
+   "raw_linear": 9.9052494878,
+   "density_linear": 5.4481433142,
+   "proportional": 4.7028514484,
+   "ridge": 10.342867717,
+   "mlp": 140.809980666,
+   "xgboost": 35.9259470388,
+   "persistence": 33.9852660412,
+   "diff_ci": [
+    -15.689027352,
+    0.9040382748
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.6,
+   "diff_mean": -4.5546038874,
+   "raw_linear": 14.210587505,
+   "density_linear": 8.5272413167,
+   "proportional": 9.6559836176,
+   "ridge": 15.1075359772,
+   "mlp": 181.022460999,
+   "xgboost": 50.0116084868,
+   "persistence": 47.9059416393,
+   "diff_ci": [
+    -19.8226509297,
+    5.7227608119
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.9,
+   "diff_mean": -0.8777654338,
+   "raw_linear": 2.9640536616,
+   "density_linear": 4.3686860555,
+   "proportional": 2.0862882278,
+   "ridge": 2.9717414715,
+   "mlp": 14.5317729434,
+   "xgboost": 12.710974639,
+   "persistence": 12.5059274473,
+   "diff_ci": [
+    -2.8747134848,
+    0.0487455692
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 1.0,
+   "diff_mean": -2.2866015578,
+   "raw_linear": 5.078363459,
+   "density_linear": 2.8955813013,
+   "proportional": 2.7917619012,
+   "ridge": 5.1643713441,
+   "mlp": 23.2566474211,
+   "xgboost": 24.3267545002,
+   "persistence": 24.3947722297,
+   "diff_ci": [
+    -5.7708110537,
+    -0.6818169759
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.4,
+   "diff_mean": -0.2227267132,
+   "raw_linear": 7.6623950654,
+   "density_linear": 2.9543698953,
+   "proportional": 7.4396683522,
+   "ridge": 7.9382801282,
+   "mlp": 30.6507676632,
+   "xgboost": 38.2099701179,
+   "persistence": 38.2861781815,
+   "diff_ci": [
+    -6.7177499621,
+    3.5983656953
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.35,
+   "diff_mean": 1.478434288,
+   "raw_linear": 11.3020677608,
+   "density_linear": 5.3060036279,
+   "proportional": 12.7805020487,
+   "ridge": 11.7325865018,
+   "mlp": 38.0198369499,
+   "xgboost": 52.7413684616,
+   "persistence": 52.7272071705,
+   "diff_ci": [
+    -7.48005936,
+    8.3067120157
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 1.0,
+   "diff_mean": -0.5600436673,
+   "raw_linear": 4.0897257555,
+   "density_linear": 3.2219515826,
+   "proportional": 3.5296820881,
+   "ridge": 4.1037041247,
+   "mlp": 5.5890358998,
+   "xgboost": 14.3318115752,
+   "persistence": 20.2971583458,
+   "diff_ci": [
+    -1.1255318995,
+    -0.1195447415
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.35,
+   "diff_mean": 0.2144791202,
+   "raw_linear": 8.0216529403,
+   "density_linear": 7.7397651511,
+   "proportional": 8.2361320604,
+   "ridge": 8.0555036312,
+   "mlp": 11.1573040022,
+   "xgboost": 27.8071933356,
+   "persistence": 34.1517951304,
+   "diff_ci": [
+    -0.8869871058,
+    1.2609008315
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.25,
+   "diff_mean": 0.9255308312,
+   "raw_linear": 12.6702300612,
+   "density_linear": 12.9239540878,
+   "proportional": 13.5957608924,
+   "ridge": 12.7205992521,
+   "mlp": 17.3299702125,
+   "xgboost": 42.2327320976,
+   "persistence": 48.5850842877,
+   "diff_ci": [
+    -0.6718138465,
+    2.5063519485
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.15,
+   "diff_mean": 2.5096423124,
+   "raw_linear": 4.0733103032,
+   "density_linear": 4.700725517,
+   "proportional": 6.5829526156,
+   "ridge": 4.6553572236,
+   "mlp": 56.1803049626,
+   "xgboost": 17.4592523625,
+   "persistence": 20.1115004003,
+   "diff_ci": [
+    -1.786004354,
+    4.8193915616
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.2,
+   "diff_mean": 4.3352293539,
+   "raw_linear": 7.6122422113,
+   "density_linear": 8.655864558,
+   "proportional": 11.9474715652,
+   "ridge": 8.6422535293,
+   "mlp": 94.5207495624,
+   "xgboost": 31.8458883012,
+   "persistence": 34.7357029013,
+   "diff_ci": [
+    -3.2789809419,
+    8.9321630577
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.2,
+   "diff_mean": 5.6473699361,
+   "raw_linear": 11.0235529517,
+   "density_linear": 12.5433215994,
+   "proportional": 16.6709228878,
+   "ridge": 12.3102452362,
+   "mlp": 132.1778777756,
+   "xgboost": 43.3055904907,
+   "persistence": 45.1016060835,
+   "diff_ci": [
+    -4.8766205964,
+    11.3958346859
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.8987523464,
+   "raw_linear": 3.0903587271,
+   "density_linear": 3.5863351423,
+   "proportional": 7.9891110735,
+   "ridge": 3.2823097331,
+   "mlp": 19.7754658547,
+   "xgboost": 17.0933396065,
+   "persistence": 23.7640229852,
+   "diff_ci": [
+    2.8346622782,
+    6.3547954865
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.5216808066,
+   "raw_linear": 5.7874380832,
+   "density_linear": 6.3766737385,
+   "proportional": 13.3091188898,
+   "ridge": 6.1010379325,
+   "mlp": 33.1788811997,
+   "xgboost": 30.8383369572,
+   "persistence": 37.7824989455,
+   "diff_ci": [
+    4.1984022731,
+    9.9051032998
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.2362494734,
+   "raw_linear": 4.3989291756,
+   "density_linear": 3.5082751811,
+   "proportional": 10.635178649,
+   "ridge": 4.423794727,
+   "mlp": 3.7568145403,
+   "xgboost": 16.9471582793,
+   "persistence": 32.054437148,
+   "diff_ci": [
+    5.7964155526,
+    6.9911505651
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.1332176469,
+   "raw_linear": 7.4521158975,
+   "density_linear": 6.4843568035,
+   "proportional": 15.5853335445,
+   "ridge": 7.4868209115,
+   "mlp": 6.2648028607,
+   "xgboost": 29.5720421994,
+   "persistence": 42.6782788076,
+   "diff_ci": [
+    7.4143138355,
+    8.9783778801
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.55,
+   "diff_mean": -1.2450632249,
+   "raw_linear": 5.0497479168,
+   "density_linear": 4.1936699234,
+   "proportional": 3.8046846918,
+   "ridge": 4.6725278553,
+   "mlp": 65.4320295116,
+   "xgboost": 11.5212562116,
+   "persistence": 14.527816011,
+   "diff_ci": [
+    -8.3039740277,
+    1.4734536575
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.9,
+   "diff_mean": -5.4108559294,
+   "raw_linear": 8.8978901012,
+   "density_linear": 6.3140909455,
+   "proportional": 3.4870341718,
+   "ridge": 8.0188027102,
+   "mlp": 110.6471366409,
+   "xgboost": 17.6505805593,
+   "persistence": 19.9828313334,
+   "diff_ci": [
+    -17.719091574,
+    0.703095116
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.9,
+   "diff_mean": -1.6417656122,
+   "raw_linear": 5.2618918226,
+   "density_linear": 5.2092453157,
+   "proportional": 3.6201262105,
+   "ridge": 5.099481878,
+   "mlp": 17.1876900058,
+   "xgboost": 10.8483891873,
+   "persistence": 15.5005686376,
+   "diff_ci": [
+    -3.4068606951,
+    0.2824351004
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 1.0,
+   "diff_mean": -5.687053714,
+   "raw_linear": 10.0410382725,
+   "density_linear": 9.2113428406,
+   "proportional": 4.3539845585,
+   "ridge": 9.7672797688,
+   "mlp": 29.1506768025,
+   "xgboost": 16.4565794534,
+   "persistence": 20.1744581063,
+   "diff_ci": [
+    -8.423954751,
+    -2.6803068946
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 1.0,
+   "diff_mean": -2.2327952928,
+   "raw_linear": 5.8433773882,
+   "density_linear": 6.5254513256,
+   "proportional": 3.6105820954,
+   "ridge": 5.8250890513,
+   "mlp": 2.7545699359,
+   "xgboost": 10.4016599647,
+   "persistence": 18.2913641867,
+   "diff_ci": [
+    -2.8240191617,
+    -1.5267404699
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.05,
+   "diff_mean": 3.4992434286,
+   "raw_linear": 4.4036047125,
+   "density_linear": 6.7452103657,
+   "proportional": 7.9028481411,
+   "ridge": 4.4581547932,
+   "mlp": 57.3418156449,
+   "xgboost": 17.4507540064,
+   "persistence": 20.6519044516,
+   "diff_ci": [
+    -1.4047743327,
+    6.6603937117
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.1,
+   "diff_mean": 6.2846231254,
+   "raw_linear": 7.5913381064,
+   "density_linear": 11.8452421769,
+   "proportional": 13.8759612318,
+   "ridge": 7.5601484212,
+   "mlp": 103.5358445915,
+   "xgboost": 31.5010471153,
+   "persistence": 36.0112085828,
+   "diff_ci": [
+    -2.7261690691,
+    12.084712701
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.2,
+   "diff_mean": 7.070640336,
+   "raw_linear": 11.5151476567,
+   "density_linear": 15.747651111,
+   "proportional": 18.5857879927,
+   "ridge": 11.0091086032,
+   "mlp": 150.5244899317,
+   "xgboost": 44.0055271955,
+   "persistence": 49.2992380541,
+   "diff_ci": [
+    -7.53975036,
+    16.8434211061
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.45,
+   "diff_mean": 1.4682324316,
+   "raw_linear": 17.6570976018,
+   "density_linear": 15.5931979119,
+   "proportional": 19.1253300334,
+   "ridge": 16.322206782,
+   "mlp": 194.9454012412,
+   "xgboost": 52.2565369354,
+   "persistence": 58.0596852532,
+   "diff_ci": [
+    -19.5473030976,
+    15.7874994752
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.5200029797,
+   "raw_linear": 1.4266078454,
+   "density_linear": 5.6376547005,
+   "proportional": 8.9466108252,
+   "ridge": 1.3759112315,
+   "mlp": 19.2578292389,
+   "xgboost": 17.3843401474,
+   "persistence": 24.4803782117,
+   "diff_ci": [
+    4.2173653912,
+    8.8668086474
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 11.8977211204,
+   "raw_linear": 3.3497092665,
+   "density_linear": 9.9352424506,
+   "proportional": 15.247430387,
+   "ridge": 3.0220945669,
+   "mlp": 35.1512377816,
+   "xgboost": 31.2816036875,
+   "persistence": 39.5976268769,
+   "diff_ci": [
+    5.1848315865,
+    14.4183183672
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.05,
+   "diff_mean": 9.4053862095,
+   "raw_linear": 8.4654151541,
+   "density_linear": 10.7994224244,
+   "proportional": 17.8708013636,
+   "ridge": 7.8483850936,
+   "mlp": 50.5635215983,
+   "xgboost": 41.8034840548,
+   "persistence": 50.688202336,
+   "diff_ci": [
+    0.1071762026,
+    13.575596958
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.2,
+   "diff_mean": 1.4734879728,
+   "raw_linear": 16.0424640359,
+   "density_linear": 8.9977722729,
+   "proportional": 17.5159520087,
+   "ridge": 15.2169403156,
+   "mlp": 66.1696187348,
+   "xgboost": 49.4358662373,
+   "persistence": 58.5034434808,
+   "diff_ci": [
+    -10.3140335702,
+    7.3067078461
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.0697175876,
+   "raw_linear": 2.0427984282,
+   "density_linear": 4.4085797124,
+   "proportional": 12.1125160158,
+   "ridge": 2.0240562614,
+   "mlp": 3.9900224089,
+   "xgboost": 16.3656379779,
+   "persistence": 30.654210527,
+   "diff_ci": [
+    8.8607683907,
+    10.8865579885
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.1337303841,
+   "raw_linear": 6.6930313065,
+   "density_linear": 4.2321390161,
+   "proportional": 14.8267616906,
+   "ridge": 6.6618421778,
+   "mlp": 6.7639810625,
+   "xgboost": 26.625721183,
+   "persistence": 41.7448828894,
+   "diff_ci": [
+    6.2870462057,
+    9.5513328514
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.15,
+   "diff_mean": 0.8409611475,
+   "raw_linear": 13.7019401351,
+   "density_linear": 4.1495955079,
+   "proportional": 14.5429012826,
+   "ridge": 13.6586359679,
+   "mlp": 10.6496925596,
+   "xgboost": 34.1243592647,
+   "persistence": 49.5473166256,
+   "diff_ci": [
+    -1.5902983549,
+    2.8453400174
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.45,
+   "diff_mean": -0.1470431187,
+   "raw_linear": 3.6363317655,
+   "density_linear": 4.8042503019,
+   "proportional": 3.4892886468,
+   "ridge": 3.5333360159,
+   "mlp": 47.9244888202,
+   "xgboost": 12.7355797967,
+   "persistence": 12.0932633586,
+   "diff_ci": [
+    -3.8597204991,
+    1.9124487856
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.95,
+   "diff_mean": -2.753380096,
+   "raw_linear": 6.4609493588,
+   "density_linear": 5.2920785863,
+   "proportional": 3.7075692629,
+   "ridge": 6.4608847111,
+   "mlp": 81.4408817456,
+   "xgboost": 23.6503552218,
+   "persistence": 23.0274903173,
+   "diff_ci": [
+    -8.7263125855,
+    -0.0276432117
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.35,
+   "diff_mean": 1.0025388737,
+   "raw_linear": 8.518130241,
+   "density_linear": 7.5567502809,
+   "proportional": 9.5206691147,
+   "ridge": 8.9003629522,
+   "mlp": 113.9508597053,
+   "xgboost": 38.8288818184,
+   "persistence": 38.5555575445,
+   "diff_ci": [
+    -9.3912121851,
+    6.0903938098
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.3,
+   "diff_mean": 3.4536680983,
+   "raw_linear": 11.5851821816,
+   "density_linear": 10.8641305755,
+   "proportional": 15.0388502799,
+   "ridge": 12.6760409563,
+   "mlp": 143.9017706748,
+   "xgboost": 53.2450449389,
+   "persistence": 53.0052529681,
+   "diff_ci": [
+    -12.6891881015,
+    11.9867885872
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.75,
+   "diff_mean": -0.3757445525,
+   "raw_linear": 3.1356064079,
+   "density_linear": 3.7224123296,
+   "proportional": 2.7598618554,
+   "ridge": 3.140771041,
+   "mlp": 25.256150221,
+   "xgboost": 14.1448121332,
+   "persistence": 14.3350644975,
+   "diff_ci": [
+    -1.7168193458,
+    0.3506484503
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.15,
+   "diff_mean": 1.4487622057,
+   "raw_linear": 5.331399692,
+   "density_linear": 3.1974597513,
+   "proportional": 6.7801618977,
+   "ridge": 5.4133135816,
+   "mlp": 41.9761128797,
+   "xgboost": 27.0804670758,
+   "persistence": 28.1188454956,
+   "diff_ci": [
+    -1.2215544531,
+    2.9156615371
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.05,
+   "diff_mean": 4.5638838412,
+   "raw_linear": 8.0422500504,
+   "density_linear": 5.4760752174,
+   "proportional": 12.6061338916,
+   "ridge": 8.3408999828,
+   "mlp": 58.3834110661,
+   "xgboost": 42.4021500159,
+   "persistence": 43.2132197973,
+   "diff_ci": [
+    -1.0140737559,
+    9.0020106296
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.05,
+   "diff_mean": 6.7950001608,
+   "raw_linear": 11.5864823209,
+   "density_linear": 8.8670654669,
+   "proportional": 18.3814824817,
+   "ridge": 12.1127606837,
+   "mlp": 76.7056107587,
+   "xgboost": 57.4425913019,
+   "persistence": 58.0295398431,
+   "diff_ci": [
+    -0.9194161376,
+    14.2412142294
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 2.5908992391,
+   "raw_linear": 4.2433575402,
+   "density_linear": 5.031250149,
+   "proportional": 6.8342567793,
+   "ridge": 4.2585880647,
+   "mlp": 5.3486513115,
+   "xgboost": 15.2275605366,
+   "persistence": 23.3598442182,
+   "diff_ci": [
+    2.0373167874,
+    3.0181375504
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.2811587196,
+   "raw_linear": 8.3829861707,
+   "density_linear": 9.6942033814,
+   "proportional": 12.6641448903,
+   "ridge": 8.4199626959,
+   "mlp": 10.1653530825,
+   "xgboost": 29.7247883593,
+   "persistence": 38.4130151309,
+   "diff_ci": [
+    3.1949934657,
+    5.0786876469
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 5.3719576851,
+   "raw_linear": 13.0688464676,
+   "density_linear": 14.4165618668,
+   "proportional": 18.4408041527,
+   "ridge": 13.129556727,
+   "mlp": 15.7780330004,
+   "xgboost": 44.5242261445,
+   "persistence": 53.2222223395,
+   "diff_ci": [
+    3.8317853078,
+    6.5914626369
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.05,
+   "diff_mean": 4.2730027637,
+   "raw_linear": 4.9809734315,
+   "density_linear": 7.3129248371,
+   "proportional": 9.2539761952,
+   "ridge": 5.1230777298,
+   "mlp": 52.4662706513,
+   "xgboost": 17.878287114,
+   "persistence": 22.7186959419,
+   "diff_ci": [
+    -0.0827267263,
+    8.3192276021
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.2,
+   "diff_mean": 6.4789828789,
+   "raw_linear": 8.5486306253,
+   "density_linear": 11.6610458181,
+   "proportional": 15.0276135042,
+   "ridge": 8.9279308189,
+   "mlp": 91.1064066171,
+   "xgboost": 32.5061762203,
+   "persistence": 37.7596638407,
+   "diff_ci": [
+    -1.6585604635,
+    13.9570081666
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.25,
+   "diff_mean": 8.1438622171,
+   "raw_linear": 11.9932664177,
+   "density_linear": 15.9045317507,
+   "proportional": 20.1371286348,
+   "ridge": 12.4401171922,
+   "mlp": 120.7650412253,
+   "xgboost": 44.4152643388,
+   "persistence": 48.5100564161,
+   "diff_ci": [
+    -4.0282749764,
+    18.5605852261
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.8564152696,
+   "raw_linear": 2.9020696744,
+   "density_linear": 5.1122188601,
+   "proportional": 10.758484944,
+   "ridge": 3.248058971,
+   "mlp": 21.0647545259,
+   "xgboost": 18.800755398,
+   "persistence": 26.4773310492,
+   "diff_ci": [
+    5.3737296929,
+    9.8891423748
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.9744403637,
+   "raw_linear": 5.3704174273,
+   "density_linear": 7.4307973073,
+   "proportional": 16.3448577909,
+   "ridge": 5.9295549102,
+   "mlp": 34.1276604753,
+   "xgboost": 32.7990807523,
+   "persistence": 40.7684709811,
+   "diff_ci": [
+    6.9054111593,
+    14.3940868591
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.8633221025,
+   "raw_linear": 4.5577345221,
+   "density_linear": 3.0181218058,
+   "proportional": 13.4210566246,
+   "ridge": 4.6309519299,
+   "mlp": 3.3239592249,
+   "xgboost": 17.2008973256,
+   "persistence": 34.791920384,
+   "diff_ci": [
+    7.8644379127,
+    9.8994953631
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.9635142104,
+   "raw_linear": 7.6732514316,
+   "density_linear": 5.162125956,
+   "proportional": 18.636765642,
+   "ridge": 7.7841428337,
+   "mlp": 5.4374238463,
+   "xgboost": 29.8940596951,
+   "persistence": 45.6929784831,
+   "diff_ci": [
+    9.4367051177,
+    12.4559294716
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.35,
+   "diff_mean": 0.6012036162,
+   "raw_linear": 4.7170508676,
+   "density_linear": 5.0807150904,
+   "proportional": 5.3182544838,
+   "ridge": 4.4322414469,
+   "mlp": 46.1990560168,
+   "xgboost": 12.3220489418,
+   "persistence": 16.5269547169,
+   "diff_ci": [
+    -3.4423463598,
+    3.4159808214
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.65,
+   "diff_mean": -3.6780653712,
+   "raw_linear": 8.0082067194,
+   "density_linear": 5.0859835006,
+   "proportional": 4.3301413482,
+   "ridge": 7.2172182037,
+   "mlp": 80.5471090186,
+   "xgboost": 18.7894063969,
+   "persistence": 22.553492898,
+   "diff_ci": [
+    -11.7795949527,
+    1.7289394793
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.5,
+   "diff_mean": 0.2049105253,
+   "raw_linear": 4.7556910252,
+   "density_linear": 4.7372032297,
+   "proportional": 4.9606015505,
+   "ridge": 4.480038991,
+   "mlp": 19.5177634507,
+   "xgboost": 11.5636613012,
+   "persistence": 17.6613385531,
+   "diff_ci": [
+    -2.2792407721,
+    2.4889895466
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 1.0,
+   "diff_mean": -4.7559814544,
+   "raw_linear": 9.2025075233,
+   "density_linear": 7.8551880679,
+   "proportional": 4.4465260689,
+   "ridge": 8.6874785905,
+   "mlp": 31.6343553163,
+   "xgboost": 17.4767071729,
+   "persistence": 22.8228067696,
+   "diff_ci": [
+    -8.5522636587,
+    -0.9036584594
+   ]
+  },
+  {
+   "module": "evap",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 1.0,
+   "diff_mean": -1.1997282479,
+   "raw_linear": 5.9076355722,
+   "density_linear": 7.1727050661,
+   "proportional": 4.7079073242,
+   "ridge": 5.8635173047,
+   "mlp": 3.3222868039,
+   "xgboost": 10.3268401953,
+   "persistence": 20.5613079797,
+   "diff_ci": [
+    -2.3179840131,
+    -0.1826116323
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.85,
+   "diff_mean": -5.957217016,
+   "raw_linear": 10.6813063408,
+   "density_linear": 11.4180680661,
+   "proportional": 4.7240893248,
+   "ridge": 11.9036671149,
+   "mlp": 73.4298113788,
+   "xgboost": 16.2383099794,
+   "persistence": 17.3947464136,
+   "diff_ci": [
+    -12.5593684463,
+    2.7279661848
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.85,
+   "diff_mean": -10.0654517033,
+   "raw_linear": 19.2694789127,
+   "density_linear": 20.8449190415,
+   "proportional": 9.2040272094,
+   "ridge": 21.5030606157,
+   "mlp": 125.9145072461,
+   "xgboost": 29.3685158052,
+   "persistence": 31.2087099129,
+   "diff_ci": [
+    -21.3228755694,
+    5.821617174
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.85,
+   "diff_mean": -13.6751738222,
+   "raw_linear": 25.948166789,
+   "density_linear": 28.3628941847,
+   "proportional": 12.2729929668,
+   "ridge": 29.0365430749,
+   "mlp": 177.6558395235,
+   "xgboost": 40.4338842475,
+   "persistence": 42.7031298119,
+   "diff_ci": [
+    -29.4154322802,
+    8.0363003457
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.85,
+   "diff_mean": -17.4282431634,
+   "raw_linear": 29.4156606075,
+   "density_linear": 32.2322191405,
+   "proportional": 11.9874174441,
+   "ridge": 33.0946826986,
+   "mlp": 229.0481325488,
+   "xgboost": 47.8064802085,
+   "persistence": 50.4290703377,
+   "diff_ci": [
+    -37.1211433237,
+    6.2415356619
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.65,
+   "diff_mean": -0.1833462881,
+   "raw_linear": 7.0109583901,
+   "density_linear": 10.0195467452,
+   "proportional": 6.827612102,
+   "ridge": 7.3166630674,
+   "mlp": 18.2998577917,
+   "xgboost": 17.4318857656,
+   "persistence": 22.3328658565,
+   "diff_ci": [
+    -2.8872230482,
+    1.8895641483
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.4,
+   "diff_mean": 0.3197512731,
+   "raw_linear": 10.7026348067,
+   "density_linear": 16.0256805859,
+   "proportional": 11.0223860798,
+   "ridge": 11.1913628207,
+   "mlp": 31.6010021684,
+   "xgboost": 29.657271661,
+   "persistence": 35.2652968476,
+   "diff_ci": [
+    -4.1289491655,
+    3.7089493798
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.4,
+   "diff_mean": 0.8536390467,
+   "raw_linear": 11.6087537888,
+   "density_linear": 19.1546478666,
+   "proportional": 12.4623928355,
+   "ridge": 12.2625609283,
+   "mlp": 46.1027966478,
+   "xgboost": 38.6908376105,
+   "persistence": 45.0518565716,
+   "diff_ci": [
+    -5.1364190506,
+    5.3128529821
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.25,
+   "diff_mean": 1.4677800063,
+   "raw_linear": 9.9580765686,
+   "density_linear": 19.6850047486,
+   "proportional": 11.4258565749,
+   "ridge": 10.7381347794,
+   "mlp": 60.9271514149,
+   "xgboost": 45.0809368054,
+   "persistence": 51.9760325305,
+   "diff_ci": [
+    -5.8999349886,
+    6.4979599146
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.509234763,
+   "raw_linear": 1.3503736024,
+   "density_linear": 3.6979453044,
+   "proportional": 8.8596083654,
+   "ridge": 1.3629616681,
+   "mlp": 3.0834379049,
+   "xgboost": 15.909102538,
+   "persistence": 27.3939705174,
+   "diff_ci": [
+    6.8444017087,
+    8.0111934901
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.8331616441,
+   "raw_linear": 3.5533202305,
+   "density_linear": 3.5405240226,
+   "proportional": 10.3864818746,
+   "ridge": 3.530626765,
+   "mlp": 4.7203605915,
+   "xgboost": 25.0235875546,
+   "persistence": 37.1802111788,
+   "diff_ci": [
+    5.8020333288,
+    7.7343278709
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.3,
+   "diff_mean": 0.7578023221,
+   "raw_linear": 8.6937482582,
+   "density_linear": 3.8404618611,
+   "proportional": 9.4515505804,
+   "ridge": 8.6491962064,
+   "mlp": 7.44423777,
+   "xgboost": 31.6641593566,
+   "persistence": 44.0998448552,
+   "diff_ci": [
+    -0.8992226513,
+    2.5718549771
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.45,
+   "diff_mean": -0.7770036876,
+   "raw_linear": 3.9387085932,
+   "density_linear": 4.4569647265,
+   "proportional": 3.1617049056,
+   "ridge": 3.8231974547,
+   "mlp": 78.2272591725,
+   "xgboost": 11.0611517095,
+   "persistence": 10.6731588748,
+   "diff_ci": [
+    -4.8852658042,
+    1.3602722808
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 1.0,
+   "diff_mean": -5.4198490818,
+   "raw_linear": 6.8274450113,
+   "density_linear": 4.1099631964,
+   "proportional": 1.4075959295,
+   "ridge": 6.7517026683,
+   "mlp": 133.0679023104,
+   "xgboost": 20.8676148494,
+   "persistence": 20.34700997,
+   "diff_ci": [
+    -11.8504811707,
+    -2.6568973747
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.9,
+   "diff_mean": -3.9990066096,
+   "raw_linear": 8.5918227935,
+   "density_linear": 4.8761075218,
+   "proportional": 4.5928161839,
+   "ridge": 8.7430927418,
+   "mlp": 189.0812271777,
+   "xgboost": 34.3618485755,
+   "persistence": 33.8811094093,
+   "diff_ci": [
+    -13.7665845835,
+    0.4167752503
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.55,
+   "diff_mean": -1.8763263065,
+   "raw_linear": 11.2877418736,
+   "density_linear": 6.8302394126,
+   "proportional": 9.4114155671,
+   "ridge": 11.8371030551,
+   "mlp": 242.8257316953,
+   "xgboost": 48.0263341828,
+   "persistence": 47.6663918641,
+   "diff_ci": [
+    -16.6723854097,
+    5.6565238748
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 1.0,
+   "diff_mean": -1.0571801204,
+   "raw_linear": 3.0854525766,
+   "density_linear": 4.0469042674,
+   "proportional": 2.0282724562,
+   "ridge": 3.090090593,
+   "mlp": 29.1287374799,
+   "xgboost": 12.6455316121,
+   "persistence": 12.6281503337,
+   "diff_ci": [
+    -2.2057400889,
+    -0.1538830252
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 1.0,
+   "diff_mean": -2.2844524412,
+   "raw_linear": 5.2006742988,
+   "density_linear": 2.7907767478,
+   "proportional": 2.9162218576,
+   "ridge": 5.2730586675,
+   "mlp": 49.0278882743,
+   "xgboost": 24.2129428927,
+   "persistence": 24.5201738761,
+   "diff_ci": [
+    -5.7935251813,
+    -0.8606837168
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.5,
+   "diff_mean": -0.1543404826,
+   "raw_linear": 7.7243315088,
+   "density_linear": 3.6510355627,
+   "proportional": 7.5699910263,
+   "ridge": 7.9813295703,
+   "mlp": 68.870218799,
+   "xgboost": 38.2286470027,
+   "persistence": 38.4077462142,
+   "diff_ci": [
+    -6.9347092965,
+    4.3016952961
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.35,
+   "diff_mean": 1.5225756646,
+   "raw_linear": 10.3400946391,
+   "density_linear": 5.7836090893,
+   "proportional": 11.8626703037,
+   "ridge": 10.7397500989,
+   "mlp": 89.5777099348,
+   "xgboost": 51.6209637159,
+   "persistence": 51.7463378097,
+   "diff_ci": [
+    -7.777482404,
+    8.7495102352
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 1.0,
+   "diff_mean": -0.7880416167,
+   "raw_linear": 4.3379082101,
+   "density_linear": 3.4966136044,
+   "proportional": 3.5498665935,
+   "ridge": 4.3521591995,
+   "mlp": 5.6964003576,
+   "xgboost": 14.748267684,
+   "persistence": 20.3173190247,
+   "diff_ci": [
+    -1.9288886542,
+    -0.1870108236
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.4,
+   "diff_mean": -0.1181610962,
+   "raw_linear": 8.3711993091,
+   "density_linear": 8.164716702,
+   "proportional": 8.2530382129,
+   "ridge": 8.4051035214,
+   "mlp": 11.5222962259,
+   "xgboost": 28.2927295393,
+   "persistence": 34.1674433278,
+   "diff_ci": [
+    -2.1954129051,
+    0.8544374231
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.15,
+   "diff_mean": 0.479789468,
+   "raw_linear": 12.0813216586,
+   "density_linear": 12.4430447976,
+   "proportional": 12.5611111265,
+   "ridge": 12.1314499256,
+   "mlp": 17.2970552638,
+   "xgboost": 41.560035518,
+   "persistence": 47.4942279071,
+   "diff_ci": [
+    -2.4468588722,
+    1.7982667737
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.0,
+   "diff_mean": 3.2892015954,
+   "raw_linear": 3.3952213849,
+   "density_linear": 3.2883337709,
+   "proportional": 6.6844229803,
+   "ridge": 3.6444610881,
+   "mlp": 52.3714596266,
+   "xgboost": 16.5806224993,
+   "persistence": 20.2091241624,
+   "diff_ci": [
+    0.8686422641,
+    5.9183335877
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.0,
+   "diff_mean": 5.5501650534,
+   "raw_linear": 5.6324356873,
+   "density_linear": 5.4605356664,
+   "proportional": 11.1826007408,
+   "ridge": 6.1303136427,
+   "mlp": 88.4084250441,
+   "xgboost": 29.8280870749,
+   "persistence": 33.910079436,
+   "diff_ci": [
+    1.1840485992,
+    10.0059497249
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.3,
+   "diff_mean": 1.3967307244,
+   "raw_linear": 8.0079619158,
+   "density_linear": 6.2069608747,
+   "proportional": 9.4046926402,
+   "ridge": 7.7095762286,
+   "mlp": 121.6721018569,
+   "xgboost": 34.6121562247,
+   "persistence": 36.8427793687,
+   "diff_ci": [
+    -7.4052210335,
+    5.3119790627
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.5212926714,
+   "raw_linear": 3.6211887072,
+   "density_linear": 3.7555264164,
+   "proportional": 8.1424813785,
+   "ridge": 3.8098498133,
+   "mlp": 15.8682826883,
+   "xgboost": 17.0873274699,
+   "persistence": 23.9102017113,
+   "diff_ci": [
+    1.7091017983,
+    6.5954782398
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.6724253958,
+   "raw_linear": 4.9183674774,
+   "density_linear": 5.1515618335,
+   "proportional": 11.5907928732,
+   "ridge": 5.184917697,
+   "mlp": 26.6333149576,
+   "xgboost": 28.9656368045,
+   "persistence": 35.9151820427,
+   "diff_ci": [
+    2.4991245971,
+    9.4208030093
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 6.1209956519,
+   "raw_linear": 4.2031159712,
+   "density_linear": 3.3592096519,
+   "proportional": 10.3241116231,
+   "ridge": 4.2276267698,
+   "mlp": 4.2972967767,
+   "xgboost": 17.2438519033,
+   "persistence": 31.72108582,
+   "diff_ci": [
+    5.1219387663,
+    6.9698500393
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.0844932045,
+   "raw_linear": 3.7269716934,
+   "density_linear": 3.7775251097,
+   "proportional": 10.8114648978,
+   "ridge": 3.7485622942,
+   "mlp": 4.1925280947,
+   "xgboost": 25.1517844788,
+   "persistence": 37.5237591693,
+   "diff_ci": [
+    5.898205113,
+    8.073546927
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.6,
+   "diff_mean": -1.0418714382,
+   "raw_linear": 4.8495987434,
+   "density_linear": 4.3791077452,
+   "proportional": 3.8077273052,
+   "ridge": 4.3268226276,
+   "mlp": 59.9362908345,
+   "xgboost": 12.0231562111,
+   "persistence": 14.5131267116,
+   "diff_ci": [
+    -3.8053235455,
+    1.2881896597
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.95,
+   "diff_mean": -5.4822865835,
+   "raw_linear": 8.9803153837,
+   "density_linear": 6.4185544509,
+   "proportional": 3.4980288002,
+   "ridge": 7.8443636758,
+   "mlp": 99.5494559162,
+   "xgboost": 18.1517885211,
+   "persistence": 19.9673366379,
+   "diff_ci": [
+    -10.840082964,
+    -0.1608357104
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.85,
+   "diff_mean": -1.6646493203,
+   "raw_linear": 5.2963025608,
+   "density_linear": 5.1856649088,
+   "proportional": 3.6316532405,
+   "ridge": 5.1381407294,
+   "mlp": 13.8686600578,
+   "xgboost": 10.4303549158,
+   "persistence": 15.5981536457,
+   "diff_ci": [
+    -3.6124930743,
+    0.9941754315
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 1.0,
+   "diff_mean": -5.7727397923,
+   "raw_linear": 10.089413486,
+   "density_linear": 9.1571837279,
+   "proportional": 4.3166736937,
+   "ridge": 9.8162005848,
+   "mlp": 23.9953771143,
+   "xgboost": 15.9549715803,
+   "persistence": 20.2741547038,
+   "diff_ci": [
+    -8.7956965867,
+    -1.1592673403
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "fixedV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 1.0,
+   "diff_mean": -2.2539940997,
+   "raw_linear": 5.8532436278,
+   "density_linear": 6.6145804351,
+   "proportional": 3.5992495281,
+   "ridge": 5.834992094,
+   "mlp": 2.4902378461,
+   "xgboost": 9.88836614,
+   "persistence": 18.1963810482,
+   "diff_ci": [
+    -3.1715565863,
+    -1.3484033335
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1001,
+   "physics_win_rate": 0.9,
+   "diff_mean": -5.4562159169,
+   "raw_linear": 10.7351538296,
+   "density_linear": 11.4818684253,
+   "proportional": 5.2789379127,
+   "ridge": 12.4831279413,
+   "mlp": 61.4797053603,
+   "xgboost": 16.5343466765,
+   "persistence": 17.9621673881,
+   "diff_ci": [
+    -12.6569177775,
+    1.1803917219
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 769,
+   "physics_win_rate": 0.9,
+   "diff_mean": -8.3166526843,
+   "raw_linear": 19.6234786568,
+   "density_linear": 22.0665067339,
+   "proportional": 11.3068259725,
+   "ridge": 22.7119411938,
+   "mlp": 102.9542111843,
+   "xgboost": 31.2037111728,
+   "persistence": 33.2946441444,
+   "diff_ci": [
+    -20.314189037,
+    3.6452330596
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 1166,
+   "physics_win_rate": 0.85,
+   "diff_mean": -10.3605470997,
+   "raw_linear": 26.4191247349,
+   "density_linear": 31.0092428454,
+   "proportional": 16.0585776351,
+   "ridge": 30.8202674414,
+   "mlp": 142.9709587071,
+   "xgboost": 44.1756690784,
+   "persistence": 46.5752047153,
+   "diff_ci": [
+    -27.6365860323,
+    6.9101332937
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 948,
+   "physics_win_rate": 0.85,
+   "diff_mean": -12.8362946682,
+   "raw_linear": 29.5200814213,
+   "density_linear": 35.5720181082,
+   "proportional": 16.6837867532,
+   "ridge": 35.1211389862,
+   "mlp": 186.5044224896,
+   "xgboost": 52.442643812,
+   "persistence": 55.3376727922,
+   "diff_ci": [
+    -34.8881127898,
+    9.1475387232
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 865,
+   "physics_win_rate": 0.2,
+   "diff_mean": 0.8626289922,
+   "raw_linear": 6.7385598535,
+   "density_linear": 10.4847852052,
+   "proportional": 7.6011888457,
+   "ridge": 7.1546604287,
+   "mlp": 24.6033158339,
+   "xgboost": 17.5494629527,
+   "persistence": 23.0850690539,
+   "diff_ci": [
+    -2.1873396935,
+    3.4408287788
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 911,
+   "physics_win_rate": 0.05,
+   "diff_mean": 4.0345857896,
+   "raw_linear": 9.8875837738,
+   "density_linear": 18.465382646,
+   "proportional": 13.9221695635,
+   "ridge": 10.555251034,
+   "mlp": 44.0565995922,
+   "xgboost": 31.6532557015,
+   "persistence": 38.1897474803,
+   "diff_ci": [
+    -0.1669801055,
+    8.8435267813
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.05,
+   "diff_mean": 6.18550755,
+   "raw_linear": 10.3974215127,
+   "density_linear": 22.6898692828,
+   "proportional": 16.5829290627,
+   "ridge": 11.282684457,
+   "mlp": 61.9860158305,
+   "xgboost": 42.040135129,
+   "persistence": 49.2806921306,
+   "diff_ci": [
+    0.5938628198,
+    12.599217479
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 644,
+   "physics_win_rate": 0.05,
+   "diff_mean": 7.4129228093,
+   "raw_linear": 8.8444665518,
+   "density_linear": 23.8679563767,
+   "proportional": 16.257389361,
+   "ridge": 9.8266318809,
+   "mlp": 78.1764256094,
+   "xgboost": 49.3965766118,
+   "persistence": 57.0943552468,
+   "diff_ci": [
+    0.6534662382,
+    12.7145169101
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 911,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.1490889238,
+   "raw_linear": 1.4819642706,
+   "density_linear": 6.1674797985,
+   "proportional": 11.6310531944,
+   "ridge": 1.4988025974,
+   "mlp": 5.1823256787,
+   "xgboost": 17.2961101569,
+   "persistence": 30.1465677778,
+   "diff_ci": [
+    8.7903765196,
+    10.7385161201
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 1190,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.5964463738,
+   "raw_linear": 3.7635903844,
+   "density_linear": 6.5900267472,
+   "proportional": 14.3600367582,
+   "ridge": 3.728298108,
+   "mlp": 6.6790806609,
+   "xgboost": 27.3559652378,
+   "persistence": 41.2370025657,
+   "diff_ci": [
+    9.0942916582,
+    11.4166664743
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "cold->hot",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 644,
+   "physics_win_rate": 0.0,
+   "diff_mean": 5.1810185291,
+   "raw_linear": 8.9066499436,
+   "density_linear": 4.7081282309,
+   "proportional": 14.0876684727,
+   "ridge": 8.8349689968,
+   "mlp": 8.2201083665,
+   "xgboost": 34.6747375966,
+   "persistence": 49.0384620441,
+   "diff_ci": [
+    2.6891374537,
+    8.1589267445
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 1216,
+   "physics_win_rate": 0.5,
+   "diff_mean": -0.615459821,
+   "raw_linear": 4.094644942,
+   "density_linear": 4.394495859,
+   "proportional": 3.479185121,
+   "ridge": 4.0782180397,
+   "mlp": 46.5648556616,
+   "xgboost": 13.511257777,
+   "persistence": 12.1862625538,
+   "diff_ci": [
+    -5.0453164035,
+    1.4061284562
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 867,
+   "physics_win_rate": 0.95,
+   "diff_mean": -3.4536568376,
+   "raw_linear": 7.2416743609,
+   "density_linear": 3.914022427,
+   "proportional": 3.7880175233,
+   "ridge": 7.3834539331,
+   "mlp": 80.629320364,
+   "xgboost": 24.5514899461,
+   "persistence": 23.126887333,
+   "diff_ci": [
+    -11.4365118296,
+    -0.0264548544
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 961,
+   "physics_win_rate": 0.4,
+   "diff_mean": -0.2137721643,
+   "raw_linear": 9.8404156235,
+   "density_linear": 6.0862458928,
+   "proportional": 9.6266434592,
+   "ridge": 10.3877699186,
+   "mlp": 115.5306322088,
+   "xgboost": 40.0165742968,
+   "persistence": 38.6552667936,
+   "diff_ci": [
+    -13.704190716,
+    5.8969598633
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 2.5,
+   "d": 20.0,
+   "n_test": 808,
+   "physics_win_rate": 0.4,
+   "diff_mean": 1.2164494951,
+   "raw_linear": 13.8018257659,
+   "density_linear": 9.5391720578,
+   "proportional": 15.0182752609,
+   "ridge": 14.8841851925,
+   "mlp": 147.1055591806,
+   "xgboost": 54.4990582314,
+   "persistence": 52.9704753775,
+   "diff_ci": [
+    -17.9723772749,
+    10.2956033004
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 1115,
+   "physics_win_rate": 0.65,
+   "diff_mean": -0.4031092209,
+   "raw_linear": 3.1639232768,
+   "density_linear": 3.6464717725,
+   "proportional": 2.760814056,
+   "ridge": 3.1750763651,
+   "mlp": 24.0577536416,
+   "xgboost": 13.2420904629,
+   "persistence": 14.3294922898,
+   "diff_ci": [
+    -2.235736439,
+    0.3900016912
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 759,
+   "physics_win_rate": 0.15,
+   "diff_mean": 1.35799949,
+   "raw_linear": 5.4164120365,
+   "density_linear": 3.007232411,
+   "proportional": 6.7744115265,
+   "ridge": 5.5133178575,
+   "mlp": 38.248713214,
+   "xgboost": 26.0925764762,
+   "persistence": 28.1130288391,
+   "diff_ci": [
+    -2.3630978507,
+    3.2724944323
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 15.0,
+   "n_test": 914,
+   "physics_win_rate": 0.15,
+   "diff_mean": 4.1519705101,
+   "raw_linear": 8.4433157103,
+   "density_linear": 5.4833481555,
+   "proportional": 12.5952862205,
+   "ridge": 8.7920073242,
+   "mlp": 51.8843617103,
+   "xgboost": 41.3613029248,
+   "persistence": 43.2026675966,
+   "diff_ci": [
+    -2.4903056355,
+    8.2763042485
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 5.0,
+   "d": 20.0,
+   "n_test": 533,
+   "physics_win_rate": 0.15,
+   "diff_mean": 5.7810075536,
+   "raw_linear": 11.5285482463,
+   "density_linear": 8.0423716514,
+   "proportional": 17.3095557999,
+   "ridge": 12.0834628155,
+   "mlp": 65.6733405596,
+   "xgboost": 55.2147136539,
+   "persistence": 56.914784822,
+   "diff_ci": [
+    -2.9984451026,
+    12.110260419
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 759,
+   "physics_win_rate": 0.0,
+   "diff_mean": 2.4690176635,
+   "raw_linear": 4.3588887439,
+   "density_linear": 5.1038754466,
+   "proportional": 6.8279064074,
+   "ridge": 4.376493794,
+   "mlp": 6.0756853194,
+   "xgboost": 14.8587914244,
+   "persistence": 23.3535589824,
+   "diff_ci": [
+    1.0438544182,
+    3.3962659967
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 914,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.0541242856,
+   "raw_linear": 8.5987039542,
+   "density_linear": 9.8175825139,
+   "proportional": 12.6528282398,
+   "ridge": 8.6411322745,
+   "mlp": 9.9061927697,
+   "xgboost": 29.2309233908,
+   "persistence": 38.4019440163,
+   "diff_ci": [
+    1.7855053811,
+    5.6127613696
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "hot->cold",
+   "w": 10.0,
+   "d": 15.0,
+   "n_test": 533,
+   "physics_win_rate": 0.0,
+   "diff_mean": 4.9695132018,
+   "raw_linear": 12.3988648685,
+   "density_linear": 13.5491054435,
+   "proportional": 17.3683780703,
+   "ridge": 12.4676352339,
+   "mlp": 14.7440561665,
+   "xgboost": 42.8913080537,
+   "persistence": 52.1031715471,
+   "diff_ci": [
+    2.0026517399,
+    6.8865161357
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 976,
+   "physics_win_rate": 0.1,
+   "diff_mean": 5.1229755908,
+   "raw_linear": 4.0126300987,
+   "density_linear": 7.4159538576,
+   "proportional": 9.1356056895,
+   "ridge": 4.6276192565,
+   "mlp": 34.3482767131,
+   "xgboost": 17.6597910713,
+   "persistence": 22.6038268474,
+   "diff_ci": [
+    -3.5962690006,
+    7.9736884055
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 574,
+   "physics_win_rate": 0.15,
+   "diff_mean": 7.327876055,
+   "raw_linear": 6.7049514588,
+   "density_linear": 11.114986782,
+   "proportional": 14.0328275138,
+   "ridge": 7.7052142569,
+   "mlp": 57.0040315787,
+   "xgboost": 31.3872356401,
+   "persistence": 36.7195449987,
+   "diff_ci": [
+    -7.6764665206,
+    12.3477622612
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 2.5,
+   "d": 15.0,
+   "n_test": 37,
+   "physics_win_rate": 0.15,
+   "diff_mean": 4.0531412847,
+   "raw_linear": 8.3276941632,
+   "density_linear": 9.6309021425,
+   "proportional": 12.3808354479,
+   "ridge": 8.0265007587,
+   "mlp": 76.0426531592,
+   "xgboost": 36.3456927574,
+   "persistence": 40.0036941466,
+   "diff_ci": [
+    -12.1937544709,
+    8.7940242498
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 839,
+   "physics_win_rate": 0.0,
+   "diff_mean": 7.8079625289,
+   "raw_linear": 3.0130346544,
+   "density_linear": 5.0259107974,
+   "proportional": 10.8209971833,
+   "ridge": 3.3080769081,
+   "mlp": 20.6624406578,
+   "xgboost": 17.9675872159,
+   "persistence": 26.5361535163,
+   "diff_ci": [
+    4.369019862,
+    9.7364924202
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 452,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.377908418,
+   "raw_linear": 4.1311546453,
+   "density_linear": 5.9008018615,
+   "proportional": 14.5090630634,
+   "ridge": 4.5343514385,
+   "mlp": 35.5668937713,
+   "xgboost": 29.9621339583,
+   "persistence": 38.8083580798,
+   "diff_ci": [
+    5.4066134222,
+    12.9590660258
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 740,
+   "physics_win_rate": 0.0,
+   "diff_mean": 8.7844895878,
+   "raw_linear": 4.3033879281,
+   "density_linear": 2.9586024722,
+   "proportional": 13.0878775159,
+   "ridge": 4.3581991732,
+   "mlp": 3.702813444,
+   "xgboost": 17.4961870326,
+   "persistence": 34.4386478276,
+   "diff_ci": [
+    7.9054656904,
+    9.5069152664
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->cold",
+   "w": 10.0,
+   "d": 10.0,
+   "n_test": 115,
+   "physics_win_rate": 0.0,
+   "diff_mean": 10.055830708,
+   "raw_linear": 3.6546992216,
+   "density_linear": 3.7540422453,
+   "proportional": 13.7105299296,
+   "ridge": 3.7140863066,
+   "mlp": 4.419888921,
+   "xgboost": 25.4225580598,
+   "persistence": 40.484900133,
+   "diff_ci": [
+    9.1692564322,
+    10.7706832488
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 5.0,
+   "n_test": 980,
+   "physics_win_rate": 0.35,
+   "diff_mean": 0.3138461043,
+   "raw_linear": 4.9604624665,
+   "density_linear": 5.0004391428,
+   "proportional": 5.2743085707,
+   "ridge": 4.5210657732,
+   "mlp": 48.2504783819,
+   "xgboost": 12.7823032924,
+   "persistence": 16.4510838358,
+   "diff_ci": [
+    -5.3144716892,
+    3.0261163208
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 2.5,
+   "d": 10.0,
+   "n_test": 279,
+   "physics_win_rate": 0.8,
+   "diff_mean": -4.4006590896,
+   "raw_linear": 8.6937884613,
+   "density_linear": 5.0384912991,
+   "proportional": 4.2931293718,
+   "ridge": 7.6592927254,
+   "mlp": 80.7692967913,
+   "xgboost": 19.9025284866,
+   "persistence": 22.4751252787,
+   "diff_ci": [
+    -14.8966616752,
+    1.6371385824
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 5.0,
+   "n_test": 847,
+   "physics_win_rate": 0.55,
+   "diff_mean": -0.5084951772,
+   "raw_linear": 5.4373841173,
+   "density_linear": 5.1979073086,
+   "proportional": 4.9288889402,
+   "ridge": 5.1940995762,
+   "mlp": 17.980075848,
+   "xgboost": 11.0067336463,
+   "persistence": 17.6068976103,
+   "diff_ci": [
+    -3.5800409173,
+    1.9322871824
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 5.0,
+   "d": 10.0,
+   "n_test": 113,
+   "physics_win_rate": 1.0,
+   "diff_mean": -5.8866874272,
+   "raw_linear": 10.316638803,
+   "density_linear": 8.7794287174,
+   "proportional": 4.4299513759,
+   "ridge": 9.8895147636,
+   "mlp": 29.3458808459,
+   "xgboost": 16.8539693581,
+   "persistence": 22.7671301815,
+   "diff_ci": [
+    -10.8141129428,
+    -1.6096653353
+   ]
+  },
+  {
+   "module": "evap+cap_mild",
+   "vmode": "realV",
+   "setting": "mid->hot",
+   "w": 10.0,
+   "d": 5.0,
+   "n_test": 504,
+   "physics_win_rate": 1.0,
+   "diff_mean": -1.2530936311,
+   "raw_linear": 5.9860062453,
+   "density_linear": 7.3318103334,
+   "proportional": 4.7329126142,
+   "ridge": 5.950939155,
+   "mlp": 3.0625955893,
+   "xgboost": 10.9187346743,
+   "persistence": 20.6035405106,
+   "diff_ci": [
+    -2.0336228646,
+    -0.5199426425
+   ]
+  }
+ ],
+ "predictions": {
+  "P1_base_physics_win_rate": 0.021323529411764706,
+  "P1_base_physics_win_rate_by_setting": {
+   "cold->hot": 0.032,
+   "hot->cold": 0.009,
+   "mid->cold": 0.021,
+   "mid->hot": 0.025
+  },
+  "P2_evap_hot->cold_w2.5_by_d": {
+   "5.0": {
+    "win": 0.45,
+    "diff": -0.15
+   },
+   "10.0": {
+    "win": 0.95,
+    "diff": -2.75
+   },
+   "15.0": {
+    "win": 0.35,
+    "diff": 1.0
+   },
+   "20.0": {
+    "win": 0.3,
+    "diff": 3.45
+   }
+  },
+  "P2_evap+cap_mild_hot->cold_w2.5_by_d": {
+   "5.0": {
+    "win": 0.5,
+    "diff": -0.62
+   },
+   "10.0": {
+    "win": 0.95,
+    "diff": -3.45
+   },
+   "15.0": {
+    "win": 0.4,
+    "diff": -0.21
+   },
+   "20.0": {
+    "win": 0.4,
+    "diff": 1.22
+   }
+  },
+  "P3_cap_mild_cold->hot_w2.5_by_d": {
+   "5.0": {
+    "win": 0.95,
+    "diff": -6.79
+   },
+   "10.0": {
+    "win": 0.95,
+    "diff": -10.66
+   },
+   "15.0": {
+    "win": 0.95,
+    "diff": -13.76
+   },
+   "20.0": {
+    "win": 0.9,
+    "diff": -17.26
+   }
+  },
+  "P3_cap_strong_cold->hot_w2.5_by_d": {
+   "5.0": {
+    "win": 1.0,
+    "diff": -11.12
+   },
+   "10.0": {
+    "win": 1.0,
+    "diff": -22.64
+   },
+   "15.0": {
+    "win": 1.0,
+    "diff": -30.57
+   },
+   "20.0": {
+    "win": 1.0,
+    "diff": -38.96
+   }
+  },
+  "P4_raw_linear_cold->hot_w2.5_realV_vs_fixedV": {
+   "base": {
+    "5.0": [
+     3.4,
+     3.85
+    ],
+    "10.0": [
+     6.27,
+     6.63
+    ],
+    "15.0": [
+     9.36,
+     9.54
+    ],
+    "20.0": [
+     12.58,
+     12.79
+    ]
+   },
+   "cap_mild": {
+    "5.0": [
+     12.09,
+     10.49
+    ],
+    "10.0": [
+     22.57,
+     19.66
+    ],
+    "15.0": [
+     32.49,
+     28.27
+    ],
+    "20.0": [
+     41.44,
+     36.11
+    ]
+   },
+   "cap_strong": {
+    "5.0": [
+     12.85,
+     10.9
+    ],
+    "10.0": [
+     28.31,
+     24.53
+    ],
+    "15.0": [
+     43.03,
+     37.77
+    ],
+    "20.0": [
+     56.96,
+     50.19
+    ]
+   },
+   "evap": {
+    "5.0": [
+     4.4,
+     4.08
+    ],
+    "10.0": [
+     7.59,
+     6.75
+    ],
+    "15.0": [
+     11.52,
+     9.92
+    ],
+    "20.0": [
+     17.66,
+     15.17
+    ]
+   },
+   "evap+cap_mild": {
+    "5.0": [
+     10.74,
+     10.68
+    ],
+    "10.0": [
+     19.62,
+     19.27
+    ],
+    "15.0": [
+     26.42,
+     25.95
+    ],
+    "20.0": [
+     29.52,
+     29.42
+    ]
+   }
+  },
+  "P6_xgb_minus_persistence_d>=10": {
+   "mean": -6.131581196776277,
+   "mean_abs": 6.544661283991215,
+   "xgb": 37.317618116548665,
+   "persistence": 43.44919931332495
+  }
+ },
+ "indicators": {
+  "slope_se": {
+   "direction": "higher->physics",
+   "preregistered_direction": true,
+   "auroc": 0.637,
+   "auroc_ci": [
+    0.549,
+    0.718
+   ],
+   "auroc_distance_stratified": 0.627,
+   "stratified_ci": [
+    0.547,
+    0.707
+   ]
+  },
+  "slope_gap": {
+   "direction": "higher->physics",
+   "preregistered_direction": false,
+   "auroc": 0.486,
+   "auroc_ci": [
+    0.397,
+    0.58
+   ],
+   "auroc_distance_stratified": 0.505,
+   "stratified_ci": [
+    0.403,
+    0.604
+   ]
+  },
+  "gap_z": {
+   "direction": "higher->data",
+   "preregistered_direction": true,
+   "auroc": 0.629,
+   "auroc_ci": [
+    0.552,
+    0.71
+   ],
+   "auroc_distance_stratified": 0.606,
+   "stratified_ci": [
+    0.527,
+    0.701
+   ]
+  },
+  "cov_departure": {
+   "direction": "higher->physics",
+   "preregistered_direction": true,
+   "auroc": 0.487,
+   "auroc_ci": [
+    0.403,
+    0.569
+   ],
+   "auroc_distance_stratified": 0.447,
+   "stratified_ci": [
+    0.356,
+    0.532
+   ]
+  },
+  "v_departure": {
+   "direction": "higher->physics",
+   "preregistered_direction": false,
+   "auroc": 0.451,
+   "auroc_ci": [
+    0.362,
+    0.545
+   ],
+   "auroc_distance_stratified": 0.45,
+   "stratified_ci": [
+    0.356,
+    0.524
+   ]
+  },
+  "curvature_t": {
+   "direction": "higher->physics",
+   "preregistered_direction": true,
+   "auroc": 0.463,
+   "auroc_ci": [
+    0.414,
+    0.516
+   ],
+   "auroc_distance_stratified": 0.461,
+   "stratified_ci": [
+    0.417,
+    0.509
+   ]
+  },
+  "d": {
+   "direction": "higher->physics",
+   "preregistered_direction": false,
+   "auroc": 0.537,
+   "auroc_ci": [
+    0.494,
+    0.583
+   ],
+   "auroc_distance_stratified": 0.5,
+   "stratified_ci": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "lomo_accuracy": {
+  "slope_se": {
+   "base": 0.903,
+   "cap_mild": 0.846,
+   "cap_strong": 0.64,
+   "evap": 0.649,
+   "evap+cap_mild": 0.587
+  },
+  "slope_gap": {
+   "base": 0.873,
+   "cap_mild": 0.825,
+   "cap_strong": 0.684,
+   "evap": 0.657,
+   "evap+cap_mild": 0.578
+  },
+  "gap_z": {
+   "base": 0.979,
+   "cap_mild": 0.853,
+   "cap_strong": 0.642,
+   "evap": 0.662,
+   "evap+cap_mild": 0.572
+  },
+  "cov_departure": {
+   "base": 0.969,
+   "cap_mild": 0.842,
+   "cap_strong": 0.637,
+   "evap": 0.651,
+   "evap+cap_mild": 0.577
+  },
+  "v_departure": {
+   "base": 0.922,
+   "cap_mild": 0.843,
+   "cap_strong": 0.646,
+   "evap": 0.651,
+   "evap+cap_mild": 0.573
+  },
+  "curvature_t": {
+   "base": 0.979,
+   "cap_mild": 0.851,
+   "cap_strong": 0.627,
+   "evap": 0.654,
+   "evap+cap_mild": 0.578
+  },
+  "d": {
+   "base": 0.979,
+   "cap_mild": 0.851,
+   "cap_strong": 0.643,
+   "evap": 0.654,
+   "evap+cap_mild": 0.578
+  }
+ },
+ "lomo_majority_baseline": {
+  "base": 0.979,
+  "cap_mild": 0.851,
+  "cap_strong": 0.643,
+  "evap": 0.654,
+  "evap+cap_mild": 0.578
+ },
+ "noise_comparison": {
+  "physics_win_rate_noise4.3": 0.25882352941176473,
+  "physics_win_rate_noise0": 0.23558823529411765
+ },
+ "n_windows_primary": 6800,
+ "physics_win_rate_primary": 0.25882352941176473
+}

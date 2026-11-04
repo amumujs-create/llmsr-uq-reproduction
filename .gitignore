@@ -25,3 +25,5 @@ logs/
 *.key
 .DS_Store
 local_*.json
+analysis/ccpp_twin/grid_cells.csv
+analysis/ccpp_twin/grid_windows.csv
