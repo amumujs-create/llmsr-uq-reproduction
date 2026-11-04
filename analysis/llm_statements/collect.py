@@ -1,6 +1,7 @@
 """Collect regime statements from an OpenAI-compatible chat endpoint (e.g. vLLM on the GPU server).
 
-Usage:
+Usage (see RUN.md):
+  python collect.py --base-url http://localhost:8000/v1 --model <served-name> --out runs/<tag>.jsonl --workers 16
   python collect.py <Folds5x2_pp.xlsx> --base-url http://localhost:8000/v1 --model <served-name> --out runs/<tag>.jsonl
   python collect.py <xlsx> --backend mock --out /tmp/mock.jsonl      # dry run, no network
 Writes one JSON line per call; re-running skips ids already in the output file.
@@ -99,11 +100,15 @@ def call_mock(messages, temperature, seed):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("xlsx")
+    p.add_argument("xlsx", nargs="?", default=None,
+                   help="CCPP workbook; if omitted, window summaries are read from --summaries (no data needed)")
+    p.add_argument("--summaries", default=str(HERE / "window_summaries.json"))
+    p.add_argument("--write-summaries", action="store_true", help="compute summaries from xlsx, save, and exit")
+    p.add_argument("--workers", type=int, default=1, help="concurrent requests (vLLM batches them)")
     p.add_argument("--backend", choices=("openai", "mock"), default="openai")
     p.add_argument("--base-url", default="http://localhost:8000/v1")
     p.add_argument("--model", default="mock")
-    p.add_argument("--out", required=True)
+    p.add_argument("--out", help="output JSONL (required unless --write-summaries)")
     p.add_argument("--samples", type=int, default=N_SAMPLES)
     p.add_argument("--max-tokens", type=int, default=4096, help="large enough for reasoning models")
     p.add_argument("--extra-body", default="{}", help='e.g. \'{"reasoning_effort": "none"}\' (Ollama) or '
@@ -111,7 +116,16 @@ def main():
     p.add_argument("--data", choices=("D0", "D1", "all"), default="all", help="restrict to one data condition")
     p.add_argument("--tag", default=None, help="model label in ids/output (defaults to --model)")
     a = p.parse_args()
-    summaries = window_summaries(a.xlsx)
+    if a.xlsx:
+        summaries = window_summaries(a.xlsx)
+        if a.write_summaries:
+            json.dump({f"{w}|{s}": v for (w, s), v in summaries.items()}, open(a.summaries, "w"), indent=1)
+            print(f"wrote {a.summaries}")
+            return
+    else:
+        summaries = {tuple(k.split("|")): v for k, v in json.load(open(a.summaries)).items()}
+    if not a.out:
+        p.error("--out is required")
     job_list = [j for j in jobs(summaries) if a.data == "all" or j["data"] == a.data]
     extra = json.loads(a.extra_body)
     tag = a.tag or a.model
@@ -120,25 +134,34 @@ def main():
     done = set()
     if out.exists():
         done = {json.loads(line)["id"] for line in out.open()}
-    with out.open("a") as f:
-        for j in job_list:
-            for k in range(a.samples + 1):
-                temp = 0.0 if k == a.samples else TEMP
-                cid = f'{tag}|{j["world"]}|{j["level"]}|{j["data"]}|{j["setting"]}|{k}'
-                if cid in done:
-                    continue
-                t0 = time.time()
-                try:
-                    text, reasoning = (call_mock(j["messages"], temp, k) if a.backend == "mock"
-                                       else call_openai(a.base_url, a.model, j["messages"], temp, k, a.max_tokens, extra))
-                    err = None
-                except Exception as e:  # recorded, not retried
-                    text, reasoning, err = None, None, f"{type(e).__name__}: {e}"
-                f.write(json.dumps({"id": cid, "model": a.model, "tag": tag, "extra_body": extra, "world": j["world"], "level": j["level"],
-                                    "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
-                                    "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
-                                    "seconds": round(time.time() - t0, 3)}) + "\n")
-                f.flush()
+    tasks = []
+    for j in job_list:
+        for k in range(a.samples + 1):
+            cid = f'{tag}|{j["world"]}|{j["level"]}|{j["data"]}|{j["setting"]}|{k}'
+            if cid not in done:
+                tasks.append((cid, j, k, 0.0 if k == a.samples else TEMP))
+
+    def one(task):
+        cid, j, k, temp = task
+        t0 = time.time()
+        try:
+            text, reasoning = (call_mock(j["messages"], temp, k) if a.backend == "mock"
+                               else call_openai(a.base_url, a.model, j["messages"], temp, k, a.max_tokens, extra))
+            err = None
+        except Exception as e:  # recorded, not retried
+            text, reasoning, err = None, None, f"{type(e).__name__}: {e}"
+        return {"id": cid, "model": a.model, "tag": tag, "extra_body": extra, "world": j["world"],
+                "level": j["level"], "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
+                "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
+                "seconds": round(time.time() - t0, 3)}
+
+    from concurrent.futures import ThreadPoolExecutor
+    with out.open("a") as f, ThreadPoolExecutor(max(1, a.workers)) as ex:
+        for i, rec in enumerate(ex.map(one, tasks), 1):
+            f.write(json.dumps(rec) + "\n")
+            f.flush()
+            if i % 50 == 0 or i == len(tasks):
+                print(f"{i}/{len(tasks)} done", flush=True)
     print(f"jobs={len(job_list)} calls_per_job={a.samples + 1} -> {out}")
 
 
