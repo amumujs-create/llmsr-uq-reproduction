@@ -23,7 +23,8 @@ SENS_PCT_LOOSE = (0.4, 1.2)
 ICE_RANGE = (-15.0, 8.0)     # anti-icing operating band, degC (domain-check §4)
 CAP_WORLDS = ("cap_mild", "cap_strong", "evap+cap_mild")
 MODELS = {"pilot-mistral7b": "mistral 7B", "pilot-qwen35-9b-nothink": "qwen3.5 9B", "pilot-llama31-8b": "llama3.1 8B",
-          "pilot-gemma3-12b": "gemma3 12B", "gpt-oss-120b": "gpt-oss-120b"}
+          "pilot-gemma3-12b": "gemma3 12B", "gpt-oss-120b": "gpt-oss-120b",
+          "gpt-oss-20b": "gpt-oss-20b", "qwen3-30b-a3b-instruct": "qwen3 30B"}
 
 
 def _num(x):
@@ -67,7 +68,7 @@ def s2_rows():
 
 
 def s0_rows():
-    paths = glob.glob(str(HERE / "runs/pilot/*.jsonl")) + [str(HERE / "runs/gpt-oss-120b.jsonl")]
+    paths = glob.glob(str(HERE / "runs/pilot/*.jsonl")) + glob.glob(str(HERE / "runs/*.jsonl"))
     for path in paths:
         for line in open(path):
             r = json.loads(line)

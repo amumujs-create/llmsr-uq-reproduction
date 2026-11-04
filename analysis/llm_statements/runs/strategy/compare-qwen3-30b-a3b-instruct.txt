@@ -1,0 +1,81 @@
+=== structural reliability by strategy (samples at T=0.7) ===
+                                       p_struct  parse_ok    n
+tag                    strategy level                         
+qwen3-30b-a3b-instruct S0       L1         0.00       1.0  100
+                                L2         0.20       1.0  100
+                       S1       L1         0.22       1.0   50
+                                L2         0.16       1.0   50
+                       S2       L1         0.60       1.0   50
+                                L2         0.82       1.0   50
+
+=== p_struct by world ===
+strategy                                     S0   S1   S2
+tag                    level world                       
+qwen3-30b-a3b-instruct L1    base           0.0  0.0  0.0
+                             cap_mild       0.0  0.0  0.6
+                             cap_strong     0.0  1.0  0.6
+                             evap           0.0  0.1  1.0
+                             evap+cap_mild  0.0  0.0  0.8
+                       L2    base           0.0  0.0  1.0
+                             cap_mild       0.0  0.0  0.8
+                             cap_strong     0.0  0.1  0.8
+                             evap           1.0  0.7  1.0
+                             evap+cap_mild  0.0  0.0  0.5
+
+=== per-side verdicts ===
+verdict                                     correct  false_alarm  location  miss
+tag                    strategy level side                                      
+qwen3-30b-a3b-instruct S0       L1    cold     0.40         0.00      0.00  0.60
+                                      hot      0.07         0.60      0.33  0.00
+                                L2    cold     0.40         0.00      0.00  0.60
+                                      hot      0.40         0.60      0.00  0.00
+                       S1       L1    cold     0.50         0.10      0.40  0.00
+                                      hot      0.48         0.14      0.22  0.16
+                                L2    cold     0.20         0.22      0.58  0.00
+                                      hot      0.96         0.04      0.00  0.00
+                       S2       L1    cold     0.88         0.00      0.12  0.00
+                                      hot      0.68         0.32      0.00  0.00
+                                L2    cold     0.82         0.00      0.04  0.14
+                                      hot      1.00         0.00      0.00  0.00
+
+=== S2 mechanism answers (rate claimed active & in range, median degC) ===
+{
+ "qwen3-30b-a3b-instruct|L1": {
+  "inlet_evaporative_cooling": {
+   "rate": 0.72,
+   "median": 25.0
+  },
+  "gt_limit": {
+   "rate": 0.6,
+   "median": 6.7
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.08,
+   "median": 5.0
+  }
+ },
+ "qwen3-30b-a3b-instruct|L2": {
+  "inlet_evaporative_cooling": {
+   "rate": 0.4,
+   "median": 24.0
+  },
+  "gt_limit": {
+   "rate": 0.6,
+   "median": 3.3
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.0,
+   "median": null
+  }
+ }
+}
+
+=== outcome of majority statements, mean over worlds (clean RMSE MW) ===
+                              R0_data    R2g  blend_0.25  blend_0.5  budget_2  budget_5  harm_R2g
+statement                                                                                        
+qwen3-30b-a3b-instruct|S0|L1     7.99   7.94        7.90       7.87      7.90      7.88     0.064
+qwen3-30b-a3b-instruct|S0|L2     7.99   8.16        7.71       7.64      7.85      7.79     0.122
+qwen3-30b-a3b-instruct|S1|L1     7.99   7.35        7.67       7.47      7.85      7.75     0.118
+qwen3-30b-a3b-instruct|S1|L2     7.99  10.03        7.87       8.26      7.91      8.03     0.286
+qwen3-30b-a3b-instruct|S2|L1     7.99   7.09        7.43       7.11      7.68      7.40     0.100
+qwen3-30b-a3b-instruct|S2|L2     7.99   6.89        7.45       7.07      7.73      7.44     0.066

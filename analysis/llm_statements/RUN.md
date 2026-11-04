@@ -39,13 +39,15 @@ tail -f run_all.log
 
 | tag | 모델 | 왜 필요한가 |
 |---|---|---|
-| `gpt-oss-120b` | `openai/gpt-oss-120b` | 본 수집 완료. 묻는 방식 실험(S1/S2)만 남음 |
-| `qwen3-30b-a3b-instruct` | `Qwen/Qwen3-30B-A3B-Instruct-2507` | 신뢰도 중간대 모델. 정답 없이 믿는 정도를 고르는 규칙을 검증하려면 꼭 필요 |
-| `gpt-oss-20b` | `openai/gpt-oss-20b` | 같은 계열에서 크기만 다를 때 신뢰도가 어떻게 변하나 |
-| `gemma3-27b` | `google/gemma-3-27b-it` | 다른 계열 (동의 필요) |
-| `llama33-70b` | `meta-llama/Llama-3.3-70B-Instruct` | 다른 계열, 큰 dense 모델 (동의 필요) |
+| `gpt-oss-120b` | `openai/gpt-oss-120b` | 완료 |
+| `qwen3-30b-a3b-instruct` | `Qwen/Qwen3-30B-A3B-Instruct-2507` | 완료 (환경 기록 `runs/env/`만 없음) |
+| `gpt-oss-20b` | `openai/gpt-oss-20b` | 본 수집 완료. **S1/S2(220회)가 남음** |
+| `gemma3-27b` | `google/gemma-3-27b-it` | **조립 규칙 검증 자료** (동의 필요) |
+| `llama33-70b` | `meta-llama/Llama-3.3-70B-Instruct` | **조립 규칙 검증 자료** (동의 필요) |
 
 예상 시간은 모델당 대략 30분–2시간이다 (다운로드 포함).
+
+남은 세 가지(`gpt-oss-20b` S1/S2, `gemma3-27b`, `llama33-70b`)는 [조립 규칙 사전 등록](../../docs/research/ccpp-hint-assembly.md)의 검증 자료다. 같은 명령을 다시 실행하면 끝난 부분은 건너뛰고 이것만 돈다.
 
 ## 4. 자주 쓰는 옵션
 

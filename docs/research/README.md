@@ -19,6 +19,7 @@
 - [CCPP 쌍둥이 시뮬레이터 설계와 v0 결과](ccpp-twin-design.md)
 - [CCPP 쌍둥이의 도메인 근거 점검 (문헌·실데이터)](ccpp-domain-check.md)
 - [CCPP 쌍둥이 결빙 방지 세계: 사전 등록](ccpp-anti-icing-world.md)
+- **[LLM 힌트 조립 규칙: 사전 등록](ccpp-hint-assembly.md)** — 현재 주 방법
 - [CCPP 쌍둥이 격자 실험: 사전 등록과 결과](ccpp-twin-grid.md)
 - [레짐 진술을 받는 외삽 판단 규칙: 사전 등록과 결과](ccpp-regime-statement.md)
 - [검사할 수 없는 진술의 위험 제한: 사전 등록과 결과](ccpp-risk-limit.md)
