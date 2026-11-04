@@ -1,0 +1,9 @@
+tag=gemma3-27b
+model=google/gemma-3-27b-it
+extra_body={}
+vllm_args=pipeline-parallel-size 2 --distributed-executor-backend ray --enforce-eager --language-model-only --max-model-len 16384 --gpu-memory-utilization 0.90 patched-nccl VLLM_USE_FLASHINFER_SAMPLER=0
+date=2026-11-04T14:44:23Z
+host=wa-nb-ad
+vllm=0.31.0
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
