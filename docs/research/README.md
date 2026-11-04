@@ -13,9 +13,11 @@
 - [LLM 추천 물리 행동 모듈과 외삽 점 예측 — 겹침 검토](reviews/2026-11-03-behavior-modules.md)
 - [미리 준비한 LLM 경쟁 가설과 소수 관측 레짐 확정 — 겹침 검토](reviews/2026-11-03-prepared-hypotheses.md)
 - [레짐 진술의 검사 가능/불가능 분해 — 겹침 검토](reviews/2026-11-04-regime-statement-overlap.md)
+- [결빙 방지 세계 추가 — 겹침·논문성 검토](reviews/2026-11-04-anti-icing-world.md)
 - **[CCPP 외삽: 학습 창과 물리 prior의 효과, 설계 가정](ccpp-extrapolation.md)** — 현재 주 실험 설계
 - [CCPP 쌍둥이 시뮬레이터 설계와 v0 결과](ccpp-twin-design.md)
 - [CCPP 쌍둥이의 도메인 근거 점검 (문헌·실데이터)](ccpp-domain-check.md)
+- [CCPP 쌍둥이 결빙 방지 세계: 사전 등록](ccpp-anti-icing-world.md)
 - [CCPP 쌍둥이 격자 실험: 사전 등록과 결과](ccpp-twin-grid.md)
 - [레짐 진술을 받는 외삽 판단 규칙: 사전 등록과 결과](ccpp-regime-statement.md)
 - [검사할 수 없는 진술의 위험 제한: 사전 등록과 결과](ccpp-risk-limit.md)
