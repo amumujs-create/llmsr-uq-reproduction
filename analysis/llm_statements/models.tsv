@@ -1,0 +1,7 @@
+# tag	hf_model	extra_body(JSON or -)	extra vllm args (or -)
+# Order = priority. Lines starting with # are skipped. Edit freely; re-running skips finished parts.
+gpt-oss-120b	openai/gpt-oss-120b	-	-
+qwen3-30b-a3b-instruct	Qwen/Qwen3-30B-A3B-Instruct-2507	-	-
+gpt-oss-20b	openai/gpt-oss-20b	-	-
+gemma3-27b	google/gemma-3-27b-it	-	-
+llama33-70b	meta-llama/Llama-3.3-70B-Instruct	-	-

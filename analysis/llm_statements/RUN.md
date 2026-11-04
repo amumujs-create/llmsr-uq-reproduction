@@ -1,62 +1,76 @@
-# 서버에서 LLM 진술 수집하기
+# 서버에서 LLM 진술 수집하기 (한 번에 전부)
 
 설계: [docs/research/llm-statement-collection.md](../../docs/research/llm-statement-collection.md)
 
-**CCPP 데이터 파일이 필요 없다.** 학습 창 요약은 `window_summaries.json`에 고정해 두었다. 필요한 것은 Python 3.9+, `numpy`, 그리고 OpenAI 호환 서버(vLLM 등)다.
+**이 파일의 명령 하나로 이 연구에 필요한 LLM 실행이 모두 끝난다.** 새로 돌릴 것이 생기면 이 파일과 `models.tsv`만 고친다.
 
-## 1. 받기
+## 0. 필요한 것
+
+- GPU 서버(80 GB급 4장 기준), Python 3.9+, `vllm`, `numpy`, `curl`
+- CCPP 데이터 파일은 **필요 없다** (학습 창 요약은 `window_summaries.json`에 고정)
+- Gemma와 Llama는 Hugging Face에서 사용 동의가 필요한 모델이다. 모델 페이지에서 동의한 뒤 서버에서 `huggingface-cli login`을 한 번 해 둔다. 안 되어 있으면 그 모델만 실패하고 다음 모델로 넘어간다.
+
+## 1. 받기 / 최신으로 맞추기
 
 ```bash
-git clone https://github.com/amumujs-create/llmsr-uq-reproduction.git
+git clone https://github.com/amumujs-create/llmsr-uq-reproduction.git   # 처음 한 번
 cd llmsr-uq-reproduction
-pip install numpy
+git pull
 ```
 
-## 2. 모델 띄우기 (vLLM 예시)
-
-모델 이름은 Hugging Face 모델 카드에서 확인한다. 아래 Qwen 이름은 자리표시다.
+## 2. 실행 (이것만 하면 된다)
 
 ```bash
-# 대형, 다른 계열, 추론형 (80 GB 이상 필요)
-vllm serve openai/gpt-oss-120b --port 8000
-
-# 중형/소형 Qwen (사고 모드 분리 파서 사용)
-vllm serve <Qwen 약 30B 모델 이름> --port 8000 --reasoning-parser qwen3
+nohup bash analysis/llm_statements/run_all.sh > run_all.log 2>&1 &
+tail -f run_all.log
 ```
 
-MIG 조각 메모리는 `nvidia-smi -L`로 확인한다. 모델이 올라가지 않으면 더 작은 모델로 바꾸고, 바꾼 이름을 알려 준다.
+`run_all.sh`는 `models.tsv`의 모델을 위에서부터 하나씩 처리한다. 모델마다 하는 일:
 
-## 3. 수집
+1. `vllm serve`로 모델을 띄운다 (`--tensor-parallel-size 4 --max-model-len 16384`)
+2. 점검 12회 → 통과하면 본 수집 1,596회 (`runs/<tag>.jsonl`)
+3. 묻는 방식 실험 S1/S2 220회 (`runs/strategy/<tag>.jsonl`)
+4. 실행 환경 기록 (`runs/env/<tag>.txt`: 모델, HF 리비전, vLLM 버전, GPU, 날짜)
+5. 서버를 내리고 다음 모델로
 
-모델마다 한 번씩 실행한다. 스크립트는 먼저 데이터 요약 없는 프롬프트 12개를 한 번씩 호출해 보는 점검을 하고, 통과하면 전체(76개 프롬프트 × 21회 = 1,596회)를 받는다. 중간에 끊기면 같은 명령을 다시 실행하면 이어서 받는다.
+**이미 끝난 부분은 건너뛴다.** 중간에 끊기면 같은 명령을 다시 실행하면 이어서 한다. `gpt-oss-120b`는 본 수집이 끝났으므로 묻는 방식 실험만 돈다.
+
+## 3. 돌릴 모델 (`models.tsv`, 위가 우선)
+
+| tag | 모델 | 왜 필요한가 |
+|---|---|---|
+| `gpt-oss-120b` | `openai/gpt-oss-120b` | 본 수집 완료. 묻는 방식 실험(S1/S2)만 남음 |
+| `qwen3-30b-a3b-instruct` | `Qwen/Qwen3-30B-A3B-Instruct-2507` | 신뢰도 중간대 모델. 정답 없이 믿는 정도를 고르는 규칙을 검증하려면 꼭 필요 |
+| `gpt-oss-20b` | `openai/gpt-oss-20b` | 같은 계열에서 크기만 다를 때 신뢰도가 어떻게 변하나 |
+| `gemma3-27b` | `google/gemma-3-27b-it` | 다른 계열 (동의 필요) |
+| `llama33-70b` | `meta-llama/Llama-3.3-70B-Instruct` | 다른 계열, 큰 dense 모델 (동의 필요) |
+
+예상 시간은 모델당 대략 30분–2시간이다 (다운로드 포함).
+
+## 4. 자주 쓰는 옵션
+
+- 한 모델만: `ONLY=gpt-oss-20b bash analysis/llm_statements/run_all.sh`
+- GPU 수가 다르면: `TP=2 bash ...` (GPU 2장에 나눠 올림)
+- 동시 요청 수: `WORKERS=32 bash ...` (기본 16)
+- 응답 길이 상한: `MAXTOK=8192 bash ...` (기본 4096. 추론형 모델이 점검에서 잘리면 올린다)
+- 모델을 빼려면 `models.tsv`에서 그 줄 앞에 `#`을 붙인다
+
+## 5. 문제가 생기면
+
+- 끝에 나오는 `===== summary =====`에 모델별 성공/실패가 나온다
+- vLLM이 안 뜨면 `analysis/llm_statements/runs/logs/vllm-<tag>.log` 마지막 부분을 보면 된다. 흔한 원인:
+  - 메모리 부족 → `TP`를 늘리거나 그 모델을 뺀다
+  - 동의 안 된 모델 → 1번의 Hugging Face 로그인
+- 점검 실패(응답이 잘림) → `MAXTOK=8192`로 다시 실행
+
+## 6. 결과 돌려주기
 
 ```bash
-# gpt-oss-120b (기본 추론 설정)
-bash analysis/llm_statements/run_server.sh openai/gpt-oss-120b gpt-oss-120b
-
-# Qwen, 사고 모드 끔 (빠름)
-bash analysis/llm_statements/run_server.sh <Qwen 모델 이름> qwen-30b-nothink '{"chat_template_kwargs": {"enable_thinking": false}}'
-
-# Qwen, 사고 모드 켬 (느림, 시간이 되면)
-MAXTOK=8192 bash analysis/llm_statements/run_server.sh <Qwen 모델 이름> qwen-30b-think
+git add analysis/llm_statements/runs
+git commit -m "LLM runs"
+git push
 ```
 
-- 점검만 하려면 `SMOKE_ONLY=1 bash ...`
-- 동시 요청 수 기본 16 (`WORKERS=32 bash ...`로 바꿀 수 있다)
-- 응답 길이 상한 기본 4096 토큰 (`MAXTOK=8192 bash ...`)
-- 서버 주소가 다르면 네 번째 인자로 준다: `... '{}' http://<host>:8000/v1`
+`runs/env/*.txt`에 환경이 자동 기록되므로 따로 알려 줄 것은 없다. 실패한 모델이 있으면 summary 부분만 알려 준다.
 
-점검에서 실패하면 화면에 응답 앞부분이 나온다. 흔한 원인:
-
-- 추론형 모델이 길게 생각하다 상한에 걸림 → `MAXTOK`을 올리거나 사고 모드를 끈다
-- 모델 이름이 서버의 `--served-model-name`과 다름
-
-## 4. 결과 돌려주기
-
-`analysis/llm_statements/runs/<tag>.jsonl` 파일들을 커밋해서 푸시하거나 파일로 보내 준다. 다음 정보도 함께 알려 준다.
-
-- 정확한 모델 이름과 버전(Hugging Face 리비전 또는 해시)
-- vLLM 버전, GPU(MIG 조각 크기)
-- 실행 날짜
-
-분석은 이쪽에서 한다: `python analysis/llm_statements/analyze.py <xlsx> runs/*.jsonl --out <prefix>`.
+분석은 이쪽에서 한다.
