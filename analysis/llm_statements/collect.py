@@ -74,13 +74,15 @@ def jobs(summaries: dict) -> list[dict]:
     return out
 
 
-def call_openai(base_url, model, messages, temperature, seed, timeout=120):
-    body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": 600, "seed": seed}
+def call_openai(base_url, model, messages, temperature, seed, max_tokens, timeout=600):
+    body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "seed": seed}
     req = urllib.request.Request(f"{base_url.rstrip('/')}/chat/completions", data=json.dumps(body).encode(),
                                  headers={"Content-Type": "application/json",
                                           "Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY', 'EMPTY')}"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read())["choices"][0]["message"]["content"]
+        msg = json.loads(r.read())["choices"][0]["message"]
+    # vLLM reasoning parsers return the reasoning separately; keep it for the record, score only the content.
+    return msg.get("content"), msg.get("reasoning_content") or msg.get("reasoning")
 
 
 def call_mock(messages, temperature, seed):
@@ -91,7 +93,7 @@ def call_mock(messages, temperature, seed):
         b.append({"side": "above", "at_c": float(24 + rng.normal(0, 2)), "confidence": 0.7})
     if "rated limit" in text and "stays below" not in text:
         b.append({"side": "below", "at_c": float(7 + rng.normal(0, 3)), "confidence": 0.5})
-    return json.dumps({"boundaries": b, "rationale": "mock"})
+    return json.dumps({"boundaries": b, "rationale": "mock"}), None
 
 
 def main():
@@ -102,6 +104,7 @@ def main():
     p.add_argument("--model", default="mock")
     p.add_argument("--out", required=True)
     p.add_argument("--samples", type=int, default=N_SAMPLES)
+    p.add_argument("--max-tokens", type=int, default=4096, help="large enough for reasoning models")
     a = p.parse_args()
     summaries = window_summaries(a.xlsx)
     job_list = jobs(summaries)
@@ -119,14 +122,14 @@ def main():
                     continue
                 t0 = time.time()
                 try:
-                    text = (call_mock(j["messages"], temp, k) if a.backend == "mock"
-                            else call_openai(a.base_url, a.model, j["messages"], temp, k))
+                    text, reasoning = (call_mock(j["messages"], temp, k) if a.backend == "mock"
+                                       else call_openai(a.base_url, a.model, j["messages"], temp, k, a.max_tokens))
                     err = None
                 except Exception as e:  # recorded, not retried
-                    text, err = None, f"{type(e).__name__}: {e}"
+                    text, reasoning, err = None, None, f"{type(e).__name__}: {e}"
                 f.write(json.dumps({"id": cid, "model": a.model, "world": j["world"], "level": j["level"],
                                     "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
-                                    "messages": j["messages"], "response": text, "error": err,
+                                    "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
                                     "seconds": round(time.time() - t0, 3)}) + "\n")
                 f.flush()
     print(f"jobs={len(job_list)} calls_per_job={a.samples + 1} -> {out}")

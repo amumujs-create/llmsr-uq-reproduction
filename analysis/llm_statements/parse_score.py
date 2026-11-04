@@ -17,7 +17,9 @@ TOL_C = 3.0
 
 def parse(text: str) -> dict:
     """Return {"ok": bool, "boundaries": [(side, at_c, confidence)], "duplicates": int, "error": str|None}."""
-    m = re.search(r"\{.*\}", text or "", re.S)
+    # Reasoning models may put a <think>...</think> block before the answer; parse the final JSON only.
+    text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.S)
+    m = re.search(r"\{.*\}", text, re.S)
     if not m:
         return {"ok": False, "boundaries": [], "duplicates": 0, "error": "no_json"}
     try:

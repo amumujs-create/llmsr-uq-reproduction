@@ -40,6 +40,11 @@ class ParseScoreChecks(unittest.TestCase):
         self.assertEqual(r['duplicates'], 1)
         self.assertEqual(to_statement(r['boundaries']), [('below', 8.0)])
 
+    def test_parse_skips_think_block(self):
+        r = parse('<think>maybe {"boundaries": [{"side": "above", "at_c": 30}]}</think>{"boundaries": []}')
+        self.assertTrue(r['ok'])
+        self.assertEqual(r['boundaries'], [])
+
     def test_parse_failures_recorded(self):
         self.assertEqual(parse('no json here')['error'], 'no_json')
         self.assertFalse(parse('{"boundaries": [{"side": "left", "at_c": 3}]}')['ok'])
