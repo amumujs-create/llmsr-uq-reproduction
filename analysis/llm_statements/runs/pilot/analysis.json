@@ -1,0 +1,1428 @@
+{
+ "parse": {
+  "pilot-mistral7b": {
+   "n": 72,
+   "fail_rate": 0.014,
+   "errors": {
+    "bad_format: Extra data: line 2 column 1 (char 65)": 1
+   }
+  },
+  "pilot-qwen35-9b-nothink": {
+   "n": 72,
+   "fail_rate": 0.028,
+   "errors": {
+    "bad_format: Expecting ',' delimiter: line 1 column 65 (char 64)": 1,
+    "bad_format: Expecting ',' delimiter: line 10 column 1 (char 2059)": 1
+   }
+  }
+ },
+ "p_struct": {
+  "pilot-mistral7b|L0|D0": {
+   "p_struct_sample": 0.12,
+   "p_struct_majority": 0.2,
+   "p_struct_greedy": 0.0
+  },
+  "pilot-mistral7b|L1|D0": {
+   "p_struct_sample": 0.08,
+   "p_struct_majority": 0.0,
+   "p_struct_greedy": 0.2
+  },
+  "pilot-mistral7b|L2|D0": {
+   "p_struct_sample": 0.2,
+   "p_struct_majority": 0.2,
+   "p_struct_greedy": 0.2
+  },
+  "pilot-qwen35-9b-nothink|L0|D0": {
+   "p_struct_sample": 0.0,
+   "p_struct_majority": 0.0,
+   "p_struct_greedy": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|D0": {
+   "p_struct_sample": 0.04,
+   "p_struct_majority": 0.0,
+   "p_struct_greedy": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|D0": {
+   "p_struct_sample": 0.2,
+   "p_struct_majority": 0.2,
+   "p_struct_greedy": 0.2
+  }
+ },
+ "per_side": {
+  "pilot-mistral7b|L0|base|cold": {
+   "correct": 0.0,
+   "false_alarm": 1.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|base|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 1.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|cap_mild|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|cap_strong|cold": {
+   "correct": 0.6,
+   "false_alarm": 0.0,
+   "location": 0.4,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|cap_strong|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|evap|cold": {
+   "correct": 0.0,
+   "false_alarm": 1.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|evap|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|evap+cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 1.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L0|evap+cap_mild|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|base|cold": {
+   "correct": 0.0,
+   "false_alarm": 1.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|base|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 1.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|cap_mild|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|cap_strong|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.6,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|cap_strong|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|evap|cold": {
+   "correct": 0.0,
+   "false_alarm": 1.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|evap|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|evap+cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 1.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L1|evap+cap_mild|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|base|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.2
+  },
+  "pilot-mistral7b|L2|base|hot": {
+   "correct": 0.8,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.2
+  },
+  "pilot-mistral7b|L2|cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 1.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|cap_mild|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|cap_strong|cold": {
+   "correct": 0.2,
+   "false_alarm": 0.0,
+   "location": 0.8,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|cap_strong|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|evap|cold": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|evap|hot": {
+   "correct": 0.8,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.2,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|evap+cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 1.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|L2|evap+cap_mild|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|base|cold": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|base|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.2,
+   "miss": 0.8,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|cap_mild|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|cap_strong|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.2,
+   "miss": 0.8,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|cap_strong|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|evap|cold": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|evap|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.8,
+   "miss": 0.2,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|evap+cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.2,
+   "miss": 0.8,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L0|evap+cap_mild|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.8,
+   "miss": 0.2,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|base|cold": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|base|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|cap_mild|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|cap_strong|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|cap_strong|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|evap|cold": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|evap|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.0,
+   "location": 0.4,
+   "miss": 0.4,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|evap+cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L1|evap+cap_mild|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.0,
+   "location": 0.8,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|base|cold": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|base|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|cap_mild|hot": {
+   "correct": 0.0,
+   "false_alarm": 1.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|cap_strong|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.8,
+   "parse_fail": 0.2
+  },
+  "pilot-qwen35-9b-nothink|L2|cap_strong|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.8,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.2
+  },
+  "pilot-qwen35-9b-nothink|L2|evap|cold": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|evap|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|evap+cap_mild|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 1.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2|evap+cap_mild|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  }
+ },
+ "signal_auroc": {
+  "agree_rate": 0.609,
+  "confidence": 0.546,
+  "cross_model": 0.781
+ },
+ "outcome": {
+  "pilot-mistral7b|L0|greedy|base": {
+   "R0_data": 4.16,
+   "R2g": 9.04,
+   "blend_0.25": 5.1,
+   "blend_0.5": 6.35,
+   "blend_0.75": 7.68,
+   "budget_2": 4.6,
+   "budget_5": 5.4,
+   "budget_10": 6.65,
+   "rejected": 0.32,
+   "harm_R2g": 0.342,
+   "truth": "[]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L0|greedy|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 11.04,
+   "blend_0.25": 7.79,
+   "blend_0.5": 8.73,
+   "blend_0.75": 9.85,
+   "budget_2": 7.55,
+   "budget_5": 8.01,
+   "budget_10": 8.95,
+   "rejected": 0.22,
+   "harm_R2g": 0.337,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L0|greedy|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 11.93,
+   "blend_0.25": 11.12,
+   "blend_0.5": 10.87,
+   "blend_0.75": 11.27,
+   "budget_2": 11.8,
+   "budget_5": 11.47,
+   "budget_10": 11.31,
+   "rejected": 0.09,
+   "harm_R2g": 0.321,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L0|greedy|evap": {
+   "R0_data": 7.54,
+   "R2g": 11.8,
+   "blend_0.25": 8.47,
+   "blend_0.5": 9.54,
+   "blend_0.75": 10.66,
+   "budget_2": 8.14,
+   "budget_5": 9.01,
+   "budget_10": 10.2,
+   "rejected": 0.32,
+   "harm_R2g": 0.347,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L0|greedy|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 12.06,
+   "blend_0.25": 9.26,
+   "blend_0.5": 10.14,
+   "blend_0.75": 11.09,
+   "budget_2": 8.98,
+   "budget_5": 9.66,
+   "budget_10": 10.65,
+   "rejected": 0.23,
+   "harm_R2g": 0.347,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L0|majority|base": {
+   "R0_data": 4.16,
+   "R2g": 5.63,
+   "blend_0.25": 4.43,
+   "blend_0.5": 4.8,
+   "blend_0.75": 5.2,
+   "budget_2": 4.43,
+   "budget_5": 4.85,
+   "budget_10": 5.3,
+   "rejected": 0.32,
+   "harm_R2g": 0.192,
+   "truth": "[]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L0|majority|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.21,
+   "blend_0.25": 7.13,
+   "blend_0.5": 7.06,
+   "blend_0.75": 7.1,
+   "budget_2": 7.32,
+   "budget_5": 7.33,
+   "budget_10": 7.37,
+   "rejected": 0.22,
+   "harm_R2g": 0.185,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L0|majority|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 7.06,
+   "blend_0.25": 10.77,
+   "blend_0.5": 9.36,
+   "blend_0.75": 8.09,
+   "budget_2": 11.56,
+   "budget_5": 10.69,
+   "budget_10": 9.53,
+   "rejected": 0.09,
+   "harm_R2g": 0.039,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L0|majority|evap": {
+   "R0_data": 7.54,
+   "R2g": 8.85,
+   "blend_0.25": 7.83,
+   "blend_0.5": 8.15,
+   "blend_0.75": 8.49,
+   "budget_2": 7.89,
+   "budget_5": 8.31,
+   "budget_10": 8.67,
+   "rejected": 0.32,
+   "harm_R2g": 0.2,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L0|majority|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 8.68,
+   "blend_0.25": 8.52,
+   "blend_0.5": 8.54,
+   "blend_0.75": 8.59,
+   "budget_2": 8.68,
+   "budget_5": 8.82,
+   "budget_10": 8.88,
+   "rejected": 0.23,
+   "harm_R2g": 0.198,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L1|greedy|base": {
+   "R0_data": 4.16,
+   "R2g": 5.63,
+   "blend_0.25": 4.43,
+   "blend_0.5": 4.8,
+   "blend_0.75": 5.2,
+   "budget_2": 4.43,
+   "budget_5": 4.85,
+   "budget_10": 5.3,
+   "rejected": 0.32,
+   "harm_R2g": 0.192,
+   "truth": "[]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L1|greedy|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.21,
+   "blend_0.25": 7.13,
+   "blend_0.5": 7.06,
+   "blend_0.75": 7.1,
+   "budget_2": 7.32,
+   "budget_5": 7.33,
+   "budget_10": 7.37,
+   "rejected": 0.22,
+   "harm_R2g": 0.185,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L1|greedy|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 7.06,
+   "blend_0.25": 10.77,
+   "blend_0.5": 9.36,
+   "blend_0.75": 8.09,
+   "budget_2": 11.56,
+   "budget_5": 10.69,
+   "budget_10": 9.53,
+   "rejected": 0.09,
+   "harm_R2g": 0.039,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L1|greedy|evap": {
+   "R0_data": 7.54,
+   "R2g": 8.85,
+   "blend_0.25": 7.83,
+   "blend_0.5": 8.15,
+   "blend_0.75": 8.49,
+   "budget_2": 7.89,
+   "budget_5": 8.31,
+   "budget_10": 8.67,
+   "rejected": 0.32,
+   "harm_R2g": 0.2,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L1|greedy|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 8.68,
+   "blend_0.25": 8.52,
+   "blend_0.5": 8.54,
+   "blend_0.75": 8.59,
+   "budget_2": 8.68,
+   "budget_5": 8.82,
+   "budget_10": 8.88,
+   "rejected": 0.23,
+   "harm_R2g": 0.198,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('below', 10.0)]"
+  },
+  "pilot-mistral7b|L1|majority|base": {
+   "R0_data": 4.16,
+   "R2g": 9.04,
+   "blend_0.25": 5.1,
+   "blend_0.5": 6.35,
+   "blend_0.75": 7.68,
+   "budget_2": 4.6,
+   "budget_5": 5.4,
+   "budget_10": 6.65,
+   "rejected": 0.32,
+   "harm_R2g": 0.342,
+   "truth": "[]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L1|majority|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 11.04,
+   "blend_0.25": 7.79,
+   "blend_0.5": 8.73,
+   "blend_0.75": 9.85,
+   "budget_2": 7.55,
+   "budget_5": 8.01,
+   "budget_10": 8.95,
+   "rejected": 0.22,
+   "harm_R2g": 0.337,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L1|majority|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 11.93,
+   "blend_0.25": 11.12,
+   "blend_0.5": 10.87,
+   "blend_0.75": 11.27,
+   "budget_2": 11.8,
+   "budget_5": 11.47,
+   "budget_10": 11.31,
+   "rejected": 0.09,
+   "harm_R2g": 0.321,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L1|majority|evap": {
+   "R0_data": 7.54,
+   "R2g": 11.8,
+   "blend_0.25": 8.47,
+   "blend_0.5": 9.54,
+   "blend_0.75": 10.66,
+   "budget_2": 8.14,
+   "budget_5": 9.01,
+   "budget_10": 10.2,
+   "rejected": 0.32,
+   "harm_R2g": 0.347,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L1|majority|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 12.06,
+   "blend_0.25": 9.26,
+   "blend_0.5": 10.14,
+   "blend_0.75": 11.09,
+   "budget_2": 8.98,
+   "budget_5": 9.66,
+   "budget_10": 10.65,
+   "rejected": 0.23,
+   "harm_R2g": 0.347,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|greedy|base": {
+   "R0_data": 4.16,
+   "R2g": 9.04,
+   "blend_0.25": 5.1,
+   "blend_0.5": 6.35,
+   "blend_0.75": 7.68,
+   "budget_2": 4.6,
+   "budget_5": 5.4,
+   "budget_10": 6.65,
+   "rejected": 0.32,
+   "harm_R2g": 0.342,
+   "truth": "[]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|greedy|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 11.04,
+   "blend_0.25": 7.79,
+   "blend_0.5": 8.73,
+   "blend_0.75": 9.85,
+   "budget_2": 7.55,
+   "budget_5": 8.01,
+   "budget_10": 8.95,
+   "rejected": 0.22,
+   "harm_R2g": 0.337,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|greedy|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 11.93,
+   "blend_0.25": 11.12,
+   "blend_0.5": 10.87,
+   "blend_0.75": 11.27,
+   "budget_2": 11.8,
+   "budget_5": 11.47,
+   "budget_10": 11.31,
+   "rejected": 0.09,
+   "harm_R2g": 0.321,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|greedy|evap": {
+   "R0_data": 7.54,
+   "R2g": 6.94,
+   "blend_0.25": 6.77,
+   "blend_0.5": 6.34,
+   "blend_0.75": 6.45,
+   "budget_2": 7.08,
+   "budget_5": 6.62,
+   "budget_10": 6.48,
+   "rejected": 0.31,
+   "harm_R2g": 0.124,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 24.0)]"
+  },
+  "pilot-mistral7b|L2|greedy|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 12.06,
+   "blend_0.25": 9.26,
+   "blend_0.5": 10.14,
+   "blend_0.75": 11.09,
+   "budget_2": 8.98,
+   "budget_5": 9.66,
+   "budget_10": 10.65,
+   "rejected": 0.23,
+   "harm_R2g": 0.347,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|majority|base": {
+   "R0_data": 4.16,
+   "R2g": 7.06,
+   "blend_0.25": 4.71,
+   "blend_0.5": 5.44,
+   "blend_0.75": 6.24,
+   "budget_2": 4.52,
+   "budget_5": 5.09,
+   "budget_10": 5.99,
+   "rejected": 0.32,
+   "harm_R2g": 0.25,
+   "truth": "[]",
+   "stmt": "[('below', 12.5)]"
+  },
+  "pilot-mistral7b|L2|majority|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 11.04,
+   "blend_0.25": 7.79,
+   "blend_0.5": 8.73,
+   "blend_0.75": 9.85,
+   "budget_2": 7.55,
+   "budget_5": 8.01,
+   "budget_10": 8.95,
+   "rejected": 0.22,
+   "harm_R2g": 0.337,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|majority|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 11.93,
+   "blend_0.25": 11.12,
+   "blend_0.5": 10.87,
+   "blend_0.75": 11.27,
+   "budget_2": 11.8,
+   "budget_5": 11.47,
+   "budget_10": 11.31,
+   "rejected": 0.09,
+   "harm_R2g": 0.321,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-mistral7b|L2|majority|evap": {
+   "R0_data": 7.54,
+   "R2g": 6.94,
+   "blend_0.25": 6.77,
+   "blend_0.5": 6.34,
+   "blend_0.75": 6.45,
+   "budget_2": 7.08,
+   "budget_5": 6.62,
+   "budget_10": 6.48,
+   "rejected": 0.31,
+   "harm_R2g": 0.124,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 24.0)]"
+  },
+  "pilot-mistral7b|L2|majority|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 12.06,
+   "blend_0.25": 9.26,
+   "blend_0.5": 10.14,
+   "blend_0.75": 11.09,
+   "budget_2": 8.98,
+   "budget_5": 9.66,
+   "budget_10": 10.65,
+   "rejected": 0.23,
+   "harm_R2g": 0.347,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('below', 15.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|greedy|base": {
+   "R0_data": 4.16,
+   "R2g": 4.27,
+   "blend_0.25": 4.07,
+   "blend_0.5": 4.07,
+   "blend_0.75": 4.16,
+   "budget_2": 4.06,
+   "budget_5": 4.12,
+   "budget_10": 4.25,
+   "rejected": 0.24,
+   "harm_R2g": 0.065,
+   "truth": "[]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|greedy|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.72,
+   "blend_0.25": 7.36,
+   "blend_0.5": 7.42,
+   "blend_0.75": 7.55,
+   "budget_2": 7.44,
+   "budget_5": 7.54,
+   "budget_10": 7.66,
+   "rejected": 0.25,
+   "harm_R2g": 0.124,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|greedy|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 12.51,
+   "blend_0.25": 12.21,
+   "blend_0.5": 12.27,
+   "blend_0.75": 12.38,
+   "budget_2": 12.26,
+   "budget_5": 12.36,
+   "budget_10": 12.49,
+   "rejected": 0.43,
+   "harm_R2g": 0.099,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|greedy|evap": {
+   "R0_data": 7.54,
+   "R2g": 7.04,
+   "blend_0.25": 7.39,
+   "blend_0.5": 7.25,
+   "blend_0.75": 7.13,
+   "budget_2": 7.32,
+   "budget_5": 7.13,
+   "budget_10": 7.05,
+   "rejected": 0.23,
+   "harm_R2g": 0.007,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|greedy|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 8.15,
+   "blend_0.25": 8.45,
+   "blend_0.5": 8.33,
+   "blend_0.75": 8.23,
+   "budget_2": 8.42,
+   "budget_5": 8.25,
+   "budget_10": 8.16,
+   "rejected": 0.26,
+   "harm_R2g": 0.024,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|majority|base": {
+   "R0_data": 4.16,
+   "R2g": 4.14,
+   "blend_0.25": 4.14,
+   "blend_0.5": 4.13,
+   "blend_0.75": 4.13,
+   "budget_2": 4.13,
+   "budget_5": 4.13,
+   "budget_10": 4.14,
+   "rejected": 0.12,
+   "harm_R2g": 0.012,
+   "truth": "[]",
+   "stmt": "[('above', 32.5)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|majority|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.42,
+   "blend_0.25": 7.38,
+   "blend_0.5": 7.37,
+   "blend_0.75": 7.39,
+   "budget_2": 7.38,
+   "budget_5": 7.38,
+   "budget_10": 7.38,
+   "rejected": 0.14,
+   "harm_R2g": 0.012,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('above', 32.5)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|majority|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 12.25,
+   "blend_0.25": 12.24,
+   "blend_0.5": 12.23,
+   "blend_0.75": 12.24,
+   "budget_2": 12.23,
+   "budget_5": 12.24,
+   "budget_10": 12.25,
+   "rejected": 0.31,
+   "harm_R2g": 0.01,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('above', 32.5)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|majority|evap": {
+   "R0_data": 7.54,
+   "R2g": 7.4,
+   "blend_0.25": 7.5,
+   "blend_0.5": 7.47,
+   "blend_0.75": 7.43,
+   "budget_2": 7.46,
+   "budget_5": 7.41,
+   "budget_10": 7.4,
+   "rejected": 0.11,
+   "harm_R2g": 0.0,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 32.5)]"
+  },
+  "pilot-qwen35-9b-nothink|L0|majority|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 8.45,
+   "blend_0.25": 8.54,
+   "blend_0.5": 8.51,
+   "blend_0.75": 8.48,
+   "budget_2": 8.5,
+   "budget_5": 8.46,
+   "budget_10": 8.45,
+   "rejected": 0.14,
+   "harm_R2g": 0.0,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('above', 32.5)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|greedy|base": {
+   "R0_data": 4.16,
+   "R2g": 4.27,
+   "blend_0.25": 4.07,
+   "blend_0.5": 4.07,
+   "blend_0.75": 4.16,
+   "budget_2": 4.06,
+   "budget_5": 4.12,
+   "budget_10": 4.25,
+   "rejected": 0.24,
+   "harm_R2g": 0.065,
+   "truth": "[]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|greedy|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.72,
+   "blend_0.25": 7.36,
+   "blend_0.5": 7.42,
+   "blend_0.75": 7.55,
+   "budget_2": 7.44,
+   "budget_5": 7.54,
+   "budget_10": 7.66,
+   "rejected": 0.25,
+   "harm_R2g": 0.124,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|greedy|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 12.51,
+   "blend_0.25": 12.21,
+   "blend_0.5": 12.27,
+   "blend_0.75": 12.38,
+   "budget_2": 12.26,
+   "budget_5": 12.36,
+   "budget_10": 12.49,
+   "rejected": 0.43,
+   "harm_R2g": 0.099,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|greedy|evap": {
+   "R0_data": 7.54,
+   "R2g": 7.04,
+   "blend_0.25": 7.39,
+   "blend_0.5": 7.25,
+   "blend_0.75": 7.13,
+   "budget_2": 7.32,
+   "budget_5": 7.13,
+   "budget_10": 7.05,
+   "rejected": 0.23,
+   "harm_R2g": 0.007,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|greedy|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 8.15,
+   "blend_0.25": 8.45,
+   "blend_0.5": 8.33,
+   "blend_0.75": 8.23,
+   "budget_2": 8.42,
+   "budget_5": 8.25,
+   "budget_10": 8.16,
+   "rejected": 0.26,
+   "harm_R2g": 0.024,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|majority|base": {
+   "R0_data": 4.16,
+   "R2g": 4.14,
+   "blend_0.25": 4.14,
+   "blend_0.5": 4.13,
+   "blend_0.75": 4.13,
+   "budget_2": 4.13,
+   "budget_5": 4.13,
+   "budget_10": 4.14,
+   "rejected": 0.12,
+   "harm_R2g": 0.012,
+   "truth": "[]",
+   "stmt": "[('above', 32.5)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|majority|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.72,
+   "blend_0.25": 7.36,
+   "blend_0.5": 7.42,
+   "blend_0.75": 7.55,
+   "budget_2": 7.44,
+   "budget_5": 7.54,
+   "budget_10": 7.66,
+   "rejected": 0.25,
+   "harm_R2g": 0.124,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|majority|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 12.51,
+   "blend_0.25": 12.21,
+   "blend_0.5": 12.27,
+   "blend_0.75": 12.38,
+   "budget_2": 12.26,
+   "budget_5": 12.36,
+   "budget_10": 12.49,
+   "rejected": 0.43,
+   "harm_R2g": 0.099,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|majority|evap": {
+   "R0_data": 7.54,
+   "R2g": 7.04,
+   "blend_0.25": 7.39,
+   "blend_0.5": 7.25,
+   "blend_0.75": 7.13,
+   "budget_2": 7.32,
+   "budget_5": 7.13,
+   "budget_10": 7.05,
+   "rejected": 0.23,
+   "harm_R2g": 0.007,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L1|majority|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 8.15,
+   "blend_0.25": 8.45,
+   "blend_0.5": 8.33,
+   "blend_0.75": 8.23,
+   "budget_2": 8.42,
+   "budget_5": 8.25,
+   "budget_10": 8.16,
+   "rejected": 0.26,
+   "harm_R2g": 0.024,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('above', 30.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|greedy|base": {
+   "R0_data": 4.16,
+   "R2g": 4.16,
+   "blend_0.25": 4.16,
+   "blend_0.5": 4.16,
+   "blend_0.75": 4.16,
+   "budget_2": 4.16,
+   "budget_5": 4.16,
+   "budget_10": 4.16,
+   "rejected": 0.0,
+   "harm_R2g": 0.0,
+   "truth": "[]",
+   "stmt": "[('above', 35.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|greedy|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 12.26,
+   "blend_0.25": 12.26,
+   "blend_0.5": 12.26,
+   "blend_0.75": 12.26,
+   "budget_2": 12.26,
+   "budget_5": 12.26,
+   "budget_10": 12.26,
+   "rejected": 0.2,
+   "harm_R2g": 0.0,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('above', 37.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|greedy|evap": {
+   "R0_data": 7.54,
+   "R2g": 6.94,
+   "blend_0.25": 6.77,
+   "blend_0.5": 6.34,
+   "blend_0.75": 6.45,
+   "budget_2": 7.08,
+   "budget_5": 6.62,
+   "budget_10": 6.48,
+   "rejected": 0.31,
+   "harm_R2g": 0.124,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 24.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|greedy|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 9.39,
+   "blend_0.25": 8.15,
+   "blend_0.5": 8.1,
+   "blend_0.75": 8.64,
+   "budget_2": 8.42,
+   "budget_5": 8.32,
+   "budget_10": 8.61,
+   "rejected": 0.34,
+   "harm_R2g": 0.197,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('above', 24.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|majority|base": {
+   "R0_data": 4.16,
+   "R2g": 4.16,
+   "blend_0.25": 4.16,
+   "blend_0.5": 4.16,
+   "blend_0.75": 4.16,
+   "budget_2": 4.16,
+   "budget_5": 4.16,
+   "budget_10": 4.16,
+   "rejected": 0.0,
+   "harm_R2g": 0.0,
+   "truth": "[]",
+   "stmt": "[('above', 37.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|majority|cap_mild": {
+   "R0_data": 7.41,
+   "R2g": 7.41,
+   "blend_0.25": 7.41,
+   "blend_0.5": 7.41,
+   "blend_0.75": 7.41,
+   "budget_2": 7.41,
+   "budget_5": 7.41,
+   "budget_10": 7.41,
+   "rejected": 0.02,
+   "harm_R2g": 0.0,
+   "truth": "[('below', 6.0)]",
+   "stmt": "[('above', 37.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|majority|cap_strong": {
+   "R0_data": 12.26,
+   "R2g": 12.26,
+   "blend_0.25": 12.26,
+   "blend_0.5": 12.26,
+   "blend_0.75": 12.26,
+   "budget_2": 12.26,
+   "budget_5": 12.26,
+   "budget_10": 12.26,
+   "rejected": 0.2,
+   "harm_R2g": 0.0,
+   "truth": "[('below', 9.0)]",
+   "stmt": "[('above', 37.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|majority|evap": {
+   "R0_data": 7.54,
+   "R2g": 6.94,
+   "blend_0.25": 6.77,
+   "blend_0.5": 6.34,
+   "blend_0.75": 6.45,
+   "budget_2": 7.08,
+   "budget_5": 6.62,
+   "budget_10": 6.48,
+   "rejected": 0.31,
+   "harm_R2g": 0.124,
+   "truth": "[('above', 24.0)]",
+   "stmt": "[('above', 24.0)]"
+  },
+  "pilot-qwen35-9b-nothink|L2|majority|evap+cap_mild": {
+   "R0_data": 8.58,
+   "R2g": 9.39,
+   "blend_0.25": 8.15,
+   "blend_0.5": 8.1,
+   "blend_0.75": 8.64,
+   "budget_2": 8.42,
+   "budget_5": 8.32,
+   "budget_10": 8.61,
+   "rejected": 0.34,
+   "harm_R2g": 0.197,
+   "truth": "[('below', 6.0), ('above', 24.0)]",
+   "stmt": "[('above', 24.0)]"
+  }
+ },
+ "outcome_world_mean": {
+  "pilot-mistral7b|L0|greedy": {
+   "R0_data": 7.99,
+   "R2g": 11.17,
+   "blend_0.25": 8.35,
+   "blend_0.5": 9.12,
+   "blend_0.75": 10.11,
+   "budget_2": 8.21,
+   "budget_5": 8.71,
+   "budget_10": 9.55
+  },
+  "pilot-mistral7b|L0|majority": {
+   "R0_data": 7.99,
+   "R2g": 7.49,
+   "blend_0.25": 7.74,
+   "blend_0.5": 7.58,
+   "blend_0.75": 7.5,
+   "budget_2": 7.98,
+   "budget_5": 8.0,
+   "budget_10": 7.95
+  },
+  "pilot-mistral7b|L1|greedy": {
+   "R0_data": 7.99,
+   "R2g": 7.49,
+   "blend_0.25": 7.74,
+   "blend_0.5": 7.58,
+   "blend_0.75": 7.5,
+   "budget_2": 7.98,
+   "budget_5": 8.0,
+   "budget_10": 7.95
+  },
+  "pilot-mistral7b|L1|majority": {
+   "R0_data": 7.99,
+   "R2g": 11.17,
+   "blend_0.25": 8.35,
+   "blend_0.5": 9.12,
+   "blend_0.75": 10.11,
+   "budget_2": 8.21,
+   "budget_5": 8.71,
+   "budget_10": 9.55
+  },
+  "pilot-mistral7b|L2|greedy": {
+   "R0_data": 7.99,
+   "R2g": 10.2,
+   "blend_0.25": 8.01,
+   "blend_0.5": 8.48,
+   "blend_0.75": 9.27,
+   "budget_2": 8.0,
+   "budget_5": 8.23,
+   "budget_10": 8.81
+  },
+  "pilot-mistral7b|L2|majority": {
+   "R0_data": 7.99,
+   "R2g": 9.81,
+   "blend_0.25": 7.93,
+   "blend_0.5": 8.3,
+   "blend_0.75": 8.98,
+   "budget_2": 7.99,
+   "budget_5": 8.17,
+   "budget_10": 8.68
+  },
+  "pilot-qwen35-9b-nothink|L0|greedy": {
+   "R0_data": 7.99,
+   "R2g": 7.94,
+   "blend_0.25": 7.9,
+   "blend_0.5": 7.87,
+   "blend_0.75": 7.89,
+   "budget_2": 7.9,
+   "budget_5": 7.88,
+   "budget_10": 7.92
+  },
+  "pilot-qwen35-9b-nothink|L0|majority": {
+   "R0_data": 7.99,
+   "R2g": 7.93,
+   "blend_0.25": 7.96,
+   "blend_0.5": 7.94,
+   "blend_0.75": 7.93,
+   "budget_2": 7.94,
+   "budget_5": 7.93,
+   "budget_10": 7.92
+  },
+  "pilot-qwen35-9b-nothink|L1|greedy": {
+   "R0_data": 7.99,
+   "R2g": 7.94,
+   "blend_0.25": 7.9,
+   "blend_0.5": 7.87,
+   "blend_0.75": 7.89,
+   "budget_2": 7.9,
+   "budget_5": 7.88,
+   "budget_10": 7.92
+  },
+  "pilot-qwen35-9b-nothink|L1|majority": {
+   "R0_data": 7.99,
+   "R2g": 7.91,
+   "blend_0.25": 7.91,
+   "blend_0.5": 7.88,
+   "blend_0.75": 7.89,
+   "budget_2": 7.91,
+   "budget_5": 7.88,
+   "budget_10": 7.9
+  },
+  "pilot-qwen35-9b-nothink|L2|greedy": {
+   "R0_data": 8.13,
+   "R2g": 8.19,
+   "blend_0.25": 7.83,
+   "blend_0.5": 7.71,
+   "blend_0.75": 7.88,
+   "budget_2": 7.98,
+   "budget_5": 7.84,
+   "budget_10": 7.88
+  },
+  "pilot-qwen35-9b-nothink|L2|majority": {
+   "R0_data": 7.99,
+   "R2g": 8.03,
+   "blend_0.25": 7.75,
+   "blend_0.5": 7.65,
+   "blend_0.75": 7.78,
+   "budget_2": 7.87,
+   "budget_5": 7.75,
+   "budget_10": 7.78
+  }
+ }
+}
