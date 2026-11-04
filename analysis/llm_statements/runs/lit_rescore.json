@@ -1,0 +1,166 @@
+{
+ "s2": {
+  "gemma3 12B|L1": {
+   "n": 25,
+   "sens_pct_median": 0.33,
+   "sens_twin": 0.0,
+   "sens_lit": 0.0,
+   "sens_lit_loose": 0.0,
+   "ice_on": 0.0,
+   "ice_plausible": 1.0
+  },
+  "gemma3 12B|L2": {
+   "n": 25,
+   "sens_pct_median": 0.33,
+   "sens_twin": 0.0,
+   "sens_lit": 0.0,
+   "sens_lit_loose": 0.08,
+   "ice_on": 0.0,
+   "ice_plausible": 1.0
+  },
+  "gpt-oss-120b|L1": {
+   "n": 50,
+   "sens_pct_median": 0.5,
+   "sens_twin": 0.6,
+   "sens_lit": 0.52,
+   "sens_lit_loose": 0.7,
+   "ice_on": 1.0,
+   "ice_plausible": 1.0
+  },
+  "gpt-oss-120b|L2": {
+   "n": 50,
+   "sens_pct_median": 0.5,
+   "sens_twin": 0.8,
+   "sens_lit": 0.2,
+   "sens_lit_loose": 0.9,
+   "ice_on": 0.82,
+   "ice_plausible": 1.0
+  },
+  "llama3.1 8B|L1": {
+   "n": 25,
+   "sens_pct_median": 0.2,
+   "sens_twin": 0.08,
+   "sens_lit": 0.04,
+   "sens_lit_loose": 0.12,
+   "ice_on": 0.16,
+   "ice_plausible": 0.92
+  },
+  "llama3.1 8B|L2": {
+   "n": 25,
+   "sens_pct_median": 0.15,
+   "sens_twin": 0.04,
+   "sens_lit": 0.04,
+   "sens_lit_loose": 0.04,
+   "ice_on": 0.24,
+   "ice_plausible": 0.92
+  },
+  "mistral 7B|L1": {
+   "n": 25,
+   "sens_pct_median": 0.21,
+   "sens_twin": 0.16,
+   "sens_lit": 0.16,
+   "sens_lit_loose": 0.24,
+   "ice_on": 0.0,
+   "ice_plausible": 1.0
+  },
+  "mistral 7B|L2": {
+   "n": 21,
+   "sens_pct_median": 0.47,
+   "sens_twin": 0.38,
+   "sens_lit": 0.33,
+   "sens_lit_loose": 0.48,
+   "ice_on": 0.0,
+   "ice_plausible": 1.0
+  },
+  "qwen3.5 9B|L1": {
+   "n": 25,
+   "sens_pct_median": 0.66,
+   "sens_twin": 0.32,
+   "sens_lit": 0.24,
+   "sens_lit_loose": 0.52,
+   "ice_on": 0.8,
+   "ice_plausible": 1.0
+  },
+  "qwen3.5 9B|L2": {
+   "n": 23,
+   "sens_pct_median": 0.23,
+   "sens_twin": 0.13,
+   "sens_lit": 0.13,
+   "sens_lit_loose": 0.13,
+   "ice_on": 0.3,
+   "ice_plausible": 0.96
+  }
+ },
+ "s0": {
+  "gemma3 12B|L1": {
+   "n": 25,
+   "p_twin": 0.0,
+   "p_lit_upper": 0.0,
+   "cold_false_alarm": 0.0,
+   "of_which_plausible": 0.0
+  },
+  "gemma3 12B|L2": {
+   "n": 25,
+   "p_twin": 0.0,
+   "p_lit_upper": 0.0,
+   "cold_false_alarm": 0.0,
+   "of_which_plausible": 0.0
+  },
+  "gpt-oss-120b|L1": {
+   "n": 100,
+   "p_twin": 0.34,
+   "p_lit_upper": 0.38,
+   "cold_false_alarm": 0.29,
+   "of_which_plausible": 0.45
+  },
+  "gpt-oss-120b|L2": {
+   "n": 100,
+   "p_twin": 0.67,
+   "p_lit_upper": 0.77,
+   "cold_false_alarm": 0.16,
+   "of_which_plausible": 0.62
+  },
+  "llama3.1 8B|L1": {
+   "n": 25,
+   "p_twin": 0.0,
+   "p_lit_upper": 0.04,
+   "cold_false_alarm": 0.4,
+   "of_which_plausible": 0.1
+  },
+  "llama3.1 8B|L2": {
+   "n": 25,
+   "p_twin": 0.08,
+   "p_lit_upper": 0.08,
+   "cold_false_alarm": 0.32,
+   "of_which_plausible": 0.0
+  },
+  "mistral 7B|L1": {
+   "n": 25,
+   "p_twin": 0.08,
+   "p_lit_upper": 0.08,
+   "cold_false_alarm": 0.4,
+   "of_which_plausible": 0.0
+  },
+  "mistral 7B|L2": {
+   "n": 24,
+   "p_twin": 0.21,
+   "p_lit_upper": 0.21,
+   "cold_false_alarm": 0.21,
+   "of_which_plausible": 0.0
+  },
+  "qwen3.5 9B|L1": {
+   "n": 25,
+   "p_twin": 0.04,
+   "p_lit_upper": 0.04,
+   "cold_false_alarm": 0.08,
+   "of_which_plausible": 0.0
+  },
+  "qwen3.5 9B|L2": {
+   "n": 24,
+   "p_twin": 0.21,
+   "p_lit_upper": 0.25,
+   "cold_false_alarm": 0.04,
+   "of_which_plausible": 1.0
+  }
+ }
+}
