@@ -31,3 +31,4 @@ analysis/ccpp_twin/regime_cells.csv
 analysis/ccpp_twin/risk_cells.csv
 analysis/llm_statements/runs/smoke-*.jsonl
 analysis/llm_statements/runs/logs/
+run_next.log

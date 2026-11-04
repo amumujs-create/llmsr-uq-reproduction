@@ -5,11 +5,12 @@
 #
 # Usage:  bash analysis/llm_statements/run_all.sh            # all models in models.tsv
 #         ONLY=gpt-oss-20b bash analysis/llm_statements/run_all.sh
-# Env:    TP (tensor-parallel GPUs, default 4), PORT (8000), WORKERS (16), MAXTOK (4096), STRAT_SAMPLES (10)
+# Env:    TP (tensor-parallel GPUs, default 4), PORT (8000), WORKERS (16), MAXTOK (4096), STRAT_SAMPLES (10),
+#         EXTRA_VARGS (extra vllm serve arguments for every model, e.g. --enforce-eager)
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TP="${TP:-4}"; PORT="${PORT:-8000}"; WORKERS="${WORKERS:-16}"; MAXTOK="${MAXTOK:-4096}"
-STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"
+STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"
 BASE="http://localhost:$PORT/v1"
 MAIN_N=1596
 STRAT_N=$((2 * 2 * 5 * (STRAT_SAMPLES + 1)))
@@ -32,7 +33,7 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   fi
   echo "== $TAG ($MODEL): starting vLLM (TP=$TP), log $LOG"
   # shellcheck disable=SC2086
-  vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS > "$LOG" 2>&1 < /dev/null &
+  vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS $EXTRA_VARGS > "$LOG" 2>&1 < /dev/null &
   VLLM_PID=$!
   ok=0
   for _ in $(seq 1 360); do   # up to 60 min for download + load
@@ -46,7 +47,7 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   fi
 
   {
-    echo "tag=$TAG"; echo "model=$MODEL"; echo "extra_body=$EXTRA"; echo "vllm_args=--tensor-parallel-size $TP --max-model-len 16384 $VARGS"
+    echo "tag=$TAG"; echo "model=$MODEL"; echo "extra_body=$EXTRA"; echo "vllm_args=--tensor-parallel-size $TP --max-model-len 16384 $VARGS $EXTRA_VARGS"
     echo "date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"; echo "host=$(hostname)"
     echo "vllm=$(python3 -c 'import vllm; print(vllm.__version__)' 2>/dev/null)"
     echo "hf_revision=$(python3 -c "from huggingface_hub import model_info; print(model_info('$MODEL').sha)" 2>/dev/null)"
