@@ -1,0 +1,136 @@
+"""Collect regime statements from an OpenAI-compatible chat endpoint (e.g. vLLM on the GPU server).
+
+Usage:
+  python collect.py <Folds5x2_pp.xlsx> --base-url http://localhost:8000/v1 --model <served-name> --out runs/<tag>.jsonl
+  python collect.py <xlsx> --backend mock --out /tmp/mock.jsonl      # dry run, no network
+Writes one JSON line per call; re-running skips ids already in the output file.
+Design: docs/research/llm-statement-collection.md
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+import time
+import urllib.request
+from pathlib import Path
+
+import numpy as np
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent / "ccpp_twin"))
+from prompts import SETTINGS, WORLDS, build_prompt  # noqa: E402
+
+N_SAMPLES, TEMP = 20, 0.7
+
+
+def window_summaries(xlsx: str) -> dict:
+    """Training-window summaries (w = 2.5, rep 0) for each twin world (real V, noise 4.3) and for real CCPP."""
+    import openpyxl
+    from ccpp_twin import load_ccpp_inputs, simulate
+    from grid import _seed, build_worlds, ols, windows
+    x = load_ccpp_inputs(xlsx)
+    at = x["AT"]
+    feats_real = np.column_stack([at, x["V"], x["AP"], x["RH"]])
+    rows = list(openpyxl.load_workbook(xlsx, read_only=True, data_only=True)["Sheet1"].iter_rows(values_only=True))
+    hdr = [str(h).strip() for h in rows[0]]
+    pe_real = np.array([float(r[hdr.index("PE")]) for r in rows[1:] if r[0] is not None])
+    worlds = {w["module"]: w for w in build_worlds(x)[0] if w["vmode"] == "realV" and w["noise"] > 0}
+    out = {}
+    for wd in windows(at):
+        if wd["w"] != 2.5:
+            continue
+        idx = np.random.default_rng(_seed(f'sample|{wd["setting"]}|{wd["w"]}|0')).choice(wd["pool"], wd["n"], replace=False)
+
+        def summ(y):
+            b, se = ols(feats_real[idx], y[idx])
+            return {"n": int(len(idx)), "at_lo": float(at[idx].min()), "at_hi": float(at[idx].max()),
+                    "slope": float(b[1]), "se": float(se[1])}
+        for mod, w in worlds.items():
+            clean = simulate(at, x["AP"], x["RH"], x["V"], w["cfg"])["pe_clean"]
+            noise = np.random.default_rng(_seed(f'noise|{mod}|realV|{w["noise"]}|0')).normal(0, w["noise"], len(at))
+            out[(mod, wd["setting"])] = summ(clean + noise)
+        out[("real", wd["setting"])] = summ(pe_real)  # training window only
+    return out
+
+
+def jobs(summaries: dict) -> list[dict]:
+    """All prompts for one model. L0 + D0 is world-independent and asked once; with D1 the window data differ by world."""
+    def job(world, level, data, setting, messages):
+        return {"world": world, "level": level, "data": data, "setting": setting, "messages": messages}
+    out = [job("any", "L0", "D0", None, build_prompt("base", "L0"))]
+    for world in WORLDS:
+        for s in SETTINGS:
+            out.append(job(world, "L0", "D1", s, build_prompt(world, "L0", summaries[(world, s)])))
+        for level in ("L1", "L2"):
+            out.append(job(world, level, "D0", None, build_prompt(world, level)))
+            for s in SETTINGS:
+                out.append(job(world, level, "D1", s, build_prompt(world, level, summaries[(world, s)])))
+    out.append(job("real", "L0", "D0", None, build_prompt("base", "L0", real=True)))
+    for s in SETTINGS:
+        out.append(job("real", "L0", "D1", s, build_prompt("base", "L0", summaries[("real", s)], real=True)))
+    return out
+
+
+def call_openai(base_url, model, messages, temperature, seed, timeout=120):
+    body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": 600, "seed": seed}
+    req = urllib.request.Request(f"{base_url.rstrip('/')}/chat/completions", data=json.dumps(body).encode(),
+                                 headers={"Content-Type": "application/json",
+                                          "Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY', 'EMPTY')}"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read())["choices"][0]["message"]["content"]
+
+
+def call_mock(messages, temperature, seed):
+    rng = np.random.default_rng(seed)
+    text = messages[-1]["content"]
+    b = []
+    if "evaporative" in text:
+        b.append({"side": "above", "at_c": float(24 + rng.normal(0, 2)), "confidence": 0.7})
+    if "rated limit" in text and "stays below" not in text:
+        b.append({"side": "below", "at_c": float(7 + rng.normal(0, 3)), "confidence": 0.5})
+    return json.dumps({"boundaries": b, "rationale": "mock"})
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("xlsx")
+    p.add_argument("--backend", choices=("openai", "mock"), default="openai")
+    p.add_argument("--base-url", default="http://localhost:8000/v1")
+    p.add_argument("--model", default="mock")
+    p.add_argument("--out", required=True)
+    p.add_argument("--samples", type=int, default=N_SAMPLES)
+    a = p.parse_args()
+    summaries = window_summaries(a.xlsx)
+    job_list = jobs(summaries)
+    out = Path(a.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    done = set()
+    if out.exists():
+        done = {json.loads(line)["id"] for line in out.open()}
+    with out.open("a") as f:
+        for j in job_list:
+            for k in range(a.samples + 1):
+                temp = 0.0 if k == a.samples else TEMP
+                cid = f'{a.model}|{j["world"]}|{j["level"]}|{j["data"]}|{j["setting"]}|{k}'
+                if cid in done:
+                    continue
+                t0 = time.time()
+                try:
+                    text = (call_mock(j["messages"], temp, k) if a.backend == "mock"
+                            else call_openai(a.base_url, a.model, j["messages"], temp, k))
+                    err = None
+                except Exception as e:  # recorded, not retried
+                    text, err = None, f"{type(e).__name__}: {e}"
+                f.write(json.dumps({"id": cid, "model": a.model, "world": j["world"], "level": j["level"],
+                                    "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
+                                    "messages": j["messages"], "response": text, "error": err,
+                                    "seconds": round(time.time() - t0, 3)}) + "\n")
+                f.flush()
+    print(f"jobs={len(job_list)} calls_per_job={a.samples + 1} -> {out}")
+
+
+if __name__ == "__main__":
+    main()

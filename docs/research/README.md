@@ -18,6 +18,7 @@
 - [CCPP 쌍둥이 격자 실험: 사전 등록과 결과](ccpp-twin-grid.md)
 - [레짐 진술을 받는 외삽 판단 규칙: 사전 등록과 결과](ccpp-regime-statement.md)
 - [검사할 수 없는 진술의 위험 제한: 사전 등록과 결과](ccpp-risk-limit.md)
+- [LLM 레짐 진술 수집: 사전 등록](llm-statement-collection.md)
 - 기존 실험 감사 원본 (2026-11-03~04):
   - [저장소 전체 실험의 활용 가능성 감사](audit/2026-11-03-salvage-ledger.md)
   - [코드 검토와 외삽 성능 중심 연구 방향](audit/2026-11-03-code-review-and-directions.md)
