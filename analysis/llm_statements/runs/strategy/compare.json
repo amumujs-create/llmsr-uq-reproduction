@@ -1,5 +1,65 @@
 {
  "p_struct": {
+  "pilot-gemma3-12b|S0|L1": {
+   "p_struct": 0.0,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-gemma3-12b|S0|L2": {
+   "p_struct": 0.0,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-gemma3-12b|S1|L1": {
+   "p_struct": 0.0,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-gemma3-12b|S1|L2": {
+   "p_struct": 0.12,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-gemma3-12b|S2|L1": {
+   "p_struct": 0.4,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-gemma3-12b|S2|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-llama31-8b|S0|L1": {
+   "p_struct": 0.0,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-llama31-8b|S0|L2": {
+   "p_struct": 0.08,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-llama31-8b|S1|L1": {
+   "p_struct": 0.0,
+   "parse_ok": 0.88,
+   "n": 25
+  },
+  "pilot-llama31-8b|S1|L2": {
+   "p_struct": 0.0,
+   "parse_ok": 0.8,
+   "n": 25
+  },
+  "pilot-llama31-8b|S2|L1": {
+   "p_struct": 0.2,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-llama31-8b|S2|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 1.0,
+   "n": 25
+  },
   "pilot-mistral7b|S0|L1": {
    "p_struct": 0.08,
    "parse_ok": 1.0,
@@ -62,6 +122,174 @@
   }
  },
  "per_side": {
+  "pilot-gemma3-12b|S0|L1|cold": {
+   "correct": 0.44,
+   "false_alarm": 0.0,
+   "location": 0.12,
+   "miss": 0.44,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S0|L1|hot": {
+   "correct": 0.08,
+   "false_alarm": 0.52,
+   "location": 0.4,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S0|L2|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.6,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S0|L2|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.6,
+   "location": 0.4,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S1|L1|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.32,
+   "miss": 0.28,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S1|L1|hot": {
+   "correct": 0.32,
+   "false_alarm": 0.28,
+   "location": 0.4,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S1|L2|cold": {
+   "correct": 0.48,
+   "false_alarm": 0.0,
+   "location": 0.32,
+   "miss": 0.2,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S1|L2|hot": {
+   "correct": 0.4,
+   "false_alarm": 0.32,
+   "location": 0.28,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S2|L1|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.6,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S2|L1|hot": {
+   "correct": 1.0,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S2|L2|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.16,
+   "miss": 0.44,
+   "parse_fail": 0.0
+  },
+  "pilot-gemma3-12b|S2|L2|hot": {
+   "correct": 0.8,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.2,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S0|L1|cold": {
+   "correct": 0.08,
+   "false_alarm": 0.4,
+   "location": 0.52,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S0|L1|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.6,
+   "location": 0.2,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S0|L2|cold": {
+   "correct": 0.12,
+   "false_alarm": 0.32,
+   "location": 0.52,
+   "miss": 0.04,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S0|L2|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.6,
+   "location": 0.2,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S1|L1|cold": {
+   "correct": 0.2,
+   "false_alarm": 0.24,
+   "location": 0.44,
+   "miss": 0.0,
+   "parse_fail": 0.12
+  },
+  "pilot-llama31-8b|S1|L1|hot": {
+   "correct": 0.08,
+   "false_alarm": 0.56,
+   "location": 0.24,
+   "miss": 0.0,
+   "parse_fail": 0.12
+  },
+  "pilot-llama31-8b|S1|L2|cold": {
+   "correct": 0.0,
+   "false_alarm": 0.36,
+   "location": 0.36,
+   "miss": 0.08,
+   "parse_fail": 0.2
+  },
+  "pilot-llama31-8b|S1|L2|hot": {
+   "correct": 0.24,
+   "false_alarm": 0.48,
+   "location": 0.08,
+   "miss": 0.0,
+   "parse_fail": 0.2
+  },
+  "pilot-llama31-8b|S2|L1|cold": {
+   "correct": 0.32,
+   "false_alarm": 0.12,
+   "location": 0.16,
+   "miss": 0.4,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S2|L1|hot": {
+   "correct": 0.72,
+   "false_alarm": 0.16,
+   "location": 0.12,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S2|L2|cold": {
+   "correct": 0.32,
+   "false_alarm": 0.16,
+   "location": 0.08,
+   "miss": 0.44,
+   "parse_fail": 0.0
+  },
+  "pilot-llama31-8b|S2|L2|hot": {
+   "correct": 0.72,
+   "false_alarm": 0.16,
+   "location": 0.04,
+   "miss": 0.08,
+   "parse_fail": 0.0
+  },
   "pilot-mistral7b|S0|L1|cold": {
    "correct": 0.08,
    "false_alarm": 0.4,
@@ -232,6 +460,78 @@
   }
  },
  "s2_mechanisms": {
+  "pilot-gemma3-12b|L1": {
+   "gt_limit": {
+    "rate": 0.6,
+    "median": -25.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 25.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.0,
+    "median": null
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.0,
+    "median": null
+   }
+  },
+  "pilot-gemma3-12b|L2": {
+   "gt_limit": {
+    "rate": 0.6,
+    "median": -2.5
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.2,
+    "median": 24.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.0,
+    "median": null
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.0,
+    "median": null
+   }
+  },
+  "pilot-llama31-8b|L1": {
+   "gt_limit": {
+    "rate": 0.48,
+    "median": -17.5
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 25.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.24,
+    "median": 30.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.16,
+    "median": 7.5
+   }
+  },
+  "pilot-llama31-8b|L2": {
+   "gt_limit": {
+    "rate": 0.48,
+    "median": -13.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.32,
+    "median": 24.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.28,
+    "median": 25.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.24,
+    "median": 5.0
+   }
+  },
   "pilot-mistral7b|L1": {
    "gt_limit": {
     "rate": 0.44,
@@ -306,6 +606,114 @@
   }
  },
  "outcome_world_mean": {
+  "pilot-gemma3-12b|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 8.27,
+   "blend_0.25": 7.97,
+   "blend_0.5": 8.04,
+   "budget_2": 7.97,
+   "budget_5": 8.05,
+   "harm_R2g": 0.063
+  },
+  "pilot-gemma3-12b|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.27,
+   "blend_0.25": 7.97,
+   "blend_0.5": 8.04,
+   "budget_2": 7.97,
+   "budget_5": 8.05,
+   "harm_R2g": 0.063
+  },
+  "pilot-gemma3-12b|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 8.57,
+   "blend_0.25": 7.81,
+   "blend_0.5": 7.93,
+   "budget_2": 7.88,
+   "budget_5": 7.88,
+   "harm_R2g": 0.137
+  },
+  "pilot-gemma3-12b|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.41,
+   "blend_0.25": 7.84,
+   "blend_0.5": 7.91,
+   "budget_2": 7.88,
+   "budget_5": 7.89,
+   "harm_R2g": 0.156
+  },
+  "pilot-gemma3-12b|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.91,
+   "blend_0.25": 7.78,
+   "blend_0.5": 7.67,
+   "budget_2": 7.87,
+   "budget_5": 7.76,
+   "harm_R2g": 0.05
+  },
+  "pilot-gemma3-12b|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.15,
+   "blend_0.25": 7.9,
+   "blend_0.5": 7.89,
+   "budget_2": 7.96,
+   "budget_5": 7.94,
+   "harm_R2g": 0.039
+  },
+  "pilot-llama31-8b|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 10.12,
+   "blend_0.25": 7.99,
+   "blend_0.5": 8.48,
+   "budget_2": 7.92,
+   "budget_5": 8.12,
+   "harm_R2g": 0.255
+  },
+  "pilot-llama31-8b|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 11.0,
+   "blend_0.25": 8.17,
+   "blend_0.5": 8.92,
+   "budget_2": 7.94,
+   "budget_5": 8.18,
+   "harm_R2g": 0.244
+  },
+  "pilot-llama31-8b|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 9.55,
+   "blend_0.25": 8.1,
+   "blend_0.5": 8.48,
+   "budget_2": 7.94,
+   "budget_5": 8.07,
+   "harm_R2g": 0.215
+  },
+  "pilot-llama31-8b|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 10.34,
+   "blend_0.25": 8.1,
+   "blend_0.5": 8.63,
+   "budget_2": 7.94,
+   "budget_5": 8.07,
+   "harm_R2g": 0.195
+  },
+  "pilot-llama31-8b|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 8.21,
+   "blend_0.25": 7.83,
+   "blend_0.5": 7.8,
+   "budget_2": 7.92,
+   "budget_5": 7.89,
+   "harm_R2g": 0.088
+  },
+  "pilot-llama31-8b|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.13,
+   "blend_0.25": 7.77,
+   "blend_0.5": 7.7,
+   "budget_2": 7.89,
+   "budget_5": 7.82,
+   "harm_R2g": 0.08
+  },
   "pilot-mistral7b|S0|L1": {
    "R0_data": 7.99,
    "R2g": 11.17,

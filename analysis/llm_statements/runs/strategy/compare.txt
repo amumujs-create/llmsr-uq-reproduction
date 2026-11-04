@@ -1,6 +1,18 @@
 === structural reliability by strategy (samples at T=0.7) ===
                                         p_struct  parse_ok   n
 tag                     strategy level                        
+pilot-gemma3-12b        S0       L1         0.00      1.00  25
+                                 L2         0.00      1.00  25
+                        S1       L1         0.00      1.00  25
+                                 L2         0.12      1.00  25
+                        S2       L1         0.40      1.00  25
+                                 L2         0.20      1.00  25
+pilot-llama31-8b        S0       L1         0.00      1.00  25
+                                 L2         0.08      1.00  25
+                        S1       L1         0.00      0.88  25
+                                 L2         0.00      0.80  25
+                        S2       L1         0.20      1.00  25
+                                 L2         0.20      1.00  25
 pilot-mistral7b         S0       L1         0.08      1.00  25
                                  L2         0.20      0.96  25
                         S1       L1         0.12      0.96  25
@@ -17,6 +29,26 @@ pilot-qwen35-9b-nothink S0       L1         0.04      1.00  25
 === p_struct by world ===
 strategy                                      S0   S1   S2
 tag                     level world                       
+pilot-gemma3-12b        L1    base           0.0  0.0  1.0
+                              cap_mild       0.0  0.0  0.0
+                              cap_strong     0.0  0.0  0.0
+                              evap           0.0  0.0  1.0
+                              evap+cap_mild  0.0  0.0  0.0
+                        L2    base           0.0  0.0  1.0
+                              cap_mild       0.0  0.0  0.0
+                              cap_strong     0.0  0.4  0.0
+                              evap           0.0  0.2  0.0
+                              evap+cap_mild  0.0  0.0  0.0
+pilot-llama31-8b        L1    base           0.0  0.0  0.2
+                              cap_mild       0.0  0.0  0.0
+                              cap_strong     0.0  0.0  0.0
+                              evap           0.0  0.0  0.6
+                              evap+cap_mild  0.0  0.0  0.2
+                        L2    base           0.0  0.0  0.0
+                              cap_mild       0.0  0.0  0.2
+                              cap_strong     0.0  0.0  0.0
+                              evap           0.4  0.0  0.8
+                              evap+cap_mild  0.0  0.0  0.0
 pilot-mistral7b         L1    base           0.0  0.0  1.0
                               cap_mild       0.0  0.4  0.2
                               cap_strong     0.4  0.2  0.0
@@ -41,6 +73,30 @@ pilot-qwen35-9b-nothink L1    base           0.0  0.2  0.2
 === per-side verdicts ===
 verdict                                      correct  false_alarm  location  miss  parse_fail
 tag                     strategy level side                                                  
+pilot-gemma3-12b        S0       L1    cold     0.44         0.00      0.12  0.44        0.00
+                                       hot      0.08         0.52      0.40  0.00        0.00
+                                 L2    cold     0.40         0.00      0.00  0.60        0.00
+                                       hot      0.00         0.60      0.40  0.00        0.00
+                        S1       L1    cold     0.40         0.00      0.32  0.28        0.00
+                                       hot      0.32         0.28      0.40  0.00        0.00
+                                 L2    cold     0.48         0.00      0.32  0.20        0.00
+                                       hot      0.40         0.32      0.28  0.00        0.00
+                        S2       L1    cold     0.40         0.00      0.00  0.60        0.00
+                                       hot      1.00         0.00      0.00  0.00        0.00
+                                 L2    cold     0.40         0.00      0.16  0.44        0.00
+                                       hot      0.80         0.00      0.00  0.20        0.00
+pilot-llama31-8b        S0       L1    cold     0.08         0.40      0.52  0.00        0.00
+                                       hot      0.20         0.60      0.20  0.00        0.00
+                                 L2    cold     0.12         0.32      0.52  0.04        0.00
+                                       hot      0.20         0.60      0.20  0.00        0.00
+                        S1       L1    cold     0.20         0.24      0.44  0.00        0.12
+                                       hot      0.08         0.56      0.24  0.00        0.12
+                                 L2    cold     0.00         0.36      0.36  0.08        0.20
+                                       hot      0.24         0.48      0.08  0.00        0.20
+                        S2       L1    cold     0.32         0.12      0.16  0.40        0.00
+                                       hot      0.72         0.16      0.12  0.00        0.00
+                                 L2    cold     0.32         0.16      0.08  0.44        0.00
+                                       hot      0.72         0.16      0.04  0.08        0.00
 pilot-mistral7b         S0       L1    cold     0.08         0.40      0.52  0.00        0.00
                                        hot      0.60         0.00      0.00  0.40        0.00
                                  L2    cold     0.20         0.20      0.56  0.00        0.04
@@ -68,6 +124,78 @@ pilot-qwen35-9b-nothink S0       L1    cold     0.32         0.08      0.00  0.6
 
 === S2 mechanism answers (rate claimed active & in range, median degC) ===
 {
+ "pilot-gemma3-12b|L1": {
+  "gt_limit": {
+   "rate": 0.6,
+   "median": -25.0
+  },
+  "inlet_evaporative_cooling": {
+   "rate": 0.4,
+   "median": 25.0
+  },
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.0,
+   "median": null
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.0,
+   "median": null
+  }
+ },
+ "pilot-gemma3-12b|L2": {
+  "gt_limit": {
+   "rate": 0.6,
+   "median": -2.5
+  },
+  "inlet_evaporative_cooling": {
+   "rate": 0.2,
+   "median": 24.0
+  },
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.0,
+   "median": null
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.0,
+   "median": null
+  }
+ },
+ "pilot-llama31-8b|L1": {
+  "gt_limit": {
+   "rate": 0.48,
+   "median": -17.5
+  },
+  "inlet_evaporative_cooling": {
+   "rate": 0.4,
+   "median": 25.0
+  },
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.24,
+   "median": 30.0
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.16,
+   "median": 7.5
+  }
+ },
+ "pilot-llama31-8b|L2": {
+  "gt_limit": {
+   "rate": 0.48,
+   "median": -13.0
+  },
+  "inlet_evaporative_cooling": {
+   "rate": 0.32,
+   "median": 24.0
+  },
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.28,
+   "median": 25.0
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.24,
+   "median": 5.0
+  }
+ },
  "pilot-mistral7b|L1": {
   "gt_limit": {
    "rate": 0.44,
@@ -145,6 +273,18 @@ pilot-qwen35-9b-nothink S0       L1    cold     0.32         0.08      0.00  0.6
 === outcome of majority statements, mean over worlds (clean RMSE MW) ===
                                R0_data    R2g  blend_0.25  blend_0.5  budget_2  budget_5  harm_R2g
 statement                                                                                         
+pilot-gemma3-12b|S0|L1            7.99   8.27        7.97       8.04      7.97      8.05     0.063
+pilot-gemma3-12b|S0|L2            7.99   8.27        7.97       8.04      7.97      8.05     0.063
+pilot-gemma3-12b|S1|L1            7.99   8.57        7.81       7.93      7.88      7.88     0.137
+pilot-gemma3-12b|S1|L2            7.99   8.41        7.84       7.91      7.88      7.89     0.156
+pilot-gemma3-12b|S2|L1            7.99   7.91        7.78       7.67      7.87      7.76     0.050
+pilot-gemma3-12b|S2|L2            7.99   8.15        7.90       7.89      7.96      7.94     0.039
+pilot-llama31-8b|S0|L1            7.99  10.12        7.99       8.48      7.92      8.12     0.255
+pilot-llama31-8b|S0|L2            7.99  11.00        8.17       8.92      7.94      8.18     0.244
+pilot-llama31-8b|S1|L1            7.99   9.55        8.10       8.48      7.94      8.07     0.215
+pilot-llama31-8b|S1|L2            7.99  10.34        8.10       8.63      7.94      8.07     0.195
+pilot-llama31-8b|S2|L1            7.99   8.21        7.83       7.80      7.92      7.89     0.088
+pilot-llama31-8b|S2|L2            7.99   8.13        7.77       7.70      7.89      7.82     0.080
 pilot-mistral7b|S0|L1             7.99  11.17        8.35       9.12      8.21      8.71     0.339
 pilot-mistral7b|S0|L2             7.99   9.81        7.93       8.30      7.99      8.17     0.276
 pilot-mistral7b|S1|L1             7.99   6.90        7.70       7.42      7.90      7.78     0.058
