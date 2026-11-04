@@ -22,9 +22,14 @@ PER=$(( ${MEMS[0]} / 1024 ))
 TP=1; while [ $((TP * 2)) -le "$N" ]; do TP=$((TP * 2)); done   # 2의 거듭제곱으로 맞춘다
 TOTAL=$(( PER * TP ))
 echo "== GPU ${N}장 × ${PER} GiB, tensor-parallel ${TP} → 사용 가능 ${TOTAL} GiB"
-# MIG 조각(예: H200-2-35C)은 여러 장을 묶을 수 없다. 지난번 gpt-oss-20b와 같은 설정을 쓴다.
-EXTRA=""
-if nvidia-smi -L | grep -q MIG; then TP=1; TOTAL=$PER; EXTRA="--enforce-eager"; echo "== MIG 조각 감지: TP=1, --enforce-eager"; fi
+# MIG 조각(예: H200-2-35C)은 tensor-parallel로 묶을 수 없다. 지난번 Qwen3-30B처럼 pipeline-parallel(ray)로 묶는다
+# (runs/env/qwen3-30b-a3b-instruct.txt: 조각 3장, --pipeline-parallel-size 3 --distributed-executor-backend ray).
+EXTRA="${EXTRA_VARGS:-}"
+if nvidia-smi -L 2>/dev/null | grep -q MIG || nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | grep -qE -- '-[0-9]+-[0-9]+C'; then
+  TP=1; TOTAL=$(( PER * N ))
+  EXTRA="--pipeline-parallel-size $N --distributed-executor-backend ray --enforce-eager --gpu-memory-utilization 0.90 $EXTRA"
+  echo "== MIG 조각 ${N}장 감지: pipeline-parallel ${N}, 사용 가능 ${TOTAL} GiB"
+fi
 
 # 모델별 필요한 GPU 메모리 대략치 (GiB, 가중치 + 여유)
 declare -A NEED=( [gpt-oss-20b]=20 [gemma3-27b]=64 [llama33-70b]=150 )

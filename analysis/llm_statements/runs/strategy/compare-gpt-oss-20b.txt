@@ -1,0 +1,89 @@
+=== structural reliability by strategy (samples at T=0.7) ===
+                            p_struct  parse_ok    n
+tag         strategy level                         
+gpt-oss-20b S0       L1         0.25      1.00  100
+                     L2         0.26      1.00  100
+            S1       L1         0.30      1.00   50
+                     L2         0.24      0.98   50
+            S2       L1         0.24      1.00   50
+                     L2         0.30      1.00   50
+
+=== p_struct by world ===
+strategy                           S0   S1   S2
+tag         level world                        
+gpt-oss-20b L1    base           0.45  0.6  0.6
+                  cap_mild       0.25  0.3  0.0
+                  cap_strong     0.45  0.5  0.0
+                  evap           0.10  0.0  0.4
+                  evap+cap_mild  0.00  0.1  0.2
+            L2    base           0.40  0.5  0.3
+                  cap_mild       0.25  0.1  0.0
+                  cap_strong     0.20  0.2  0.0
+                  evap           0.45  0.4  0.6
+                  evap+cap_mild  0.00  0.0  0.6
+
+=== per-side verdicts ===
+verdict                          correct  false_alarm  location  miss  parse_fail
+tag         strategy level side                                                  
+gpt-oss-20b S0       L1    cold     0.47         0.10      0.43  0.00        0.00
+                           hot      0.55         0.07      0.19  0.19        0.00
+                     L2    cold     0.46         0.08      0.32  0.14        0.00
+                           hot      0.71         0.07      0.16  0.06        0.00
+            S1       L1    cold     0.54         0.06      0.40  0.00        0.00
+                           hot      0.58         0.08      0.28  0.06        0.00
+                     L2    cold     0.34         0.10      0.32  0.22        0.02
+                           hot      0.66         0.10      0.18  0.04        0.02
+            S2       L1    cold     0.44         0.10      0.30  0.16        0.00
+                           hot      0.40         0.42      0.18  0.00        0.00
+                     L2    cold     0.44         0.14      0.12  0.30        0.00
+                           hot      0.48         0.52      0.00  0.00        0.00
+
+=== S2 mechanism answers (rate claimed active & in range, median degC) ===
+{
+ "gpt-oss-20b|L1": {
+  "inlet_evaporative_cooling": {
+   "rate": 0.7,
+   "median": 30.0
+  },
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.6,
+   "median": 32.0
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.66,
+   "median": 0.0
+  },
+  "gt_limit": {
+   "rate": 0.6,
+   "median": 2.3
+  }
+ },
+ "gpt-oss-20b|L2": {
+  "inlet_evaporative_cooling": {
+   "rate": 0.78,
+   "median": 24.0
+  },
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.58,
+   "median": 30.0
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.68,
+   "median": 0.0
+  },
+  "gt_limit": {
+   "rate": 0.54,
+   "median": 1.9
+  }
+ }
+}
+
+=== outcome of majority statements, mean over worlds (clean RMSE MW) ===
+                   R0_data   R2g  blend_0.25  blend_0.5  budget_2  budget_5  harm_R2g
+statement                                                                            
+gpt-oss-20b|S0|L1     7.99  6.74        7.60       7.27      7.82      7.63     0.078
+gpt-oss-20b|S0|L2     7.99  7.68        7.75       7.62      7.84      7.70     0.078
+gpt-oss-20b|S1|L1     7.99  6.60        7.55       7.18      7.75      7.50     0.077
+gpt-oss-20b|S1|L2     7.99  7.71        7.86       7.76      7.88      7.77     0.012
+gpt-oss-20b|S2|L1     7.99  7.09        7.47       7.16      7.73      7.51     0.119
+gpt-oss-20b|S2|L2     7.99  8.17        7.71       7.64      7.85      7.80     0.124

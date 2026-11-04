@@ -1,75 +1,83 @@
 === structural p of assembled statements (share of 5 worlds all-correct) ===
-rule                       split  AGR   HA  HA-gate  HA_v1  S0maj  S2raw
-cell                                                                    
-gpt-oss-120b|L1              dev  0.2  0.6      0.6    0.0    0.2    0.0
-gpt-oss-120b|L2              dev  0.8  0.8      0.8    0.2    0.8    0.2
-gpt-oss-20b|L1               dev  0.4  0.4      0.4    0.4    0.4    NaN
-gpt-oss-20b|L2               dev  0.4  0.4      0.4    0.4    0.4    NaN
-pilot-gemma3-12b|L1          dev  0.0  0.2      0.2    0.2    0.0    0.4
-pilot-gemma3-12b|L2          dev  0.0  0.2      0.2    0.0    0.0    0.2
-pilot-llama31-8b|L1          dev  0.0  0.2      0.2    0.0    0.0    0.2
-pilot-llama31-8b|L2          dev  0.0  0.2      0.2    0.0    0.0    0.2
-pilot-mistral7b|L1           dev  0.0  0.2      0.2    0.0    0.0    0.4
-pilot-mistral7b|L2           dev  0.2  0.2      0.2    0.2    0.2    0.2
-pilot-qwen35-9b-nothink|L1   dev  0.0  0.2      0.2    0.0    0.0    0.0
-pilot-qwen35-9b-nothink|L2   dev  0.2  0.4      0.4    0.2    0.2    0.2
-qwen3-30b-a3b-instruct|L1    dev  0.0  0.6      0.6    0.4    0.0    0.8
-qwen3-30b-a3b-instruct|L2    dev  0.2  0.8      0.8    0.2    0.2    0.8
+rule                             split  AGR   HA  HA-gate  HA_v1  S0maj  S2raw
+cell                                                                          
+gpt-oss-120b|L1                    dev  0.2  0.6      0.6    0.0    0.2    0.0
+gpt-oss-120b|L2                    dev  0.8  0.8      0.8    0.2    0.8    0.2
+gpt-oss-20b|L1              validation  0.4  0.2      0.4    0.4    0.4    0.6
+gpt-oss-20b|L2              validation  0.4  0.2      0.2    0.2    0.4    0.4
+pilot-gemma3-12b|L1                dev  0.0  0.2      0.2    0.2    0.0    0.4
+pilot-gemma3-12b|L2                dev  0.0  0.2      0.2    0.0    0.0    0.2
+pilot-llama31-8b|L1                dev  0.0  0.2      0.2    0.0    0.0    0.2
+pilot-llama31-8b|L2                dev  0.0  0.2      0.2    0.0    0.0    0.2
+pilot-mistral7b|L1                 dev  0.0  0.2      0.2    0.0    0.0    0.4
+pilot-mistral7b|L2                 dev  0.2  0.2      0.2    0.2    0.2    0.2
+pilot-qwen35-9b-nothink|L1         dev  0.0  0.2      0.2    0.0    0.0    0.0
+pilot-qwen35-9b-nothink|L2         dev  0.2  0.4      0.4    0.2    0.2    0.2
+qwen3-30b-a3b-instruct|L1          dev  0.0  0.6      0.6    0.4    0.0    0.8
+qwen3-30b-a3b-instruct|L2          dev  0.2  0.8      0.8    0.2    0.2    0.8
 
 === cap part: correct (within 3 degC of truth) by sensitivity gate ===
-                                     mean  size
-split tag                     gate             
-dev   gpt-oss-120b            False  0.00     1
-                              True   0.47    49
-      pilot-gemma3-12b        False  0.00     4
-      pilot-llama31-8b        False  0.17     6
-                              True   1.00     1
-      pilot-mistral7b         False  0.20     5
-                              True   1.00     4
-      pilot-qwen35-9b-nothink False  0.00    10
-                              True   0.10    10
-      qwen3-30b-a3b-instruct  False  0.00     1
-                              True   0.87    52
+                                          mean  size
+split      tag                     gate             
+dev        gpt-oss-120b            False  0.00     1
+                                   True   0.47    49
+           pilot-gemma3-12b        False  0.00     4
+           pilot-llama31-8b        False  0.17     6
+                                   True   1.00     1
+           pilot-mistral7b         False  0.20     5
+                                   True   1.00     4
+           pilot-qwen35-9b-nothink False  0.00    10
+                                   True   0.10    10
+           qwen3-30b-a3b-instruct  False  0.00     1
+                                   True   0.87    52
+validation gpt-oss-20b             False  0.00    13
+                                   True   0.62    13
 
 === mean clean RMSE over 5 worlds (MW); blend 0.5 unless noted, AGR uses its own lambda ===
-rule                                AGR    HA  HA-gate  HA_budget5  HA_v1  ORACLE    R0  S0maj  S2raw
-split cell                                                                                           
--     ORACLE                        NaN   NaN      NaN         NaN    NaN    6.35   NaN    NaN    NaN
-dev   gpt-oss-120b|L1              7.25  7.37     7.32        7.61   7.29     NaN  7.99   7.65   7.74
-      gpt-oss-120b|L2              6.66  7.32     7.32        7.60   7.31     NaN  7.99   7.13   7.31
-      gpt-oss-20b|L1               6.98  7.27     7.27        7.63   7.27     NaN  7.99   7.27    NaN
-      gpt-oss-20b|L2               7.72  7.62     7.62        7.70   7.62     NaN  7.99   7.62    NaN
-      pilot-gemma3-12b|L1          8.17  7.99     7.99        7.99   7.76     NaN  7.99   8.04   7.67
-      pilot-gemma3-12b|L2          8.27  7.99     7.99        7.99   7.96     NaN  7.99   8.04   7.89
-      pilot-llama31-8b|L1          8.15  7.80     7.80        7.89   8.38     NaN  7.99   8.48   7.80
-      pilot-llama31-8b|L2          8.74  7.89     7.89        7.94   8.35     NaN  7.99   8.92   7.70
-      pilot-mistral7b|L1          10.21  7.99     7.99        7.99   8.67     NaN  7.99   9.12   7.67
-      pilot-mistral7b|L2           9.42  7.99     7.99        7.99   8.30     NaN  7.99   8.30   7.99
-      pilot-qwen35-9b-nothink|L1   7.89  7.95     8.03        7.89   7.95     NaN  7.99   7.88   8.02
-      pilot-qwen35-9b-nothink|L2   8.03  7.65     7.65        7.75   7.65     NaN  7.99   7.65   7.70
-      qwen3-30b-a3b-instruct|L1    7.92  7.37     7.37        7.65   7.12     NaN  7.99   7.87   7.11
-      qwen3-30b-a3b-instruct|L2    8.16  7.07     7.07        7.43   7.06     NaN  7.99   7.64   7.07
+rule                                     AGR    HA  HA-gate  HA_budget5  HA_v1  ORACLE    R0  S0maj  S2raw
+split      cell                                                                                           
+-          ORACLE                        NaN   NaN      NaN         NaN    NaN    6.35   NaN    NaN    NaN
+dev        gpt-oss-120b|L1              7.25  7.37     7.32        7.61   7.29     NaN  7.99   7.65   7.74
+           gpt-oss-120b|L2              6.66  7.32     7.32        7.60   7.31     NaN  7.99   7.13   7.31
+           pilot-gemma3-12b|L1          8.17  7.99     7.99        7.99   7.76     NaN  7.99   8.04   7.67
+           pilot-gemma3-12b|L2          8.27  7.99     7.99        7.99   7.96     NaN  7.99   8.04   7.89
+           pilot-llama31-8b|L1          8.15  7.80     7.80        7.89   8.38     NaN  7.99   8.48   7.80
+           pilot-llama31-8b|L2          8.74  7.89     7.89        7.94   8.35     NaN  7.99   8.92   7.70
+           pilot-mistral7b|L1          10.21  7.99     7.99        7.99   8.67     NaN  7.99   9.12   7.67
+           pilot-mistral7b|L2           9.42  7.99     7.99        7.99   8.30     NaN  7.99   8.30   7.99
+           pilot-qwen35-9b-nothink|L1   7.89  7.95     8.03        7.89   7.95     NaN  7.99   7.88   8.02
+           pilot-qwen35-9b-nothink|L2   8.03  7.65     7.65        7.75   7.65     NaN  7.99   7.65   7.70
+           qwen3-30b-a3b-instruct|L1    7.92  7.37     7.37        7.65   7.12     NaN  7.99   7.87   7.11
+           qwen3-30b-a3b-instruct|L2    8.16  7.07     7.07        7.43   7.06     NaN  7.99   7.64   7.07
+validation gpt-oss-20b|L1               6.98  7.99     7.41        7.99   7.02     NaN  7.99   7.27   7.16
+           gpt-oss-20b|L2               7.72  7.89     7.89        7.94   7.45     NaN  7.99   7.62   7.64
 ORACLE (truth, R2g): 6.35
 
 === harm rate (> 1 MW worse than R0) ===
-rule                                AGR     HA  HA-gate  HA_budget5  HA_v1   R0  S0maj  S2raw
-split cell                                                                                   
-dev   gpt-oss-120b|L1             0.143  0.034    0.029       0.050  0.047  0.0  0.134  0.087
-      gpt-oss-120b|L2             0.050  0.029    0.029       0.039  0.051  0.0  0.040  0.051
-      gpt-oss-20b|L1              0.072  0.061    0.061       0.067  0.061  0.0  0.061    NaN
-      gpt-oss-20b|L2              0.017  0.036    0.036       0.051  0.036  0.0  0.036    NaN
-      pilot-gemma3-12b|L1         0.059  0.000    0.000       0.000  0.063  0.0  0.048  0.016
-      pilot-gemma3-12b|L2         0.063  0.000    0.000       0.000  0.066  0.0  0.048  0.018
-      pilot-llama31-8b|L1         0.153  0.052    0.052       0.061  0.209  0.0  0.207  0.052
-      pilot-llama31-8b|L2         0.202  0.018    0.018       0.019  0.159  0.0  0.201  0.039
-      pilot-mistral7b|L1          0.314  0.000    0.000       0.000  0.251  0.0  0.302  0.016
-      pilot-mistral7b|L2          0.251  0.000    0.000       0.000  0.224  0.0  0.224  0.000
-      pilot-qwen35-9b-nothink|L1  0.012  0.035    0.145       0.038  0.049  0.0  0.014  0.146
-      pilot-qwen35-9b-nothink|L2  0.064  0.024    0.024       0.025  0.024  0.0  0.024  0.055
-      qwen3-30b-a3b-instruct|L1   0.047  0.010    0.010       0.012  0.064  0.0  0.019  0.052
-      qwen3-30b-a3b-instruct|L2   0.122  0.025    0.025       0.027  0.043  0.0  0.042  0.025
+rule                                     AGR     HA  HA-gate  HA_budget5  HA_v1   R0  S0maj  S2raw
+split      cell                                                                                   
+dev        gpt-oss-120b|L1             0.143  0.034    0.029       0.050  0.047  0.0  0.134  0.087
+           gpt-oss-120b|L2             0.050  0.029    0.029       0.039  0.051  0.0  0.040  0.051
+           pilot-gemma3-12b|L1         0.059  0.000    0.000       0.000  0.063  0.0  0.048  0.016
+           pilot-gemma3-12b|L2         0.063  0.000    0.000       0.000  0.066  0.0  0.048  0.018
+           pilot-llama31-8b|L1         0.153  0.052    0.052       0.061  0.209  0.0  0.207  0.052
+           pilot-llama31-8b|L2         0.202  0.018    0.018       0.019  0.159  0.0  0.201  0.039
+           pilot-mistral7b|L1          0.314  0.000    0.000       0.000  0.251  0.0  0.302  0.016
+           pilot-mistral7b|L2          0.251  0.000    0.000       0.000  0.224  0.0  0.224  0.000
+           pilot-qwen35-9b-nothink|L1  0.012  0.035    0.145       0.038  0.049  0.0  0.014  0.146
+           pilot-qwen35-9b-nothink|L2  0.064  0.024    0.024       0.025  0.024  0.0  0.024  0.055
+           qwen3-30b-a3b-instruct|L1   0.047  0.010    0.010       0.012  0.064  0.0  0.019  0.052
+           qwen3-30b-a3b-instruct|L2   0.122  0.025    0.025       0.027  0.043  0.0  0.042  0.025
+validation gpt-oss-20b|L1              0.072  0.000    0.000       0.000  0.062  0.0  0.061  0.062
+           gpt-oss-20b|L2              0.017  0.018    0.018       0.019  0.056  0.0  0.036  0.042
 
 === pre-registered verdicts (validation cells only) ===
 {
- "status": "no validation cells yet"
+ "n_cells": 2,
+ "H1": true,
+ "H2": false,
+ "H5": true,
+ "H4": false,
+ "H3_diff": 0.615,
+ "H3": true
 }

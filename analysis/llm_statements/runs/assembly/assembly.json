@@ -13,12 +13,12 @@
   "gpt-oss-20b|L1": {
    "tag": "gpt-oss-20b",
    "level": "L1",
-   "split": "dev"
+   "split": "validation"
   },
   "gpt-oss-20b|L2": {
    "tag": "gpt-oss-20b",
    "level": "L2",
-   "split": "dev"
+   "split": "validation"
   },
   "pilot-gemma3-12b|L1": {
    "tag": "pilot-gemma3-12b",
@@ -91,22 +91,22 @@
    "S2raw": 0.2
   },
   "gpt-oss-20b|L1": {
-   "split": "dev",
+   "split": "validation",
    "AGR": 0.4,
-   "HA": 0.4,
+   "HA": 0.2,
    "HA-gate": 0.4,
    "HA_v1": 0.4,
    "S0maj": 0.4,
-   "S2raw": NaN
+   "S2raw": 0.6
   },
   "gpt-oss-20b|L2": {
-   "split": "dev",
+   "split": "validation",
    "AGR": 0.4,
-   "HA": 0.4,
-   "HA-gate": 0.4,
-   "HA_v1": 0.4,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.2,
    "S0maj": 0.4,
-   "S2raw": NaN
+   "S2raw": 0.4
   },
   "pilot-gemma3-12b|L1": {
    "split": "dev",
@@ -243,6 +243,14 @@
   "dev|qwen3-30b-a3b-instruct|True": {
    "mean": 0.87,
    "size": 52
+  },
+  "validation|gpt-oss-20b|False": {
+   "mean": 0.0,
+   "size": 13
+  },
+  "validation|gpt-oss-20b|True": {
+   "mean": 0.62,
+   "size": 13
   }
  },
  "rmse": {
@@ -278,28 +286,6 @@
    "R0": 7.99,
    "S0maj": 7.13,
    "S2raw": 7.31
-  },
-  "dev|gpt-oss-20b|L1": {
-   "AGR": 6.98,
-   "HA": 7.27,
-   "HA-gate": 7.27,
-   "HA_budget5": 7.63,
-   "HA_v1": 7.27,
-   "ORACLE": NaN,
-   "R0": 7.99,
-   "S0maj": 7.27,
-   "S2raw": NaN
-  },
-  "dev|gpt-oss-20b|L2": {
-   "AGR": 7.72,
-   "HA": 7.62,
-   "HA-gate": 7.62,
-   "HA_budget5": 7.7,
-   "HA_v1": 7.62,
-   "ORACLE": NaN,
-   "R0": 7.99,
-   "S0maj": 7.62,
-   "S2raw": NaN
   },
   "dev|pilot-gemma3-12b|L1": {
    "AGR": 8.17,
@@ -410,6 +396,28 @@
    "R0": 7.99,
    "S0maj": 7.64,
    "S2raw": 7.07
+  },
+  "validation|gpt-oss-20b|L1": {
+   "AGR": 6.98,
+   "HA": 7.99,
+   "HA-gate": 7.41,
+   "HA_budget5": 7.99,
+   "HA_v1": 7.02,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.27,
+   "S2raw": 7.16
+  },
+  "validation|gpt-oss-20b|L2": {
+   "AGR": 7.72,
+   "HA": 7.89,
+   "HA-gate": 7.89,
+   "HA_budget5": 7.94,
+   "HA_v1": 7.45,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.62,
+   "S2raw": 7.64
   }
  },
  "harm": {
@@ -432,26 +440,6 @@
    "R0": 0.0,
    "S0maj": 0.04,
    "S2raw": 0.051
-  },
-  "dev|gpt-oss-20b|L1": {
-   "AGR": 0.072,
-   "HA": 0.061,
-   "HA-gate": 0.061,
-   "HA_budget5": 0.067,
-   "HA_v1": 0.061,
-   "R0": 0.0,
-   "S0maj": 0.061,
-   "S2raw": NaN
-  },
-  "dev|gpt-oss-20b|L2": {
-   "AGR": 0.017,
-   "HA": 0.036,
-   "HA-gate": 0.036,
-   "HA_budget5": 0.051,
-   "HA_v1": 0.036,
-   "R0": 0.0,
-   "S0maj": 0.036,
-   "S2raw": NaN
   },
   "dev|pilot-gemma3-12b|L1": {
    "AGR": 0.059,
@@ -552,10 +540,58 @@
    "R0": 0.0,
    "S0maj": 0.042,
    "S2raw": 0.025
+  },
+  "validation|gpt-oss-20b|L1": {
+   "AGR": 0.072,
+   "HA": 0.0,
+   "HA-gate": 0.0,
+   "HA_budget5": 0.0,
+   "HA_v1": 0.062,
+   "R0": 0.0,
+   "S0maj": 0.061,
+   "S2raw": 0.062
+  },
+  "validation|gpt-oss-20b|L2": {
+   "AGR": 0.017,
+   "HA": 0.018,
+   "HA-gate": 0.018,
+   "HA_budget5": 0.019,
+   "HA_v1": 0.056,
+   "R0": 0.0,
+   "S0maj": 0.036,
+   "S2raw": 0.042
   }
  },
  "oracle_rmse": 6.35,
  "verdicts": {
-  "status": "no validation cells yet"
+  "n_cells": 2,
+  "H1": true,
+  "H2": false,
+  "H5": true,
+  "H4": false,
+  "H3_diff": 0.615,
+  "H3": true,
+  "cells_HA_vs": {
+   "gpt-oss-20b|L1": {
+    "AGR": 6.98,
+    "HA": 7.99,
+    "HA-gate": 7.41,
+    "HA_budget5": 7.99,
+    "HA_v1": 7.02,
+    "R0": 7.99,
+    "S0maj": 7.27,
+    "S2raw": 7.16
+   },
+   "gpt-oss-20b|L2": {
+    "AGR": 7.72,
+    "HA": 7.89,
+    "HA-gate": 7.89,
+    "HA_budget5": 7.94,
+    "HA_v1": 7.45,
+    "R0": 7.99,
+    "S0maj": 7.62,
+    "S2raw": 7.64
+   }
+  }
  }
 }

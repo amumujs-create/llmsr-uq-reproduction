@@ -1,0 +1,214 @@
+{
+ "p_struct": {
+  "gpt-oss-20b|S0|L1": {
+   "p_struct": 0.25,
+   "parse_ok": 1.0,
+   "n": 100
+  },
+  "gpt-oss-20b|S0|L2": {
+   "p_struct": 0.26,
+   "parse_ok": 1.0,
+   "n": 100
+  },
+  "gpt-oss-20b|S1|L1": {
+   "p_struct": 0.3,
+   "parse_ok": 1.0,
+   "n": 50
+  },
+  "gpt-oss-20b|S1|L2": {
+   "p_struct": 0.24,
+   "parse_ok": 0.98,
+   "n": 50
+  },
+  "gpt-oss-20b|S2|L1": {
+   "p_struct": 0.24,
+   "parse_ok": 1.0,
+   "n": 50
+  },
+  "gpt-oss-20b|S2|L2": {
+   "p_struct": 0.3,
+   "parse_ok": 1.0,
+   "n": 50
+  }
+ },
+ "per_side": {
+  "gpt-oss-20b|S0|L1|cold": {
+   "correct": 0.47,
+   "false_alarm": 0.1,
+   "location": 0.43,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S0|L1|hot": {
+   "correct": 0.55,
+   "false_alarm": 0.07,
+   "location": 0.19,
+   "miss": 0.19,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S0|L2|cold": {
+   "correct": 0.46,
+   "false_alarm": 0.08,
+   "location": 0.32,
+   "miss": 0.14,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S0|L2|hot": {
+   "correct": 0.71,
+   "false_alarm": 0.07,
+   "location": 0.16,
+   "miss": 0.06,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S1|L1|cold": {
+   "correct": 0.54,
+   "false_alarm": 0.06,
+   "location": 0.4,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S1|L1|hot": {
+   "correct": 0.58,
+   "false_alarm": 0.08,
+   "location": 0.28,
+   "miss": 0.06,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S1|L2|cold": {
+   "correct": 0.34,
+   "false_alarm": 0.1,
+   "location": 0.32,
+   "miss": 0.22,
+   "parse_fail": 0.02
+  },
+  "gpt-oss-20b|S1|L2|hot": {
+   "correct": 0.66,
+   "false_alarm": 0.1,
+   "location": 0.18,
+   "miss": 0.04,
+   "parse_fail": 0.02
+  },
+  "gpt-oss-20b|S2|L1|cold": {
+   "correct": 0.44,
+   "false_alarm": 0.1,
+   "location": 0.3,
+   "miss": 0.16,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S2|L1|hot": {
+   "correct": 0.4,
+   "false_alarm": 0.42,
+   "location": 0.18,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S2|L2|cold": {
+   "correct": 0.44,
+   "false_alarm": 0.14,
+   "location": 0.12,
+   "miss": 0.3,
+   "parse_fail": 0.0
+  },
+  "gpt-oss-20b|S2|L2|hot": {
+   "correct": 0.48,
+   "false_alarm": 0.52,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  }
+ },
+ "s2_mechanisms": {
+  "gpt-oss-20b|L1": {
+   "inlet_evaporative_cooling": {
+    "rate": 0.7,
+    "median": 30.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.6,
+    "median": 32.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.66,
+    "median": 0.0
+   },
+   "gt_limit": {
+    "rate": 0.6,
+    "median": 2.3
+   }
+  },
+  "gpt-oss-20b|L2": {
+   "inlet_evaporative_cooling": {
+    "rate": 0.78,
+    "median": 24.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.58,
+    "median": 30.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.68,
+    "median": 0.0
+   },
+   "gt_limit": {
+    "rate": 0.54,
+    "median": 1.9
+   }
+  }
+ },
+ "outcome_world_mean": {
+  "gpt-oss-20b|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 6.74,
+   "blend_0.25": 7.6,
+   "blend_0.5": 7.27,
+   "budget_2": 7.82,
+   "budget_5": 7.63,
+   "harm_R2g": 0.078
+  },
+  "gpt-oss-20b|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 7.68,
+   "blend_0.25": 7.75,
+   "blend_0.5": 7.62,
+   "budget_2": 7.84,
+   "budget_5": 7.7,
+   "harm_R2g": 0.078
+  },
+  "gpt-oss-20b|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 6.6,
+   "blend_0.25": 7.55,
+   "blend_0.5": 7.18,
+   "budget_2": 7.75,
+   "budget_5": 7.5,
+   "harm_R2g": 0.077
+  },
+  "gpt-oss-20b|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 7.71,
+   "blend_0.25": 7.86,
+   "blend_0.5": 7.76,
+   "budget_2": 7.88,
+   "budget_5": 7.77,
+   "harm_R2g": 0.012
+  },
+  "gpt-oss-20b|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.09,
+   "blend_0.25": 7.47,
+   "blend_0.5": 7.16,
+   "budget_2": 7.73,
+   "budget_5": 7.51,
+   "harm_R2g": 0.119
+  },
+  "gpt-oss-20b|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.17,
+   "blend_0.25": 7.71,
+   "blend_0.5": 7.64,
+   "budget_2": 7.85,
+   "budget_5": 7.8,
+   "harm_R2g": 0.124
+  }
+ }
+}
