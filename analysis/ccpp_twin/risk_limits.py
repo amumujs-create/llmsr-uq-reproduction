@@ -43,9 +43,10 @@ def coef_prior_fit(X, y, slope_target, rng):
     return fit(X, y, CP_GRID[int(np.argmin(cv))])
 
 
-def run(x, reps, external=None, builtin=True):
+def run(x, reps, external=None, builtin=True, external_lambda=None):
     """external: {module: {name: [(side, at_c), ...]}} statements to evaluate in addition to (or instead of) the
-    built-in ones; used to score LLM statements on the same worlds, windows, reps and seeds."""
+    built-in ones; used to score LLM statements on the same worlds, windows, reps and seeds.
+    external_lambda: optional {module: {name: lam}}; adds a blend_custom column with that statement's own lambda."""
     worlds = [w for w in build_worlds(x)[0] if w["noise"] > 0]
     at, ap, rh = x["AT"], x["AP"], x["RH"]
     wins = windows(at)
@@ -105,6 +106,9 @@ def run(x, reps, external=None, builtin=True):
                                "delta_abs_mean": float(np.abs(delta).mean())}
                         for lam in LAMBDAS:
                             rec[f"blend_{lam}"] = rmse(p0 + lam * delta)
+                        lam_c = (external_lambda or {}).get(world["module"], {}).get(sname)
+                        if lam_c is not None:
+                            rec["blend_custom"] = rmse(p0 + lam_c * delta)
                         for eps in EPSILONS:
                             pe_b = p0 + np.clip(delta, -eps, eps)
                             rec[f"budget_{eps:g}"] = rmse(pe_b)

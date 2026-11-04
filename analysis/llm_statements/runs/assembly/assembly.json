@@ -1,0 +1,561 @@
+{
+ "meta": {
+  "gpt-oss-120b|L1": {
+   "tag": "gpt-oss-120b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "gpt-oss-120b|L2": {
+   "tag": "gpt-oss-120b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "gpt-oss-20b|L1": {
+   "tag": "gpt-oss-20b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "gpt-oss-20b|L2": {
+   "tag": "gpt-oss-20b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-gemma3-12b|L1": {
+   "tag": "pilot-gemma3-12b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-gemma3-12b|L2": {
+   "tag": "pilot-gemma3-12b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-llama31-8b|L1": {
+   "tag": "pilot-llama31-8b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-llama31-8b|L2": {
+   "tag": "pilot-llama31-8b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-mistral7b|L1": {
+   "tag": "pilot-mistral7b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-mistral7b|L2": {
+   "tag": "pilot-mistral7b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-qwen35-9b-nothink|L1": {
+   "tag": "pilot-qwen35-9b-nothink",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-qwen35-9b-nothink|L2": {
+   "tag": "pilot-qwen35-9b-nothink",
+   "level": "L2",
+   "split": "dev"
+  },
+  "qwen3-30b-a3b-instruct|L1": {
+   "tag": "qwen3-30b-a3b-instruct",
+   "level": "L1",
+   "split": "dev"
+  },
+  "qwen3-30b-a3b-instruct|L2": {
+   "tag": "qwen3-30b-a3b-instruct",
+   "level": "L2",
+   "split": "dev"
+  }
+ },
+ "structure": {
+  "gpt-oss-120b|L1": {
+   "split": "dev",
+   "AGR": 0.2,
+   "HA": 0.6,
+   "HA-gate": 0.6,
+   "HA_v1": 0.0,
+   "S0maj": 0.2,
+   "S2raw": 0.0
+  },
+  "gpt-oss-120b|L2": {
+   "split": "dev",
+   "AGR": 0.8,
+   "HA": 0.8,
+   "HA-gate": 0.8,
+   "HA_v1": 0.2,
+   "S0maj": 0.8,
+   "S2raw": 0.2
+  },
+  "gpt-oss-20b|L1": {
+   "split": "dev",
+   "AGR": 0.4,
+   "HA": 0.4,
+   "HA-gate": 0.4,
+   "HA_v1": 0.4,
+   "S0maj": 0.4,
+   "S2raw": NaN
+  },
+  "gpt-oss-20b|L2": {
+   "split": "dev",
+   "AGR": 0.4,
+   "HA": 0.4,
+   "HA-gate": 0.4,
+   "HA_v1": 0.4,
+   "S0maj": 0.4,
+   "S2raw": NaN
+  },
+  "pilot-gemma3-12b|L1": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.2,
+   "S0maj": 0.0,
+   "S2raw": 0.4
+  },
+  "pilot-gemma3-12b|L2": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.0,
+   "S0maj": 0.0,
+   "S2raw": 0.2
+  },
+  "pilot-llama31-8b|L1": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.0,
+   "S0maj": 0.0,
+   "S2raw": 0.2
+  },
+  "pilot-llama31-8b|L2": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.0,
+   "S0maj": 0.0,
+   "S2raw": 0.2
+  },
+  "pilot-mistral7b|L1": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.0,
+   "S0maj": 0.0,
+   "S2raw": 0.4
+  },
+  "pilot-mistral7b|L2": {
+   "split": "dev",
+   "AGR": 0.2,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.2,
+   "S0maj": 0.2,
+   "S2raw": 0.2
+  },
+  "pilot-qwen35-9b-nothink|L1": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.0,
+   "S0maj": 0.0,
+   "S2raw": 0.0
+  },
+  "pilot-qwen35-9b-nothink|L2": {
+   "split": "dev",
+   "AGR": 0.2,
+   "HA": 0.4,
+   "HA-gate": 0.4,
+   "HA_v1": 0.2,
+   "S0maj": 0.2,
+   "S2raw": 0.2
+  },
+  "qwen3-30b-a3b-instruct|L1": {
+   "split": "dev",
+   "AGR": 0.0,
+   "HA": 0.6,
+   "HA-gate": 0.6,
+   "HA_v1": 0.4,
+   "S0maj": 0.0,
+   "S2raw": 0.8
+  },
+  "qwen3-30b-a3b-instruct|L2": {
+   "split": "dev",
+   "AGR": 0.2,
+   "HA": 0.8,
+   "HA-gate": 0.8,
+   "HA_v1": 0.2,
+   "S0maj": 0.2,
+   "S2raw": 0.8
+  }
+ },
+ "gate": {
+  "dev|gpt-oss-120b|False": {
+   "mean": 0.0,
+   "size": 1
+  },
+  "dev|gpt-oss-120b|True": {
+   "mean": 0.47,
+   "size": 49
+  },
+  "dev|pilot-gemma3-12b|False": {
+   "mean": 0.0,
+   "size": 4
+  },
+  "dev|pilot-llama31-8b|False": {
+   "mean": 0.17,
+   "size": 6
+  },
+  "dev|pilot-llama31-8b|True": {
+   "mean": 1.0,
+   "size": 1
+  },
+  "dev|pilot-mistral7b|False": {
+   "mean": 0.2,
+   "size": 5
+  },
+  "dev|pilot-mistral7b|True": {
+   "mean": 1.0,
+   "size": 4
+  },
+  "dev|pilot-qwen35-9b-nothink|False": {
+   "mean": 0.0,
+   "size": 10
+  },
+  "dev|pilot-qwen35-9b-nothink|True": {
+   "mean": 0.1,
+   "size": 10
+  },
+  "dev|qwen3-30b-a3b-instruct|False": {
+   "mean": 0.0,
+   "size": 1
+  },
+  "dev|qwen3-30b-a3b-instruct|True": {
+   "mean": 0.87,
+   "size": 52
+  }
+ },
+ "rmse": {
+  "-|ORACLE": {
+   "AGR": NaN,
+   "HA": NaN,
+   "HA-gate": NaN,
+   "HA_budget5": NaN,
+   "HA_v1": NaN,
+   "ORACLE": 6.35,
+   "R0": NaN,
+   "S0maj": NaN,
+   "S2raw": NaN
+  },
+  "dev|gpt-oss-120b|L1": {
+   "AGR": 7.25,
+   "HA": 7.37,
+   "HA-gate": 7.32,
+   "HA_budget5": 7.61,
+   "HA_v1": 7.29,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.65,
+   "S2raw": 7.74
+  },
+  "dev|gpt-oss-120b|L2": {
+   "AGR": 6.66,
+   "HA": 7.32,
+   "HA-gate": 7.32,
+   "HA_budget5": 7.6,
+   "HA_v1": 7.31,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.13,
+   "S2raw": 7.31
+  },
+  "dev|gpt-oss-20b|L1": {
+   "AGR": 6.98,
+   "HA": 7.27,
+   "HA-gate": 7.27,
+   "HA_budget5": 7.63,
+   "HA_v1": 7.27,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.27,
+   "S2raw": NaN
+  },
+  "dev|gpt-oss-20b|L2": {
+   "AGR": 7.72,
+   "HA": 7.62,
+   "HA-gate": 7.62,
+   "HA_budget5": 7.7,
+   "HA_v1": 7.62,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.62,
+   "S2raw": NaN
+  },
+  "dev|pilot-gemma3-12b|L1": {
+   "AGR": 8.17,
+   "HA": 7.99,
+   "HA-gate": 7.99,
+   "HA_budget5": 7.99,
+   "HA_v1": 7.76,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.04,
+   "S2raw": 7.67
+  },
+  "dev|pilot-gemma3-12b|L2": {
+   "AGR": 8.27,
+   "HA": 7.99,
+   "HA-gate": 7.99,
+   "HA_budget5": 7.99,
+   "HA_v1": 7.96,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.04,
+   "S2raw": 7.89
+  },
+  "dev|pilot-llama31-8b|L1": {
+   "AGR": 8.15,
+   "HA": 7.8,
+   "HA-gate": 7.8,
+   "HA_budget5": 7.89,
+   "HA_v1": 8.38,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.48,
+   "S2raw": 7.8
+  },
+  "dev|pilot-llama31-8b|L2": {
+   "AGR": 8.74,
+   "HA": 7.89,
+   "HA-gate": 7.89,
+   "HA_budget5": 7.94,
+   "HA_v1": 8.35,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.92,
+   "S2raw": 7.7
+  },
+  "dev|pilot-mistral7b|L1": {
+   "AGR": 10.21,
+   "HA": 7.99,
+   "HA-gate": 7.99,
+   "HA_budget5": 7.99,
+   "HA_v1": 8.67,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 9.12,
+   "S2raw": 7.67
+  },
+  "dev|pilot-mistral7b|L2": {
+   "AGR": 9.42,
+   "HA": 7.99,
+   "HA-gate": 7.99,
+   "HA_budget5": 7.99,
+   "HA_v1": 8.3,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.3,
+   "S2raw": 7.99
+  },
+  "dev|pilot-qwen35-9b-nothink|L1": {
+   "AGR": 7.89,
+   "HA": 7.95,
+   "HA-gate": 8.03,
+   "HA_budget5": 7.89,
+   "HA_v1": 7.95,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.88,
+   "S2raw": 8.02
+  },
+  "dev|pilot-qwen35-9b-nothink|L2": {
+   "AGR": 8.03,
+   "HA": 7.65,
+   "HA-gate": 7.65,
+   "HA_budget5": 7.75,
+   "HA_v1": 7.65,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.65,
+   "S2raw": 7.7
+  },
+  "dev|qwen3-30b-a3b-instruct|L1": {
+   "AGR": 7.92,
+   "HA": 7.37,
+   "HA-gate": 7.37,
+   "HA_budget5": 7.65,
+   "HA_v1": 7.12,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.87,
+   "S2raw": 7.11
+  },
+  "dev|qwen3-30b-a3b-instruct|L2": {
+   "AGR": 8.16,
+   "HA": 7.07,
+   "HA-gate": 7.07,
+   "HA_budget5": 7.43,
+   "HA_v1": 7.06,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.64,
+   "S2raw": 7.07
+  }
+ },
+ "harm": {
+  "dev|gpt-oss-120b|L1": {
+   "AGR": 0.143,
+   "HA": 0.034,
+   "HA-gate": 0.029,
+   "HA_budget5": 0.05,
+   "HA_v1": 0.047,
+   "R0": 0.0,
+   "S0maj": 0.134,
+   "S2raw": 0.087
+  },
+  "dev|gpt-oss-120b|L2": {
+   "AGR": 0.05,
+   "HA": 0.029,
+   "HA-gate": 0.029,
+   "HA_budget5": 0.039,
+   "HA_v1": 0.051,
+   "R0": 0.0,
+   "S0maj": 0.04,
+   "S2raw": 0.051
+  },
+  "dev|gpt-oss-20b|L1": {
+   "AGR": 0.072,
+   "HA": 0.061,
+   "HA-gate": 0.061,
+   "HA_budget5": 0.067,
+   "HA_v1": 0.061,
+   "R0": 0.0,
+   "S0maj": 0.061,
+   "S2raw": NaN
+  },
+  "dev|gpt-oss-20b|L2": {
+   "AGR": 0.017,
+   "HA": 0.036,
+   "HA-gate": 0.036,
+   "HA_budget5": 0.051,
+   "HA_v1": 0.036,
+   "R0": 0.0,
+   "S0maj": 0.036,
+   "S2raw": NaN
+  },
+  "dev|pilot-gemma3-12b|L1": {
+   "AGR": 0.059,
+   "HA": 0.0,
+   "HA-gate": 0.0,
+   "HA_budget5": 0.0,
+   "HA_v1": 0.063,
+   "R0": 0.0,
+   "S0maj": 0.048,
+   "S2raw": 0.016
+  },
+  "dev|pilot-gemma3-12b|L2": {
+   "AGR": 0.063,
+   "HA": 0.0,
+   "HA-gate": 0.0,
+   "HA_budget5": 0.0,
+   "HA_v1": 0.066,
+   "R0": 0.0,
+   "S0maj": 0.048,
+   "S2raw": 0.018
+  },
+  "dev|pilot-llama31-8b|L1": {
+   "AGR": 0.153,
+   "HA": 0.052,
+   "HA-gate": 0.052,
+   "HA_budget5": 0.061,
+   "HA_v1": 0.209,
+   "R0": 0.0,
+   "S0maj": 0.207,
+   "S2raw": 0.052
+  },
+  "dev|pilot-llama31-8b|L2": {
+   "AGR": 0.202,
+   "HA": 0.018,
+   "HA-gate": 0.018,
+   "HA_budget5": 0.019,
+   "HA_v1": 0.159,
+   "R0": 0.0,
+   "S0maj": 0.201,
+   "S2raw": 0.039
+  },
+  "dev|pilot-mistral7b|L1": {
+   "AGR": 0.314,
+   "HA": 0.0,
+   "HA-gate": 0.0,
+   "HA_budget5": 0.0,
+   "HA_v1": 0.251,
+   "R0": 0.0,
+   "S0maj": 0.302,
+   "S2raw": 0.016
+  },
+  "dev|pilot-mistral7b|L2": {
+   "AGR": 0.251,
+   "HA": 0.0,
+   "HA-gate": 0.0,
+   "HA_budget5": 0.0,
+   "HA_v1": 0.224,
+   "R0": 0.0,
+   "S0maj": 0.224,
+   "S2raw": 0.0
+  },
+  "dev|pilot-qwen35-9b-nothink|L1": {
+   "AGR": 0.012,
+   "HA": 0.035,
+   "HA-gate": 0.145,
+   "HA_budget5": 0.038,
+   "HA_v1": 0.049,
+   "R0": 0.0,
+   "S0maj": 0.014,
+   "S2raw": 0.146
+  },
+  "dev|pilot-qwen35-9b-nothink|L2": {
+   "AGR": 0.064,
+   "HA": 0.024,
+   "HA-gate": 0.024,
+   "HA_budget5": 0.025,
+   "HA_v1": 0.024,
+   "R0": 0.0,
+   "S0maj": 0.024,
+   "S2raw": 0.055
+  },
+  "dev|qwen3-30b-a3b-instruct|L1": {
+   "AGR": 0.047,
+   "HA": 0.01,
+   "HA-gate": 0.01,
+   "HA_budget5": 0.012,
+   "HA_v1": 0.064,
+   "R0": 0.0,
+   "S0maj": 0.019,
+   "S2raw": 0.052
+  },
+  "dev|qwen3-30b-a3b-instruct|L2": {
+   "AGR": 0.122,
+   "HA": 0.025,
+   "HA-gate": 0.025,
+   "HA_budget5": 0.027,
+   "HA_v1": 0.043,
+   "R0": 0.0,
+   "S0maj": 0.042,
+   "S2raw": 0.025
+  }
+ },
+ "oracle_rmse": 6.35,
+ "verdicts": {
+  "status": "no validation cells yet"
+ }
+}
