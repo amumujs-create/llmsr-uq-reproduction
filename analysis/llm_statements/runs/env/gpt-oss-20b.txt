@@ -1,0 +1,8 @@
+tag=gpt-oss-20b
+model=openai/gpt-oss-20b
+extra_body={}
+vllm_args=single-gpu enforce-eager max-model-len 16384 patched-nccl
+date=2026-11-04T09:45:32Z
+host=gm1-2-ad
+vllm=0.31.0
+gpu=NVIDIA H200-2-35C, 35840 MiB
