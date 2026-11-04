@@ -5,6 +5,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis' / 'llm_statements'))
 from parse_score import agreement, majority, parse, score, to_statement  # noqa: E402
+from elicit import assemble_s2, messages as s_messages  # noqa: E402
 from prompts import QUESTION, SETTINGS, WORLDS, build_prompt, check_no_leak, describe  # noqa: E402
 
 SUMMARY = {'n': 146, 'at_lo': 4.4, 'at_hi': 6.9, 'slope': -0.3, 'se': 0.5}
@@ -63,6 +64,23 @@ class ParseScoreChecks(unittest.TestCase):
         self.assertEqual(m, [('above', 24.0)])
         self.assertTrue(agreement([('above', 25.0)], m))
         self.assertFalse(agreement([('above', 25.0), ('below', 5.0)], m))
+
+
+class StrategyChecks(unittest.TestCase):
+    def test_strategy_prompts_do_not_leak(self):
+        for s in ('S1', 'S2'):
+            for w in WORLDS:
+                for lv in ('L1', 'L2'):
+                    self.assertEqual(check_no_leak(s_messages(w, lv, s)[1]['content']), [], (s, w, lv))
+
+    def test_s2_assembly(self):
+        r = assemble_s2('{"gt_generator_limit": {"reached_in_range": true, "gt_mw_at_15c": 343, "limit_mw": 364,'
+                        ' "gt_mw_per_degc": -2.2}, "inlet_anti_icing_heating": {"active": true, "below_c": 4},'
+                        ' "inlet_evaporative_cooling": {"active": true, "above_c": 24}}')
+        self.assertEqual([s for s, _ in r['stmt']], ['below', 'above'])
+        self.assertAlmostEqual(r['stmt'][0][1], 15 - 21 / 2.2)
+        self.assertEqual(assemble_s2('{"gt_generator_limit": {"reached_in_range": false}}')['stmt'], [])
+        self.assertFalse(assemble_s2('nothing')['ok'])
 
 
 if __name__ == '__main__':

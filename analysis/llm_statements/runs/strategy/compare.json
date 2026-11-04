@@ -1,0 +1,418 @@
+{
+ "p_struct": {
+  "pilot-mistral7b|S0|L1": {
+   "p_struct": 0.08,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-mistral7b|S0|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 0.96,
+   "n": 25
+  },
+  "pilot-mistral7b|S1|L1": {
+   "p_struct": 0.12,
+   "parse_ok": 0.96,
+   "n": 25
+  },
+  "pilot-mistral7b|S1|L2": {
+   "p_struct": 0.12,
+   "parse_ok": 0.84,
+   "n": 25
+  },
+  "pilot-mistral7b|S2|L1": {
+   "p_struct": 0.36,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-mistral7b|S2|L2": {
+   "p_struct": 0.24,
+   "parse_ok": 0.84,
+   "n": 25
+  },
+  "pilot-qwen35-9b-nothink|S0|L1": {
+   "p_struct": 0.04,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-qwen35-9b-nothink|S0|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 0.96,
+   "n": 25
+  },
+  "pilot-qwen35-9b-nothink|S1|L1": {
+   "p_struct": 0.2,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-qwen35-9b-nothink|S1|L2": {
+   "p_struct": 0.36,
+   "parse_ok": 0.92,
+   "n": 25
+  },
+  "pilot-qwen35-9b-nothink|S2|L1": {
+   "p_struct": 0.08,
+   "parse_ok": 1.0,
+   "n": 25
+  },
+  "pilot-qwen35-9b-nothink|S2|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 0.92,
+   "n": 25
+  }
+ },
+ "per_side": {
+  "pilot-mistral7b|S0|L1|cold": {
+   "correct": 0.08,
+   "false_alarm": 0.4,
+   "location": 0.52,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|S0|L1|hot": {
+   "correct": 0.6,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.4,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|S0|L2|cold": {
+   "correct": 0.2,
+   "false_alarm": 0.2,
+   "location": 0.56,
+   "miss": 0.0,
+   "parse_fail": 0.04
+  },
+  "pilot-mistral7b|S0|L2|hot": {
+   "correct": 0.72,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.24,
+   "parse_fail": 0.04
+  },
+  "pilot-mistral7b|S1|L1|cold": {
+   "correct": 0.24,
+   "false_alarm": 0.36,
+   "location": 0.28,
+   "miss": 0.08,
+   "parse_fail": 0.04
+  },
+  "pilot-mistral7b|S1|L1|hot": {
+   "correct": 0.24,
+   "false_alarm": 0.36,
+   "location": 0.24,
+   "miss": 0.12,
+   "parse_fail": 0.04
+  },
+  "pilot-mistral7b|S1|L2|cold": {
+   "correct": 0.12,
+   "false_alarm": 0.24,
+   "location": 0.44,
+   "miss": 0.04,
+   "parse_fail": 0.16
+  },
+  "pilot-mistral7b|S1|L2|hot": {
+   "correct": 0.48,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.16,
+   "parse_fail": 0.16
+  },
+  "pilot-mistral7b|S2|L1|cold": {
+   "correct": 0.44,
+   "false_alarm": 0.0,
+   "location": 0.04,
+   "miss": 0.52,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|S2|L1|hot": {
+   "correct": 0.84,
+   "false_alarm": 0.0,
+   "location": 0.16,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-mistral7b|S2|L2|cold": {
+   "correct": 0.52,
+   "false_alarm": 0.0,
+   "location": 0.12,
+   "miss": 0.2,
+   "parse_fail": 0.16
+  },
+  "pilot-mistral7b|S2|L2|hot": {
+   "correct": 0.48,
+   "false_alarm": 0.0,
+   "location": 0.04,
+   "miss": 0.32,
+   "parse_fail": 0.16
+  },
+  "pilot-qwen35-9b-nothink|S0|L1|cold": {
+   "correct": 0.32,
+   "false_alarm": 0.08,
+   "location": 0.0,
+   "miss": 0.6,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|S0|L1|hot": {
+   "correct": 0.2,
+   "false_alarm": 0.48,
+   "location": 0.24,
+   "miss": 0.08,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|S0|L2|cold": {
+   "correct": 0.36,
+   "false_alarm": 0.04,
+   "location": 0.0,
+   "miss": 0.56,
+   "parse_fail": 0.04
+  },
+  "pilot-qwen35-9b-nothink|S0|L2|hot": {
+   "correct": 0.44,
+   "false_alarm": 0.52,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.04
+  },
+  "pilot-qwen35-9b-nothink|S1|L1|cold": {
+   "correct": 0.44,
+   "false_alarm": 0.08,
+   "location": 0.48,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|S1|L1|hot": {
+   "correct": 0.64,
+   "false_alarm": 0.08,
+   "location": 0.12,
+   "miss": 0.16,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|S1|L2|cold": {
+   "correct": 0.44,
+   "false_alarm": 0.0,
+   "location": 0.32,
+   "miss": 0.16,
+   "parse_fail": 0.08
+  },
+  "pilot-qwen35-9b-nothink|S1|L2|hot": {
+   "correct": 0.68,
+   "false_alarm": 0.16,
+   "location": 0.04,
+   "miss": 0.04,
+   "parse_fail": 0.08
+  },
+  "pilot-qwen35-9b-nothink|S2|L1|cold": {
+   "correct": 0.28,
+   "false_alarm": 0.12,
+   "location": 0.6,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|S2|L1|hot": {
+   "correct": 0.48,
+   "false_alarm": 0.2,
+   "location": 0.32,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "pilot-qwen35-9b-nothink|S2|L2|cold": {
+   "correct": 0.36,
+   "false_alarm": 0.04,
+   "location": 0.08,
+   "miss": 0.44,
+   "parse_fail": 0.08
+  },
+  "pilot-qwen35-9b-nothink|S2|L2|hot": {
+   "correct": 0.6,
+   "false_alarm": 0.32,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.08
+  }
+ },
+ "s2_mechanisms": {
+  "pilot-mistral7b|L1": {
+   "gt_limit": {
+    "rate": 0.44,
+    "median": -1.7
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 25.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.08,
+    "median": 30.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.0,
+    "median": null
+   }
+  },
+  "pilot-mistral7b|L2": {
+   "gt_limit": {
+    "rate": 0.38,
+    "median": 4.5
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.0,
+    "median": null
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.05,
+    "median": 15.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.0,
+    "median": null
+   }
+  },
+  "pilot-qwen35-9b-nothink|L1": {
+   "gt_limit": {
+    "rate": 0.76,
+    "median": 15.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.52,
+    "median": 28.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.12,
+    "median": 34.0
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.8,
+    "median": -5.0
+   }
+  },
+  "pilot-qwen35-9b-nothink|L2": {
+   "gt_limit": {
+    "rate": 0.78,
+    "median": -10.5
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.57,
+    "median": 24.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.26,
+    "median": 33.2
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.3,
+    "median": 2.0
+   }
+  }
+ },
+ "outcome_world_mean": {
+  "pilot-mistral7b|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 11.17,
+   "blend_0.25": 8.35,
+   "blend_0.5": 9.12,
+   "budget_2": 8.21,
+   "budget_5": 8.71,
+   "harm_R2g": 0.339
+  },
+  "pilot-mistral7b|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 9.81,
+   "blend_0.25": 7.93,
+   "blend_0.5": 8.3,
+   "budget_2": 7.99,
+   "budget_5": 8.17,
+   "harm_R2g": 0.276
+  },
+  "pilot-mistral7b|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 6.9,
+   "blend_0.25": 7.7,
+   "blend_0.5": 7.42,
+   "budget_2": 7.9,
+   "budget_5": 7.78,
+   "harm_R2g": 0.058
+  },
+  "pilot-mistral7b|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 9.33,
+   "blend_0.25": 8.0,
+   "blend_0.5": 8.3,
+   "budget_2": 8.02,
+   "budget_5": 8.2,
+   "harm_R2g": 0.21
+  },
+  "pilot-mistral7b|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.91,
+   "blend_0.25": 7.78,
+   "blend_0.5": 7.67,
+   "budget_2": 7.87,
+   "budget_5": 7.76,
+   "harm_R2g": 0.05
+  },
+  "pilot-mistral7b|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 7.98,
+   "blend_0.25": 7.99,
+   "blend_0.5": 7.99,
+   "budget_2": 7.99,
+   "budget_5": 7.98,
+   "harm_R2g": 0.002
+  },
+  "pilot-qwen35-9b-nothink|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.91,
+   "blend_0.25": 7.91,
+   "blend_0.5": 7.88,
+   "budget_2": 7.91,
+   "budget_5": 7.88,
+   "harm_R2g": 0.053
+  },
+  "pilot-qwen35-9b-nothink|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.03,
+   "blend_0.25": 7.75,
+   "blend_0.5": 7.65,
+   "budget_2": 7.87,
+   "budget_5": 7.75,
+   "harm_R2g": 0.064
+  },
+  "pilot-qwen35-9b-nothink|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.8,
+   "blend_0.25": 7.9,
+   "blend_0.5": 7.84,
+   "budget_2": 7.92,
+   "budget_5": 7.86,
+   "harm_R2g": 0.043
+  },
+  "pilot-qwen35-9b-nothink|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.31,
+   "blend_0.25": 7.6,
+   "blend_0.5": 7.55,
+   "budget_2": 7.78,
+   "budget_5": 7.65,
+   "harm_R2g": 0.152
+  },
+  "pilot-qwen35-9b-nothink|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 8.9,
+   "blend_0.25": 7.83,
+   "blend_0.5": 8.02,
+   "budget_2": 7.86,
+   "budget_5": 7.88,
+   "harm_R2g": 0.18
+  },
+  "pilot-qwen35-9b-nothink|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.23,
+   "blend_0.25": 7.74,
+   "blend_0.5": 7.7,
+   "budget_2": 7.87,
+   "budget_5": 7.83,
+   "harm_R2g": 0.102
+  }
+ }
+}
