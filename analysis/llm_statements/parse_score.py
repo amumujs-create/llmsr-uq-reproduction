@@ -49,6 +49,58 @@ def parse(text: str) -> dict:
     return {"ok": True, "boundaries": list(keep.values()), "duplicates": dup, "error": None}
 
 
+MECHANISMS = ("power_cap", "anti_icing", "evap_cooling", "other")
+TRENDS = ("rises", "falls", "about the same")
+
+
+def _opt_float(x):
+    if x is None or (isinstance(x, str) and x.strip().lower() in ("", "null", "none")):
+        return None
+    return float(x)
+
+
+def parse_mech(text: str) -> dict:
+    """Parse the mechanism-tagged answer (prompts.QUESTION_MECH, anti-icing §6).
+
+    Returns {"ok", "items": [{"mechanism", "side", "at_c", "rh_above", "output_trend", "confidence"}],
+    "duplicates", "error"}. Unknown mechanisms become "other" and unknown trends None (kept, not errors).
+    Two cold-side causes may coexist, so the innermost boundary is kept per (side, mechanism), not per side.
+    Answers without the new fields parse as mechanism "other" with no humidity condition.
+    """
+    text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.S)
+    m = re.search(r"\{.*\}", text, re.S)
+    if not m:
+        return {"ok": False, "items": [], "duplicates": 0, "error": "no_json"}
+    try:
+        raw = json.loads(m.group(0))["boundaries"]
+        if not isinstance(raw, list):
+            raise ValueError("boundaries not a list")
+        items = []
+        for b in raw:
+            side = str(b["side"]).strip().lower()
+            if side not in ("below", "above"):
+                raise ValueError(f"bad side {side}")
+            mech = str(b.get("mechanism") or "other").strip().lower().replace("-", "_").replace(" ", "_")
+            trend = b.get("output_trend")
+            trend = str(trend).strip().lower() if trend is not None else None
+            items.append({"mechanism": mech if mech in MECHANISMS else "other", "side": side,
+                          "at_c": float(b["at_c"]), "rh_above": _opt_float(b.get("rh_above")),
+                          "output_trend": trend if trend in TRENDS else None,
+                          "confidence": _opt_float(b.get("confidence"))})
+    except (ValueError, KeyError, TypeError, json.JSONDecodeError) as e:
+        return {"ok": False, "items": [], "duplicates": 0, "error": f"bad_format: {e}"}
+    dup, keep = 0, {}
+    for it in items:
+        k = (it["side"], it["mechanism"])
+        if k in keep:
+            dup += 1
+            inner = it["at_c"] > keep[k]["at_c"] if it["side"] == "below" else it["at_c"] < keep[k]["at_c"]
+            if not inner:
+                continue
+        keep[k] = it
+    return {"ok": True, "items": list(keep.values()), "duplicates": dup, "error": None}
+
+
 def to_statement(boundaries) -> list[tuple[str, float]]:
     """Convert parsed boundaries to the (side, at) list used by regime_rules / risk_limits."""
     return [(s, a) for s, a, _ in boundaries]

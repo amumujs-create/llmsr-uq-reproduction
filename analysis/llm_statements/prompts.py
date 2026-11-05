@@ -7,6 +7,7 @@ from __future__ import annotations
 BANNED = ("flat", "plateau", "saturat", "regime", "level off", "levels off", "breakpoint", "piecewise")
 
 WORLDS = ("base", "cap_mild", "cap_strong", "evap", "evap+cap_mild")
+ICE_WORLDS = ("ice", "ice+cap_mild")  # anti-icing worlds, docs/research/ccpp-anti-icing-world.md
 SETTINGS = ("cold->hot", "hot->cold", "mid->hot", "mid->cold")
 
 SYSTEM = (
@@ -52,22 +53,60 @@ QUESTION = (
 )
 
 
+# Anti-icing wording (ccpp-anti-icing-world.md §6). Only used for the ice worlds and for the re-ask of the five
+# original worlds (ice_note=True); the default prompts above are unchanged.
+NO_ICE = "The plant has no inlet anti-icing system."
+L1_ICE = "On cold, humid days an inlet anti-icing system heats the intake air with compressor bleed."
+L2_ICE = "Anti-icing keeps the compressor inlet at about 7 degC when relative humidity is above about 70%."
+# In the ice worlds "no inlet air conditioning" would contradict the heating sentence; say "no inlet cooling".
+_ICE_BASE = {"ice": "base", "ice+cap_mild": "cap"}
+
+QUESTION_MECH = (
+    "Question: over the 2 to 37 degC ambient range, is there a temperature beyond which the net output responds to "
+    "ambient temperature differently from elsewhere (much more weakly, or in the opposite direction)? There may be "
+    "none, one or more on the cold side, one on the hot side, or several.\n"
+    "Reply with JSON only, in this form:\n"
+    '{"boundaries": [{"side": "below" or "above", "at_c": <degC>, "rh_above": <percent, or null>, '
+    '"mechanism": "power_cap" or "anti_icing" or "evap_cooling" or "other", '
+    '"output_trend": "rises" or "falls" or "about the same", "confidence": <0 to 1>}], '
+    '"rationale": "<one or two sentences>"}\n'
+    '"side": "below" means the different response holds below at_c; "above" means above at_c. '
+    '"rh_above" is the relative humidity above which it applies, or null if it applies at any humidity. '
+    '"mechanism" names the cause: power_cap is a generator or power limit, anti_icing is inlet anti-icing heating, '
+    "evap_cooling is inlet evaporative cooling. "
+    '"output_trend" says how net output changes as ambient temperature moves further beyond at_c. '
+    "Use an empty list if you expect no such temperature."
+)
+
+
 def _l1_key(world: str) -> str:
-    return {"base": "base", "cap_mild": "cap", "cap_strong": "cap", "evap": "evap", "evap+cap_mild": "evap+cap"}[world]
+    return {"base": "base", "cap_mild": "cap", "cap_strong": "cap", "evap": "evap", "evap+cap_mild": "evap+cap",
+            **_ICE_BASE}[world]
 
 
-def describe(world: str, level: str) -> str:
+def describe(world: str, level: str, ice_note: bool = False) -> str:
+    """Plant description. ice_note adds the anti-icing sentence to the original worlds (always on for ice worlds)."""
     if level == "L0":
         return L0
-    parts = [L0, L1[_l1_key(world)]]
+    ice = world in ICE_WORLDS
+    l1 = L1[_l1_key(world)]
+    if ice:
+        l1 = l1.replace("no inlet air conditioning", "no inlet cooling")
+    parts = [L0, l1]
+    if ice:
+        parts.append(L1_ICE)
+    elif ice_note:
+        parts.append(NO_ICE)
     if level == "L2":
         parts.append(L2_GT)
         if world in L2_CAP:
             parts.append(L2_CAP[world])
-        if world == "evap+cap_mild":
+        if world in ("evap+cap_mild", "ice+cap_mild"):
             parts.append(L2_CAP["cap_mild"])
         if "evap" in world:
             parts.append(L2_EVAP)
+        if ice:
+            parts.append(L2_ICE)
     return " ".join(parts)
 
 
@@ -78,13 +117,16 @@ def window_summary(summary: dict) -> str:
             "Predictions are needed outside this temperature range.")
 
 
-def build_prompt(world: str, level: str, summary: dict | None = None, real: bool = False) -> list[dict]:
-    text = describe(world, level)
+def build_prompt(world: str, level: str, summary: dict | None = None, real: bool = False,
+                 ice_note: bool = False) -> list[dict]:
+    """Ice worlds get the mechanism question; the original worlds keep QUESTION even with ice_note (§6, §13)."""
+    text = describe(world, level, ice_note)
     if real:
         text = f"{text} {REAL}"
     if summary is not None:
         text = f"{text}\n{window_summary(summary)}"
-    return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"{text}\n\n{QUESTION}"}]
+    q = QUESTION_MECH if world in ICE_WORLDS else QUESTION
+    return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"{text}\n\n{q}"}]
 
 
 def check_no_leak(text: str) -> list[str]:

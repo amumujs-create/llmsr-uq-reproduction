@@ -4,9 +4,19 @@ from pathlib import Path
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis' / 'llm_statements'))
-from parse_score import agreement, majority, parse, score, to_statement  # noqa: E402
+import hashlib  # noqa: E402
+import json  # noqa: E402
+
+from parse_score import agreement, majority, parse, parse_mech, score, to_statement  # noqa: E402
 from elicit import assemble_s2, messages as s_messages  # noqa: E402
-from prompts import QUESTION, SETTINGS, WORLDS, build_prompt, check_no_leak, describe  # noqa: E402
+from prompts import (ICE_WORLDS, L1_ICE, L2_ICE, NO_ICE, QUESTION, QUESTION_MECH, SETTINGS, WORLDS,  # noqa: E402
+                     build_prompt, check_no_leak, describe)
+from collect import jobs  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis' / 'ccpp_twin'))
+from regime_rules import from_mechanisms  # noqa: E402
+
+LLM_DIR = Path(__file__).resolve().parents[1] / 'analysis' / 'llm_statements'
 
 SUMMARY = {'n': 146, 'at_lo': 4.4, 'at_hi': 6.9, 'slope': -0.3, 'se': 0.5}
 
@@ -31,6 +41,88 @@ class PromptChecks(unittest.TestCase):
         self.assertIn('146 hourly records', msg)
         self.assertTrue(msg.endswith(QUESTION))
         self.assertEqual(len(SETTINGS), 4)
+
+
+class AntiIcingPromptChecks(unittest.TestCase):
+    """ccpp-anti-icing-world.md §6, §9 step 4."""
+
+    def test_original_prompts_unchanged(self):
+        # SHA-256 of every main-collection and S1/S2 prompt before the anti-icing wording was added (2026-11-05).
+        summ = {tuple(k.split('|')): v for k, v in json.load(open(LLM_DIR / 'window_summaries.json')).items()}
+        main = json.dumps([j['messages'] for j in jobs(summ)])
+        strat = json.dumps([s_messages(w, l, st) for st in ('S1', 'S2') for l in ('L1', 'L2') for w in WORLDS])
+        self.assertEqual(hashlib.sha256(main.encode()).hexdigest(),
+                         'c6d876810d1915c30e48ca2f79b31b93e1662192c0dd7ac16ef063dd3c2849f8')
+        self.assertEqual(hashlib.sha256(strat.encode()).hexdigest(),
+                         '5ae32b711e884c14aa905dc8b72169c0fa8460c347a72d9a067b16670c2e0df0')
+
+    def test_no_leak_in_new_wording(self):
+        self.assertEqual(check_no_leak(QUESTION_MECH), [])
+        for w in WORLDS + ICE_WORLDS:
+            for lv in ('L1', 'L2'):
+                self.assertEqual(check_no_leak(describe(w, lv, ice_note=True)), [], (w, lv))
+
+    def test_l0_same_for_all_seven_worlds(self):
+        self.assertEqual(len({describe(w, 'L0', ice_note=True) for w in WORLDS + ICE_WORLDS}), 1)
+
+    def test_ice_note_only_on_original_worlds(self):
+        for w in WORLDS:
+            self.assertIn(NO_ICE, describe(w, 'L1', ice_note=True))
+            self.assertNotIn(NO_ICE, describe(w, 'L1'))
+            self.assertEqual(describe(w, 'L2', ice_note=True).count(NO_ICE), 1)
+        for w in ICE_WORLDS:
+            d1, d2 = describe(w, 'L1'), describe(w, 'L2')
+            self.assertIn(L1_ICE, d1)
+            self.assertNotIn(NO_ICE, d2)
+            self.assertNotIn('no inlet air conditioning', d1)
+            self.assertNotIn(L2_ICE, d1)
+            self.assertIn(L2_ICE, d2)
+
+    def test_l2_ice_numbers(self):
+        self.assertIn('7 degC', describe('ice', 'L2'))
+        self.assertIn('70%', describe('ice', 'L2'))
+        self.assertNotIn('limited to', describe('ice', 'L2'))
+        self.assertIn('364 MW', describe('ice+cap_mild', 'L2'))
+        self.assertIn('rated limit', describe('ice+cap_mild', 'L1'))
+        for w in ICE_WORLDS:  # the bleed loss and output change are not given (§6)
+            self.assertNotIn('0.25', describe(w, 'L2'))
+            self.assertNotIn('bleed', describe(w, 'L2').split(L1_ICE)[-1])
+
+    def test_question_choice(self):
+        for w in ICE_WORLDS:
+            self.assertTrue(build_prompt(w, 'L1')[-1]['content'].endswith(QUESTION_MECH))
+        for w in WORLDS:
+            self.assertTrue(build_prompt(w, 'L1', ice_note=True)[-1]['content'].endswith(QUESTION))
+
+
+class ParseMechChecks(unittest.TestCase):
+    def test_two_cold_causes_kept(self):
+        r = parse_mech('{"boundaries": ['
+                       '{"side": "below", "at_c": 7, "rh_above": 70, "mechanism": "anti_icing", "output_trend": "falls"},'
+                       '{"side": "below", "at_c": 6, "rh_above": null, "mechanism": "power_cap",'
+                       ' "output_trend": "about the same"},'
+                       '{"side": "below", "at_c": 4, "mechanism": "power_cap"}]}')
+        self.assertTrue(r['ok'])
+        self.assertEqual(r['duplicates'], 1)
+        self.assertEqual([(i['mechanism'], i['at_c'], i['rh_above'], i['output_trend']) for i in r['items']],
+                         [('anti_icing', 7.0, 70.0, 'falls'), ('power_cap', 6.0, None, 'about the same')])
+        self.assertEqual(from_mechanisms(r['items']), [('below', 7.0, 70.0), ('below', 6.0)])
+
+    def test_old_format_and_unknown_values(self):
+        r = parse_mech('{"boundaries": [{"side": "above", "at_c": 25, "confidence": 0.5}]}')
+        self.assertEqual(r['items'][0]['mechanism'], 'other')
+        self.assertIsNone(r['items'][0]['rh_above'])
+        r = parse_mech('{"boundaries": [{"side": "below", "at_c": 5, "mechanism": "Anti-Icing", "rh_above": "null",'
+                       ' "output_trend": "drops"}]}')
+        self.assertEqual((r['items'][0]['mechanism'], r['items'][0]['rh_above'], r['items'][0]['output_trend']),
+                         ('anti_icing', None, None))
+        r = parse_mech('{"boundaries": [{"side": "below", "at_c": 5, "mechanism": "frost guard"}]}')
+        self.assertEqual(r['items'][0]['mechanism'], 'other')
+
+    def test_failures(self):
+        self.assertEqual(parse_mech('none')['error'], 'no_json')
+        self.assertFalse(parse_mech('{"boundaries": [{"side": "left", "at_c": 3}]}')['ok'])
+        self.assertTrue(parse_mech('{"boundaries": []}')['ok'])
 
 
 class ParseScoreChecks(unittest.TestCase):
