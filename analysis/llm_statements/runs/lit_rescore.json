@@ -18,6 +18,24 @@
    "ice_on": 0.0,
    "ice_plausible": 1.0
   },
+  "gemma3 27B|L1": {
+   "n": 50,
+   "sens_pct_median": 0.25,
+   "sens_twin": 0.0,
+   "sens_lit": 0.0,
+   "sens_lit_loose": 0.0,
+   "ice_on": 0.4,
+   "ice_plausible": 1.0
+  },
+  "gemma3 27B|L2": {
+   "n": 50,
+   "sens_pct_median": 0.23,
+   "sens_twin": 0.0,
+   "sens_lit": 0.0,
+   "sens_lit_loose": 0.02,
+   "ice_on": 0.2,
+   "ice_plausible": 1.0
+  },
   "gpt-oss-120b|L1": {
    "n": 50,
    "sens_pct_median": 0.5,
@@ -34,6 +52,24 @@
    "sens_lit": 0.2,
    "sens_lit_loose": 0.9,
    "ice_on": 0.82,
+   "ice_plausible": 1.0
+  },
+  "gpt-oss-20b|L1": {
+   "n": 50,
+   "sens_pct_median": 0.34,
+   "sens_twin": 0.32,
+   "sens_lit": 0.28,
+   "sens_lit_loose": 0.42,
+   "ice_on": 0.66,
+   "ice_plausible": 0.96
+  },
+  "gpt-oss-20b|L2": {
+   "n": 50,
+   "sens_pct_median": 0.31,
+   "sens_twin": 0.2,
+   "sens_lit": 0.14,
+   "sens_lit_loose": 0.38,
+   "ice_on": 0.68,
    "ice_plausible": 1.0
   },
   "llama3.1 8B|L1": {
@@ -119,6 +155,20 @@
   },
   "gemma3 12B|L2": {
    "n": 25,
+   "p_twin": 0.0,
+   "p_lit_upper": 0.0,
+   "cold_false_alarm": 0.0,
+   "of_which_plausible": 0.0
+  },
+  "gemma3 27B|L1": {
+   "n": 100,
+   "p_twin": 0.17,
+   "p_lit_upper": 0.17,
+   "cold_false_alarm": 0.0,
+   "of_which_plausible": 0.0
+  },
+  "gemma3 27B|L2": {
+   "n": 100,
    "p_twin": 0.0,
    "p_lit_upper": 0.0,
    "cold_false_alarm": 0.0,

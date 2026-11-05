@@ -1,5 +1,15 @@
 {
  "meta": {
+  "gemma3-27b|L1": {
+   "tag": "gemma3-27b",
+   "level": "L1",
+   "split": "validation"
+  },
+  "gemma3-27b|L2": {
+   "tag": "gemma3-27b",
+   "level": "L2",
+   "split": "validation"
+  },
   "gpt-oss-120b|L1": {
    "tag": "gpt-oss-120b",
    "level": "L1",
@@ -72,6 +82,24 @@
   }
  },
  "structure": {
+  "gemma3-27b|L1": {
+   "split": "validation",
+   "AGR": 0.2,
+   "HA": 0.4,
+   "HA-gate": 0.4,
+   "HA_v1": 0.4,
+   "S0maj": 0.2,
+   "S2raw": 0.2
+  },
+  "gemma3-27b|L2": {
+   "split": "validation",
+   "AGR": 0.0,
+   "HA": 0.2,
+   "HA-gate": 0.2,
+   "HA_v1": 0.4,
+   "S0maj": 0.0,
+   "S2raw": 0.4
+  },
   "gpt-oss-120b|L1": {
    "split": "dev",
    "AGR": 0.2,
@@ -244,6 +272,10 @@
    "mean": 0.87,
    "size": 52
   },
+  "validation|gemma3-27b|False": {
+   "mean": 0.0,
+   "size": 21
+  },
   "validation|gpt-oss-20b|False": {
    "mean": 0.0,
    "size": 13
@@ -397,6 +429,28 @@
    "S0maj": 7.64,
    "S2raw": 7.07
   },
+  "validation|gemma3-27b|L1": {
+   "AGR": 9.16,
+   "HA": 7.67,
+   "HA-gate": 7.86,
+   "HA_budget5": 7.76,
+   "HA_v1": 7.64,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.05,
+   "S2raw": 7.61
+  },
+  "validation|gemma3-27b|L2": {
+   "AGR": 8.8,
+   "HA": 7.97,
+   "HA-gate": 7.97,
+   "HA_budget5": 7.96,
+   "HA_v1": 7.67,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.2,
+   "S2raw": 7.67
+  },
   "validation|gpt-oss-20b|L1": {
    "AGR": 6.98,
    "HA": 7.99,
@@ -541,6 +595,26 @@
    "S0maj": 0.042,
    "S2raw": 0.025
   },
+  "validation|gemma3-27b|L1": {
+   "AGR": 0.188,
+   "HA": 0.016,
+   "HA-gate": 0.045,
+   "HA_budget5": 0.024,
+   "HA_v1": 0.02,
+   "R0": 0.0,
+   "S0maj": 0.114,
+   "S2raw": 0.03
+  },
+  "validation|gemma3-27b|L2": {
+   "AGR": 0.127,
+   "HA": 0.0,
+   "HA-gate": 0.0,
+   "HA_budget5": 0.0,
+   "HA_v1": 0.048,
+   "R0": 0.0,
+   "S0maj": 0.086,
+   "S2raw": 0.048
+  },
   "validation|gpt-oss-20b|L1": {
    "AGR": 0.072,
    "HA": 0.0,
@@ -564,7 +638,7 @@
  },
  "oracle_rmse": 6.35,
  "verdicts": {
-  "n_cells": 2,
+  "n_cells": 4,
   "H1": true,
   "H2": false,
   "H5": true,
@@ -572,6 +646,26 @@
   "H3_diff": 0.615,
   "H3": true,
   "cells_HA_vs": {
+   "gemma3-27b|L1": {
+    "AGR": 9.16,
+    "HA": 7.67,
+    "HA-gate": 7.86,
+    "HA_budget5": 7.76,
+    "HA_v1": 7.64,
+    "R0": 7.99,
+    "S0maj": 8.05,
+    "S2raw": 7.61
+   },
+   "gemma3-27b|L2": {
+    "AGR": 8.8,
+    "HA": 7.97,
+    "HA-gate": 7.97,
+    "HA_budget5": 7.96,
+    "HA_v1": 7.67,
+    "R0": 7.99,
+    "S0maj": 8.2,
+    "S2raw": 7.67
+   },
    "gpt-oss-20b|L1": {
     "AGR": 6.98,
     "HA": 7.99,

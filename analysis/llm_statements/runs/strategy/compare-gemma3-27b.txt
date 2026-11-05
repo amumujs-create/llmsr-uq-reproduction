@@ -1,0 +1,89 @@
+=== structural reliability by strategy (samples at T=0.7) ===
+                           p_struct  parse_ok    n
+tag        strategy level                         
+gemma3-27b S0       L1         0.17       1.0  100
+                    L2         0.00       1.0  100
+           S1       L1         0.10       1.0   50
+                    L2         0.10       1.0   50
+           S2       L1         0.22       1.0   50
+                    L2         0.40       1.0   50
+
+=== p_struct by world ===
+strategy                          S0   S1   S2
+tag        level world                        
+gemma3-27b L1    base           0.00  0.0  0.0
+                 cap_mild       0.00  0.0  0.0
+                 cap_strong     0.00  0.0  0.0
+                 evap           0.85  0.3  0.6
+                 evap+cap_mild  0.00  0.2  0.5
+           L2    base           0.00  0.0  0.0
+                 cap_mild       0.00  0.0  0.0
+                 cap_strong     0.00  0.1  0.0
+                 evap           0.00  0.4  1.0
+                 evap+cap_mild  0.00  0.0  1.0
+
+=== per-side verdicts ===
+verdict                         correct  false_alarm  location  miss
+tag        strategy level side                                      
+gemma3-27b S0       L1    cold     0.40         0.00      0.00  0.60
+                          hot      0.37         0.60      0.03  0.00
+                    L2    cold     0.40         0.00      0.00  0.60
+                          hot      0.00         0.60      0.40  0.00
+           S1       L1    cold     0.50         0.02      0.24  0.24
+                          hot      0.22         0.56      0.22  0.00
+                    L2    cold     0.42         0.02      0.30  0.26
+                          hot      0.28         0.52      0.20  0.00
+           S2       L1    cold     0.42         0.08      0.34  0.16
+                          hot      0.40         0.60      0.00  0.00
+                    L2    cold     0.60         0.00      0.00  0.40
+                          hot      0.40         0.60      0.00  0.00
+
+=== S2 mechanism answers (rate claimed active & in range, median degC) ===
+{
+ "gemma3-27b|L1": {
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.74,
+   "median": 32.0
+  },
+  "gt_limit": {
+   "rate": 0.6,
+   "median": 2.5
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.4,
+   "median": 5.0
+  },
+  "inlet_evaporative_cooling": {
+   "rate": 0.4,
+   "median": 25.0
+  }
+ },
+ "gemma3-27b|L2": {
+  "exhaust_or_steam_side_limit": {
+   "rate": 0.86,
+   "median": 32.0
+  },
+  "gt_limit": {
+   "rate": 0.6,
+   "median": -11.2
+  },
+  "inlet_anti_icing_heating": {
+   "rate": 0.2,
+   "median": 5.0
+  },
+  "inlet_evaporative_cooling": {
+   "rate": 0.4,
+   "median": 24.0
+  }
+ }
+}
+
+=== outcome of majority statements, mean over worlds (clean RMSE MW) ===
+                  R0_data   R2g  blend_0.25  blend_0.5  budget_2  budget_5  harm_R2g
+statement                                                                           
+gemma3-27b|S0|L1     7.99  9.16        7.83       8.05      7.89      7.97     0.188
+gemma3-27b|S0|L2     7.99  8.80        7.99       8.20      7.94      8.05     0.127
+gemma3-27b|S1|L1     7.99  8.61        7.86       7.98      7.87      7.91     0.150
+gemma3-27b|S1|L2     7.99  9.41        8.01       8.34      7.96      8.13     0.183
+gemma3-27b|S2|L1     7.99  7.84        7.74       7.61      7.84      7.72     0.076
+gemma3-27b|S2|L2     7.99  8.19        7.72       7.67      7.87      7.82     0.119

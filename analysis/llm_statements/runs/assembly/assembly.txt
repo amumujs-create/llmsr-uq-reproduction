@@ -1,6 +1,8 @@
 === structural p of assembled statements (share of 5 worlds all-correct) ===
 rule                             split  AGR   HA  HA-gate  HA_v1  S0maj  S2raw
 cell                                                                          
+gemma3-27b|L1               validation  0.2  0.4      0.4    0.4    0.2    0.2
+gemma3-27b|L2               validation  0.0  0.2      0.2    0.4    0.0    0.4
 gpt-oss-120b|L1                    dev  0.2  0.6      0.6    0.0    0.2    0.0
 gpt-oss-120b|L2                    dev  0.8  0.8      0.8    0.2    0.8    0.2
 gpt-oss-20b|L1              validation  0.4  0.2      0.4    0.4    0.4    0.6
@@ -30,7 +32,8 @@ dev        gpt-oss-120b            False  0.00     1
                                    True   0.10    10
            qwen3-30b-a3b-instruct  False  0.00     1
                                    True   0.87    52
-validation gpt-oss-20b             False  0.00    13
+validation gemma3-27b              False  0.00    21
+           gpt-oss-20b             False  0.00    13
                                    True   0.62    13
 
 === mean clean RMSE over 5 worlds (MW); blend 0.5 unless noted, AGR uses its own lambda ===
@@ -49,7 +52,9 @@ dev        gpt-oss-120b|L1              7.25  7.37     7.32        7.61   7.29  
            pilot-qwen35-9b-nothink|L2   8.03  7.65     7.65        7.75   7.65     NaN  7.99   7.65   7.70
            qwen3-30b-a3b-instruct|L1    7.92  7.37     7.37        7.65   7.12     NaN  7.99   7.87   7.11
            qwen3-30b-a3b-instruct|L2    8.16  7.07     7.07        7.43   7.06     NaN  7.99   7.64   7.07
-validation gpt-oss-20b|L1               6.98  7.99     7.41        7.99   7.02     NaN  7.99   7.27   7.16
+validation gemma3-27b|L1                9.16  7.67     7.86        7.76   7.64     NaN  7.99   8.05   7.61
+           gemma3-27b|L2                8.80  7.97     7.97        7.96   7.67     NaN  7.99   8.20   7.67
+           gpt-oss-20b|L1               6.98  7.99     7.41        7.99   7.02     NaN  7.99   7.27   7.16
            gpt-oss-20b|L2               7.72  7.89     7.89        7.94   7.45     NaN  7.99   7.62   7.64
 ORACLE (truth, R2g): 6.35
 
@@ -68,12 +73,14 @@ dev        gpt-oss-120b|L1             0.143  0.034    0.029       0.050  0.047 
            pilot-qwen35-9b-nothink|L2  0.064  0.024    0.024       0.025  0.024  0.0  0.024  0.055
            qwen3-30b-a3b-instruct|L1   0.047  0.010    0.010       0.012  0.064  0.0  0.019  0.052
            qwen3-30b-a3b-instruct|L2   0.122  0.025    0.025       0.027  0.043  0.0  0.042  0.025
-validation gpt-oss-20b|L1              0.072  0.000    0.000       0.000  0.062  0.0  0.061  0.062
+validation gemma3-27b|L1               0.188  0.016    0.045       0.024  0.020  0.0  0.114  0.030
+           gemma3-27b|L2               0.127  0.000    0.000       0.000  0.048  0.0  0.086  0.048
+           gpt-oss-20b|L1              0.072  0.000    0.000       0.000  0.062  0.0  0.061  0.062
            gpt-oss-20b|L2              0.017  0.018    0.018       0.019  0.056  0.0  0.036  0.042
 
 === pre-registered verdicts (validation cells only) ===
 {
- "n_cells": 2,
+ "n_cells": 4,
  "H1": true,
  "H2": false,
  "H5": true,

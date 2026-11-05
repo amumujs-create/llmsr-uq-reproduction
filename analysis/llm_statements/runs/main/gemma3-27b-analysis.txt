@@ -1,0 +1,91 @@
+=== calls and parse failures === {"gemma3-27b": {"n": 1596, "fail_rate": 0.0, "errors": {}}}
+
+=== structural reliability p (all sides correct) ===
+                       p_struct_sample  p_struct_majority  p_struct_greedy
+tag        level data                                                     
+gemma3-27b L0    D0               0.17               0.20             0.20
+                 D1               0.05               0.05             0.05
+           L1    D0               0.17               0.20             0.20
+                 D1               0.05               0.05             0.05
+           L2    D0               0.00               0.00             0.00
+                 D1               0.15               0.15             0.15
+
+=== per-side verdicts (share of samples) ===
+verdict                              correct  false_alarm  location  miss
+tag        level world         side                                      
+gemma3-27b L0    base          cold     0.80         0.20      0.00  0.00
+                               hot      0.00         1.00      0.00  0.00
+                 cap_mild      cold     0.00         0.00      0.20  0.80
+                               hot      0.00         1.00      0.00  0.00
+                 cap_strong    cold     0.08         0.00      0.12  0.80
+                               hot      0.00         1.00      0.00  0.00
+                 evap          cold     0.80         0.20      0.00  0.00
+                               hot      0.37         0.00      0.63  0.00
+                 evap+cap_mild cold     0.00         0.00      0.20  0.80
+                               hot      0.37         0.00      0.63  0.00
+           L1    base          cold     0.83         0.17      0.00  0.00
+                               hot      0.00         1.00      0.00  0.00
+                 cap_mild      cold     0.00         0.00      0.20  0.80
+                               hot      0.00         1.00      0.00  0.00
+                 cap_strong    cold     0.10         0.00      0.10  0.80
+                               hot      0.00         1.00      0.00  0.00
+                 evap          cold     0.83         0.17      0.00  0.00
+                               hot      0.37         0.00      0.63  0.00
+                 evap+cap_mild cold     0.00         0.00      0.42  0.58
+                               hot      0.64         0.00      0.36  0.00
+           L2    base          cold     0.99         0.01      0.00  0.00
+                               hot      0.00         1.00      0.00  0.00
+                 cap_mild      cold     0.08         0.00      0.26  0.66
+                               hot      0.00         1.00      0.00  0.00
+                 cap_strong    cold     0.15         0.00      0.27  0.58
+                               hot      0.00         1.00      0.00  0.00
+                 evap          cold     0.94         0.06      0.00  0.00
+                               hot      0.60         0.00      0.40  0.00
+                 evap+cap_mild cold     0.00         0.00      0.80  0.20
+                               hot      0.60         0.00      0.40  0.00
+
+=== label-free signal AUROC for all_correct (per sample) === {'agree_rate': 0.712, 'confidence': 0.751}
+
+=== outcome on the twin (D0 statements; mean clean RMSE MW) ===
+                                      R0_data    R2g  blend_0.25  blend_0.5  blend_0.75  budget_2  budget_5  budget_10  rejected  harm_R2g                              truth               stmt
+statement              module                                                                                                                                                                   
+gemma3-27b|L0|greedy   base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                       cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                       cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                       evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                       evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+gemma3-27b|L0|majority base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                       cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                       cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                       evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                       evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+gemma3-27b|L1|greedy   base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                       cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                       cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                       evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                       evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+gemma3-27b|L1|majority base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                       cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                       cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                       evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                       evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+gemma3-27b|L2|greedy   base              4.16   4.70        4.00       4.12        4.36      4.01      4.11       4.48      0.32     0.118                                 []  [('above', 28.0)]
+                       cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                       cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                       evap              7.54   7.04        7.39       7.25        7.13      7.32      7.13       7.05      0.23     0.007                  [('above', 24.0)]  [('above', 30.0)]
+                       evap+cap_mild     8.58   8.15        8.45       8.33        8.23      8.42      8.25       8.16      0.26     0.024  [('below', 6.0), ('above', 24.0)]  [('above', 30.0)]
+gemma3-27b|L2|majority base              4.16   4.70        4.00       4.12        4.36      4.01      4.11       4.48      0.32     0.118                                 []  [('above', 28.0)]
+                       cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                       cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                       evap              7.54   7.04        7.39       7.25        7.13      7.32      7.13       7.05      0.23     0.007                  [('above', 24.0)]  [('above', 30.0)]
+                       evap+cap_mild     8.58   8.15        8.45       8.33        8.23      8.42      8.25       8.16      0.26     0.024  [('below', 6.0), ('above', 24.0)]  [('above', 30.0)]
+
+=== outcome, mean over worlds ===
+                        R0_data   R2g  blend_0.25  blend_0.5  blend_0.75  budget_2  budget_5  budget_10
+statement                                                                                              
+gemma3-27b|L0|greedy       7.99  9.16        7.83       8.05        8.54      7.89      7.97       8.40
+gemma3-27b|L0|majority     7.99  9.16        7.83       8.05        8.54      7.89      7.97       8.40
+gemma3-27b|L1|greedy       7.99  9.16        7.83       8.05        8.54      7.89      7.97       8.40
+gemma3-27b|L1|majority     7.99  9.16        7.83       8.05        8.54      7.89      7.97       8.40
+gemma3-27b|L2|greedy       7.99  8.80        7.99       8.20        8.48      7.94      8.05       8.38
+gemma3-27b|L2|majority     7.99  8.80        7.99       8.20        8.48      7.94      8.05       8.38

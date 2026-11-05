@@ -24,7 +24,8 @@ ICE_RANGE = (-15.0, 8.0)     # anti-icing operating band, degC (domain-check §4
 CAP_WORLDS = ("cap_mild", "cap_strong", "evap+cap_mild")
 MODELS = {"pilot-mistral7b": "mistral 7B", "pilot-qwen35-9b-nothink": "qwen3.5 9B", "pilot-llama31-8b": "llama3.1 8B",
           "pilot-gemma3-12b": "gemma3 12B", "gpt-oss-120b": "gpt-oss-120b",
-          "gpt-oss-20b": "gpt-oss-20b", "qwen3-30b-a3b-instruct": "qwen3 30B"}
+          "gpt-oss-20b": "gpt-oss-20b", "qwen3-30b-a3b-instruct": "qwen3 30B",
+          "gemma3-27b": "gemma3 27B", "llama33-70b": "llama3.3 70B"}
 
 
 def _num(x):

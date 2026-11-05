@@ -1,0 +1,202 @@
+{
+ "p_struct": {
+  "gemma3-27b|S0|L1": {
+   "p_struct": 0.17,
+   "parse_ok": 1.0,
+   "n": 100
+  },
+  "gemma3-27b|S0|L2": {
+   "p_struct": 0.0,
+   "parse_ok": 1.0,
+   "n": 100
+  },
+  "gemma3-27b|S1|L1": {
+   "p_struct": 0.1,
+   "parse_ok": 1.0,
+   "n": 50
+  },
+  "gemma3-27b|S1|L2": {
+   "p_struct": 0.1,
+   "parse_ok": 1.0,
+   "n": 50
+  },
+  "gemma3-27b|S2|L1": {
+   "p_struct": 0.22,
+   "parse_ok": 1.0,
+   "n": 50
+  },
+  "gemma3-27b|S2|L2": {
+   "p_struct": 0.4,
+   "parse_ok": 1.0,
+   "n": 50
+  }
+ },
+ "per_side": {
+  "gemma3-27b|S0|L1|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.6
+  },
+  "gemma3-27b|S0|L1|hot": {
+   "correct": 0.37,
+   "false_alarm": 0.6,
+   "location": 0.03,
+   "miss": 0.0
+  },
+  "gemma3-27b|S0|L2|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.6
+  },
+  "gemma3-27b|S0|L2|hot": {
+   "correct": 0.0,
+   "false_alarm": 0.6,
+   "location": 0.4,
+   "miss": 0.0
+  },
+  "gemma3-27b|S1|L1|cold": {
+   "correct": 0.5,
+   "false_alarm": 0.02,
+   "location": 0.24,
+   "miss": 0.24
+  },
+  "gemma3-27b|S1|L1|hot": {
+   "correct": 0.22,
+   "false_alarm": 0.56,
+   "location": 0.22,
+   "miss": 0.0
+  },
+  "gemma3-27b|S1|L2|cold": {
+   "correct": 0.42,
+   "false_alarm": 0.02,
+   "location": 0.3,
+   "miss": 0.26
+  },
+  "gemma3-27b|S1|L2|hot": {
+   "correct": 0.28,
+   "false_alarm": 0.52,
+   "location": 0.2,
+   "miss": 0.0
+  },
+  "gemma3-27b|S2|L1|cold": {
+   "correct": 0.42,
+   "false_alarm": 0.08,
+   "location": 0.34,
+   "miss": 0.16
+  },
+  "gemma3-27b|S2|L1|hot": {
+   "correct": 0.4,
+   "false_alarm": 0.6,
+   "location": 0.0,
+   "miss": 0.0
+  },
+  "gemma3-27b|S2|L2|cold": {
+   "correct": 0.6,
+   "false_alarm": 0.0,
+   "location": 0.0,
+   "miss": 0.4
+  },
+  "gemma3-27b|S2|L2|hot": {
+   "correct": 0.4,
+   "false_alarm": 0.6,
+   "location": 0.0,
+   "miss": 0.0
+  }
+ },
+ "s2_mechanisms": {
+  "gemma3-27b|L1": {
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.74,
+    "median": 32.0
+   },
+   "gt_limit": {
+    "rate": 0.6,
+    "median": 2.5
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.4,
+    "median": 5.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 25.0
+   }
+  },
+  "gemma3-27b|L2": {
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.86,
+    "median": 32.0
+   },
+   "gt_limit": {
+    "rate": 0.6,
+    "median": -11.2
+   },
+   "inlet_anti_icing_heating": {
+    "rate": 0.2,
+    "median": 5.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 24.0
+   }
+  }
+ },
+ "outcome_world_mean": {
+  "gemma3-27b|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 9.16,
+   "blend_0.25": 7.83,
+   "blend_0.5": 8.05,
+   "budget_2": 7.89,
+   "budget_5": 7.97,
+   "harm_R2g": 0.188
+  },
+  "gemma3-27b|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.8,
+   "blend_0.25": 7.99,
+   "blend_0.5": 8.2,
+   "budget_2": 7.94,
+   "budget_5": 8.05,
+   "harm_R2g": 0.127
+  },
+  "gemma3-27b|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 8.61,
+   "blend_0.25": 7.86,
+   "blend_0.5": 7.98,
+   "budget_2": 7.87,
+   "budget_5": 7.91,
+   "harm_R2g": 0.15
+  },
+  "gemma3-27b|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 9.41,
+   "blend_0.25": 8.01,
+   "blend_0.5": 8.34,
+   "budget_2": 7.96,
+   "budget_5": 8.13,
+   "harm_R2g": 0.183
+  },
+  "gemma3-27b|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.84,
+   "blend_0.25": 7.74,
+   "blend_0.5": 7.61,
+   "budget_2": 7.84,
+   "budget_5": 7.72,
+   "harm_R2g": 0.076
+  },
+  "gemma3-27b|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.19,
+   "blend_0.25": 7.72,
+   "blend_0.5": 7.67,
+   "budget_2": 7.87,
+   "budget_5": 7.82,
+   "harm_R2g": 0.119
+  }
+ }
+}
