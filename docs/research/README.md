@@ -20,6 +20,7 @@
 - [CCPP 쌍둥이의 도메인 근거 점검 (문헌·실데이터)](ccpp-domain-check.md)
 - [CCPP 쌍둥이 결빙 방지 세계: 사전 등록](ccpp-anti-icing-world.md)
 - **[LLM 힌트 조립 규칙: 사전 등록](ccpp-hint-assembly.md)** — 현재 주 방법
+- **[힌트 조립 실험 읽는 법](how-to-read-hint-assembly.md)** — 데이터 구조, 원리, 그림 읽는 법, 스스로 점검할 질문
 - [CCPP 쌍둥이 격자 실험: 사전 등록과 결과](ccpp-twin-grid.md)
 - [레짐 진술을 받는 외삽 판단 규칙: 사전 등록과 결과](ccpp-regime-statement.md)
 - [검사할 수 없는 진술의 위험 제한: 사전 등록과 결과](ccpp-risk-limit.md)
