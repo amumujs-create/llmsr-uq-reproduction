@@ -1,0 +1,69 @@
+mean clean RMSE by cell kind (MW)
+            bi     fwd     rcv    bic    lin  best  cells
+kind                                                     
+hidden   12.87  137.91  477.79  12.90  11.47  6.16   1260
+none      8.84   26.72  312.28   5.80   3.85  2.76   2320
+visible  21.84  126.12  275.72  33.76  15.24  8.01   1180
+
+B1 none: bi 8.84 < rcv 312.28 -> PASS
+B2 hidden: bi - lin = +1.40 > -0.2 -> PASS
+B3 visible: lin - bi = -6.60 >= 0.5 -> FAIL
+B4 hidden+none: spearman(K_spread, bi err) = 0.03; spread hidden 13.92 vs none 11.50 -> FAIL
+
+by world x kind (bi, rcv, lin, best, K_spread)
+                          bi     rcv    lin   best  K_spread
+module        kind                                          
+base          none      6.34  461.57   4.07   2.51     16.71
+cap_mild      hidden    6.72  217.93   5.21   2.63     15.31
+              none     10.55  201.94   3.63   2.88     11.55
+              visible  36.99  114.74  15.76  10.37      9.26
+cap_strong    hidden   23.11  904.86  17.27  10.36     22.23
+              none      9.48  119.88   3.19   2.19      9.97
+              visible  26.04   37.84  24.80  11.38      5.52
+evap          hidden    9.39  429.58   8.84   4.96     11.29
+              none      5.99  291.12   5.26   3.68      5.62
+              visible   7.09   12.43   7.31   2.26      7.43
+evap+cap_mild hidden    7.96  290.49   7.53   5.29      9.04
+              none      6.77  282.58   4.58   3.50      3.75
+              visible  16.15  291.49  10.33   5.80     11.68
+ice           hidden   18.17  480.80  19.78   7.74     14.87
+              none      9.14  462.71   3.63   2.84      7.72
+              visible  21.06  291.65  10.79   7.06      0.87
+ice+cap_mild  hidden    8.56  330.21   6.26   2.50     14.30
+              none     13.02  180.50   3.54   2.90     11.00
+              visible  21.37  697.16  23.39  10.65     18.75
+
+by width x kind (bi - lin, bi - rcv)
+              bi_lin  bi_rcv
+w    kind                   
+2.5  hidden     0.61 -864.61
+     none       8.67 -686.14
+     visible    3.54 -954.05
+5.0  hidden     3.14 -109.86
+     none       3.61  -51.15
+     visible   16.27 -124.03
+10.0 hidden     0.02   -6.98
+     none       0.41   -4.43
+     visible    0.80  -38.87
+
+K tolerance sensitivity (exploratory): spearman(K_spread_t, bi err) on hidden+none
+  tol 1.02: -0.07
+  tol 1.1: 0.16
+
+forms picked by bi, by kind (share)
+kind     pick_bi 
+hidden   lin         0.49
+         density     0.41
+         above_22    0.04
+         quad        0.04
+         below_6     0.01
+none     lin         0.55
+         density     0.34
+         quad        0.05
+         above_22    0.04
+         below_6     0.01
+visible  density     0.44
+         below_6     0.19
+         lin         0.15
+         below_8     0.11
+         above_24    0.06

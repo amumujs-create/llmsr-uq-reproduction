@@ -8,6 +8,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis' / 'ccpp_twin'))
 from ccpp_twin import TwinConfig, simulate, wet_bulb_c, with_modules
 from regime_rules import compose, from_mechanisms, statements
+from bidir_consistency import classify, design, fit
 
 
 def sweep(config, at=np.linspace(2, 37, 36)):
@@ -130,6 +131,28 @@ class RowLevelAssembly(unittest.TestCase):
         self.assertEqual(st["miss_ice"], [("below", 6.0)])
         self.assertEqual(st["shift+3"], [("below", 10.0, 70.0), ("below", 9.0)])
         self.assertEqual(statements("cap_mild")["correct"], [("below", 6.0)])
+
+
+class BidirConsistency(unittest.TestCase):
+    """docs/research/ccpp-bidirectional-consistency.md."""
+
+    def test_clip_constant_in_window_is_not_estimable(self):
+        at = np.linspace(4.5, 7.0, 40)
+        one = np.ones(40)
+        X = design('below_12', at, 40 * one + at, 1013 * one + np.sin(at), 70 * one + np.cos(at))
+        self.assertIsNone(fit(X, at))
+        self.assertIsNotNone(fit(design('below_6', at, 40 * one + at, 1013 * one + np.sin(at),
+                                        70 * one + np.cos(at)), at))
+
+    def test_classify(self):
+        tr = np.array([19.0, 22.0])
+        self.assertEqual(classify([('below', 6.0)], tr, False, np.array([4.0, 6.5])), 'hidden')
+        self.assertEqual(classify([('below', 6.0)], tr, False, np.array([12.0, 14.0])), 'none')
+        self.assertEqual(classify([('below', 20.0)], tr, False, np.array([4.0, 6.5])), 'visible')
+        self.assertEqual(classify([('above', 24.0)], tr, False, np.array([4.0, 6.5])), 'none')
+        # training wholly inside the anti-icing band, test beyond it: the boundary is crossed, not seen
+        self.assertEqual(classify([('below', 7.0, 70.0)], np.array([4.5, 6.9]), True, np.array([12.0, 14.0])),
+                         'hidden')
 
 
 if __name__ == '__main__':
