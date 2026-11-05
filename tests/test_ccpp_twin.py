@@ -7,6 +7,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis' / 'ccpp_twin'))
 from ccpp_twin import TwinConfig, simulate, wet_bulb_c, with_modules
+from regime_rules import compose, from_mechanisms, statements
 
 
 def sweep(config, at=np.linspace(2, 37, 36)):
@@ -86,6 +87,49 @@ class TwinChecks(unittest.TestCase):
         base = simulate([3.0], [1013.0], [40.0], [40.0])
         self.assertLess(dry['intake_heating_k'][0], 0.01)
         self.assertAlmostEqual(dry['pe_clean'][0], base['pe_clean'][0], delta=0.05)
+
+
+class RowLevelAssembly(unittest.TestCase):
+    """Humidity-conditioned boundaries (ccpp-anti-icing-world.md §5, §9 step 3)."""
+    at = np.array([2.0, 4.0, 6.0, 8.0, 12.0, 2.0, 4.0])
+    rh = np.array([90.0, 90.0, 90.0, 90.0, 90.0, 40.0, 40.0])
+
+    def args(self, stmt, rh=None):
+        return compose(stmt, 15.0, self.at, -2.0, -1.5, 0.0, False, rh)
+
+    def test_unconditioned_statement_ignores_rh(self):
+        st = [("below", 6.0)]
+        np.testing.assert_array_equal(self.args(st), self.args(st, self.rh))
+
+    def test_rh_condition_applies_only_to_humid_rows(self):
+        got = self.args([("below", 7.0, 70.0)], self.rh)
+        humid, dry = self.rh > 70, self.rh <= 70
+        np.testing.assert_allclose(got[humid], self.args([("below", 7.0)])[humid])
+        np.testing.assert_allclose(got[dry], self.args([])[dry])
+
+    def test_union_with_cap(self):
+        got = self.args([("below", 7.0, 70.0), ("below", 6.0)], self.rh)
+        humid, dry = self.rh > 70, self.rh <= 70
+        np.testing.assert_allclose(got[humid], self.args([("below", 7.0)])[humid])
+        np.testing.assert_allclose(got[dry], self.args([("below", 6.0)])[dry])
+
+    def test_condition_requires_rh(self):
+        with self.assertRaises(ValueError):
+            self.args([("below", 7.0, 70.0)])
+
+    def test_from_mechanisms(self):
+        got = from_mechanisms([{"mechanism": "anti_icing", "side": "below", "at_c": 7, "rh_above": 70},
+                               {"mechanism": "power_cap", "at_c": 6},
+                               {"mechanism": "evap_cooling", "side": "above", "at_c": 24},
+                               {"mechanism": "power_cap", "at_c": None}])
+        self.assertEqual(got, [("below", 7.0, 70.0), ("below", 6.0), ("above", 24.0)])
+
+    def test_ice_truth_statements(self):
+        st = statements("ice+cap_mild")
+        self.assertEqual(st["correct"], [("below", 7.0, 70.0), ("below", 6.0)])
+        self.assertEqual(st["miss_ice"], [("below", 6.0)])
+        self.assertEqual(st["shift+3"], [("below", 10.0, 70.0), ("below", 9.0)])
+        self.assertEqual(statements("cap_mild")["correct"], [("below", 6.0)])
 
 
 if __name__ == '__main__':

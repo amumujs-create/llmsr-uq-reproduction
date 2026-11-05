@@ -16,45 +16,88 @@ sys.path.insert(0, str(HERE))
 from ccpp_twin import load_ccpp_inputs, simulate  # noqa: E402
 from grid import _seed, build_worlds, ols, windows  # noqa: E402
 
-COLD = {"cap_mild": 6.0, "cap_strong": 9.0, "evap+cap_mild": 6.0}
+COLD = {"cap_mild": 6.0, "cap_strong": 9.0, "evap+cap_mild": 6.0, "ice+cap_mild": 6.0}
 HOT = {"evap": 24.0, "evap+cap_mild": 24.0}
+# Anti-icing worlds (ccpp-anti-icing-world.md §4): flat below ICE[module] only on rows with RH > ICE_RH.
+ICE = {"ice": 7.0, "ice+cap_mild": 7.0}
+ICE_RH = 70.0
 FALSE_COLD, FALSE_HOT = 9.0, 24.0
+
+# A statement is a list of boundaries. A boundary is (side, at_c) or (side, at_c, rh_above); with rh_above the
+# boundary applies only to rows whose relative humidity is above it (row-level assembly, anti-icing §5).
+MECH_SIDE = {"power_cap": "below", "anti_icing": "below", "evap_cooling": "above", "exhaust_limit": "above"}
+
+
+def from_mechanisms(items):
+    """Mechanism-tagged boundaries (anti-icing §5) -> statement. Unknown mechanisms keep their own side."""
+    out = []
+    for it in items:
+        side = it.get("side") or MECH_SIDE.get(it.get("mechanism"))
+        if side not in ("below", "above") or it.get("at_c") is None:
+            continue
+        rh = it.get("rh_above") if it.get("mechanism") == "anti_icing" else None
+        out.append((side, float(it["at_c"])) if rh is None else (side, float(it["at_c"]), float(rh)))
+    return out
+
+
+def _shift(b, s):
+    return (b[0], b[1] + s) + tuple(b[2:])
 GUARD_MARGIN = 2.0
 HARM_MW = 1.0
 
 
 def statements(module):
     truth = []
+    if module in ICE:
+        truth.append(("below", ICE[module], ICE_RH))
     if module in COLD:
         truth.append(("below", COLD[module]))
     if module in HOT:
         truth.append(("above", HOT[module]))
     out = {"correct": truth, "miss": []}
-    if len(truth) == 2:
+    if module in ICE and module in COLD:
+        out["miss_ice"] = [b for b in truth if len(b) == 2]
+        out["miss_cap"] = [b for b in truth if len(b) == 3]
+    elif len(truth) == 2:
         out["miss_cold"] = [b for b in truth if b[0] == "above"]
         out["miss_hot"] = [b for b in truth if b[0] == "below"]
     fa = list(truth)
-    if module not in COLD:
+    if module not in COLD and module not in ICE:
         fa.append(("below", FALSE_COLD))
     if module not in HOT:
         fa.append(("above", FALSE_HOT))
     out["false_alarm"] = fa
     if truth:
         for s in (-6, -3, 3, 6):
-            out[f"shift{s:+d}"] = [(side, at + s) for side, at in truth]
+            out[f"shift{s:+d}"] = [_shift(b, s) for b in truth]
     return out
 
 
 def is_flat(t, stmt):
+    """Flat region along AT. Humidity conditions are ignored here (used for the window-level guard)."""
     t = np.asarray(t, float)
     flat = np.zeros(t.shape, bool)
-    for side, at in stmt:
+    for side, at, *_ in stmt:
         flat |= (t < at) if side == "below" else (t > at)
     return flat
 
 
-def compose(stmt, e, at_test, slope_data, slope_phys, flat_slope_factor, window_flat):
-    """Integral of the piecewise slope from window edge e to each test AT."""
+def compose(stmt, e, at_test, slope_data, slope_phys, flat_slope_factor, window_flat, rh_test=None):
+    """Integral of the piecewise slope from window edge e to each test AT.
+
+    Boundaries with an rh_above condition apply only to test rows with RH above it, so rows are grouped by the
+    set of boundaries active for them. Statements without conditions take the original single-curve path."""
+    if any(len(b) > 2 for b in stmt):
+        if rh_test is None:
+            raise ValueError("statement has humidity conditions; pass rh_test")
+        rh_test = np.asarray(rh_test, float)
+        active = np.array([[len(b) == 2 or r > b[2] for b in stmt] for r in rh_test])
+        out = np.empty(len(at_test))
+        for key in {tuple(a) for a in active}:
+            rows = np.all(active == key, axis=1)
+            sub = [b[:2] for b, k in zip(stmt, key) if k]
+            out[rows] = compose(sub, e, at_test[rows], slope_data, slope_phys, flat_slope_factor, window_flat)
+        return out
     lo, hi = min(e, at_test.min()), max(e, at_test.max())
     grid = np.linspace(lo, hi, 2001)
     mid = 0.5 * (grid[1:] + grid[:-1])
@@ -64,8 +107,8 @@ def compose(stmt, e, at_test, slope_data, slope_phys, flat_slope_factor, window_
     return np.interp(at_test, grid, cum) - np.interp(e, grid, cum)
 
 
-def run(x, reps):
-    worlds, _ = build_worlds(x)
+def run(x, reps, include_ice=False):
+    worlds, _ = build_worlds(x, include_ice=include_ice)
     worlds = [w for w in worlds if w["noise"] > 0]
     at, ap, rh = x["AT"], x["AP"], x["RH"]
     r = ap / (at + 273.15)
@@ -104,12 +147,12 @@ def run(x, reps):
                                d=d, rep=rep, n_test=nt, R0_data=e_raw, Rp_physics=e_prop, oracle=min(e_raw, e_prop))
                     for sname, stmt in stmts.items():
                         wflat = bool(is_flat([center], stmt)[0])
-                        crosses = any(min(center, tcenter) < a < max(center, tcenter) for _, a in stmt)
+                        crosses = any(min(center, tcenter) < a < max(center, tcenter) for _, a, *_ in stmt)
                         z_stated, z_other = (z_flat, z_normal) if wflat else (z_normal, z_flat)
                         rejected = (z_stated - z_other) >= GUARD_MARGIN
                         e1 = e_prop if crosses else e_raw
-                        e2 = rmse(base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.0, wflat))
-                        e2h = rmse(base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.5, wflat))
+                        e2 = rmse(base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.0, wflat, Xte[:, 3]))
+                        e2h = rmse(base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.5, wflat, Xte[:, 3]))
                         rows.append({**key, "statement": sname, "window_flat": wflat, "crosses": crosses,
                                      "rejected": rejected, "R1_switch": e1, "R2_compose": e2,
                                      "R2_compose_half": e2h, "R1g": e_raw if rejected else e1,
@@ -156,8 +199,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("xlsx")
     p.add_argument("--reps", type=int, default=20)
+    p.add_argument("--include-ice", action="store_true", help="add the anti-icing worlds (not in the saved outputs)")
     a = p.parse_args()
-    df = run(load_ccpp_inputs(a.xlsx), a.reps)
+    df = run(load_ccpp_inputs(a.xlsx), a.reps, include_ice=a.include_ice)
     df.to_csv(HERE / "regime_cells.csv", index=False)
     out, text = summarize(df)
     json.dump(out, open(HERE / "regime_summary.json", "w"), indent=1)

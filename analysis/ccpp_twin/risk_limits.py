@@ -43,11 +43,12 @@ def coef_prior_fit(X, y, slope_target, rng):
     return fit(X, y, CP_GRID[int(np.argmin(cv))])
 
 
-def run(x, reps, external=None, builtin=True, external_lambda=None):
+def run(x, reps, external=None, builtin=True, external_lambda=None, include_ice=False):
     """external: {module: {name: [(side, at_c), ...]}} statements to evaluate in addition to (or instead of) the
     built-in ones; used to score LLM statements on the same worlds, windows, reps and seeds.
-    external_lambda: optional {module: {name: lam}}; adds a blend_custom column with that statement's own lambda."""
-    worlds = [w for w in build_worlds(x)[0] if w["noise"] > 0]
+    external_lambda: optional {module: {name: lam}}; adds a blend_custom column with that statement's own lambda.
+    include_ice: also run the anti-icing worlds. Boundaries may carry an RH condition: (side, at_c, rh_above)."""
+    worlds = [w for w in build_worlds(x, include_ice=include_ice)[0] if w["noise"] > 0]
     at, ap, rh = x["AT"], x["AP"], x["RH"]
     wins = windows(at)
     rows = []
@@ -100,7 +101,8 @@ def run(x, reps, external=None, builtin=True, external_lambda=None):
                         wflat = bool(is_flat([center], stmt)[0])
                         z_stated, z_other = (z_flat, z_normal) if wflat else (z_normal, z_flat)
                         rejected = (z_stated - z_other) >= GUARD_MARGIN
-                        p2 = p0 if rejected else base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.0, wflat)
+                        p2 = p0 if rejected else base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.0, wflat,
+                                                                                 Xte[:, 3])
                         delta = p2 - p0
                         rec = {**key, "statement": sname, "rejected": rejected, "R2g": rmse(p2),
                                "delta_abs_mean": float(np.abs(delta).mean())}
