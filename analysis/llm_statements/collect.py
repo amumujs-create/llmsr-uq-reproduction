@@ -28,7 +28,7 @@ N_SAMPLES, TEMP = 20, 0.7
 
 
 def window_summaries(xlsx: str) -> dict:
-    """Training-window summaries (w = 2.5, rep 0) for each twin world (real V, noise 4.3) and for real CCPP."""
+    """Training-window summaries (w = 2.5, rep 0) for each twin world incl. the ice worlds (real V, noise 4.3) and real CCPP."""
     import openpyxl
     from ccpp_twin import load_ccpp_inputs, simulate
     from grid import _seed, build_worlds, ols, windows
@@ -38,7 +38,7 @@ def window_summaries(xlsx: str) -> dict:
     rows = list(openpyxl.load_workbook(xlsx, read_only=True, data_only=True)["Sheet1"].iter_rows(values_only=True))
     hdr = [str(h).strip() for h in rows[0]]
     pe_real = np.array([float(r[hdr.index("PE")]) for r in rows[1:] if r[0] is not None])
-    worlds = {w["module"]: w for w in build_worlds(x)[0] if w["vmode"] == "realV" and w["noise"] > 0}
+    worlds = {w["module"]: w for w in build_worlds(x, include_ice=True)[0] if w["vmode"] == "realV" and w["noise"] > 0}
     out = {}
     for wd in windows(at):
         if wd["w"] != 2.5:

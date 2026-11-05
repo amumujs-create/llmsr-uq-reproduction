@@ -95,6 +95,30 @@ class AntiIcingPromptChecks(unittest.TestCase):
             self.assertTrue(build_prompt(w, 'L1', ice_note=True)[-1]['content'].endswith(QUESTION))
 
 
+class IceWindowSummaryChecks(unittest.TestCase):
+    """ccpp-anti-icing-world.md §9 step 5: window summaries for the ice worlds."""
+    summ = json.load(open(LLM_DIR / 'window_summaries.json'))
+
+    def test_every_ice_world_and_setting_present(self):
+        for w in ICE_WORLDS:
+            for st in SETTINGS:
+                self.assertEqual(self.summ[f'{w}|{st}']['n'], 146, (w, st))
+
+    def test_same_training_rows_as_original_worlds(self):
+        for w in ICE_WORLDS:
+            for st in SETTINGS:
+                for k in ('n', 'at_lo', 'at_hi'):
+                    self.assertEqual(self.summ[f'{w}|{st}'][k], self.summ[f'base|{st}'][k])
+
+    def test_d1_prompts_do_not_leak(self):
+        for w in ICE_WORLDS:
+            for st in SETTINGS:
+                for lv in ('L1', 'L2'):
+                    msg = build_prompt(w, lv, self.summ[f'{w}|{st}'])[-1]['content']
+                    self.assertEqual(check_no_leak(msg), [], (w, st, lv))
+                    self.assertTrue(msg.endswith(QUESTION_MECH))
+
+
 class ParseMechChecks(unittest.TestCase):
     def test_two_cold_causes_kept(self):
         r = parse_mech('{"boundaries": ['
