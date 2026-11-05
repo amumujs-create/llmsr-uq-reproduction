@@ -1,7 +1,7 @@
 """CCPP twin simulator v0: combined-cycle physics on CCPP-style inputs.
 
 Gas turbine (Brayton) + heat recovery + steam turbine, with optional regime
-modules (cold-end gas-turbine power cap, hot-end inlet evaporative cooling).
+modules (cold-end gas-turbine power cap, hot-end inlet evaporative cooling, cold humid inlet anti-icing).
 Inputs are AT (degC), AP (mbar), RH (%), V (cm Hg) arrays; the real CCPP
 inputs can be used as-is so the covariate geometry matches the data.
 See docs/research/ccpp-twin-design.md.
@@ -41,6 +41,13 @@ class TwinConfig:
     evap_effectiveness: float = 0.85
     evap_on_c: float = 24.0
     evap_ramp_c: float = 3.0
+    # Inlet anti-icing (docs/research/ccpp-anti-icing-world.md §3): on humid days below ice_t_set_c,
+    # compressor bleed heats the intake to ice_t_set_c; the bleed costs ice_bleed_per_k of GT power per K.
+    anti_icing: bool = False
+    ice_t_set_c: float = 7.0
+    ice_rh_on: float = 70.0
+    ice_rh_width: float = 3.0
+    ice_bleed_per_k: float = 0.0025
     noise_sd_mw: float = 0.0
 
 
@@ -74,6 +81,13 @@ def simulate(at_c, ap_mbar, rh_pct, v_cmhg, config: TwinConfig = TwinConfig(), *
         cooling_k = ramp * c.evap_effectiveness * np.clip(at_c - wet_bulb_c(at_c, rh_pct), 0.0, None)
         t_intake_c = at_c - cooling_k
         rh_pct = np.full_like(rh_pct, 95.0) * ramp + rh_pct * (1.0 - ramp)
+    heat_k = np.zeros_like(at_c)
+    if c.anti_icing:
+        gate = 1.0 / (1.0 + np.exp(-(rh_pct - c.ice_rh_on) / c.ice_rh_width))
+        heat_k = gate * np.clip(c.ice_t_set_c - t_intake_c, 0.0, None)
+        # As pre-registered (§3), relative humidity is not lowered after heating; doing so moves the
+        # AT<7 degC output change from -4.45 to -4.33 MW.
+        t_intake_c = t_intake_c + heat_k
     t1 = t_intake_c + 273.15
     p = ap_mbar * 100.0
     pv = np.clip(rh_pct, 0.0, 100.0) / 100.0 * saturation_pressure_pa(t_intake_c)
@@ -90,6 +104,8 @@ def simulate(at_c, ap_mbar, rh_pct, v_cmhg, config: TwinConfig = TwinConfig(), *
     t4 = t3 * (1.0 - c.eta_turbine * (1.0 - c.pressure_ratio ** -kappa))
     w_turb = m_gas * c.cp_gas * (t3 - t4)
     p_gt = c.eta_generator * (w_turb - w_comp) / 1e6
+    if c.anti_icing:
+        p_gt = p_gt * (1.0 - c.ice_bleed_per_k * heat_k)  # bleed loss; the cap below is applied after heating
     p_gt_uncapped = p_gt.copy()
     if c.cold_cap:
         p_gt = _softmin(p_gt, np.full_like(p_gt, c.gt_cap_mw), c.cap_softness_mw)
@@ -103,11 +119,13 @@ def simulate(at_c, ap_mbar, rh_pct, v_cmhg, config: TwinConfig = TwinConfig(), *
     if c.noise_sd_mw > 0:
         noise = np.random.default_rng(seed).normal(0.0, c.noise_sd_mw, size=pe_clean.shape)
     return {"pe": pe_clean + noise, "pe_clean": pe_clean, "p_gt": p_gt, "p_st": p_st,
-            "air_density": rho, "intake_cooling_k": cooling_k, "noise": noise}
+            "air_density": rho, "intake_cooling_k": cooling_k, "intake_heating_k": heat_k,
+            "noise": noise}
 
 
-def with_modules(config: TwinConfig = TwinConfig(), *, cold_cap=False, evap_cooling=False, **overrides) -> TwinConfig:
-    return replace(config, cold_cap=cold_cap, evap_cooling=evap_cooling, **overrides)
+def with_modules(config: TwinConfig = TwinConfig(), *, cold_cap=False, evap_cooling=False, anti_icing=False,
+                 **overrides) -> TwinConfig:
+    return replace(config, cold_cap=cold_cap, evap_cooling=evap_cooling, anti_icing=anti_icing, **overrides)
 
 
 def load_ccpp_inputs(path):

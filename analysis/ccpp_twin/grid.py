@@ -26,7 +26,8 @@ SETTINGS = ("cold->hot", "hot->cold", "mid->hot", "mid->cold")
 FLEX = ("ridge", "mlp", "xgboost")
 
 
-def build_worlds(x):
+def build_worlds(x, include_ice=False):
+    """Five pre-registered worlds; include_ice adds `ice` and `ice+cap_mild` (ccpp-anti-icing-world.md §4)."""
     gt = simulate(x["AT"], x["AP"], x["RH"], x["V"])["p_gt"]
     cap = {"mild": float(np.quantile(gt, 0.97)), "strong": float(np.quantile(gt, 0.90))}
     modules = {
@@ -36,6 +37,9 @@ def build_worlds(x):
         "cap_strong": with_modules(cold_cap=True, gt_cap_mw=cap["strong"]),
         "evap+cap_mild": with_modules(cold_cap=True, evap_cooling=True, gt_cap_mw=cap["mild"]),
     }
+    if include_ice:
+        modules["ice"] = with_modules(anti_icing=True)
+        modules["ice+cap_mild"] = with_modules(anti_icing=True, cold_cap=True, gt_cap_mw=cap["mild"])
     worlds = []
     for mod, cfg in modules.items():
         for vmode in ("realV", "fixedV"):

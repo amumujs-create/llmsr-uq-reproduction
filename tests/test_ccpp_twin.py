@@ -59,6 +59,34 @@ class TwinChecks(unittest.TestCase):
     def test_wet_bulb_below_dry_bulb(self):
         self.assertTrue(np.all(wet_bulb_c(np.array([10.0, 25.0, 35.0]), np.array([40.0, 60.0, 30.0])) < [10.0, 25.0, 35.0]))
 
+    # Anti-icing module (docs/research/ccpp-anti-icing-world.md §3, §9 step 1)
+    def test_anti_icing_off_leaves_other_worlds_unchanged(self):
+        rng = np.random.default_rng(0)
+        x = [rng.uniform(lo, hi, 2000) for lo, hi in ((1, 37), (993, 1033), (25, 100), (25, 81))]
+        for kw in ({}, {'evap_cooling': True}, {'cold_cap': True, 'gt_cap_mw': 360.0},
+                   {'cold_cap': True, 'evap_cooling': True, 'gt_cap_mw': 360.0}):
+            a = simulate(*x, with_modules(**kw))['pe_clean']
+            b = simulate(*x, with_modules(anti_icing=False, **kw))['pe_clean']
+            np.testing.assert_array_equal(a, b)
+            self.assertFalse(simulate(*x, with_modules(**kw))['intake_heating_k'].any())
+
+    def test_anti_icing_reverses_cold_humid_slope(self):
+        at = np.linspace(2, 12, 21)
+        n = len(at)
+        base = simulate(at, np.full(n, 1013.0), np.full(n, 90.0), np.full(n, 40.0))['pe_clean']
+        ice = simulate(at, np.full(n, 1013.0), np.full(n, 90.0), np.full(n, 40.0), with_modules(anti_icing=True))
+        cold, warm = at < 6.5, at > 7.5
+        self.assertTrue(np.all(np.diff(ice['pe_clean'][cold]) > 0))   # colder -> more heating -> less output
+        np.testing.assert_allclose(ice['pe_clean'][warm], base[warm], atol=1e-9)
+        self.assertTrue(np.all(ice['pe_clean'][cold] < base[cold]))
+        np.testing.assert_allclose(ice['intake_heating_k'][at <= 7], 7 - at[at <= 7], atol=0.01)  # gate ~0.999 at RH 90
+
+    def test_anti_icing_needs_humidity(self):
+        dry = simulate([3.0], [1013.0], [40.0], [40.0], with_modules(anti_icing=True))
+        base = simulate([3.0], [1013.0], [40.0], [40.0])
+        self.assertLess(dry['intake_heating_k'][0], 0.01)
+        self.assertAlmostEqual(dry['pe_clean'][0], base['pe_clean'][0], delta=0.05)
+
 
 if __name__ == '__main__':
     unittest.main()
