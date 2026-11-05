@@ -11,7 +11,7 @@ from parse_score import agreement, majority, parse, parse_mech, score, to_statem
 from elicit import assemble_s2, messages as s_messages  # noqa: E402
 from prompts import (ICE_WORLDS, L1_ICE, L2_ICE, NO_ICE, QUESTION, QUESTION_MECH, SETTINGS, WORLDS,  # noqa: E402
                      build_prompt, check_no_leak, describe)
-from collect import jobs  # noqa: E402
+from collect import call_mock, jobs, jobs_ice  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis' / 'ccpp_twin'))
 from regime_rules import from_mechanisms  # noqa: E402
@@ -117,6 +117,37 @@ class IceWindowSummaryChecks(unittest.TestCase):
                     msg = build_prompt(w, lv, self.summ[f'{w}|{st}'])[-1]['content']
                     self.assertEqual(check_no_leak(msg), [], (w, st, lv))
                     self.assertTrue(msg.endswith(QUESTION_MECH))
+
+
+class IceStageJobChecks(unittest.TestCase):
+    """ccpp-anti-icing-world.md §6 call budget and §9 step 6."""
+    summ = {tuple(k.split('|')): v for k, v in json.load(open(LLM_DIR / 'window_summaries.json')).items()}
+
+    def test_job_count_and_budget(self):
+        js = jobs_ice(self.summ)
+        self.assertEqual(len(js), 30)
+        self.assertEqual(len(js) * 21, 630)
+        ice = [j for j in js if j['world'] in ICE_WORLDS]
+        self.assertEqual(len(ice), 2 * 2 * 5)
+        orig = [j for j in js if j['world'] in WORLDS]
+        self.assertEqual({(j['level'], j['data']) for j in orig}, {('L1', 'D0'), ('L2', 'D0')})
+        self.assertEqual(len({(j['world'], j['level'], j['data'], j['setting']) for j in js}), 30)
+
+    def test_ice_stage_prompts(self):
+        for j in jobs_ice(self.summ):
+            msg = j['messages'][-1]['content']
+            self.assertEqual(check_no_leak(msg), [])
+            if j['world'] in WORLDS:
+                self.assertIn(NO_ICE, msg)
+                self.assertTrue(msg.endswith(QUESTION))
+            else:
+                self.assertTrue(msg.endswith(QUESTION_MECH))
+
+    def test_mock_answers_parse(self):
+        for j in jobs_ice(self.summ):
+            text, _ = call_mock(j['messages'], 0.7, 3)
+            ok = (parse_mech(text) if j['world'] in ICE_WORLDS else parse(text))['ok']
+            self.assertTrue(ok, j['world'])
 
 
 class ParseMechChecks(unittest.TestCase):

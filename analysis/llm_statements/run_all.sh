@@ -6,15 +6,19 @@
 # Usage:  bash analysis/llm_statements/run_all.sh            # all models in models.tsv
 #         ONLY=gpt-oss-20b bash analysis/llm_statements/run_all.sh
 # Env:    TP (tensor-parallel GPUs, default 4), PORT (8000), WORKERS (16), MAXTOK (4096), STRAT_SAMPLES (10),
-#         EXTRA_VARGS (extra vllm serve arguments for every model, e.g. --enforce-eager)
+#         EXTRA_VARGS (extra vllm serve arguments for every model, e.g. --enforce-eager),
+#         ICE (default 0; 1 adds the anti-icing stage, 630 calls -> runs/ice/<tag>.jsonl,
+#              docs/research/ccpp-anti-icing-world.md §6). With ICE=0 the script behaves exactly as before.
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TP="${TP:-4}"; PORT="${PORT:-8000}"; WORKERS="${WORKERS:-16}"; MAXTOK="${MAXTOK:-4096}"
-STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"
+STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"; ICE="${ICE:-0}"
 BASE="http://localhost:$PORT/v1"
 MAIN_N=1596
 STRAT_N=$((2 * 2 * 5 * (STRAT_SAMPLES + 1)))
+ICE_N=630
 mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
+[ "$ICE" = 1 ] && mkdir -p "$HERE/runs/ice"
 
 lines() { [ -f "$1" ] && wc -l < "$1" | tr -d ' ' || echo 0; }
 VLLM_PID=""
@@ -28,9 +32,14 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   [ "$EXTRA" = "-" ] && EXTRA='{}'
   [ "$VARGS" = "-" ] && VARGS=""
   MAIN="$HERE/runs/$TAG.jsonl"; STRAT="$HERE/runs/strategy/$TAG.jsonl"; LOG="$HERE/runs/logs/vllm-$TAG.log"
-  if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ]; then
+  ICEF="$HERE/runs/ice/$TAG.jsonl"
+  ice_done=1; [ "$ICE" = 1 ] && [ "$(lines "$ICEF")" -lt "$ICE_N" ] && ice_done=0
+  if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ] && [ "$ice_done" = 1 ]; then
     echo "== $TAG: already complete, skip"; summary+=("$TAG: complete (skipped)"); continue
   fi
+  # Keep the original environment record when only the anti-icing stage is left to run.
+  ENVF="$HERE/runs/env/$TAG.txt"
+  if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ]; then ENVF="$HERE/runs/env/$TAG-ice.txt"; fi
   echo "== $TAG ($MODEL): starting vLLM (TP=$TP), log $LOG"
   # shellcheck disable=SC2086
   vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS $EXTRA_VARGS > "$LOG" 2>&1 < /dev/null &
@@ -52,7 +61,7 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
     echo "vllm=$(python3 -c 'import vllm; print(vllm.__version__)' 2>/dev/null)"
     echo "hf_revision=$(python3 -c "from huggingface_hub import model_info; print(model_info('$MODEL').sha)" 2>/dev/null)"
     nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null | sed 's/^/gpu=/'
-  } > "$HERE/runs/env/$TAG.txt"
+  } > "$ENVF"
 
   if [ "$(lines "$MAIN")" -lt "$MAIN_N" ]; then
     echo "-- $TAG: main collection"
@@ -67,8 +76,25 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
     python3 "$HERE/elicit.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --samples "$STRAT_SAMPLES" \
       --max-tokens "$MAXTOK" --extra-body "$EXTRA" --workers "$WORKERS" --out "$STRAT" | tail -1
   fi
+  if [ "$ICE" = 1 ] && [ "$(lines "$ICEF")" -lt "$ICE_N" ]; then
+    echo "-- $TAG: anti-icing stage ($ICE_N calls)"
+    ISMOKE="$HERE/runs/logs/smoke-ice-$TAG.jsonl"; rm -f "$ISMOKE"
+    python3 "$HERE/collect.py" --stage ice --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+      --max-tokens "$MAXTOK" --data D0 --samples 0 --out "$ISMOKE" > /dev/null
+    if python3 "$HERE/check_ice.py" "$ISMOKE" --smoke; then
+      python3 "$HERE/collect.py" --stage ice --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+        --max-tokens "$MAXTOK" --workers "$WORKERS" --out "$ICEF" | tail -1
+      python3 "$HERE/check_ice.py" "$ICEF"
+    else
+      summary+=("$TAG: anti-icing smoke test FAILED (see output above)")
+    fi
+  fi
   stop_server
-  summary+=("$TAG: main $(lines "$MAIN")/$MAIN_N, strategy $(lines "$STRAT")/$STRAT_N")
+  if [ "$ICE" = 1 ]; then
+    summary+=("$TAG: main $(lines "$MAIN")/$MAIN_N, strategy $(lines "$STRAT")/$STRAT_N, ice $(lines "$ICEF")/$ICE_N")
+  else
+    summary+=("$TAG: main $(lines "$MAIN")/$MAIN_N, strategy $(lines "$STRAT")/$STRAT_N")
+  fi
 done 3< "$HERE/models.tsv"
 
 echo; echo "===== summary ====="; printf '%s\n' "${summary[@]}"

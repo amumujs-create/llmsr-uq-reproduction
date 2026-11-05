@@ -22,7 +22,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / "ccpp_twin"))
-from prompts import SETTINGS, WORLDS, build_prompt  # noqa: E402
+from prompts import ICE_WORLDS, QUESTION_MECH, SETTINGS, WORLDS, build_prompt  # noqa: E402
 
 N_SAMPLES, TEMP = 20, 0.7
 
@@ -75,6 +75,23 @@ def jobs(summaries: dict) -> list[dict]:
     return out
 
 
+def jobs_ice(summaries: dict) -> list[dict]:
+    """Anti-icing stage (ccpp-anti-icing-world.md §6): ice worlds L1/L2 x (D0 + D1 x 4) = 20 jobs, plus the five
+    original worlds re-asked at L1/L2 D0 with the 'no inlet anti-icing system' sentence = 10 jobs."""
+    def job(world, level, data, setting, messages):
+        return {"world": world, "level": level, "data": data, "setting": setting, "messages": messages}
+    out = []
+    for world in ICE_WORLDS:
+        for level in ("L1", "L2"):
+            out.append(job(world, level, "D0", None, build_prompt(world, level)))
+            for s in SETTINGS:
+                out.append(job(world, level, "D1", s, build_prompt(world, level, summaries[(world, s)])))
+    for world in WORLDS:
+        for level in ("L1", "L2"):
+            out.append(job(world, level, "D0", None, build_prompt(world, level, ice_note=True)))
+    return out
+
+
 def call_openai(base_url, model, messages, temperature, seed, max_tokens, extra=None, timeout=600):
     body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "seed": seed,
             **(extra or {})}
@@ -90,6 +107,13 @@ def call_openai(base_url, model, messages, temperature, seed, max_tokens, extra=
 def call_mock(messages, temperature, seed):
     rng = np.random.default_rng(seed)
     text = messages[-1]["content"]
+    if text.endswith(QUESTION_MECH):
+        b = [{"side": "below", "at_c": float(7 + rng.normal(0, 2)), "rh_above": 70, "mechanism": "anti_icing",
+              "output_trend": "falls", "confidence": 0.5}]
+        if "rated limit" in text and "stays below" not in text:
+            b.append({"side": "below", "at_c": float(6 + rng.normal(0, 2)), "rh_above": None,
+                      "mechanism": "power_cap", "output_trend": "about the same", "confidence": 0.5})
+        return json.dumps({"boundaries": b, "rationale": "mock"}), None
     b = []
     if "evaporative" in text:
         b.append({"side": "above", "at_c": float(24 + rng.normal(0, 2)), "confidence": 0.7})
@@ -115,6 +139,8 @@ def main():
                    '\'{"chat_template_kwargs": {"enable_thinking": false}}\' (vLLM + Qwen)')
     p.add_argument("--data", choices=("D0", "D1", "all"), default="all", help="restrict to one data condition")
     p.add_argument("--tag", default=None, help="model label in ids/output (defaults to --model)")
+    p.add_argument("--stage", choices=("main", "ice"), default="main",
+                   help="main = pre-registered collection (1,596 calls); ice = anti-icing stage (630 calls)")
     a = p.parse_args()
     if a.xlsx:
         summaries = window_summaries(a.xlsx)
@@ -126,7 +152,8 @@ def main():
         summaries = {tuple(k.split("|")): v for k, v in json.load(open(a.summaries)).items()}
     if not a.out:
         p.error("--out is required")
-    job_list = [j for j in jobs(summaries) if a.data == "all" or j["data"] == a.data]
+    all_jobs = jobs_ice(summaries) if a.stage == "ice" else jobs(summaries)
+    job_list = [j for j in all_jobs if a.data == "all" or j["data"] == a.data]
     extra = json.loads(a.extra_body)
     tag = a.tag or a.model
     out = Path(a.out)
@@ -150,10 +177,13 @@ def main():
             err = None
         except Exception as e:  # recorded, not retried
             text, reasoning, err = None, None, f"{type(e).__name__}: {e}"
-        return {"id": cid, "model": a.model, "tag": tag, "extra_body": extra, "world": j["world"],
-                "level": j["level"], "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
-                "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
-                "seconds": round(time.time() - t0, 3)}
+        rec = {"id": cid, "model": a.model, "tag": tag, "extra_body": extra, "world": j["world"],
+               "level": j["level"], "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
+               "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
+               "seconds": round(time.time() - t0, 3)}
+        if a.stage == "ice":  # main-stage records keep their original fields
+            rec["stage"] = "ice"
+        return rec
 
     from concurrent.futures import ThreadPoolExecutor
     with out.open("a") as f, ThreadPoolExecutor(max(1, a.workers)) as ex:
