@@ -61,3 +61,41 @@ def test_split():
     assert split_of("gpt-oss-20b", True) == "validation"
     assert split_of("gpt-oss-20b", False) == "dev"
     assert split_of("gpt-oss-120b", True) == "dev"
+
+
+# Tail-risk and consensus rules (docs/research/ccpp-robustness-tail-consensus.md §3-§4)
+from robustness import PEERS, confirmed, pool, tail_table, xm  # noqa: E402
+
+
+def test_xm_keeps_only_peer_confirmed_boundaries():
+    ha = [("below", 6.0), ("above", 24.0)]
+    peers = [[("below", 7.5)], [("below", 4.0), ("above", 30.0)], [("below", 8.5)], [("above", 23.0)]]
+    assert confirmed(("below", 6.0), peers) == 3   # 7.5, 4.0, 8.5 are within 3 degC
+    assert confirmed(("above", 24.0), peers) == 1  # 23.0 only; 30.0 is 6 degC away
+    assert xm(ha, peers) == [("below", 6.0)]        # 3 of 4 is a majority, 1 of 4 is not
+    assert confirmed(("below", 6.0), [[("below", 9.5)]]) == 0  # 3.5 degC away
+    two = [[("below", 7.5)], [("above", 23.0)]]
+    assert xm(ha, two) == []                         # 1 of 2 is not more than half
+    assert xm([], peers) == [] and xm(ha, []) == []
+
+
+def test_xm_never_adds():
+    peers = [[("above", 24.0)]] * 4
+    assert xm([("below", 6.0)], peers) == []
+
+
+def test_pool_majority_of_majorities():
+    s0 = {(t, "L1", "cap_mild"): [[("below", 5.0 + i)]] * 3 for i, t in enumerate(PEERS[:3])}
+    s0.update({(t, "L1", "cap_mild"): [[]] * 3 for t in PEERS[3:]})
+    assert pool(s0, "L1", "cap_mild") == [("below", 6.0)]
+    s0.update({(PEERS[2], "L1", "cap_mild"): [[]] * 3})
+    assert pool(s0, "L1", "cap_mild") == []
+
+
+def test_tail_table_row_level():
+    import pandas as pd
+    reg = [0.0] * 95 + [5.0] * 5
+    df = pd.DataFrame({"statement": ["m|L1|HA"] * 100, "R0_data": [10.0] * 100,
+                       "blend_0.5": [10.0 + r for r in reg]})
+    t = tail_table(df, ["m|L1"]).iloc[0]
+    assert t.CVaR95 == 5.0 and t.crash == 0.05 and t.harm == 0.05 and t["max"] == 5.0
