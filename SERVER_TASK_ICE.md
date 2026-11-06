@@ -18,7 +18,20 @@
 
 모델마다 `runs/env/<tag>-ice.txt`(환경 기록)도 생긴다. 기존 `runs/env/<tag>.txt`는 덮어쓰지 않는다.
 
-## 실행 방법
+## 실행 방법 (가장 쉬운 방법: 명령 하나)
+
+저장소 최상위에서 다음 두 줄을 실행한다.
+```bash
+git pull
+bash run_ice.sh
+```
+- 백그라운드에서 모델 다섯 개를 순서대로 돌리고, 끝나면 결과를 commit하고 push한다. 진행은 `tail -f run_ice.log`로 본다. 끝은 로그의 `===== 요약 =====`이다.
+- MIG 조각이면 알아서 pipeline-parallel(ray)과 NCCL 설정을 준다. 지난번 수집에서 성공한 모델별 인자도 넣는다(gemma: `--language-model-only`, Llama: `--max-model-len 8192 --max-num-seqs 4 --gpu-memory-utilization 0.85`).
+- 점검에 실패하면 한 번 `MAXTOK=8192`(Llama는 6144)로 다시 시도한다.
+- 끊기면 `bash run_ice.sh`를 다시 실행한다. 이미 받은 부분은 건너뛴다.
+- 지난번처럼 서버에서 따로 필요한 설정(`patched-nccl` 등)이 있으면 그것을 적용한 셸에서 실행한다.
+
+아래는 모델을 하나씩 직접 돌리는 방법이다.
 
 1. 저장소 최상위에서 `git pull`을 실행한다.
 2. 모델마다 다음을 실행한다. 이미 끝난 부분은 건너뛰고, 끊기면 같은 명령으로 이어서 받는다.
