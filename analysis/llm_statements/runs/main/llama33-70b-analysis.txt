@@ -1,0 +1,91 @@
+=== calls and parse failures === {"llama33-70b": {"n": 1596, "fail_rate": 0.007, "errors": {"bad_format: Expecting ':' delimiter: line 1 column 594 (char 593)": 1, "bad_format: Expecting ':' delimiter: line 1 column 626 (char 625)": 1, "bad_format: Expecting ':' delimiter: line 1 column 472 (char 471)": 1, "bad_format: Expecting ':' delimiter: line 1 column 496 (char 495)": 1, "bad_format: Expecting ':' delimiter: line 1 column 493 (char 492)": 1, "bad_format: Expecting ':' delimiter: line 1 column 553 (char 552)": 1, "bad_format: Expecting ':' delimiter: line 1 column 517 (char 516)": 1, "bad_format: Expecting ':' delimiter: line 1 column 527 (char 526)": 1, "bad_format: Expecting ':' delimiter: line 1 column 432 (char 431)": 1, "bad_format: Expecting ':' delimiter: line 1 column 580 (char 579)": 1, "bad_format: Expecting ':' delimiter: line 1 column 524 (char 523)": 1}}}
+
+=== structural reliability p (all sides correct) ===
+                        p_struct_sample  p_struct_majority  p_struct_greedy
+tag         level data                                                     
+llama33-70b L0    D0              0.200               0.20             0.20
+                  D1              0.200               0.20             0.20
+            L1    D0              0.200               0.20             0.20
+                  D1              0.208               0.15             0.20
+            L2    D0              0.200               0.20             0.20
+                  D1              0.242               0.20             0.25
+
+=== per-side verdicts (share of samples) ===
+verdict                               correct  false_alarm  location  miss  parse_fail
+tag         level world         side                                                  
+llama33-70b L0    base          cold     1.00         0.00      0.00  0.00        0.00
+                                hot      0.80         0.20      0.00  0.00        0.00
+                  cap_mild      cold     0.00         0.00      0.00  1.00        0.00
+                                hot      0.80         0.20      0.00  0.00        0.00
+                  cap_strong    cold     0.00         0.00      0.00  1.00        0.00
+                                hot      0.80         0.20      0.00  0.00        0.00
+                  evap          cold     1.00         0.00      0.00  0.00        0.00
+                                hot      0.20         0.00      0.00  0.80        0.00
+                  evap+cap_mild cold     0.00         0.00      0.00  1.00        0.00
+                                hot      0.20         0.00      0.00  0.80        0.00
+            L1    base          cold     0.99         0.00      0.00  0.00        0.01
+                                hot      0.20         0.79      0.00  0.00        0.01
+                  cap_mild      cold     0.03         0.00      0.62  0.33        0.02
+                                hot      0.65         0.33      0.00  0.00        0.02
+                  cap_strong    cold     0.00         0.00      0.63  0.37        0.00
+                                hot      0.63         0.37      0.00  0.00        0.00
+                  evap          cold     1.00         0.00      0.00  0.00        0.00
+                                hot      0.80         0.00      0.20  0.00        0.00
+                  evap+cap_mild cold     0.00         0.00      0.00  1.00        0.00
+                                hot      0.80         0.00      0.20  0.00        0.00
+            L2    base          cold     0.99         0.00      0.00  0.00        0.01
+                                hot      0.20         0.79      0.00  0.00        0.01
+                  cap_mild      cold     0.00         0.00      0.65  0.32        0.03
+                                hot      0.65         0.32      0.00  0.00        0.03
+                  cap_strong    cold     0.00         0.00      0.66  0.33        0.01
+                                hot      0.66         0.33      0.00  0.00        0.01
+                  evap          cold     0.97         0.00      0.00  0.00        0.03
+                                hot      0.97         0.00      0.00  0.00        0.03
+                  evap+cap_mild cold     0.00         0.00      0.00  1.00        0.00
+                                hot      1.00         0.00      0.00  0.00        0.00
+
+=== label-free signal AUROC for all_correct (per sample) === {'agree_rate': 0.483, 'confidence': 0.6}
+
+=== outcome on the twin (D0 statements; mean clean RMSE MW) ===
+                                       R0_data    R2g  blend_0.25  blend_0.5  blend_0.75  budget_2  budget_5  budget_10  rejected  harm_R2g                              truth               stmt
+statement               module                                                                                                                                                                   
+llama33-70b|L0|greedy   base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                        cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                        cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                        evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                        evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+llama33-70b|L0|majority base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                        cap_mild          7.41   9.89        7.68       8.33        9.09      7.61      8.07       8.87      0.34     0.280                   [('below', 6.0)]  [('above', 25.0)]
+                        cap_strong       12.26  14.22       12.42      12.95       13.58     12.35     12.69      13.35      0.52     0.205                   [('below', 9.0)]  [('above', 25.0)]
+                        evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                        evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+llama33-70b|L1|greedy   base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                        cap_mild          7.41  12.00        8.56       9.70       10.85      7.94      8.64       9.66      0.69     0.279                   [('below', 6.0)]  [('above', 15.0)]
+                        cap_strong       12.26  13.93       12.68      13.09       13.51     12.49     12.80      13.25      0.87     0.117                   [('below', 9.0)]  [('above', 15.0)]
+                        evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                        evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+llama33-70b|L1|majority base              4.16   5.98        3.98       4.47        5.18      3.96      4.13       4.81      0.32     0.207                                 []  [('above', 25.0)]
+                        cap_mild          7.41  12.00        8.56       9.70       10.85      7.94      8.64       9.66      0.69     0.279                   [('below', 6.0)]  [('above', 15.0)]
+                        cap_strong       12.26  13.93       12.68      13.09       13.51     12.49     12.80      13.25      0.87     0.117                   [('below', 9.0)]  [('above', 15.0)]
+                        evap              7.54   6.78        6.88       6.48        6.48      7.12      6.70       6.52      0.31     0.090                  [('above', 24.0)]  [('above', 25.0)]
+                        evap+cap_mild     8.58   8.95        8.18       8.04        8.37      8.40      8.25       8.44      0.34     0.159  [('below', 6.0), ('above', 24.0)]  [('above', 25.0)]
+llama33-70b|L2|greedy   base              4.16   9.23        4.26       5.70        7.42      3.95      4.11       4.89      0.67     0.259                                 []  [('above', 15.0)]
+                        cap_mild          7.41  11.04        7.79       8.73        9.85      7.55      8.01       8.95      0.22     0.337                   [('below', 6.0)]  [('below', 15.0)]
+                        cap_strong       12.26  13.93       12.68      13.09       13.51     12.49     12.80      13.25      0.87     0.117                   [('below', 9.0)]  [('above', 15.0)]
+                        evap              7.54   6.94        6.77       6.34        6.45      7.08      6.62       6.48      0.31     0.124                  [('above', 24.0)]  [('above', 24.0)]
+                        evap+cap_mild     8.58   9.39        8.15       8.10        8.64      8.42      8.32       8.61      0.34     0.197  [('below', 6.0), ('above', 24.0)]  [('above', 24.0)]
+llama33-70b|L2|majority base              4.16   9.23        4.26       5.70        7.42      3.95      4.11       4.89      0.67     0.259                                 []  [('above', 15.0)]
+                        cap_mild          7.41  11.04        7.79       8.73        9.85      7.55      8.01       8.95      0.22     0.337                   [('below', 6.0)]  [('below', 15.0)]
+                        cap_strong       12.26  11.93       11.12      10.87       11.27     11.80     11.47      11.31      0.09     0.321                   [('below', 9.0)]  [('below', 15.0)]
+                        evap              7.54   6.94        6.77       6.34        6.45      7.08      6.62       6.48      0.31     0.124                  [('above', 24.0)]  [('above', 24.0)]
+                        evap+cap_mild     8.58   9.39        8.15       8.10        8.64      8.42      8.32       8.61      0.34     0.197  [('below', 6.0), ('above', 24.0)]  [('above', 24.0)]
+
+=== outcome, mean over worlds ===
+                         R0_data    R2g  blend_0.25  blend_0.5  blend_0.75  budget_2  budget_5  budget_10
+statement                                                                                                
+llama33-70b|L0|greedy       7.99   9.16        7.83       8.05        8.54      7.89      7.97       8.40
+llama33-70b|L0|majority     7.99   9.16        7.83       8.05        8.54      7.89      7.97       8.40
+llama33-70b|L1|greedy       7.99   9.53        8.06       8.36        8.88      7.98      8.11       8.53
+llama33-70b|L1|majority     7.99   9.53        8.06       8.36        8.88      7.98      8.11       8.53
+llama33-70b|L2|greedy       7.99  10.11        7.93       8.39        9.17      7.90      7.97       8.43
+llama33-70b|L2|majority     7.99   9.71        7.62       7.95        8.73      7.76      7.71       8.05

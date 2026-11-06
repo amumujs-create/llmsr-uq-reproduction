@@ -1,0 +1,214 @@
+{
+ "p_struct": {
+  "llama33-70b|S0|L1": {
+   "p_struct": 0.2,
+   "parse_ok": 1.0,
+   "n": 100
+  },
+  "llama33-70b|S0|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 0.99,
+   "n": 100
+  },
+  "llama33-70b|S1|L1": {
+   "p_struct": 0.26,
+   "parse_ok": 0.86,
+   "n": 50
+  },
+  "llama33-70b|S1|L2": {
+   "p_struct": 0.3,
+   "parse_ok": 0.94,
+   "n": 50
+  },
+  "llama33-70b|S2|L1": {
+   "p_struct": 0.4,
+   "parse_ok": 1.0,
+   "n": 50
+  },
+  "llama33-70b|S2|L2": {
+   "p_struct": 0.2,
+   "parse_ok": 1.0,
+   "n": 50
+  }
+ },
+ "per_side": {
+  "llama33-70b|S0|L1|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.06,
+   "miss": 0.54,
+   "parse_fail": 0.0
+  },
+  "llama33-70b|S0|L1|hot": {
+   "correct": 0.46,
+   "false_alarm": 0.54,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "llama33-70b|S0|L2|cold": {
+   "correct": 0.39,
+   "false_alarm": 0.0,
+   "location": 0.28,
+   "miss": 0.32,
+   "parse_fail": 0.01
+  },
+  "llama33-70b|S0|L2|hot": {
+   "correct": 0.68,
+   "false_alarm": 0.31,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.01
+  },
+  "llama33-70b|S1|L1|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.42,
+   "miss": 0.04,
+   "parse_fail": 0.14
+  },
+  "llama33-70b|S1|L1|hot": {
+   "correct": 0.52,
+   "false_alarm": 0.16,
+   "location": 0.0,
+   "miss": 0.18,
+   "parse_fail": 0.14
+  },
+  "llama33-70b|S1|L2|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.0,
+   "location": 0.4,
+   "miss": 0.14,
+   "parse_fail": 0.06
+  },
+  "llama33-70b|S1|L2|hot": {
+   "correct": 0.74,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.06
+  },
+  "llama33-70b|S2|L1|cold": {
+   "correct": 0.4,
+   "false_alarm": 0.4,
+   "location": 0.2,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "llama33-70b|S2|L1|hot": {
+   "correct": 0.84,
+   "false_alarm": 0.16,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  },
+  "llama33-70b|S2|L2|cold": {
+   "correct": 0.2,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.6,
+   "parse_fail": 0.0
+  },
+  "llama33-70b|S2|L2|hot": {
+   "correct": 0.8,
+   "false_alarm": 0.2,
+   "location": 0.0,
+   "miss": 0.0,
+   "parse_fail": 0.0
+  }
+ },
+ "s2_mechanisms": {
+  "llama33-70b|L1": {
+   "inlet_anti_icing_heating": {
+    "rate": 1.0,
+    "median": 4.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.18,
+    "median": 32.0
+   },
+   "gt_limit": {
+    "rate": 0.6,
+    "median": -5.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 25.0
+   }
+  },
+  "llama33-70b|L2": {
+   "inlet_anti_icing_heating": {
+    "rate": 0.2,
+    "median": 4.0
+   },
+   "exhaust_or_steam_side_limit": {
+    "rate": 0.2,
+    "median": 30.0
+   },
+   "gt_limit": {
+    "rate": 0.6,
+    "median": -13.0
+   },
+   "inlet_evaporative_cooling": {
+    "rate": 0.4,
+    "median": 24.0
+   }
+  }
+ },
+ "outcome_world_mean": {
+  "llama33-70b|S0|L1": {
+   "R0_data": 7.99,
+   "R2g": 9.53,
+   "blend_0.25": 8.06,
+   "blend_0.5": 8.36,
+   "budget_2": 7.98,
+   "budget_5": 8.11,
+   "harm_R2g": 0.17
+  },
+  "llama33-70b|S0|L2": {
+   "R0_data": 7.99,
+   "R2g": 9.71,
+   "blend_0.25": 7.62,
+   "blend_0.5": 7.95,
+   "budget_2": 7.76,
+   "budget_5": 7.71,
+   "harm_R2g": 0.248
+  },
+  "llama33-70b|S1|L1": {
+   "R0_data": 7.99,
+   "R2g": 8.9,
+   "blend_0.25": 7.96,
+   "blend_0.5": 8.15,
+   "budget_2": 7.95,
+   "budget_5": 8.03,
+   "harm_R2g": 0.129
+  },
+  "llama33-70b|S1|L2": {
+   "R0_data": 7.99,
+   "R2g": 9.05,
+   "blend_0.25": 7.68,
+   "blend_0.5": 7.83,
+   "budget_2": 7.82,
+   "budget_5": 7.78,
+   "harm_R2g": 0.218
+  },
+  "llama33-70b|S2|L1": {
+   "R0_data": 7.99,
+   "R2g": 7.91,
+   "blend_0.25": 7.77,
+   "blend_0.5": 7.66,
+   "budget_2": 7.87,
+   "budget_5": 7.76,
+   "harm_R2g": 0.069
+  },
+  "llama33-70b|S2|L2": {
+   "R0_data": 7.99,
+   "R2g": 8.06,
+   "blend_0.25": 7.73,
+   "blend_0.5": 7.64,
+   "budget_2": 7.85,
+   "budget_5": 7.75,
+   "harm_R2g": 0.081
+  }
+ }
+}

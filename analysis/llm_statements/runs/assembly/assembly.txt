@@ -7,6 +7,8 @@ gpt-oss-120b|L1                    dev  0.2  0.6      0.6    0.0    0.2    0.0
 gpt-oss-120b|L2                    dev  0.8  0.8      0.8    0.2    0.8    0.2
 gpt-oss-20b|L1              validation  0.4  0.2      0.4    0.4    0.4    0.6
 gpt-oss-20b|L2              validation  0.4  0.2      0.2    0.2    0.4    0.4
+llama33-70b|L1              validation  0.2  0.4      0.4    0.2    0.2    0.4
+llama33-70b|L2              validation  0.2  0.4      0.4    0.2    0.2    0.2
 pilot-gemma3-12b|L1                dev  0.0  0.2      0.2    0.2    0.0    0.4
 pilot-gemma3-12b|L2                dev  0.0  0.2      0.2    0.0    0.0    0.2
 pilot-llama31-8b|L1                dev  0.0  0.2      0.2    0.0    0.0    0.2
@@ -35,6 +37,7 @@ dev        gpt-oss-120b            False  0.00     1
 validation gemma3-27b              False  0.00    21
            gpt-oss-20b             False  0.00    13
                                    True   0.62    13
+           llama33-70b             False  0.00     2
 
 === mean clean RMSE over 5 worlds (MW); blend 0.5 unless noted, AGR uses its own lambda ===
 rule                                     AGR    HA  HA-gate  HA_budget5  HA_v1  ORACLE    R0  S0maj  S2raw
@@ -56,6 +59,8 @@ validation gemma3-27b|L1                9.16  7.67     7.86        7.76   7.64  
            gemma3-27b|L2                8.80  7.97     7.97        7.96   7.67     NaN  7.99   8.20   7.67
            gpt-oss-20b|L1               6.98  7.99     7.41        7.99   7.02     NaN  7.99   7.27   7.16
            gpt-oss-20b|L2               7.72  7.89     7.89        7.94   7.45     NaN  7.99   7.62   7.64
+           llama33-70b|L1               9.34  7.67     7.67        7.76   8.30     NaN  7.99   8.36   7.66
+           llama33-70b|L2               8.84  7.65     7.65        7.75   7.62     NaN  7.99   7.95   7.64
 ORACLE (truth, R2g): 6.35
 
 === harm rate (> 1 MW worse than R0) ===
@@ -77,14 +82,16 @@ validation gemma3-27b|L1               0.188  0.016    0.045       0.024  0.020 
            gemma3-27b|L2               0.127  0.000    0.000       0.000  0.048  0.0  0.086  0.048
            gpt-oss-20b|L1              0.072  0.000    0.000       0.000  0.062  0.0  0.061  0.062
            gpt-oss-20b|L2              0.017  0.018    0.018       0.019  0.056  0.0  0.036  0.042
+           llama33-70b|L1              0.169  0.016    0.016       0.024  0.092  0.0  0.115  0.021
+           llama33-70b|L2              0.226  0.024    0.024       0.025  0.135  0.0  0.172  0.030
 
 === pre-registered verdicts (validation cells only) ===
 {
- "n_cells": 4,
+ "n_cells": 6,
  "H1": true,
- "H2": false,
+ "H2": true,
  "H5": true,
- "H4": false,
+ "H4": true,
  "H3_diff": 0.615,
  "H3": true
 }

@@ -30,6 +30,16 @@
    "level": "L2",
    "split": "validation"
   },
+  "llama33-70b|L1": {
+   "tag": "llama33-70b",
+   "level": "L1",
+   "split": "validation"
+  },
+  "llama33-70b|L2": {
+   "tag": "llama33-70b",
+   "level": "L2",
+   "split": "validation"
+  },
   "pilot-gemma3-12b|L1": {
    "tag": "pilot-gemma3-12b",
    "level": "L1",
@@ -135,6 +145,24 @@
    "HA_v1": 0.2,
    "S0maj": 0.4,
    "S2raw": 0.4
+  },
+  "llama33-70b|L1": {
+   "split": "validation",
+   "AGR": 0.2,
+   "HA": 0.4,
+   "HA-gate": 0.4,
+   "HA_v1": 0.2,
+   "S0maj": 0.2,
+   "S2raw": 0.4
+  },
+  "llama33-70b|L2": {
+   "split": "validation",
+   "AGR": 0.2,
+   "HA": 0.4,
+   "HA-gate": 0.4,
+   "HA_v1": 0.2,
+   "S0maj": 0.2,
+   "S2raw": 0.2
   },
   "pilot-gemma3-12b|L1": {
    "split": "dev",
@@ -283,6 +311,10 @@
   "validation|gpt-oss-20b|True": {
    "mean": 0.62,
    "size": 13
+  },
+  "validation|llama33-70b|False": {
+   "mean": 0.0,
+   "size": 2
   }
  },
  "rmse": {
@@ -472,6 +504,28 @@
    "R0": 7.99,
    "S0maj": 7.62,
    "S2raw": 7.64
+  },
+  "validation|llama33-70b|L1": {
+   "AGR": 9.34,
+   "HA": 7.67,
+   "HA-gate": 7.67,
+   "HA_budget5": 7.76,
+   "HA_v1": 8.3,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 8.36,
+   "S2raw": 7.66
+  },
+  "validation|llama33-70b|L2": {
+   "AGR": 8.84,
+   "HA": 7.65,
+   "HA-gate": 7.65,
+   "HA_budget5": 7.75,
+   "HA_v1": 7.62,
+   "ORACLE": NaN,
+   "R0": 7.99,
+   "S0maj": 7.95,
+   "S2raw": 7.64
   }
  },
  "harm": {
@@ -634,15 +688,35 @@
    "R0": 0.0,
    "S0maj": 0.036,
    "S2raw": 0.042
+  },
+  "validation|llama33-70b|L1": {
+   "AGR": 0.169,
+   "HA": 0.016,
+   "HA-gate": 0.016,
+   "HA_budget5": 0.024,
+   "HA_v1": 0.092,
+   "R0": 0.0,
+   "S0maj": 0.115,
+   "S2raw": 0.021
+  },
+  "validation|llama33-70b|L2": {
+   "AGR": 0.226,
+   "HA": 0.024,
+   "HA-gate": 0.024,
+   "HA_budget5": 0.025,
+   "HA_v1": 0.135,
+   "R0": 0.0,
+   "S0maj": 0.172,
+   "S2raw": 0.03
   }
  },
  "oracle_rmse": 6.35,
  "verdicts": {
-  "n_cells": 4,
+  "n_cells": 6,
   "H1": true,
-  "H2": false,
+  "H2": true,
   "H5": true,
-  "H4": false,
+  "H4": true,
   "H3_diff": 0.615,
   "H3": true,
   "cells_HA_vs": {
@@ -684,6 +758,26 @@
     "HA_v1": 7.45,
     "R0": 7.99,
     "S0maj": 7.62,
+    "S2raw": 7.64
+   },
+   "llama33-70b|L1": {
+    "AGR": 9.34,
+    "HA": 7.67,
+    "HA-gate": 7.67,
+    "HA_budget5": 7.76,
+    "HA_v1": 8.3,
+    "R0": 7.99,
+    "S0maj": 8.36,
+    "S2raw": 7.66
+   },
+   "llama33-70b|L2": {
+    "AGR": 8.84,
+    "HA": 7.65,
+    "HA-gate": 7.65,
+    "HA_budget5": 7.75,
+    "HA_v1": 7.62,
+    "R0": 7.99,
+    "S0maj": 7.95,
     "S2raw": 7.64
    }
   }

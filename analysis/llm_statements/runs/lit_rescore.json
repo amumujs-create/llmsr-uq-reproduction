@@ -90,6 +90,24 @@
    "ice_on": 0.24,
    "ice_plausible": 0.92
   },
+  "llama3.3 70B|L1": {
+   "n": 50,
+   "sens_pct_median": 0.29,
+   "sens_twin": 0.0,
+   "sens_lit": 0.0,
+   "sens_lit_loose": 0.26,
+   "ice_on": 1.0,
+   "ice_plausible": 1.0
+  },
+  "llama3.3 70B|L2": {
+   "n": 50,
+   "sens_pct_median": 0.23,
+   "sens_twin": 0.0,
+   "sens_lit": 0.0,
+   "sens_lit_loose": 0.4,
+   "ice_on": 0.2,
+   "ice_plausible": 1.0
+  },
   "mistral 7B|L1": {
    "n": 25,
    "sens_pct_median": 0.21,
@@ -214,6 +232,20 @@
    "p_twin": 0.08,
    "p_lit_upper": 0.08,
    "cold_false_alarm": 0.32,
+   "of_which_plausible": 0.0
+  },
+  "llama3.3 70B|L1": {
+   "n": 100,
+   "p_twin": 0.2,
+   "p_lit_upper": 0.2,
+   "cold_false_alarm": 0.0,
+   "of_which_plausible": 0.0
+  },
+  "llama3.3 70B|L2": {
+   "n": 99,
+   "p_twin": 0.2,
+   "p_lit_upper": 0.2,
+   "cold_false_alarm": 0.0,
    "of_which_plausible": 0.0
   },
   "mistral 7B|L1": {
