@@ -230,6 +230,32 @@ class StrategyChecks(unittest.TestCase):
         self.assertFalse(assemble_s2('nothing')['ok'])
 
 
+class RealPosthocChecks(unittest.TestCase):
+    """real_posthoc.py summary (ccpp-real-data.md §10): regret, interval and win share on a known input."""
+
+    def test_summarize_known_cells(self):
+        import pandas as pd
+        from real_posthoc import placebo_statements, summarize
+        st = placebo_statements()
+        self.assertEqual(st["above 30"], [("above", 30.0)])
+        self.assertEqual(st["POOL(LLM, above 29)"], [("above", 29.0)])
+        # statement A is 1 MW better than R0 in every cell, B is 2 MW worse in one of two cells.
+        rows = []
+        for i, setting in enumerate(["hot->cold", "mid->hot"]):
+            for rep in range(2):
+                rows.append({"statement": "A", "setting": setting, "w": 2.5, "d": 10, "rep": rep,
+                             "R0_data": 5.0, "blend_0.5": 4.0})
+                rows.append({"statement": "B", "setting": setting, "w": 2.5, "d": 10, "rep": rep,
+                             "R0_data": 5.0, "blend_0.5": 5.0 + 2.0 * i})
+        t, _ = summarize(pd.DataFrame(rows), boot=200)
+        self.assertAlmostEqual(t.loc["A", "diff"], -1.0)
+        self.assertAlmostEqual(t.loc["A", "lo"], -1.0)
+        self.assertAlmostEqual(t.loc["A", "win"], 1.0)
+        self.assertAlmostEqual(t.loc["B", "diff"], 1.0)
+        self.assertAlmostEqual(t.loc["B", "win"], 0.0)
+        self.assertAlmostEqual(t.loc["B", "harm_cells"], 0.5)
+
+
 if __name__ == '__main__':
     unittest.main()
 
