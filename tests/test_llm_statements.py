@@ -232,3 +232,43 @@ class StrategyChecks(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class IceScoringChecks(unittest.TestCase):
+    """score_ice.py (anti-icing §16): known inputs -> known verdict pieces."""
+
+    def setUp(self):
+        import score_ice
+        self.s = score_ice
+
+    def item(self, mech, side, at, rh=None, trend=None):
+        return {"mechanism": mech, "side": side, "at_c": at, "rh_above": rh, "output_trend": trend, "confidence": 0.8}
+
+    def test_null_location_detected_and_parse_fails(self):
+        txt = '{"boundaries": [{"side": "below", "at_c": null, "mechanism": "anti_icing", "output_trend": "falls"}]}'
+        self.assertFalse(parse_mech(txt)["ok"])
+        self.assertTrue(self.s.null_location(txt))
+        self.assertFalse(self.s.null_location('{"boundaries": [{"side": "below", "at_c": 0. nine}]}'))
+        self.assertFalse(self.s.null_location('{"boundaries": [{"side": "below", "at_c": 7}]}'))
+
+    def test_anti_icing_and_cap_tolerance(self):
+        self.assertTrue(self.s.ai_ok([self.item("anti_icing", "below", 10.0)]))
+        self.assertFalse(self.s.ai_ok([self.item("anti_icing", "below", 10.5)]))
+        self.assertFalse(self.s.ai_ok([self.item("power_cap", "below", 7.0)]))
+        self.assertFalse(self.s.ai_ok([self.item("anti_icing", "above", 7.0)]))
+        self.assertTrue(self.s.cap_ok([self.item("power_cap", "below", 3.0)]))
+        self.assertFalse(self.s.cap_ok([self.item("power_cap", "below", 2.9)]))
+
+    def test_mech_majority(self):
+        a = [self.item("anti_icing", "below", 7.0, 70)]
+        b = [self.item("anti_icing", "below", 5.0, None), self.item("power_cap", "below", 6.0)]
+        maj = self.s.mech_majority([a, a, b])
+        self.assertEqual(maj, [{"side": "below", "mechanism": "anti_icing", "at_c": 7.0, "rh_above": 70.0}])
+        maj = self.s.mech_majority([a, b, b])   # rh given by 1 of 3 anti-icing items -> no humidity condition
+        self.assertEqual(maj[0]["rh_above"], None)
+        self.assertEqual([m["mechanism"] for m in maj], ["anti_icing", "power_cap"])
+        self.assertEqual(self.s.mech_majority([a, [], []]), [])
+
+    def test_cold_band_alarm(self):
+        self.assertTrue(self.s.cold_band_alarm([("below", 8.0)]))
+        self.assertFalse(self.s.cold_band_alarm([("below", 8.5), ("above", 3.0)]))

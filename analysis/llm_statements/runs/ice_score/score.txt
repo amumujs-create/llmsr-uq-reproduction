@@ -1,0 +1,79 @@
+Q1 ice L1 anti_icing mention: {"gemma3-27b": 0.857, "gpt-oss-120b": 0.971, "gpt-oss-20b": 0.829, "llama33-70b": 1.0, "qwen3-30b-a3b-instruct": 1.0}; small mean 0.921 -> False
+Q2 L2 falls | correct anti-icing: {"gemma3-27b": {"n_ai": 196, "falls_given_ai": 0.0}, "gpt-oss-120b": {"n_ai": 190, "falls_given_ai": 0.22105263157894736}, "gpt-oss-20b": {"n_ai": 95, "falls_given_ai": 0.29473684210526313}, "llama33-70b": {"n_ai": 83, "falls_given_ai": 0.18072289156626506}, "qwen3-30b-a3b-instruct": {"n_ai": 197, "falls_given_ai": 0.0}} -> True
+Q3 ice+cap_mild L1 both causes: {"gemma3-27b": 0.114, "gpt-oss-120b": 0.381, "gpt-oss-20b": 0.171, "llama33-70b": 0.0, "qwen3-30b-a3b-instruct": 0.0}; strict {"gemma3-27b": 0.0, "gpt-oss-120b": 0.362, "gpt-oss-20b": 0.114, "llama33-70b": 0.0, "qwen3-30b-a3b-instruct": 0.0} -> False
+Q4 120b cold alarm <= 8C, base+evap L1+L2 D0: old 0.286 (n=84) new 0.190 (n=84) -> False
+
+anti-icing boundary correct (share of samples)
+tag                 gemma3-27b  gpt-oss-120b  gpt-oss-20b  llama33-70b  qwen3-30b-a3b-instruct
+world        level                                                                            
+ice          L1           0.27          0.87         0.53         0.20                    0.83
+             L2           0.88          0.86         0.42         0.60                    0.90
+ice+cap_mild L1           0.22          0.77         0.31         0.10                    0.74
+             L2           0.99          0.95         0.49         0.19                    0.98
+
+rh_above given with a below anti-icing item (median by tag)
+tag
+gemma3-27b                70.0
+gpt-oss-120b              70.0
+gpt-oss-20b               70.0
+llama33-70b               70.0
+qwen3-30b-a3b-instruct    70.0
+
+parse failures by tag: {'gemma3-27b': 0, 'gpt-oss-120b': 5, 'gpt-oss-20b': 2, 'llama33-70b': 33, 'qwen3-30b-a3b-instruct': 0}
+null-location answers (counted as failures):
+        tag        world level data  n
+gpt-oss-20b ice+cap_mild    L2   D0  1
+llama33-70b ice+cap_mild    L1   D0 16
+llama33-70b ice+cap_mild    L2   D0 16
+
+Q5 ice D0 mechanism-majority statements:
+  gemma3-27b|L1: [{'side': 'above', 'mechanism': 'power_cap', 'at_c': 28.0, 'rh_above': None}, {'side': 'below', 'mechanism': 'anti_icing', 'at_c': 5.0, 'rh_above': 80.0}] used=True
+  gemma3-27b|L2: [{'side': 'above', 'mechanism': 'other', 'at_c': 30.0, 'rh_above': None}, {'side': 'below', 'mechanism': 'anti_icing', 'at_c': 11.0, 'rh_above': 70.0}] used=False
+  gpt-oss-120b|L1: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 8.0, 'rh_above': 75.0}] used=True
+  gpt-oss-120b|L2: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 7.0, 'rh_above': 70.0}] used=True
+  gpt-oss-20b|L1: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 5.0, 'rh_above': 80.0}] used=True
+  gpt-oss-20b|L2: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 12.0, 'rh_above': 70.0}] used=False
+  llama33-70b|L1: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 2.0, 'rh_above': 80.0}] used=False
+  llama33-70b|L2: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 15.0, 'rh_above': 70.0}] used=False
+  qwen3-30b-a3b-instruct|L1: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 5.0, 'rh_above': 80.0}] used=True
+  qwen3-30b-a3b-instruct|L2: [{'side': 'below', 'mechanism': 'anti_icing', 'at_c': 7.0, 'rh_above': 70.0}] used=True
+
+Q5 outcome on the ice world (mean clean RMSE MW over used statements)
+           R0_data  blend_0.5     R2g
+setting                              
+cold->hot   21.802     19.343  16.893
+hot->cold    4.408      4.422   4.441
+mid->cold    4.795      4.194   3.833
+mid->hot     2.826      3.062   3.651
+
+by statement
+                                     R0_data  blend_0.5     R2g
+setting   statement                                            
+cold->hot gemma3-27b|L1               21.802     22.236  22.706
+          gpt-oss-120b|L1             21.802     16.854  11.915
+          gpt-oss-120b|L2             21.802     16.682  11.566
+          gpt-oss-20b|L1              21.802     21.802  21.802
+          qwen3-30b-a3b-instruct|L1   21.802     21.802  21.802
+          qwen3-30b-a3b-instruct|L2   21.802     16.682  11.566
+hot->cold gemma3-27b|L1                4.408      4.408   4.408
+          gpt-oss-120b|L1              4.408      4.480   4.574
+          gpt-oss-120b|L2              4.408      4.415   4.425
+          gpt-oss-20b|L1               4.408      4.408   4.408
+          qwen3-30b-a3b-instruct|L1    4.408      4.408   4.408
+          qwen3-30b-a3b-instruct|L2    4.408      4.415   4.425
+mid->cold gemma3-27b|L1                4.795      4.539   4.308
+          gpt-oss-120b|L1              4.795      3.720   3.586
+          gpt-oss-120b|L2              4.795      3.914   3.244
+          gpt-oss-20b|L1               4.795      4.539   4.308
+          qwen3-30b-a3b-instruct|L1    4.795      4.539   4.308
+          qwen3-30b-a3b-instruct|L2    4.795      3.914   3.244
+mid->hot  gemma3-27b|L1                2.826      4.239   7.775
+          gpt-oss-120b|L1              2.826      2.826   2.826
+          gpt-oss-120b|L2              2.826      2.826   2.826
+          gpt-oss-20b|L1               2.826      2.826   2.826
+          qwen3-30b-a3b-instruct|L1    2.826      2.826   2.826
+          qwen3-30b-a3b-instruct|L2    2.826      2.826   2.826
+Q5 mid->cold blend_0.5 4.194 < R0 4.795 -> True
+
+=== verdicts ===
+{"Q1": false, "Q2": true, "Q3": false, "Q4": false, "Q5": true}
