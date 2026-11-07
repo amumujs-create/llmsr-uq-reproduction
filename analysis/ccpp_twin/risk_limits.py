@@ -43,18 +43,25 @@ def coef_prior_fit(X, y, slope_target, rng):
     return fit(X, y, CP_GRID[int(np.argmin(cv))])
 
 
-def run(x, reps, external=None, builtin=True, external_lambda=None, include_ice=False):
+def run(x, reps, external=None, builtin=True, external_lambda=None, include_ice=False, observed=None):
     """external: {module: {name: [(side, at_c), ...]}} statements to evaluate in addition to (or instead of) the
     built-in ones; used to score LLM statements on the same worlds, windows, reps and seeds.
     external_lambda: optional {module: {name: lam}}; adds a blend_custom column with that statement's own lambda.
-    include_ice: also run the anti-icing worlds. Boundaries may carry an RH condition: (side, at_c, rh_above)."""
-    worlds = [w for w in build_worlds(x, include_ice=include_ice)[0] if w["noise"] > 0]
+    include_ice: also run the anti-icing worlds. Boundaries may carry an RH condition: (side, at_c, rh_above).
+    observed: real output PE (ccpp-real-data.md §3). Then the only world is module "real": training and scoring use
+    the observed output, no noise is added, and each rep re-draws the training rows with the twin's seeds."""
+    if observed is not None:
+        worlds = [{"module": "real", "vmode": "realV", "noise": 0.0, "cfg": None}]
+        builtin = False
+    else:
+        worlds = [w for w in build_worlds(x, include_ice=include_ice)[0] if w["noise"] > 0]
     at, ap, rh = x["AT"], x["AP"], x["RH"]
     wins = windows(at)
     rows = []
     for world in worlds:
         v = x["V"] if world["vmode"] == "realV" else np.full_like(x["V"], np.median(x["V"]))
-        clean = simulate(at, ap, rh, v, world["cfg"])["pe_clean"]
+        clean = (np.asarray(observed, dtype=float) if observed is not None
+                 else simulate(at, ap, rh, v, world["cfg"])["pe_clean"])
         feats = np.column_stack([at, v, ap, rh])
         wname = f'{world["module"]}|{world["vmode"]}|{world["noise"]}'
         stmts = statements(world["module"]) if builtin else {}

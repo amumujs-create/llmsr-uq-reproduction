@@ -272,3 +272,45 @@ class IceScoringChecks(unittest.TestCase):
     def test_cold_band_alarm(self):
         self.assertTrue(self.s.cold_band_alarm([("below", 8.0)]))
         self.assertFalse(self.s.cold_band_alarm([("below", 8.5), ("above", 3.0)]))
+
+
+class RealValidationChecks(unittest.TestCase):
+    """real_validation.py and risk_limits observed mode (ccpp-real-data.md §3-§7)."""
+
+    def setUp(self):
+        import real_validation
+        self.rv = real_validation
+
+    def test_recognition_is_word_level(self):
+        self.assertIsNone(self.rv.RECOGNITION.search("reducing the sensitivity"))
+        self.assertIsNotNone(self.rv.RECOGNITION.search("this looks like the UCI CCPP data"))
+        self.assertIsNotNone(self.rv.RECOGNITION.search("Tufekci (2014)"))
+
+    def test_pool_and_d1_statements(self):
+        ans = {t: {("D0", None): [[("above", 30.0)]] * 3} for t in self.rv.TAGS}
+        ans["gpt-oss-120b"] = {("D0", None): [[("below", 8.0)]] * 3, ("D1", "mid->hot"): [[], [], [("above", 25.0)]]}
+        st = self.rv.build_statements(ans)
+        self.assertEqual(st["gpt-oss-120b|S0maj"], [("below", 8.0)])
+        self.assertEqual(st["POOL|POOL"], [("above", 30.0)])       # 4 of 5 models name the hot side
+        self.assertEqual(st["gpt-oss-120b|D1maj|mid->hot"], [])
+
+    def test_d1_rows_only_on_own_setting(self):
+        import pandas as pd
+        cells = pd.DataFrame({"statement": ["m|D1maj|mid->hot"] * 2 + ["m|S0maj"] * 2,
+                              "setting": ["mid->hot", "hot->cold"] * 2})
+        out = self.rv.rows_for_rules(cells)
+        self.assertEqual(sorted(out[out.rule == "m|D1maj"].setting), ["mid->hot"])
+        self.assertEqual(len(out[out.rule == "m|S0maj"]), 2)
+
+    def test_observed_mode_linear_output_gives_zero_r0(self):
+        import numpy as np
+        from risk_limits import run
+        rng = np.random.default_rng(0)
+        n = 9568
+        x = {"AT": rng.uniform(2, 37, n), "V": rng.uniform(25, 81, n), "AP": rng.uniform(993, 1033, n),
+             "RH": rng.uniform(25, 100, n)}
+        pe = 500 - 2.0 * x["AT"] - 0.3 * x["V"] + 0.05 * x["AP"] - 0.1 * x["RH"]
+        cells = run(x, 1, external={"real": {"none": []}}, observed=pe)
+        self.assertEqual(set(cells.module), {"real"})
+        self.assertLess(cells.R0_data.max(), 1e-6)
+        self.assertLess((cells["blend_0.5"] - cells.R0_data).abs().max(), 1e-9)   # empty statement = R0
