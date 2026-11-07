@@ -1,0 +1,72 @@
+rows per rule (S0maj/POOL): 680
+sanity: R0 hot->cold w2.5 d10 = 15.16 MW (grid doc: 15.5)
+
+statements:
+  gpt-oss-120b|S0maj: [('below', 8.0)]
+  gpt-oss-120b|D1maj|cold->hot: []
+  gpt-oss-120b|D1maj|hot->cold: []
+  gpt-oss-120b|D1maj|mid->hot: []
+  gpt-oss-120b|D1maj|mid->cold: []
+  qwen3-30b-a3b-instruct|S0maj: [('above', 30.0)]
+  qwen3-30b-a3b-instruct|D1maj|cold->hot: [('above', 30.0)]
+  qwen3-30b-a3b-instruct|D1maj|hot->cold: [('above', 33.8)]
+  qwen3-30b-a3b-instruct|D1maj|mid->hot: [('above', 30.5)]
+  qwen3-30b-a3b-instruct|D1maj|mid->cold: [('above', 30.0)]
+  gpt-oss-20b|S0maj: [('above', 30.0)]
+  gpt-oss-20b|D1maj|cold->hot: []
+  gpt-oss-20b|D1maj|hot->cold: []
+  gpt-oss-20b|D1maj|mid->hot: []
+  gpt-oss-20b|D1maj|mid->cold: []
+  gemma3-27b|S0maj: [('above', 28.0)]
+  gemma3-27b|D1maj|cold->hot: [('above', 25.0)]
+  gemma3-27b|D1maj|hot->cold: [('above', 34.0)]
+  gemma3-27b|D1maj|mid->hot: [('above', 30.0)]
+  gemma3-27b|D1maj|mid->cold: [('above', 30.0)]
+  llama33-70b|S0maj: [('above', 25.0)]
+  llama33-70b|D1maj|cold->hot: []
+  llama33-70b|D1maj|hot->cold: []
+  llama33-70b|D1maj|mid->hot: []
+  llama33-70b|D1maj|mid->cold: []
+  POOL|POOL: [('above', 29.0)]
+
+dataset recognition hits (word-level): {'gpt-oss-120b': 0, 'qwen3-30b-a3b-instruct': 0, 'gpt-oss-20b': 0, 'gemma3-27b': 0, 'llama33-70b': 0}
+
+=== overall (mean RMSE vs observed PE, MW; regret vs R0 for harm/CVaR/crash) ===
+                                rmse      R0   harm  CVaR95  crash  rejected   rows
+gpt-oss-120b|S0maj            10.550  10.906  0.050   2.323  0.000     0.188  680.0
+qwen3-30b-a3b-instruct|S0maj   9.654  10.906  0.000   0.293  0.000     0.035  680.0
+gpt-oss-20b|S0maj              9.654  10.906  0.000   0.293  0.000     0.035  680.0
+gemma3-27b|S0maj               9.682  10.906  0.028   1.180  0.000     0.124  680.0
+llama33-70b|S0maj              9.961  10.906  0.068   3.236  0.016     0.124  680.0
+POOL|POOL                      9.650  10.906  0.022   0.668  0.000     0.035  680.0
+gpt-oss-120b|D1maj            10.906  10.906  0.000   0.000  0.000     0.065  680.0
+qwen3-30b-a3b-instruct|D1maj  10.787  10.906  0.000   0.271  0.000     0.065  680.0
+gpt-oss-20b|D1maj             10.906  10.906  0.000   0.000  0.000     0.065  680.0
+gemma3-27b|D1maj              10.795  10.906  0.051   3.045  0.016     0.065  680.0
+llama33-70b|D1maj             10.906  10.906  0.000   0.000  0.000     0.065  680.0
+
+=== by window setting: blend_0.5 (R0 alongside) ===
+setting                       cold->hot  hot->cold  mid->cold  mid->hot
+rule                                                                   
+POOL|POOL                         10.07      13.00       6.77      5.40
+gemma3-27b|D1maj                  10.20      16.28       6.77      5.67
+gemma3-27b|S0maj                  10.05      13.22       6.77      5.16
+gpt-oss-120b|D1maj                10.15      16.28       6.77      6.54
+gpt-oss-120b|S0maj                 8.67      16.32       7.30      6.54
+gpt-oss-20b|D1maj                 10.15      16.28       6.77      6.54
+gpt-oss-20b|S0maj                 10.11      12.85       6.77      5.67
+llama33-70b|D1maj                 10.15      16.28       6.77      6.54
+llama33-70b|S0maj                 10.20      13.96       6.77      5.10
+qwen3-30b-a3b-instruct|D1maj      10.11      16.28       6.77      5.81
+qwen3-30b-a3b-instruct|S0maj      10.11      12.85       6.77      5.67
+
+R0 / data-only comparators by setting
+           R0_data  coef_prior  pb_mid
+setting                               
+cold->hot    10.15        9.13   10.11
+hot->cold    16.28       14.94   16.64
+mid->cold     6.77        6.96    6.93
+mid->hot      6.54        6.11    6.66
+
+=== pre-registered verdicts (R1-R4) ===
+{"R1": true, "R2": true, "R3": true, "R4": true, "R4_values": {"S0maj_120b": 12.813, "R0": 12.584}}
