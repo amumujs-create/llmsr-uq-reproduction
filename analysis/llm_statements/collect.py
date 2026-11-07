@@ -22,7 +22,8 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / "ccpp_twin"))
-from prompts import ICE_WORLDS, QUESTION_MECH, SETTINGS, WORLDS, build_prompt  # noqa: E402
+from prompts import (ICE_WORLDS, QUESTION_MECH, QUESTION_SHAPE, SETTINGS, SHAPE_WORLDS, WORLDS,  # noqa: E402
+                     build_prompt, build_shape_prompt)
 
 N_SAMPLES, TEMP = 20, 0.7
 
@@ -92,6 +93,11 @@ def jobs_ice(summaries: dict) -> list[dict]:
     return out
 
 
+def jobs_shape() -> list[dict]:
+    """Shape stage (ccpp-shape-elicitation.md §3): 6 worlds x L1/L2, D0 only = 12 jobs (252 calls with 21 samples)."""
+    return [{"world": w, "level": lv, "data": "D0", "setting": None, "messages": build_shape_prompt(w, lv)}
+            for w in SHAPE_WORLDS for lv in ("L1", "L2")]
+
 def call_openai(base_url, model, messages, temperature, seed, max_tokens, extra=None, timeout=600):
     body = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "seed": seed,
             **(extra or {})}
@@ -107,6 +113,18 @@ def call_openai(base_url, model, messages, temperature, seed, max_tokens, extra=
 def call_mock(messages, temperature, seed):
     rng = np.random.default_rng(seed)
     text = messages[-1]["content"]
+    if text.endswith(QUESTION_SHAPE):
+        b, text = [], text[: -len(QUESTION_SHAPE)]  # the question itself mentions evaporative cooling
+        if "anti-icing system heats" in text:
+            b.append({"side": "below", "at_c": float(7 + rng.normal(0, 2)), "rh_above": 70, "mechanism": "anti_icing",
+                      "response_beyond": "near_zero", "confidence": 0.5})
+        if "evaporative" in text:
+            b.append({"side": "above", "at_c": float(24 + rng.normal(0, 2)), "rh_above": None,
+                      "mechanism": "evap_cooling", "response_beyond": "weaker", "confidence": 0.5})
+        if "rated limit" in text and "stays below" not in text:
+            b.append({"side": "below", "at_c": float(6 + rng.normal(0, 2)), "rh_above": None,
+                      "mechanism": "power_cap", "response_beyond": "near_zero", "confidence": 0.5})
+        return json.dumps({"boundaries": b, "rationale": "mock"}), None
     if text.endswith(QUESTION_MECH):
         b = [{"side": "below", "at_c": float(7 + rng.normal(0, 2)), "rh_above": 70, "mechanism": "anti_icing",
               "output_trend": "falls", "confidence": 0.5}]
@@ -139,8 +157,9 @@ def main():
                    '\'{"chat_template_kwargs": {"enable_thinking": false}}\' (vLLM + Qwen)')
     p.add_argument("--data", choices=("D0", "D1", "all"), default="all", help="restrict to one data condition")
     p.add_argument("--tag", default=None, help="model label in ids/output (defaults to --model)")
-    p.add_argument("--stage", choices=("main", "ice"), default="main",
-                   help="main = pre-registered collection (1,596 calls); ice = anti-icing stage (630 calls)")
+    p.add_argument("--stage", choices=("main", "ice", "shape"), default="main",
+                   help="main = pre-registered collection (1,596 calls); ice = anti-icing stage (630 calls); "
+                        "shape = beyond-boundary shape stage (252 calls, ccpp-shape-elicitation.md)")
     a = p.parse_args()
     if a.xlsx:
         summaries = window_summaries(a.xlsx)
@@ -152,7 +171,7 @@ def main():
         summaries = {tuple(k.split("|")): v for k, v in json.load(open(a.summaries)).items()}
     if not a.out:
         p.error("--out is required")
-    all_jobs = jobs_ice(summaries) if a.stage == "ice" else jobs(summaries)
+    all_jobs = {"ice": jobs_ice, "shape": lambda _: jobs_shape()}.get(a.stage, jobs)(summaries)
     job_list = [j for j in all_jobs if a.data == "all" or j["data"] == a.data]
     extra = json.loads(a.extra_body)
     tag = a.tag or a.model
@@ -181,8 +200,8 @@ def main():
                "level": j["level"], "data": j["data"], "setting": j["setting"], "sample": k, "temperature": temp,
                "messages": j["messages"], "response": text, "reasoning": reasoning, "error": err,
                "seconds": round(time.time() - t0, 3)}
-        if a.stage == "ice":  # main-stage records keep their original fields
-            rec["stage"] = "ice"
+        if a.stage in ("ice", "shape"):  # main-stage records keep their original fields
+            rec["stage"] = a.stage
         return rec
 
     from concurrent.futures import ThreadPoolExecutor

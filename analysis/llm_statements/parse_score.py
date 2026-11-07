@@ -101,6 +101,48 @@ def parse_mech(text: str) -> dict:
     return {"ok": True, "items": list(keep.values()), "duplicates": dup, "error": None}
 
 
+SHAPE_RESPONSES = ("weaker", "near_zero", "opposite", "same_or_stronger")
+
+
+def parse_shape(text: str) -> dict:
+    """Parse the shape-stage answer (prompts.QUESTION_SHAPE, ccpp-shape-elicitation.md §4).
+
+    Same rules as parse_mech: innermost boundary kept per (side, mechanism); unknown mechanisms become "other";
+    an unknown response_beyond becomes None (kept, scored as wrong). A null or non-numeric at_c is a parse failure.
+    """
+    text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.S)
+    m = re.search(r"\{.*\}", text, re.S)
+    if not m:
+        return {"ok": False, "items": [], "duplicates": 0, "error": "no_json"}
+    try:
+        raw = json.loads(m.group(0))["boundaries"]
+        if not isinstance(raw, list):
+            raise ValueError("boundaries not a list")
+        items = []
+        for b in raw:
+            side = str(b["side"]).strip().lower()
+            if side not in ("below", "above"):
+                raise ValueError(f"bad side {side}")
+            mech = str(b.get("mechanism") or "other").strip().lower().replace("-", "_").replace(" ", "_")
+            resp = b.get("response_beyond")
+            resp = str(resp).strip().lower().replace("-", "_").replace(" ", "_") if resp is not None else None
+            items.append({"mechanism": mech if mech in MECHANISMS else "other", "side": side,
+                          "at_c": float(b["at_c"]), "rh_above": _opt_float(b.get("rh_above")),
+                          "response_beyond": resp if resp in SHAPE_RESPONSES else None,
+                          "confidence": _opt_float(b.get("confidence"))})
+    except (ValueError, KeyError, TypeError, json.JSONDecodeError) as e:
+        return {"ok": False, "items": [], "duplicates": 0, "error": f"bad_format: {e}"}
+    dup, keep = 0, {}
+    for it in items:
+        k = (it["side"], it["mechanism"])
+        if k in keep:
+            dup += 1
+            inner = it["at_c"] > keep[k]["at_c"] if it["side"] == "below" else it["at_c"] < keep[k]["at_c"]
+            if not inner:
+                continue
+        keep[k] = it
+    return {"ok": True, "items": list(keep.values()), "duplicates": dup, "error": None}
+
 def to_statement(boundaries) -> list[tuple[str, float]]:
     """Convert parsed boundaries to the (side, at) list used by regime_rules / risk_limits."""
     return [(s, a) for s, a, _ in boundaries]

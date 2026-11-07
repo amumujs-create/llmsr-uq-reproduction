@@ -79,6 +79,30 @@ QUESTION_MECH = (
 )
 
 
+# Shape stage (docs/research/ccpp-shape-elicitation.md §3): same fields as QUESTION_MECH, but asks how the response
+# beyond at_c compares with elsewhere, without suggesting "more weakly" or "opposite" in the question itself.
+SHAPE_WORLDS = ("base", "cap_mild", "cap_strong", "evap", "evap+cap_mild", "ice")
+RESPONSES = ("weaker", "near_zero", "opposite", "same_or_stronger")
+QUESTION_SHAPE = (
+    "Question: over the 2 to 37 degC ambient range, is there a temperature beyond which the net output responds to "
+    "ambient temperature differently from elsewhere? There may be none, one or more on the cold side, one on the hot "
+    "side, or several.\n"
+    "Reply with JSON only, in this form:\n"
+    '{"boundaries": [{"side": "below" or "above", "at_c": <degC>, "rh_above": <percent, or null>, '
+    '"mechanism": "power_cap" or "anti_icing" or "evap_cooling" or "other", '
+    '"response_beyond": "weaker" or "near_zero" or "opposite" or "same_or_stronger", "confidence": <0 to 1>}], '
+    '"rationale": "<one or two sentences>"}\n'
+    '"side": "below" means the different response holds below at_c; "above" means above at_c. '
+    '"rh_above" is the relative humidity above which it applies, or null if it applies at any humidity. '
+    '"mechanism" names the cause: power_cap is a generator or power limit, anti_icing is inlet anti-icing heating, '
+    "evap_cooling is inlet evaporative cooling. "
+    '"response_beyond" compares how net output responds to ambient temperature beyond at_c with how it responds '
+    "elsewhere in the range: weaker = same direction but a clearly smaller change per degC; near_zero = output "
+    "barely changes with ambient temperature; opposite = output changes in the opposite direction; "
+    "same_or_stronger = same direction and at least as large a change per degC. "
+    "Use an empty list if you expect no such temperature."
+)
+
 def _l1_key(world: str) -> str:
     return {"base": "base", "cap_mild": "cap", "cap_strong": "cap", "evap": "evap", "evap+cap_mild": "evap+cap",
             **_ICE_BASE}[world]
@@ -132,3 +156,9 @@ def build_prompt(world: str, level: str, summary: dict | None = None, real: bool
 def check_no_leak(text: str) -> list[str]:
     low = text.lower()
     return [w for w in BANNED if w in low]
+
+
+def build_shape_prompt(world: str, level: str) -> list[dict]:
+    """Shape stage (ccpp-shape-elicitation.md §3): original worlds carry the 'no anti-icing' sentence."""
+    text = describe(world, level, ice_note=world not in ICE_WORLDS)
+    return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"{text}\n\n{QUESTION_SHAPE}"}]

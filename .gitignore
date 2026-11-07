@@ -33,3 +33,4 @@ analysis/llm_statements/runs/smoke-*.jsonl
 analysis/llm_statements/runs/logs/
 run_next.log
 run_ice.log
+run_shape.log

@@ -256,6 +256,77 @@ class RealPosthocChecks(unittest.TestCase):
         self.assertAlmostEqual(t.loc["B", "harm_cells"], 0.5)
 
 
+class ShapeStageChecks(unittest.TestCase):
+    """Shape stage (ccpp-shape-elicitation.md §3-§4): prompts, parser, scorer on answers with a known truth."""
+
+    def test_jobs_and_prompts(self):
+        from collect import jobs_shape
+        from prompts import QUESTION_SHAPE, SHAPE_WORLDS, check_no_leak
+        js = jobs_shape()
+        self.assertEqual(len(js), 12)
+        self.assertEqual({j["world"] for j in js}, set(SHAPE_WORLDS))
+        self.assertEqual(check_no_leak(QUESTION_SHAPE), [])
+        for j in js:
+            text = j["messages"][-1]["content"]
+            self.assertTrue(text.endswith(QUESTION_SHAPE))
+            self.assertEqual(check_no_leak(text.split("Question:")[0]), [])
+            self.assertEqual("no inlet anti-icing system" in text, j["world"] != "ice")
+        self.assertNotIn("more weakly", QUESTION_SHAPE)
+
+    def test_parse_shape(self):
+        from parse_score import parse_shape
+        p = parse_shape('{"boundaries": [{"side": "below", "at_c": 6, "mechanism": "power_cap", '
+                        '"response_beyond": "near zero"}, {"side": "below", "at_c": 4, "mechanism": "power_cap", '
+                        '"response_beyond": "weaker"}, {"side": "above", "at_c": 24, "mechanism": "evap-cooling", '
+                        '"response_beyond": "flatter"}]}')
+        self.assertTrue(p["ok"])
+        self.assertEqual(p["duplicates"], 1)
+        by = {i["mechanism"]: i for i in p["items"]}
+        self.assertEqual(by["power_cap"]["at_c"], 6.0)               # innermost cold boundary kept
+        self.assertEqual(by["power_cap"]["response_beyond"], "near_zero")
+        self.assertIsNone(by["evap_cooling"]["response_beyond"])     # unknown value -> None (scored wrong)
+        self.assertFalse(parse_shape('{"boundaries": [{"side": "below", "at_c": null}]}')["ok"])
+
+    def test_scorer_on_mock_answers(self):
+        import tempfile
+        from collect import call_mock, jobs_shape
+        import score_shape as ss
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "shape").mkdir()
+            for tag in ss.TAGS:
+                with open(Path(d) / "shape" / f"{tag}.jsonl", "w") as f:
+                    for j in jobs_shape():
+                        for k in range(21):
+                            text, _ = call_mock(j["messages"], 0.7, k)
+                            f.write(json.dumps({"world": j["world"], "level": j["level"], "response": text,
+                                                "error": None}) + "\n")
+            rows = ss.load(Path(d))
+        # mock: power_cap near_zero (correct), evap weaker (correct), anti_icing near_zero (wrong, truth opposite)
+        v = ss.verdicts(rows)
+        cap = v["P1"]["by_model"]["gpt-oss-120b"]
+        self.assertEqual(cap["n"], 126)
+        self.assertAlmostEqual(cap["shape_rate"], 1.0)
+        self.assertAlmostEqual(v["P3"]["by_model"]["gpt-oss-120b"]["shape_rate"], 1.0)
+        self.assertEqual(v["P2"]["by_model"]["gpt-oss-120b"]["n"], 21)
+        self.assertAlmostEqual(v["P2"]["by_model"]["gpt-oss-120b"]["shape_rate"], 0.0)
+        self.assertTrue(v["P1"]["pass"])
+        self.assertTrue(v["P2"]["pass"])
+        self.assertFalse(v["P3"]["pass"])
+        self.assertAlmostEqual(v["P5"]["cap"], 1.0)
+        rep = ss.reports(rows)["gpt-oss-120b"]
+        self.assertEqual(rep["base_false_alarm_rate"], 0.0)
+        self.assertEqual(rep["parse_failures"], 0)
+
+    def test_location_rule(self):
+        import score_shape as ss
+        it = {"mechanism": "power_cap", "side": "below", "at_c": 11.5, "response_beyond": "near_zero"}
+        self.assertIsNotNone(ss.loc_item([it], "cap_strong", "cap"))   # |11.5 - 9| <= 3
+        self.assertIsNone(ss.loc_item([it], "cap_mild", "cap"))        # |11.5 - 6| > 3
+        self.assertIsNone(ss.loc_item([dict(it, at_c=12.5)], "cap_strong", "cap"))  # 3.5 > 3
+        self.assertIsNone(ss.loc_item([dict(it, mechanism="other")], "cap_strong", "cap"))
+        self.assertIsNone(ss.loc_item([it], "evap", "cap"))            # world without a cap
+
+
 if __name__ == '__main__':
     unittest.main()
 
