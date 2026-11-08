@@ -1,0 +1,209 @@
+world-blind controls (ccpp-world-blind-controls.md §2-§5); mean clean RMSE over 5 worlds, blend 0.5
+
+                                 split     R0     HA  S0maj      M  D_real  D_real_cold  D_real_hot  P_mean  P_best P_best_name  n_P_beaten  HA_harm  M_harm  P_harm_mean
+cell                                                                                                                                                                     
+pilot-gemma3-12b|L1                dev  7.989  7.989  8.041  7.926   7.215        7.281       7.902   8.087   7.281   P|below 8           7    0.000   0.004        0.104
+pilot-qwen35-9b-nothink|L2         dev  7.989  7.654  7.654  7.989   7.215        7.281       7.902   8.087   7.281   P|below 8          14    0.024   0.000        0.104
+pilot-qwen35-9b-nothink|L1         dev  7.989  7.949  7.880  7.942   7.215        7.281       7.902   8.087   7.281   P|below 8          11    0.035   0.003        0.104
+pilot-mistral7b|L2                 dev  7.989  7.989  8.302  8.202   7.215        7.281       7.902   8.087   7.281   P|below 8           7    0.000   0.204        0.104
+pilot-mistral7b|L1                 dev  7.989  7.989  9.124  9.124   7.215        7.281       7.902   8.087   7.281   P|below 8           7    0.000   0.302        0.104
+pilot-llama31-8b|L2                dev  7.989  7.893  8.919  9.943   7.215        7.281       7.902   8.087   7.281   P|below 8          12    0.018   0.291        0.104
+pilot-llama31-8b|L1                dev  7.989  7.798  8.477  7.761   7.215        7.281       7.902   8.087   7.281   P|below 8          14    0.052   0.154        0.104
+pilot-gemma3-12b|L2                dev  7.989  7.989  8.041  7.926   7.215        7.281       7.902   8.087   7.281   P|below 8           7    0.000   0.004        0.104
+qwen3-30b-a3b-instruct|L2          dev  7.989  7.066  7.640  7.868   7.215        7.281       7.902   8.087   7.281   P|below 8          17    0.025   0.019        0.104
+gpt-oss-120b|L2                    dev  7.989  7.318  7.132  7.281   7.215        7.281       7.902   8.087   7.281   P|below 8          16    0.029   0.051        0.104
+gpt-oss-120b|L1                    dev  7.989  7.367  7.647  7.579   7.215        7.281       7.902   8.087   7.281   P|below 8          16    0.034   0.134        0.104
+qwen3-30b-a3b-instruct|L1          dev  7.989  7.369  7.868  7.868   7.215        7.281       7.902   8.087   7.281   P|below 8          16    0.010   0.019        0.104
+llama33-70b|L2              validation  7.989  7.654  7.947  9.128   7.215        7.281       7.902   8.087   7.281   P|below 8          14    0.024   0.183        0.104
+llama33-70b|L1              validation  7.989  7.670  8.358  8.054   7.215        7.281       7.902   8.087   7.281   P|below 8          14    0.016   0.114        0.104
+gpt-oss-20b|L2              validation  7.989  7.893  7.623  7.989   7.215        7.281       7.902   8.087   7.281   P|below 8          12    0.018   0.000        0.104
+gpt-oss-20b|L1              validation  7.989  7.989  7.275  7.989   7.215        7.281       7.902   8.087   7.281   P|below 8           7    0.000   0.000        0.104
+gemma3-27b|L2               validation  7.989  7.970  8.196  7.871   7.215        7.281       7.902   8.087   7.281   P|below 8          10    0.000   0.069        0.104
+gemma3-27b|L1               validation  7.989  7.670  8.054  8.054   7.215        7.281       7.902   8.087   7.281   P|below 8          14    0.016   0.114        0.104
+
+=== world-blind statements: structural ceiling (share of 5 worlds all-correct) ===
+{"P|above 18": 0.0, "P|above 20": 0.0, "P|above 22": 0.2, "P|above 24": 0.2, "P|above 26": 0.2, "P|above 28": 0.0, "P|above 30": 0.0, "P|above 32": 0.0, "P|above 34": 0.0, "P|above 36": 0.0, "P|below 4": 0.2, "P|below 6": 0.4, "P|below 8": 0.4, "P|below 10": 0.2, "P|below 12": 0.2, "P|below 14": 0.0, "P|below 16": 0.0, "D_real": 0.2, "D_real_cold": 0.4, "D_real_hot": 0.2}
+
+=== per-statement RMSE by world (world-blind statements) ===
+{
+ "P|above 18": {
+  "base": 4.882,
+  "cap_mild": 9.019,
+  "cap_strong": 12.856,
+  "evap": 6.409,
+  "evap+cap_mild": 9.484
+ },
+ "P|above 20": {
+  "base": 4.471,
+  "cap_mild": 8.597,
+  "cap_strong": 12.701,
+  "evap": 6.326,
+  "evap+cap_mild": 9.085
+ },
+ "P|above 22": {
+  "base": 5.025,
+  "cap_mild": 9.118,
+  "cap_strong": 13.476,
+  "evap": 6.147,
+  "evap+cap_mild": 8.366
+ },
+ "P|above 24": {
+  "base": 4.628,
+  "cap_mild": 8.598,
+  "cap_strong": 13.135,
+  "evap": 6.342,
+  "evap+cap_mild": 8.099
+ },
+ "P|above 26": {
+  "base": 4.325,
+  "cap_mild": 8.076,
+  "cap_strong": 12.771,
+  "evap": 6.62,
+  "evap+cap_mild": 8.032
+ },
+ "P|above 28": {
+  "base": 4.117,
+  "cap_mild": 7.683,
+  "cap_strong": 12.471,
+  "evap": 6.937,
+  "evap+cap_mild": 8.146
+ },
+ "P|above 30": {
+  "base": 4.074,
+  "cap_mild": 7.416,
+  "cap_strong": 12.27,
+  "evap": 7.253,
+  "evap+cap_mild": 8.33
+ },
+ "P|above 32": {
+  "base": 4.122,
+  "cap_mild": 7.357,
+  "cap_strong": 12.226,
+  "evap": 7.442,
+  "evap+cap_mild": 8.486
+ },
+ "P|above 34": {
+  "base": 4.153,
+  "cap_mild": 7.41,
+  "cap_strong": 12.255,
+  "evap": 7.53,
+  "evap+cap_mild": 8.572
+ },
+ "P|above 36": {
+  "base": 4.157,
+  "cap_mild": 7.414,
+  "cap_strong": 12.259,
+  "evap": 7.536,
+  "evap+cap_mild": 8.578
+ },
+ "P|below 4": {
+  "base": 4.166,
+  "cap_mild": 7.394,
+  "cap_strong": 12.234,
+  "evap": 7.548,
+  "evap+cap_mild": 8.57
+ },
+ "P|below 6": {
+  "base": 4.241,
+  "cap_mild": 6.607,
+  "cap_strong": 10.659,
+  "evap": 7.629,
+  "evap+cap_mild": 7.928
+ },
+ "P|below 8": {
+  "base": 4.431,
+  "cap_mild": 6.679,
+  "cap_strong": 9.368,
+  "evap": 7.808,
+  "evap+cap_mild": 8.12
+ },
+ "P|below 10": {
+  "base": 4.796,
+  "cap_mild": 7.058,
+  "cap_strong": 9.356,
+  "evap": 8.146,
+  "evap+cap_mild": 8.538
+ },
+ "P|below 12": {
+  "base": 5.287,
+  "cap_mild": 7.591,
+  "cap_strong": 9.707,
+  "evap": 8.595,
+  "evap+cap_mild": 9.075
+ },
+ "P|below 14": {
+  "base": 5.958,
+  "cap_mild": 8.318,
+  "cap_strong": 10.417,
+  "evap": 9.199,
+  "evap+cap_mild": 9.762
+ },
+ "P|below 16": {
+  "base": 6.705,
+  "cap_mild": 9.107,
+  "cap_strong": 11.316,
+  "evap": 9.852,
+  "evap+cap_mild": 10.485
+ },
+ "D_real": {
+  "base": 4.522,
+  "cap_mild": 7.007,
+  "cap_strong": 9.85,
+  "evap": 7.189,
+  "evap+cap_mild": 7.509
+ },
+ "D_real_cold": {
+  "base": 4.431,
+  "cap_mild": 6.679,
+  "cap_strong": 9.368,
+  "evap": 7.808,
+  "evap+cap_mild": 8.12
+ },
+ "D_real_hot": {
+  "base": 4.2,
+  "cap_mild": 7.859,
+  "cap_strong": 12.607,
+  "evap": 6.772,
+  "evap+cap_mild": 8.071
+ }
+}
+
+=== model defaults M (base-world S0 majority) ===
+{"gemma3-27b|L1": [["above", 25.0]], "gemma3-27b|L2": [["above", 28.0]], "gpt-oss-120b|L1": [["below", 10.0]], "gpt-oss-120b|L2": [["below", 8.0]], "gpt-oss-20b|L1": [], "gpt-oss-20b|L2": [], "llama33-70b|L1": [["above", 25.0]], "llama33-70b|L2": [["above", 15.0]], "pilot-gemma3-12b|L1": [["above", 32.0]], "pilot-gemma3-12b|L2": [["above", 32.0]], "pilot-llama31-8b|L1": [["below", 12.0], ["above", 28.0]], "pilot-llama31-8b|L2": [["below", 20.0], ["above", 30.0]], "pilot-mistral7b|L1": [["below", 15.0]], "pilot-mistral7b|L2": [["below", 12.5]], "pilot-qwen35-9b-nothink|L1": [["above", 32.5]], "pilot-qwen35-9b-nothink|L2": [["above", 37.0]], "qwen3-30b-a3b-instruct|L1": [["above", 30.0]], "qwen3-30b-a3b-instruct|L2": [["above", 30.0]]}
+
+=== seed check vs runs/assembly (|HA diff| > 0.01 MW): none ===
+
+=== verdicts (validation cells) ===
+{
+ "n_cells": 6,
+ "wins": {
+  "K1": 0,
+  "K2": 4,
+  "K3": 6,
+  "K4": 6
+ },
+ "K1": false,
+ "K2": true,
+ "K3": true,
+ "K4": true,
+ "report": {
+  "HA_minus_P_best": {
+   "gemma3-27b|L1": 0.389,
+   "gemma3-27b|L2": 0.689,
+   "gpt-oss-20b|L1": 0.708,
+   "gpt-oss-20b|L2": 0.612,
+   "llama33-70b|L1": 0.389,
+   "llama33-70b|L2": 0.373
+  },
+  "n_P_beaten_of_17": {
+   "gemma3-27b|L1": 14,
+   "gemma3-27b|L2": 10,
+   "gpt-oss-20b|L1": 7,
+   "gpt-oss-20b|L2": 12,
+   "llama33-70b|L1": 14,
+   "llama33-70b|L2": 14
+  },
+  "HA_lt_D_real_cold": 0,
+  "HA_lt_D_real_hot": 4
+ }
+}
