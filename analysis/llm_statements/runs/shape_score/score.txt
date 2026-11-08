@@ -1,0 +1,503 @@
+shape stage scoring (ccpp-shape-elicitation.md §4-§6)
+
+model | cap loc/shape (n_loc) | evap loc/shape (n_loc) | ice L2 loc/shape (n_loc) | inferred loc/shape
+gpt-oss-120b | 0.60/0.87 (76) | 0.75/0.97 (63) | 0.90/0.00 (19) | 0.81/0.60
+qwen3-30b-a3b-instruct | 0.00/- (0) | 1.00/1.00 (84) | 1.00/0.00 (21) | 1.00/0.67
+gpt-oss-20b | 0.37/0.76 (46) | 0.67/0.79 (56) | 0.57/0.00 (12) | 0.70/0.51
+gemma3-27b | 0.10/1.00 (12) | 0.81/1.00 (68) | 0.10/0.00 (2) | 0.60/0.91
+llama33-70b | 0.00/- (0) | 1.00/0.00 (84) | 0.00/- (0) | 0.67/0.00
+
+responses among location-correct items:
+  cap: {"gpt-oss-120b": {"near_zero": 66, "weaker": 10}, "qwen3-30b-a3b-instruct": {}, "gpt-oss-20b": {"near_zero": 35, "weaker": 7, "same_or_stronger": 4}, "gemma3-27b": {"near_zero": 12}, "llama33-70b": {}}
+  evap: {"gpt-oss-120b": {"near_zero": 1, "weaker": 61, "same_or_stronger": 1}, "qwen3-30b-a3b-instruct": {"weaker": 84}, "gpt-oss-20b": {"weaker": 44, "near_zero": 2, "opposite": 1, "same_or_stronger": 9}, "gemma3-27b": {"weaker": 68}, "llama33-70b": {"same_or_stronger": 84}}
+  ice L2: {"gpt-oss-120b": {"weaker": 10, "near_zero": 9}, "qwen3-30b-a3b-instruct": {"weaker": 21}, "gpt-oss-20b": {"weaker": 11, "near_zero": 1}, "gemma3-27b": {"weaker": 2}, "llama33-70b": {}}
+
+P5 pooled shape_rate: cap 0.84, inferred 0.54
+
+reports:
+{
+ "gpt-oss-120b": {
+  "calls": 252,
+  "call_errors": 0,
+  "parse_failures": 3,
+  "null_location": 0,
+  "base_false_alarm_rate": 0.30952380952380953,
+  "base_responses": {
+   "weaker": 12,
+   "same_or_stronger": 4,
+   "None": 1,
+   "near_zero": 1
+  },
+  "by_level": {
+   "cap": {
+    "L1": {
+     "n": 63,
+     "n_loc": 35,
+     "loc_rate": 0.5555555555555556,
+     "n_shape": 32,
+     "shape_rate": 0.9142857142857143,
+     "responses": {
+      "near_zero": 32,
+      "weaker": 3
+     }
+    },
+    "L2": {
+     "n": 63,
+     "n_loc": 41,
+     "loc_rate": 0.6507936507936508,
+     "n_shape": 34,
+     "shape_rate": 0.8292682926829268,
+     "responses": {
+      "near_zero": 34,
+      "weaker": 7
+     }
+    }
+   },
+   "evap": {
+    "L1": {
+     "n": 42,
+     "n_loc": 23,
+     "loc_rate": 0.5476190476190477,
+     "n_shape": 22,
+     "shape_rate": 0.9565217391304348,
+     "responses": {
+      "near_zero": 1,
+      "weaker": 22
+     }
+    },
+    "L2": {
+     "n": 42,
+     "n_loc": 40,
+     "loc_rate": 0.9523809523809523,
+     "n_shape": 39,
+     "shape_rate": 0.975,
+     "responses": {
+      "weaker": 39,
+      "same_or_stronger": 1
+     }
+    }
+   },
+   "ice": {
+    "L1": {
+     "n": 21,
+     "n_loc": 20,
+     "loc_rate": 0.9523809523809523,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "weaker": 20
+     }
+    },
+    "L2": {
+     "n": 21,
+     "n_loc": 19,
+     "loc_rate": 0.9047619047619048,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "weaker": 10,
+      "near_zero": 9
+     }
+    }
+   }
+  },
+  "responses_any_location": {
+   "cap": {
+    "near_zero": 107,
+    "weaker": 15
+   },
+   "evap": {
+    "same_or_stronger": 6,
+    "near_zero": 1,
+    "weaker": 74
+   },
+   "ice": {
+    "weaker": 32,
+    "near_zero": 9
+   }
+  },
+  "evap_near_zero_share": 0.015873015873015872,
+  "ice_rh_above_median": 70.0,
+  "mechanism_errors": 0
+ },
+ "qwen3-30b-a3b-instruct": {
+  "calls": 252,
+  "call_errors": 0,
+  "parse_failures": 0,
+  "null_location": 0,
+  "base_false_alarm_rate": 1.0,
+  "base_responses": {
+   "weaker": 28,
+   "near_zero": 14
+  },
+  "by_level": {
+   "cap": {
+    "L1": {
+     "n": 63,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    },
+    "L2": {
+     "n": 63,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    }
+   },
+   "evap": {
+    "L1": {
+     "n": 42,
+     "n_loc": 42,
+     "loc_rate": 1.0,
+     "n_shape": 42,
+     "shape_rate": 1.0,
+     "responses": {
+      "weaker": 42
+     }
+    },
+    "L2": {
+     "n": 42,
+     "n_loc": 42,
+     "loc_rate": 1.0,
+     "n_shape": 42,
+     "shape_rate": 1.0,
+     "responses": {
+      "weaker": 42
+     }
+    }
+   },
+   "ice": {
+    "L1": {
+     "n": 21,
+     "n_loc": 21,
+     "loc_rate": 1.0,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "weaker": 21
+     }
+    },
+    "L2": {
+     "n": 21,
+     "n_loc": 21,
+     "loc_rate": 1.0,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "weaker": 21
+     }
+    }
+   }
+  },
+  "responses_any_location": {
+   "cap": {
+    "near_zero": 51
+   },
+   "evap": {
+    "weaker": 84
+   },
+   "ice": {
+    "weaker": 42
+   }
+  },
+  "evap_near_zero_share": 0.0,
+  "ice_rh_above_median": 75.0,
+  "mechanism_errors": 13
+ },
+ "gpt-oss-20b": {
+  "calls": 252,
+  "call_errors": 0,
+  "parse_failures": 1,
+  "null_location": 0,
+  "base_false_alarm_rate": 0.2619047619047619,
+  "base_responses": {
+   "weaker": 11,
+   "near_zero": 3
+  },
+  "by_level": {
+   "cap": {
+    "L1": {
+     "n": 63,
+     "n_loc": 24,
+     "loc_rate": 0.38095238095238093,
+     "n_shape": 17,
+     "shape_rate": 0.7083333333333334,
+     "responses": {
+      "near_zero": 17,
+      "same_or_stronger": 3,
+      "weaker": 4
+     }
+    },
+    "L2": {
+     "n": 63,
+     "n_loc": 22,
+     "loc_rate": 0.3492063492063492,
+     "n_shape": 18,
+     "shape_rate": 0.8181818181818182,
+     "responses": {
+      "near_zero": 18,
+      "weaker": 3,
+      "same_or_stronger": 1
+     }
+    }
+   },
+   "evap": {
+    "L1": {
+     "n": 42,
+     "n_loc": 14,
+     "loc_rate": 0.3333333333333333,
+     "n_shape": 12,
+     "shape_rate": 0.8571428571428571,
+     "responses": {
+      "weaker": 12,
+      "same_or_stronger": 2
+     }
+    },
+    "L2": {
+     "n": 42,
+     "n_loc": 42,
+     "loc_rate": 1.0,
+     "n_shape": 32,
+     "shape_rate": 0.7619047619047619,
+     "responses": {
+      "weaker": 32,
+      "near_zero": 2,
+      "opposite": 1,
+      "same_or_stronger": 7
+     }
+    }
+   },
+   "ice": {
+    "L1": {
+     "n": 21,
+     "n_loc": 20,
+     "loc_rate": 0.9523809523809523,
+     "n_shape": 1,
+     "shape_rate": 0.05,
+     "responses": {
+      "weaker": 17,
+      "same_or_stronger": 2,
+      "opposite": 1
+     }
+    },
+    "L2": {
+     "n": 21,
+     "n_loc": 12,
+     "loc_rate": 0.5714285714285714,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "weaker": 11,
+      "near_zero": 1
+     }
+    }
+   }
+  },
+  "responses_any_location": {
+   "cap": {
+    "near_zero": 87,
+    "weaker": 21,
+    "same_or_stronger": 11
+   },
+   "evap": {
+    "weaker": 71,
+    "near_zero": 2,
+    "opposite": 1,
+    "same_or_stronger": 9
+   },
+   "ice": {
+    "weaker": 35,
+    "same_or_stronger": 4,
+    "opposite": 1,
+    "near_zero": 1
+   }
+  },
+  "evap_near_zero_share": 0.03571428571428571,
+  "ice_rh_above_median": 70.0,
+  "mechanism_errors": 0
+ },
+ "gemma3-27b": {
+  "calls": 252,
+  "call_errors": 0,
+  "parse_failures": 0,
+  "null_location": 0,
+  "base_false_alarm_rate": 1.0,
+  "base_responses": {
+   "weaker": 42
+  },
+  "by_level": {
+   "cap": {
+    "L1": {
+     "n": 63,
+     "n_loc": 12,
+     "loc_rate": 0.19047619047619047,
+     "n_shape": 12,
+     "shape_rate": 1.0,
+     "responses": {
+      "near_zero": 12
+     }
+    },
+    "L2": {
+     "n": 63,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    }
+   },
+   "evap": {
+    "L1": {
+     "n": 42,
+     "n_loc": 26,
+     "loc_rate": 0.6190476190476191,
+     "n_shape": 26,
+     "shape_rate": 1.0,
+     "responses": {
+      "weaker": 26
+     }
+    },
+    "L2": {
+     "n": 42,
+     "n_loc": 42,
+     "loc_rate": 1.0,
+     "n_shape": 42,
+     "shape_rate": 1.0,
+     "responses": {
+      "weaker": 42
+     }
+    }
+   },
+   "ice": {
+    "L1": {
+     "n": 21,
+     "n_loc": 5,
+     "loc_rate": 0.23809523809523808,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "near_zero": 5
+     }
+    },
+    "L2": {
+     "n": 21,
+     "n_loc": 2,
+     "loc_rate": 0.09523809523809523,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "weaker": 2
+     }
+    }
+   }
+  },
+  "responses_any_location": {
+   "cap": {
+    "weaker": 55,
+    "near_zero": 43
+   },
+   "evap": {
+    "weaker": 84
+   },
+   "ice": {
+    "near_zero": 6,
+    "weaker": 2
+   }
+  },
+  "evap_near_zero_share": 0.0,
+  "ice_rh_above_median": 80.0,
+  "mechanism_errors": 9
+ },
+ "llama33-70b": {
+  "calls": 252,
+  "call_errors": 0,
+  "parse_failures": 0,
+  "null_location": 0,
+  "base_false_alarm_rate": 0.0,
+  "base_responses": {},
+  "by_level": {
+   "cap": {
+    "L1": {
+     "n": 63,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    },
+    "L2": {
+     "n": 63,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    }
+   },
+   "evap": {
+    "L1": {
+     "n": 42,
+     "n_loc": 42,
+     "loc_rate": 1.0,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "same_or_stronger": 42
+     }
+    },
+    "L2": {
+     "n": 42,
+     "n_loc": 42,
+     "loc_rate": 1.0,
+     "n_shape": 0,
+     "shape_rate": 0.0,
+     "responses": {
+      "same_or_stronger": 42
+     }
+    }
+   },
+   "ice": {
+    "L1": {
+     "n": 21,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    },
+    "L2": {
+     "n": 21,
+     "n_loc": 0,
+     "loc_rate": 0.0,
+     "n_shape": 0,
+     "shape_rate": null,
+     "responses": {}
+    }
+   }
+  },
+  "responses_any_location": {
+   "cap": {
+    "same_or_stronger": 42,
+    "near_zero": 42
+   },
+   "evap": {
+    "same_or_stronger": 84
+   },
+   "ice": {
+    "same_or_stronger": 38,
+    "weaker": 2
+   }
+  },
+  "evap_near_zero_share": 0.0,
+  "ice_rh_above_median": 70.0,
+  "mechanism_errors": 0
+ }
+}
+
+=== verdicts ===
+{"P1": true, "P2": true, "P3": false, "P4": true, "P5": true}
