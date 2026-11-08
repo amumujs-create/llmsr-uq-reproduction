@@ -1,0 +1,105 @@
+=== weather: per site airTemperature ===
+              n  missing   min    p5   p95   max
+site_id                                         
+Bear      17542    0.000   0.6   7.8  22.2  38.3
+Bobcat    17525    0.002 -19.4  -5.6  31.1  38.3
+Bull      17529    0.002  -6.7   7.2  33.9  41.1
+Cockatoo  16975    0.000 -23.9  -8.3  25.6  33.9
+Crow      16860    0.000 -28.8 -12.6  25.4  33.9
+Eagle     17536    0.000 -15.6  -3.3  28.9  35.6
+Fox       17543    0.000   2.2  10.0  39.4  48.3
+Gator     17544    0.000   1.7  12.2  31.7  36.1
+Hog       17542    0.000 -28.9 -12.8  26.7  35.6
+Lamb      17500    0.000  -3.0   3.0  19.0  30.0
+Moose     16860    0.000 -28.8 -12.6  25.4  33.9
+Mouse     17516    0.000  -4.1   2.1  22.0  33.9
+Panther   17544    0.000   1.7  12.2  31.7  36.1
+Peacock   17539    0.001 -13.3  -1.1  30.0  37.2
+Rat       17539    0.000 -10.6  -0.6  30.6  37.8
+Robin     17516    0.000  -4.1   2.1  22.0  33.9
+Shrew     17516    0.000  -4.1   2.1  22.0  33.9
+Swan      17535    0.002   0.0   7.2  24.4  40.6
+Wolf      17505    0.000  -4.8   1.6  17.9  26.1
+
+=== chilledwater: 555 meters, hourly missing 0.078 ===
+meters with >=300 valid days: 503
+
+=== steam: 370 meters, hourly missing 0.122 ===
+meters with >=300 valid days: 326
+
+=== hotwater: 185 meters, hourly missing 0.074 ===
+meters with >=300 valid days: 148
+
+=== gas: 177 meters, hourly missing 0.048 ===
+meters with >=300 valid days: 158
+
+=== electricity: 1578 meters, hourly missing 0.089 ===
+meters with >=300 valid days: 1529
+
+wrote data/bdg2/bdg2_5p_fits.csv (2664 fits)
+
+=== fits by type: n, R2>=0.5, R2>=0.5 & balance points >=2C inside range ===
+                 n  r2_ok  good
+type                           
+chilledwater   503    426   425
+electricity   1529    284   283
+gas            158     31    30
+hotwater       148     81    81
+steam          326    261   261
+
+=== good fits: balance points by site (median th, tc; count) ===
+                         n  th_med  tc_med  th_iqr  tc_iqr
+type         site                                         
+chilledwater Bobcat      4     3.5    11.4     5.6     3.4
+             Bull       93    16.5    16.5     4.6     3.9
+             Cockatoo   61     9.9     9.9     2.7     2.8
+             Eagle      69     9.6    10.0     5.2     5.1
+             Fox        76    20.1    21.2     5.2     4.8
+             Hog        67    10.2    11.0     3.6     3.4
+             Moose       7     1.1     8.7    10.6     2.9
+             Panther    16    19.8    19.8     1.6     1.6
+             Peacock    17    17.0    17.0     2.4     2.4
+             Swan       15    13.9    13.9     8.9     8.9
+electricity  Bear        4    12.6    14.4     6.9     4.2
+             Bobcat      5    14.8    21.1     2.9     7.5
+             Bull        5    16.6    17.7     3.8     1.3
+             Cockatoo    6     5.7     8.3    20.0    12.0
+             Crow        2     7.9     7.9     0.2     0.2
+             Eagle      10    12.0    14.0     9.8    15.0
+             Fox        29    18.8    21.2     6.8     4.3
+             Gator       1    17.3    22.6     0.0     0.0
+             Hog        35     7.8    10.9    15.6     7.5
+             Moose       1    13.2    23.2     0.0     0.0
+             Mouse       1    11.2    11.2     0.0     0.0
+             Panther    22    19.6    20.0     3.7     2.2
+             Rat       157    13.1    17.9     7.1     4.6
+             Robin       5    16.8    17.7     4.5     5.4
+gas          Bobcat      3    14.9    14.9     2.5     5.7
+             Lamb       18    15.4    15.4     2.3     2.5
+             Panther     5    21.1    23.4     1.4     3.1
+             Shrew       4    17.0    17.0     3.3     3.2
+hotwater     Bobcat      1     8.4     8.4     0.0     0.0
+             Cockatoo    1    11.9    11.9     0.0     0.0
+             Crow        5    16.7    17.0     0.8     0.8
+             Eagle      36    13.3    15.6     6.6     7.5
+             Fox        23    23.8    25.1     7.6     9.6
+             Moose       3    16.7    16.7     6.7     7.7
+             Robin       6    15.9    16.6     2.4     3.4
+             Swan        6    16.7    16.9     2.2     5.4
+steam        Bull       58    21.2    22.0     4.9     5.3
+             Cockatoo   67    12.7    13.0     5.2     5.5
+             Eagle      32    12.3    13.8     6.2     6.2
+             Hog        84    13.4    15.6     7.1     7.8
+             Moose      10    14.5    17.3     4.9     5.9
+             Peacock    10    15.3    15.7     5.6     7.8
+
+=== good fits: overall spread of tc (cooling balance) and th (heating balance) ===
+           th      tc
+count  1080.0  1080.0
+mean     13.9    16.0
+std       7.2     6.7
+min     -12.7   -12.7
+25%      10.1    11.7
+50%      14.1    16.3
+75%      18.2    19.9
+max      37.2    37.4
