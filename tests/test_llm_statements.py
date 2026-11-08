@@ -500,3 +500,53 @@ class RealValidationChecks(unittest.TestCase):
         self.assertEqual(set(cells.module), {"real"})
         self.assertLess(cells.R0_data.max(), 1e-6)
         self.assertLess((cells["blend_0.5"] - cells.R0_data).abs().max(), 1e-9)   # empty statement = R0
+
+
+class WorldBlindControlChecks(unittest.TestCase):
+    """World-blind controls (ccpp-world-blind-controls.md §2-§5): statement sets, structural ceiling, verdict rule."""
+
+    def test_statement_sets(self):
+        from controls import DOMAIN, placebo_statements
+        st = placebo_statements()
+        self.assertEqual(len(st), 17)
+        self.assertEqual(st["P|above 18"], [("above", 18.0)])
+        self.assertEqual(st["P|below 16"], [("below", 16.0)])
+        self.assertEqual(DOMAIN["D_real"], [("below", 8.0), ("above", 27.0)])
+
+    def test_world_blind_structural_ceiling(self):
+        from controls import DOMAIN, placebo_statements, world_blind_structural_ceiling
+        c = world_blind_structural_ceiling({**placebo_statements(), **DOMAIN})
+        self.assertEqual(len(c), 20)
+        self.assertLessEqual(max(c.values()), 0.4)          # §4: no world-blind statement fits all five worlds
+        self.assertEqual(c["P|below 6"], 0.4)               # cap_mild and cap_strong only
+
+    def test_model_defaults_and_external(self):
+        from controls import build_external, model_defaults
+        s0 = {("m", "L1", "base"): [[("above", 25.0)], [("above", 26.0)], []],
+              ("m", "L1", "evap"): [[("above", 24.0)]] * 3}
+        self.assertEqual(model_defaults(s0), {"m|L1": [("above", 25.5)]})
+        ext, meta, m = build_external(s0, {})
+        self.assertEqual(set(ext), {"base", "cap_mild", "cap_strong", "evap", "evap+cap_mild"})
+        self.assertEqual(ext["cap_mild"]["m|L1|M"], [("above", 25.5)])    # same in every world
+        self.assertEqual(ext["evap"]["m|L1|HA"], [("above", 24.0)])         # HA is world-specific (S0 majority, no S2)
+        self.assertEqual(ext["cap_mild"]["m|L1|HA"], [])
+        self.assertEqual(ext["evap"]["D_real"], [("below", 8.0), ("above", 27.0)])
+        self.assertEqual(meta["m|L1"]["split"], "dev")
+
+    def test_verdicts_known_table(self):
+        import pandas as pd
+        from controls import verdicts
+        rows = []
+        for i in range(6):
+            ha = 7.5 if i < 4 else 8.5   # HA beats D_real, M and P_mean in 4 of 6 cells; harm never worse
+            rows.append({"cell": f"c{i}", "split": "validation", "HA": ha, "D_real": 8.0, "M": 8.0, "P_mean": 8.0,
+                         "P_best": 7.0, "HA_harm": 0.0, "P_harm_mean": 0.1, "D_real_cold": 7.0, "D_real_hot": 9.0,
+                         "n_P_beaten": 10})
+        t = pd.DataFrame(rows).set_index("cell")
+        v = verdicts(t)
+        self.assertEqual(v["wins"], {"K1": 4, "K2": 4, "K3": 4, "K4": 6})
+        self.assertTrue(v["K1"] and v["K2"] and v["K3"] and v["K4"])
+        t.loc["c3", "HA"] = 8.5                                  # 3 of 6 -> K1-K3 fail
+        v = verdicts(t)
+        self.assertFalse(v["K1"] or v["K2"] or v["K3"])
+        self.assertEqual(v["report"]["HA_lt_D_real_hot"], 6)
