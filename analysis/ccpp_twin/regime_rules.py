@@ -87,6 +87,9 @@ def compose(stmt, e, at_test, slope_data, slope_phys, flat_slope_factor, window_
 
     Boundaries with an rh_above condition apply only to test rows with RH above it, so rows are grouped by the
     set of boundaries active for them. Statements without conditions take the original single-curve path."""
+    per_boundary = not np.isscalar(flat_slope_factor)
+    if per_boundary and len(flat_slope_factor) != len(stmt):
+        raise ValueError("one flat_slope_factor per boundary")
     if any(len(b) > 2 for b in stmt):
         if rh_test is None:
             raise ValueError("statement has humidity conditions; pass rh_test")
@@ -96,13 +99,22 @@ def compose(stmt, e, at_test, slope_data, slope_phys, flat_slope_factor, window_
         for key in {tuple(a) for a in active}:
             rows = np.all(active == key, axis=1)
             sub = [b[:2] for b, k in zip(stmt, key) if k]
-            out[rows] = compose(sub, e, at_test[rows], slope_data, slope_phys, flat_slope_factor, window_flat)
+            fac = [f for f, k in zip(flat_slope_factor, key) if k] if per_boundary else flat_slope_factor
+            out[rows] = compose(sub, e, at_test[rows], slope_data, slope_phys, fac, window_flat)
         return out
     lo, hi = min(e, at_test.min()), max(e, at_test.max())
     grid = np.linspace(lo, hi, 2001)
     mid = 0.5 * (grid[1:] + grid[:-1])
     flat = is_flat(mid, stmt)
-    s = np.where(flat == window_flat, slope_data, np.where(flat, flat_slope_factor * slope_phys, slope_phys))
+    if per_boundary:
+        # the factor of the boundary whose flat region covers the grid point ("below" and "above" regions of one
+        # statement do not overlap: innermost boundaries, cold side < hot side)
+        factor = np.zeros(mid.shape)
+        for (side, at, *_), f in zip(stmt, flat_slope_factor):
+            factor = np.where((mid < at) if side == "below" else (mid > at), f, factor)
+    else:
+        factor = flat_slope_factor
+    s = np.where(flat == window_flat, slope_data, np.where(flat, factor * slope_phys, slope_phys))
     cum = np.concatenate([[0.0], np.cumsum(s * np.diff(grid))])
     return np.interp(at_test, grid, cum) - np.interp(e, grid, cum)
 

@@ -43,13 +43,16 @@ def coef_prior_fit(X, y, slope_target, rng):
     return fit(X, y, CP_GRID[int(np.argmin(cv))])
 
 
-def run(x, reps, external=None, builtin=True, external_lambda=None, include_ice=False, observed=None):
+def run(x, reps, external=None, builtin=True, external_lambda=None, include_ice=False, observed=None,
+        external_factor=None):
     """external: {module: {name: [(side, at_c), ...]}} statements to evaluate in addition to (or instead of) the
     built-in ones; used to score LLM statements on the same worlds, windows, reps and seeds.
     external_lambda: optional {module: {name: lam}}; adds a blend_custom column with that statement's own lambda.
     include_ice: also run the anti-icing worlds. Boundaries may carry an RH condition: (side, at_c, rh_above).
     observed: real output PE (ccpp-real-data.md §3). Then the only world is module "real": training and scoring use
-    the observed output, no noise is added, and each rep re-draws the training rows with the twin's seeds."""
+    the observed output, no noise is added, and each rep re-draws the training rows with the twin's seeds.
+    external_factor: optional {module: {name: factor}}; slope factor beyond the boundary (scalar, or one per boundary)
+    for that statement instead of the default 0.0 (ccpp-shape-assembly.md)."""
     if observed is not None:
         worlds = [{"module": "real", "vmode": "realV", "noise": 0.0, "cfg": None}]
         builtin = False
@@ -108,7 +111,8 @@ def run(x, reps, external=None, builtin=True, external_lambda=None, include_ice=
                         wflat = bool(is_flat([center], stmt)[0])
                         z_stated, z_other = (z_flat, z_normal) if wflat else (z_normal, z_flat)
                         rejected = (z_stated - z_other) >= GUARD_MARGIN
-                        p2 = p0 if rejected else base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, 0.0, wflat,
+                        fac = (external_factor or {}).get(world["module"], {}).get(sname, 0.0)
+                        p2 = p0 if rejected else base_at_edge + compose(stmt, edge, Xte[:, 0], b[1], slope_phys, fac, wflat,
                                                                                  Xte[:, 3])
                         delta = p2 - p0
                         rec = {**key, "statement": sname, "rejected": rejected, "R2g": rmse(p2),

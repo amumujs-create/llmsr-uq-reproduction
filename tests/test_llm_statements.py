@@ -550,3 +550,62 @@ class WorldBlindControlChecks(unittest.TestCase):
         v = verdicts(t)
         self.assertFalse(v["K1"] or v["K2"] or v["K3"])
         self.assertEqual(v["report"]["HA_lt_D_real_hot"], 6)
+
+
+class ShapeAssemblyChecks(unittest.TestCase):
+    """HA_shape (ccpp-shape-assembly.md §2): per-boundary slope factors in compose, shape lookup, verdict rule."""
+
+    def test_compose_scalar_unchanged_and_per_boundary(self):
+        import numpy as np
+        from regime_rules import compose
+        stmt = [("below", 6.0), ("above", 24.0)]
+        at = np.linspace(-5.0, 35.0, 81)
+        e, sd, sp = 15.0, -2.5, -2.6
+        ref = compose(stmt, e, at, sd, sp, 0.0, False)
+        self.assertTrue(np.allclose(compose(stmt, e, at, sd, sp, [0.0, 0.0], False), ref))     # list == scalar
+        half = compose(stmt, e, at, sd, sp, 0.5, False)
+        self.assertTrue(np.allclose(compose(stmt, e, at, sd, sp, [0.5, 0.5], False), half))
+        mixed = compose(stmt, e, at, sd, sp, [0.0, 0.5], False)
+        cold, hot = at < 6.0, at > 24.0
+        self.assertTrue(np.allclose(mixed[cold], ref[cold]))                                    # cold side: factor 0
+        self.assertTrue(np.allclose(mixed[hot], half[hot]))                                     # hot side: factor 0.5
+        self.assertTrue(np.allclose(mixed[~cold & ~hot], ref[~cold & ~hot]))
+        with self.assertRaises(ValueError):
+            compose(stmt, e, at, sd, sp, [0.0], False)
+        # humidity-conditioned boundary keeps its own factor
+        ice = [("below", 7.0, 70.0), ("above", 24.0)]
+        rh = np.where(at < 0, 90.0, 40.0)
+        out = compose(ice, e, at, sd, sp, [-1.0, 0.5], False, rh)
+        ref_ice = compose(ice, e, at, sd, sp, 0.5, False, rh)            # same grouping and grid as the scalar path
+        self.assertTrue(np.allclose(out[hot], ref_ice[hot]))             # hot rows: only the 0.5 boundary applies
+        self.assertFalse(np.allclose(out[at < 0], ref_ice[at < 0]))      # wet cold rows: factor -1 differs from 0.5
+
+    def test_shape_lookup_and_factors(self):
+        from shape_assembly import FACTOR, factors_for, shape_at
+        items = [{"side": "above", "at_c": 25.0, "response_beyond": "weaker"},
+                 {"side": "above", "at_c": 23.0, "response_beyond": "weaker"},
+                 {"side": "above", "at_c": 24.0, "response_beyond": "same_or_stronger"},
+                 {"side": "above", "at_c": 30.0, "response_beyond": "near_zero"},     # outside 3 degC
+                 {"side": "below", "at_c": 6.0, "response_beyond": None}]              # unknown answer ignored
+        self.assertEqual(shape_at(items, "above", 24.0), ("weaker", 3))
+        self.assertEqual(shape_at(items, "below", 6.0), (None, 0))
+        self.assertEqual(shape_at(items + [{"side": "above", "at_c": 24.0, "response_beyond": "same_or_stronger"}],
+                                  "above", 24.0), (None, 4))                            # tie -> default
+        facs, labs = factors_for([("below", 6.0), ("above", 24.0)], items)
+        self.assertEqual(facs, [0.0, FACTOR["weaker"]])
+        self.assertEqual(labs, [None, "weaker"])
+
+    def test_verdicts_known_table(self):
+        import pandas as pd
+        from shape_assembly import verdicts
+        rows = []
+        for c in ["gemma3-27b|L1", "gemma3-27b|L2", "gpt-oss-20b|L1", "gpt-oss-20b|L2", "llama33-70b|L1", "llama33-70b|L2"]:
+            llama = c.startswith("llama")
+            rows.append({"cell": c, "split": "validation", "HA": 7.7, "HA_half": 7.6, "SHAPE_ORACLE": 7.5,
+                         "HA_shape": 7.9 if llama else 7.6, "HA_shape_harm": 0.02})
+        v = verdicts(pd.DataFrame(rows).set_index("cell"))
+        self.assertEqual(v["wins"], {"J1": 6, "J2": 2, "J3": 4, "J4": 0})
+        self.assertTrue(v["J1"] and v["J2"] and v["J3"] and v["J4"])
+        t = pd.DataFrame(rows).set_index("cell")
+        t.loc[~t.index.str.startswith("llama"), "HA_shape"] = 7.4   # LLM shape beats fixed 0.5 in 4 cells -> J4 fails
+        self.assertFalse(verdicts(t)["J4"])
