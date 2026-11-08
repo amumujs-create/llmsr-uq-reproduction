@@ -110,6 +110,6 @@ CCPP 격자([`grid.windows`](../../analysis/ccpp_twin/grid.py))의 일 단위판
 
 1. 이 문서 커밋 (수집 전).
 2. **완료(2026-11-08):** 코드 `analysis/bdg2/{worlds.py, collect_bdg2.py, extrap.py, score.py}`, `tests/test_bdg2.py`(11개), `worlds.csv`, `descriptions.json`, `i_bins.json`.
-3. 외움 검사 → `analysis/bdg2/runs/bdg2/memcheck_<tag>.jsonl` (`collect_bdg2.py --memcheck`).
+3. 서버: `nohup bash analysis/bdg2/run_bdg2.sh > run_bdg2.log 2>&1 &` — 모델마다 외움 검사(`runs/bdg2/memcheck_<tag>.jsonl`, 1회) 뒤 수집. 끝난 부분은 건너뛴다.
 4. 수집(서버) → `analysis/bdg2/runs/bdg2/<tag>.jsonl` (L1·L2·M 한 파일).
 5. 한 번 계산 → `python3 analysis/bdg2/score.py data/bdg2` → `analysis/bdg2/runs/bdg2/score.{txt,json}`. §10에 결과.
