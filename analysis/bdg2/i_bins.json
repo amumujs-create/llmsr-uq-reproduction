@@ -1,0 +1,11 @@
+{
+ "bins": {
+  "evidence": 1192,
+  "outside": 8955,
+  "inside_hidden": 3102
+ },
+ "n_rows": 13249,
+ "n_worlds": 425,
+ "share_I_positive": 0.08996905426824665,
+ "date": "2026-11-08"
+}

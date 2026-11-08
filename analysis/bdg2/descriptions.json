@@ -1,0 +1,3938 @@
+{
+ "L1": {
+  "L1-000": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    }
+   },
+   "meters": [
+    "Bobcat_education_Angela",
+    "Bobcat_education_Miki"
+   ],
+   "key": "Bobcat|Education"
+  },
+  "L1-001": {
+   "fields": {
+    "use": "Other",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    }
+   },
+   "meters": [
+    "Bobcat_other_Jovita"
+   ],
+   "key": "Bobcat|Other"
+  },
+  "L1-002": {
+   "fields": {
+    "use": "Technology/science",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    }
+   },
+   "meters": [
+    "Bobcat_science_Tammy"
+   ],
+   "key": "Bobcat|Technology/science"
+  },
+  "L1-003": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    }
+   },
+   "meters": [
+    "Bull_education_Annette",
+    "Bull_education_Antonia",
+    "Bull_education_Arthur",
+    "Bull_education_Barry",
+    "Bull_education_Bernice",
+    "Bull_education_Brain",
+    "Bull_education_Brenda",
+    "Bull_education_Bryon",
+    "Bull_education_Carl",
+    "Bull_education_Clarita",
+    "Bull_education_Dan",
+    "Bull_education_Dania",
+    "Bull_education_Delia",
+    "Bull_education_Dora",
+    "Bull_education_Dottie",
+    "Bull_education_Elva",
+    "Bull_education_Fabiola",
+    "Bull_education_Geneva",
+    "Bull_education_Genie",
+    "Bull_education_Gregory",
+    "Bull_education_Hayley",
+    "Bull_education_Jae",
+    "Bull_education_Joseph",
+    "Bull_education_Juan",
+    "Bull_education_Kendra",
+    "Bull_education_Krista",
+    "Bull_education_Kristal",
+    "Bull_education_Lenny",
+    "Bull_education_Linnie",
+    "Bull_education_Luke",
+    "Bull_education_Lydia",
+    "Bull_education_Lyn",
+    "Bull_education_Magaret",
+    "Bull_education_Mario",
+    "Bull_education_Matilda",
+    "Bull_education_Mervin",
+    "Bull_education_Miquel",
+    "Bull_education_Miranda",
+    "Bull_education_Myra",
+    "Bull_education_Nichole",
+    "Bull_education_Nina",
+    "Bull_education_Olive",
+    "Bull_education_Pablo",
+    "Bull_education_Pamela",
+    "Bull_education_Patrina",
+    "Bull_education_Racheal",
+    "Bull_education_Reina",
+    "Bull_education_Reynaldo",
+    "Bull_education_Roland",
+    "Bull_education_Roseann",
+    "Bull_education_Sebastian",
+    "Bull_education_Stewart",
+    "Bull_education_Tracey",
+    "Bull_education_Venita",
+    "Bull_education_Violeta"
+   ],
+   "key": "Bull|Education"
+  },
+  "L1-004": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    }
+   },
+   "meters": [
+    "Bull_assembly_Amalia",
+    "Bull_assembly_Beau",
+    "Bull_assembly_Brandon",
+    "Bull_assembly_Dorethea",
+    "Bull_assembly_Freda",
+    "Bull_assembly_Freddie",
+    "Bull_assembly_Gerri",
+    "Bull_assembly_Gigi",
+    "Bull_assembly_Goldie",
+    "Bull_assembly_Lance",
+    "Bull_assembly_Lesa",
+    "Bull_assembly_Maren",
+    "Bull_assembly_Nathanial",
+    "Bull_assembly_Vanessa"
+   ],
+   "key": "Bull|Entertainment/public assembly"
+  },
+  "L1-005": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    }
+   },
+   "meters": [
+    "Bull_lodging_Caren",
+    "Bull_lodging_Carie",
+    "Bull_lodging_Danielle",
+    "Bull_lodging_Dave",
+    "Bull_lodging_Hugo",
+    "Bull_lodging_Jeremiah",
+    "Bull_lodging_Leonard",
+    "Bull_lodging_Lettie",
+    "Bull_lodging_Melissa",
+    "Bull_lodging_Perry",
+    "Bull_lodging_Terence",
+    "Bull_lodging_Travis"
+   ],
+   "key": "Bull|Lodging/residential"
+  },
+  "L1-006": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    }
+   },
+   "meters": [
+    "Bull_office_Anne",
+    "Bull_office_Chantel",
+    "Bull_office_Debbie",
+    "Bull_office_Efren",
+    "Bull_office_Lilla",
+    "Bull_office_Myron",
+    "Bull_office_Rob",
+    "Bull_office_Sally",
+    "Bull_office_Trevor",
+    "Bull_office_Yvonne"
+   ],
+   "key": "Bull|Office"
+  },
+  "L1-007": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    }
+   },
+   "meters": [
+    "Bull_public_Hyun",
+    "Bull_public_Jefferson"
+   ],
+   "key": "Bull|Public services"
+  },
+  "L1-008": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_education_Brigitte",
+    "Cockatoo_education_Charity",
+    "Cockatoo_education_Christi",
+    "Cockatoo_education_Clifton",
+    "Cockatoo_education_Erik",
+    "Cockatoo_education_Eunice",
+    "Cockatoo_education_Flora",
+    "Cockatoo_education_Helene",
+    "Cockatoo_education_Janet",
+    "Cockatoo_education_Jon",
+    "Cockatoo_education_June",
+    "Cockatoo_education_Latrice",
+    "Cockatoo_education_Laurence",
+    "Cockatoo_education_Lionel",
+    "Cockatoo_education_Mayra",
+    "Cockatoo_education_Minh",
+    "Cockatoo_education_Nelda",
+    "Cockatoo_education_Orlando",
+    "Cockatoo_education_Priscilla",
+    "Cockatoo_education_Rita",
+    "Cockatoo_education_Terrence"
+   ],
+   "key": "Cockatoo|Education"
+  },
+  "L1-009": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_assembly_Doyle",
+    "Cockatoo_assembly_Emilio",
+    "Cockatoo_assembly_Genoveva",
+    "Cockatoo_assembly_Griselda",
+    "Cockatoo_assembly_Meredith",
+    "Cockatoo_assembly_Tabitha"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly"
+  },
+  "L1-010": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_health_Ashlie"
+   ],
+   "key": "Cockatoo|Healthcare"
+  },
+  "L1-011": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_lodging_Aimee",
+    "Cockatoo_lodging_Albert",
+    "Cockatoo_lodging_Alicia",
+    "Cockatoo_lodging_Ana",
+    "Cockatoo_lodging_Emory",
+    "Cockatoo_lodging_Fritz",
+    "Cockatoo_lodging_Katharine",
+    "Cockatoo_lodging_Kerri",
+    "Cockatoo_lodging_Kyle",
+    "Cockatoo_lodging_Lana",
+    "Cockatoo_lodging_Raphael",
+    "Cockatoo_lodging_Tessie"
+   ],
+   "key": "Cockatoo|Lodging/residential"
+  },
+  "L1-012": {
+   "fields": {
+    "use": "Manufacturing/industrial",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_industrial_Elina"
+   ],
+   "key": "Cockatoo|Manufacturing/industrial"
+  },
+  "L1-013": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_office_Alton",
+    "Cockatoo_office_Delores",
+    "Cockatoo_office_Elbert",
+    "Cockatoo_office_Gail",
+    "Cockatoo_office_Georgia",
+    "Cockatoo_office_Giovanni",
+    "Cockatoo_office_Jimmy",
+    "Cockatoo_office_Jodie",
+    "Cockatoo_office_Kristin",
+    "Cockatoo_office_Laila",
+    "Cockatoo_office_Lorraine",
+    "Cockatoo_office_Nola",
+    "Cockatoo_office_Paige",
+    "Cockatoo_office_Pansy",
+    "Cockatoo_office_Rodney",
+    "Cockatoo_office_Roxanna"
+   ],
+   "key": "Cockatoo|Office"
+  },
+  "L1-014": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_public_Leah",
+    "Cockatoo_public_Valerie"
+   ],
+   "key": "Cockatoo|Public services"
+  },
+  "L1-015": {
+   "fields": {
+    "use": "Religious worship",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_religion_Diedre"
+   ],
+   "key": "Cockatoo|Religious worship"
+  },
+  "L1-016": {
+   "fields": {
+    "use": "Technology/science",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    }
+   },
+   "meters": [
+    "Cockatoo_science_Rex"
+   ],
+   "key": "Cockatoo|Technology/science"
+  },
+  "L1-017": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_education_Alberto",
+    "Eagle_education_April",
+    "Eagle_education_Eileen",
+    "Eagle_education_Jewell",
+    "Eagle_education_Lino",
+    "Eagle_education_Luther",
+    "Eagle_education_Norah",
+    "Eagle_education_Paul",
+    "Eagle_education_Peter",
+    "Eagle_education_Petra",
+    "Eagle_education_Raul",
+    "Eagle_education_Roman",
+    "Eagle_education_Samantha",
+    "Eagle_education_Shana",
+    "Eagle_education_Shanna",
+    "Eagle_education_Shante",
+    "Eagle_education_Sheena",
+    "Eagle_education_Sherrill",
+    "Eagle_education_Teresa",
+    "Eagle_education_Wesley",
+    "Eagle_education_Will"
+   ],
+   "key": "Eagle|Education"
+  },
+  "L1-018": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_assembly_Estelle",
+    "Eagle_assembly_Ian",
+    "Eagle_assembly_Josie",
+    "Eagle_assembly_Lacy",
+    "Eagle_assembly_Latrina",
+    "Eagle_assembly_Margret"
+   ],
+   "key": "Eagle|Entertainment/public assembly"
+  },
+  "L1-019": {
+   "fields": {
+    "use": "Food sales and service",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_food_Kay"
+   ],
+   "key": "Eagle|Food sales and service"
+  },
+  "L1-020": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_health_Amy",
+    "Eagle_health_Athena",
+    "Eagle_health_Gregoria",
+    "Eagle_health_Jodi",
+    "Eagle_health_Margo",
+    "Eagle_health_Reba",
+    "Eagle_health_Reuben",
+    "Eagle_health_Vincenza"
+   ],
+   "key": "Eagle|Healthcare"
+  },
+  "L1-021": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_lodging_Andy",
+    "Eagle_lodging_Casey",
+    "Eagle_lodging_Dawn",
+    "Eagle_lodging_Edgardo",
+    "Eagle_lodging_Stephanie",
+    "Eagle_lodging_Tressa",
+    "Eagle_lodging_Trina"
+   ],
+   "key": "Eagle|Lodging/residential"
+  },
+  "L1-022": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_office_Chantelle",
+    "Eagle_office_Chauncey",
+    "Eagle_office_Demetra",
+    "Eagle_office_Donovan",
+    "Eagle_office_Efrain",
+    "Eagle_office_Francis",
+    "Eagle_office_Freida",
+    "Eagle_office_Isidro",
+    "Eagle_office_Jackie",
+    "Eagle_office_Jeff",
+    "Eagle_office_Lane",
+    "Eagle_office_Lillian",
+    "Eagle_office_Mandi",
+    "Eagle_office_Nereida",
+    "Eagle_office_Patrice",
+    "Eagle_office_Phyllis",
+    "Eagle_office_Randolph",
+    "Eagle_office_Remedios",
+    "Eagle_office_Ryan",
+    "Eagle_office_Sheree",
+    "Eagle_office_Sonya",
+    "Eagle_office_Tia",
+    "Eagle_office_Yadira"
+   ],
+   "key": "Eagle|Office"
+  },
+  "L1-023": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    }
+   },
+   "meters": [
+    "Eagle_public_Henry",
+    "Eagle_public_Missy",
+    "Eagle_public_Pearle"
+   ],
+   "key": "Eagle|Public services"
+  },
+  "L1-024": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_education_Andre",
+    "Fox_education_Carleen",
+    "Fox_education_Claude",
+    "Fox_education_Cynthia",
+    "Fox_education_Dominique",
+    "Fox_education_Eddy",
+    "Fox_education_Eldon",
+    "Fox_education_Elizabeth",
+    "Fox_education_Elvira",
+    "Fox_education_Gayla",
+    "Fox_education_Geoffrey",
+    "Fox_education_Jaclyn",
+    "Fox_education_Jacqueline",
+    "Fox_education_Janina",
+    "Fox_education_Kendrick",
+    "Fox_education_Kim",
+    "Fox_education_Leona",
+    "Fox_education_Leota",
+    "Fox_education_Lilly",
+    "Fox_education_Long",
+    "Fox_education_Louie",
+    "Fox_education_Marlana",
+    "Fox_education_Melinda",
+    "Fox_education_Nilda",
+    "Fox_education_Ollie",
+    "Fox_education_Otilia",
+    "Fox_education_Ray",
+    "Fox_education_Rosie",
+    "Fox_education_Shaun",
+    "Fox_education_Suzan",
+    "Fox_education_Tonya",
+    "Fox_education_Vernon",
+    "Fox_education_Virgil",
+    "Fox_education_Wendell",
+    "Fox_education_Yolande"
+   ],
+   "key": "Fox|Education"
+  },
+  "L1-025": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_assembly_Adrianne",
+    "Fox_assembly_Audrey",
+    "Fox_assembly_Boyce",
+    "Fox_assembly_Carlos",
+    "Fox_assembly_Cathy",
+    "Fox_assembly_Emma",
+    "Fox_assembly_Johnnie",
+    "Fox_assembly_Renna"
+   ],
+   "key": "Fox|Entertainment/public assembly"
+  },
+  "L1-026": {
+   "fields": {
+    "use": "Food sales and service",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_food_Francesco",
+    "Fox_food_Scott"
+   ],
+   "key": "Fox|Food sales and service"
+  },
+  "L1-027": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_health_Lorena"
+   ],
+   "key": "Fox|Healthcare"
+  },
+  "L1-028": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_lodging_Alana",
+    "Fox_lodging_Angla",
+    "Fox_lodging_Frances",
+    "Fox_lodging_Helen",
+    "Fox_lodging_Jina",
+    "Fox_lodging_Morris",
+    "Fox_lodging_Stephan",
+    "Fox_lodging_Stephen",
+    "Fox_lodging_Wallace",
+    "Fox_lodging_Warren",
+    "Fox_lodging_Winifred"
+   ],
+   "key": "Fox|Lodging/residential"
+  },
+  "L1-029": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_office_Alice",
+    "Fox_office_Bernard",
+    "Fox_office_Berniece",
+    "Fox_office_Carson",
+    "Fox_office_Demetrius",
+    "Fox_office_Edythe",
+    "Fox_office_Essie",
+    "Fox_office_Juana",
+    "Fox_office_Karima",
+    "Fox_office_Margarita",
+    "Fox_office_Thelma",
+    "Fox_office_Yong",
+    "Fox_office_Zachary"
+   ],
+   "key": "Fox|Office"
+  },
+  "L1-030": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_public_Bart",
+    "Fox_public_Lauren",
+    "Fox_public_Martin",
+    "Fox_public_Rhonda"
+   ],
+   "key": "Fox|Public services"
+  },
+  "L1-031": {
+   "fields": {
+    "use": "Retail",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_retail_Manie"
+   ],
+   "key": "Fox|Retail"
+  },
+  "L1-032": {
+   "fields": {
+    "use": "Utility",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    }
+   },
+   "meters": [
+    "Fox_utility_Marian"
+   ],
+   "key": "Fox|Utility"
+  },
+  "L1-033": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_education_Beth",
+    "Hog_education_Caridad",
+    "Hog_education_Casandra",
+    "Hog_education_Cathleen",
+    "Hog_education_Donnie",
+    "Hog_education_George",
+    "Hog_education_Hallie",
+    "Hog_education_Haywood",
+    "Hog_education_Jewel",
+    "Hog_education_Leandro",
+    "Hog_education_Luvenia",
+    "Hog_education_Madge",
+    "Hog_education_Martha",
+    "Hog_education_Mathilda",
+    "Hog_education_Odell",
+    "Hog_education_Sonia",
+    "Hog_education_Wayne"
+   ],
+   "key": "Hog|Education"
+  },
+  "L1-034": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_assembly_Edward",
+    "Hog_assembly_Jasmine",
+    "Hog_assembly_Maribel",
+    "Hog_assembly_Pedro"
+   ],
+   "key": "Hog|Entertainment/public assembly"
+  },
+  "L1-035": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_health_Hisako",
+    "Hog_health_Jenny",
+    "Hog_health_May"
+   ],
+   "key": "Hog|Healthcare"
+  },
+  "L1-036": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_lodging_Shanti",
+    "Hog_lodging_Shonda"
+   ],
+   "key": "Hog|Lodging/residential"
+  },
+  "L1-037": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_office_Bessie",
+    "Hog_office_Betsy",
+    "Hog_office_Byron",
+    "Hog_office_Candi",
+    "Hog_office_Catalina",
+    "Hog_office_Catharine",
+    "Hog_office_Charla",
+    "Hog_office_Corie",
+    "Hog_office_Cornell",
+    "Hog_office_Darlene",
+    "Hog_office_Elizbeth",
+    "Hog_office_Elke",
+    "Hog_office_Eloise",
+    "Hog_office_Emmanuel",
+    "Hog_office_Garrett",
+    "Hog_office_Guadalupe",
+    "Hog_office_Gustavo",
+    "Hog_office_Joey",
+    "Hog_office_Josefina",
+    "Hog_office_Lanell",
+    "Hog_office_Leanne",
+    "Hog_office_Marlene",
+    "Hog_office_Mary",
+    "Hog_office_Miriam",
+    "Hog_office_Myles",
+    "Hog_office_Napoleon",
+    "Hog_office_Nia",
+    "Hog_office_Richelle",
+    "Hog_office_Roger",
+    "Hog_office_Rolando",
+    "Hog_office_Sarah",
+    "Hog_office_Shawna",
+    "Hog_office_Shon",
+    "Hog_office_Simon",
+    "Hog_office_Terry"
+   ],
+   "key": "Hog|Office"
+  },
+  "L1-038": {
+   "fields": {
+    "use": "Parking",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_parking_Bernardo"
+   ],
+   "key": "Hog|Parking"
+  },
+  "L1-039": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    }
+   },
+   "meters": [
+    "Hog_public_Brad",
+    "Hog_public_Crystal",
+    "Hog_public_Gerard",
+    "Hog_public_Kevin",
+    "Hog_public_Octavia"
+   ],
+   "key": "Hog|Public services"
+  },
+  "L1-040": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 7.6,
+     "p5": -12.8,
+     "p95": 23.2
+    }
+   },
+   "meters": [
+    "Moose_education_Dennis",
+    "Moose_education_Florence",
+    "Moose_education_Marlon",
+    "Moose_education_Omar",
+    "Moose_education_Rene",
+    "Moose_education_Ricardo",
+    "Moose_education_Sasha"
+   ],
+   "key": "Moose|Education"
+  },
+  "L1-041": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    }
+   },
+   "meters": [
+    "Panther_education_Annetta",
+    "Panther_education_Emily",
+    "Panther_education_Enriqueta",
+    "Panther_education_Ivan",
+    "Panther_education_Jerome",
+    "Panther_education_Neal",
+    "Panther_education_Quintin",
+    "Panther_education_Teofila"
+   ],
+   "key": "Panther|Education"
+  },
+  "L1-042": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    }
+   },
+   "meters": [
+    "Panther_lodging_Kara",
+    "Panther_lodging_Kirk",
+    "Panther_lodging_Marisol"
+   ],
+   "key": "Panther|Lodging/residential"
+  },
+  "L1-043": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    }
+   },
+   "meters": [
+    "Panther_office_Brent",
+    "Panther_office_Christian",
+    "Panther_office_Garth",
+    "Panther_office_Graham",
+    "Panther_office_Lavinia"
+   ],
+   "key": "Panther|Office"
+  },
+  "L1-044": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    }
+   },
+   "meters": [
+    "Peacock_education_Anita",
+    "Peacock_education_Dustin",
+    "Peacock_education_Forest",
+    "Peacock_education_Lucie",
+    "Peacock_education_Pasquale",
+    "Peacock_education_Patience",
+    "Peacock_education_Yolanda"
+   ],
+   "key": "Peacock|Education"
+  },
+  "L1-045": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    }
+   },
+   "meters": [
+    "Peacock_assembly_Russ"
+   ],
+   "key": "Peacock|Entertainment/public assembly"
+  },
+  "L1-046": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    }
+   },
+   "meters": [
+    "Peacock_lodging_Jamaal",
+    "Peacock_lodging_James",
+    "Peacock_lodging_Matthew",
+    "Peacock_lodging_Wes"
+   ],
+   "key": "Peacock|Lodging/residential"
+  },
+  "L1-047": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    }
+   },
+   "meters": [
+    "Peacock_office_Effie",
+    "Peacock_office_Jonathon",
+    "Peacock_office_Naomi",
+    "Peacock_office_Norman"
+   ],
+   "key": "Peacock|Office"
+  },
+  "L1-048": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    }
+   },
+   "meters": [
+    "Peacock_public_Linda"
+   ],
+   "key": "Peacock|Public services"
+  }
+ },
+ "L2": {
+  "L2-000": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    },
+    "sub_use": "Academic",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bobcat_education_Miki"
+   ],
+   "key": "Bobcat|Education|Academic|10,000 to 20,000"
+  },
+  "L2-001": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    },
+    "sub_use": "Academic",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Bobcat_education_Angela"
+   ],
+   "key": "Bobcat|Education|Academic|5,000 to 10,000"
+  },
+  "L2-002": {
+   "fields": {
+    "use": "Other",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    },
+    "sub_use": "Other",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Bobcat_other_Jovita"
+   ],
+   "key": "Bobcat|Other|Other|under 2,000"
+  },
+  "L2-003": {
+   "fields": {
+    "use": "Technology/science",
+    "climate": {
+     "mean": 11.6,
+     "p5": -5.6,
+     "p95": 27.7
+    },
+    "sub_use": "Science Facility",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bobcat_science_Tammy"
+   ],
+   "key": "Bobcat|Technology/science|Science Facility|10,000 to 20,000"
+  },
+  "L2-004": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Auditorium",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_education_Geneva"
+   ],
+   "key": "Bull|Education|Auditorium|2,000 to 5,000"
+  },
+  "L2-005": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_education_Brenda",
+    "Bull_education_Dora",
+    "Bull_education_Fabiola",
+    "Bull_education_Genie",
+    "Bull_education_Gregory",
+    "Bull_education_Hayley",
+    "Bull_education_Joseph",
+    "Bull_education_Kendra",
+    "Bull_education_Lydia",
+    "Bull_education_Matilda",
+    "Bull_education_Miranda",
+    "Bull_education_Violeta"
+   ],
+   "key": "Bull|Education|College Classroom|10,000 to 20,000"
+  },
+  "L2-006": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_education_Bryon",
+    "Bull_education_Lenny",
+    "Bull_education_Lyn",
+    "Bull_education_Pablo",
+    "Bull_education_Reynaldo"
+   ],
+   "key": "Bull|Education|College Classroom|2,000 to 5,000"
+  },
+  "L2-007": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Bull_education_Dania",
+    "Bull_education_Elva",
+    "Bull_education_Magaret",
+    "Bull_education_Mario",
+    "Bull_education_Myra",
+    "Bull_education_Olive",
+    "Bull_education_Patrina",
+    "Bull_education_Reina",
+    "Bull_education_Sebastian"
+   ],
+   "key": "Bull|Education|College Classroom|5,000 to 10,000"
+  },
+  "L2-008": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_education_Antonia",
+    "Bull_education_Arthur",
+    "Bull_education_Juan",
+    "Bull_education_Mervin",
+    "Bull_education_Miquel",
+    "Bull_education_Pamela",
+    "Bull_education_Roland",
+    "Bull_education_Tracey"
+   ],
+   "key": "Bull|Education|College Classroom|over 20,000"
+  },
+  "L2-009": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_education_Barry",
+    "Bull_education_Bernice",
+    "Bull_education_Clarita",
+    "Bull_education_Dan",
+    "Bull_education_Jae",
+    "Bull_education_Kristal",
+    "Bull_education_Nina",
+    "Bull_education_Roseann"
+   ],
+   "key": "Bull|Education|College Laboratory|10,000 to 20,000"
+  },
+  "L2-010": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_education_Venita"
+   ],
+   "key": "Bull|Education|College Laboratory|2,000 to 5,000"
+  },
+  "L2-011": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Bull_education_Annette",
+    "Bull_education_Stewart"
+   ],
+   "key": "Bull|Education|College Laboratory|5,000 to 10,000"
+  },
+  "L2-012": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_education_Brain",
+    "Bull_education_Carl",
+    "Bull_education_Delia",
+    "Bull_education_Dottie",
+    "Bull_education_Krista",
+    "Bull_education_Racheal"
+   ],
+   "key": "Bull|Education|College Laboratory|over 20,000"
+  },
+  "L2-013": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Student Union",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_education_Linnie",
+    "Bull_education_Luke",
+    "Bull_education_Nichole"
+   ],
+   "key": "Bull|Education|Student Union|10,000 to 20,000"
+  },
+  "L2-014": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Athletic Field",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Bull_assembly_Lesa"
+   ],
+   "key": "Bull|Entertainment/public assembly|Athletic Field|under 2,000"
+  },
+  "L2-015": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Conference Center",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_assembly_Goldie"
+   ],
+   "key": "Bull|Entertainment/public assembly|Conference Center|2,000 to 5,000"
+  },
+  "L2-016": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Conference Center",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Beau"
+   ],
+   "key": "Bull|Entertainment/public assembly|Conference Center|over 20,000"
+  },
+  "L2-017": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Lance"
+   ],
+   "key": "Bull|Entertainment/public assembly|Gymnasium|over 20,000"
+  },
+  "L2-018": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Museum",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Freda",
+    "Bull_assembly_Vanessa"
+   ],
+   "key": "Bull|Entertainment/public assembly|Museum|10,000 to 20,000"
+  },
+  "L2-019": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Museum",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_assembly_Dorethea"
+   ],
+   "key": "Bull|Entertainment/public assembly|Museum|2,000 to 5,000"
+  },
+  "L2-020": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Museum",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Nathanial"
+   ],
+   "key": "Bull|Entertainment/public assembly|Museum|over 20,000"
+  },
+  "L2-021": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Sports Stadium",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Gerri"
+   ],
+   "key": "Bull|Entertainment/public assembly|Sports Stadium|10,000 to 20,000"
+  },
+  "L2-022": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Sports Stadium",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_assembly_Brandon"
+   ],
+   "key": "Bull|Entertainment/public assembly|Sports Stadium|2,000 to 5,000"
+  },
+  "L2-023": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Sports Stadium",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Amalia",
+    "Bull_assembly_Gigi"
+   ],
+   "key": "Bull|Entertainment/public assembly|Sports Stadium|over 20,000"
+  },
+  "L2-024": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Swimming Pool",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Maren"
+   ],
+   "key": "Bull|Entertainment/public assembly|Swimming Pool|10,000 to 20,000"
+  },
+  "L2-025": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Theater",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_assembly_Freddie"
+   ],
+   "key": "Bull|Entertainment/public assembly|Theater|over 20,000"
+  },
+  "L2-026": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_lodging_Caren"
+   ],
+   "key": "Bull|Lodging/residential|Dormitory|10,000 to 20,000"
+  },
+  "L2-027": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_lodging_Carie",
+    "Bull_lodging_Danielle",
+    "Bull_lodging_Leonard",
+    "Bull_lodging_Lettie",
+    "Bull_lodging_Terence"
+   ],
+   "key": "Bull|Lodging/residential|Dormitory|2,000 to 5,000"
+  },
+  "L2-028": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Bull_lodging_Hugo",
+    "Bull_lodging_Jeremiah",
+    "Bull_lodging_Perry"
+   ],
+   "key": "Bull|Lodging/residential|Dormitory|5,000 to 10,000"
+  },
+  "L2-029": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_lodging_Dave",
+    "Bull_lodging_Melissa",
+    "Bull_lodging_Travis"
+   ],
+   "key": "Bull|Lodging/residential|Dormitory|over 20,000"
+  },
+  "L2-030": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Office",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Bull_office_Lilla",
+    "Bull_office_Yvonne"
+   ],
+   "key": "Bull|Office|Office|10,000 to 20,000"
+  },
+  "L2-031": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Bull_office_Debbie",
+    "Bull_office_Trevor"
+   ],
+   "key": "Bull|Office|Office|2,000 to 5,000"
+  },
+  "L2-032": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Bull_office_Chantel",
+    "Bull_office_Efren",
+    "Bull_office_Myron",
+    "Bull_office_Sally"
+   ],
+   "key": "Bull|Office|Office|5,000 to 10,000"
+  },
+  "L2-033": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Office",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_office_Rob"
+   ],
+   "key": "Bull|Office|Office|over 20,000"
+  },
+  "L2-034": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Office",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Bull_office_Anne"
+   ],
+   "key": "Bull|Office|Office|under 2,000"
+  },
+  "L2-035": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Library",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Bull_public_Jefferson"
+   ],
+   "key": "Bull|Public services|Library|5,000 to 10,000"
+  },
+  "L2-036": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 21.6,
+     "p5": 8.9,
+     "p95": 31.0
+    },
+    "sub_use": "Library",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Bull_public_Hyun"
+   ],
+   "key": "Bull|Public services|Library|over 20,000"
+  },
+  "L2-037": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Cockatoo_education_Erik",
+    "Cockatoo_education_Mayra"
+   ],
+   "key": "Cockatoo|Education|College Classroom|10,000 to 20,000"
+  },
+  "L2-038": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Cockatoo_education_Christi",
+    "Cockatoo_education_Helene",
+    "Cockatoo_education_Laurence",
+    "Cockatoo_education_Minh"
+   ],
+   "key": "Cockatoo|Education|College Classroom|2,000 to 5,000"
+  },
+  "L2-039": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_education_Clifton"
+   ],
+   "key": "Cockatoo|Education|College Classroom|5,000 to 10,000"
+  },
+  "L2-040": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Cockatoo_education_Eunice",
+    "Cockatoo_education_Flora",
+    "Cockatoo_education_Lionel",
+    "Cockatoo_education_Orlando",
+    "Cockatoo_education_Terrence"
+   ],
+   "key": "Cockatoo|Education|College Laboratory|10,000 to 20,000"
+  },
+  "L2-041": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_education_June",
+    "Cockatoo_education_Nelda"
+   ],
+   "key": "Cockatoo|Education|College Laboratory|5,000 to 10,000"
+  },
+  "L2-042": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Cockatoo_education_Brigitte",
+    "Cockatoo_education_Charity",
+    "Cockatoo_education_Janet"
+   ],
+   "key": "Cockatoo|Education|College Laboratory|over 20,000"
+  },
+  "L2-043": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Cockatoo_education_Latrice",
+    "Cockatoo_education_Priscilla",
+    "Cockatoo_education_Rita"
+   ],
+   "key": "Cockatoo|Education|College Laboratory|under 2,000"
+  },
+  "L2-044": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Student Union",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Cockatoo_education_Jon"
+   ],
+   "key": "Cockatoo|Education|Student Union|10,000 to 20,000"
+  },
+  "L2-045": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Community Center",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Cockatoo_assembly_Griselda"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly|Community Center|2,000 to 5,000"
+  },
+  "L2-046": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Fitness Center",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_assembly_Meredith"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly|Fitness Center|5,000 to 10,000"
+  },
+  "L2-047": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Fitness Center",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Cockatoo_assembly_Tabitha"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly|Fitness Center|under 2,000"
+  },
+  "L2-048": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Cockatoo_assembly_Doyle"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly|Gymnasium|10,000 to 20,000"
+  },
+  "L2-049": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Cockatoo_assembly_Genoveva"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly|Gymnasium|under 2,000"
+  },
+  "L2-050": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Ice arena",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_assembly_Emilio"
+   ],
+   "key": "Cockatoo|Entertainment/public assembly|Ice arena|5,000 to 10,000"
+  },
+  "L2-051": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Hospital",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Cockatoo_health_Ashlie"
+   ],
+   "key": "Cockatoo|Healthcare|Hospital|2,000 to 5,000"
+  },
+  "L2-052": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Cockatoo_lodging_Emory",
+    "Cockatoo_lodging_Kyle",
+    "Cockatoo_lodging_Tessie"
+   ],
+   "key": "Cockatoo|Lodging/residential|Dormitory|10,000 to 20,000"
+  },
+  "L2-053": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Cockatoo_lodging_Alicia",
+    "Cockatoo_lodging_Lana"
+   ],
+   "key": "Cockatoo|Lodging/residential|Dormitory|2,000 to 5,000"
+  },
+  "L2-054": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_lodging_Albert",
+    "Cockatoo_lodging_Katharine",
+    "Cockatoo_lodging_Kerri",
+    "Cockatoo_lodging_Raphael"
+   ],
+   "key": "Cockatoo|Lodging/residential|Dormitory|5,000 to 10,000"
+  },
+  "L2-055": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Cockatoo_lodging_Aimee",
+    "Cockatoo_lodging_Ana",
+    "Cockatoo_lodging_Fritz"
+   ],
+   "key": "Cockatoo|Lodging/residential|Dormitory|under 2,000"
+  },
+  "L2-056": {
+   "fields": {
+    "use": "Manufacturing/industrial",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Greenhouse",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Cockatoo_industrial_Elina"
+   ],
+   "key": "Cockatoo|Manufacturing/industrial|Greenhouse|under 2,000"
+  },
+  "L2-057": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Office",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Cockatoo_office_Georgia",
+    "Cockatoo_office_Giovanni",
+    "Cockatoo_office_Laila",
+    "Cockatoo_office_Nola",
+    "Cockatoo_office_Paige"
+   ],
+   "key": "Cockatoo|Office|Office|10,000 to 20,000"
+  },
+  "L2-058": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Cockatoo_office_Alton",
+    "Cockatoo_office_Elbert",
+    "Cockatoo_office_Gail",
+    "Cockatoo_office_Jodie",
+    "Cockatoo_office_Kristin",
+    "Cockatoo_office_Rodney",
+    "Cockatoo_office_Roxanna"
+   ],
+   "key": "Cockatoo|Office|Office|2,000 to 5,000"
+  },
+  "L2-059": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_office_Delores",
+    "Cockatoo_office_Pansy"
+   ],
+   "key": "Cockatoo|Office|Office|5,000 to 10,000"
+  },
+  "L2-060": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Office",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Cockatoo_office_Jimmy",
+    "Cockatoo_office_Lorraine"
+   ],
+   "key": "Cockatoo|Office|Office|under 2,000"
+  },
+  "L2-061": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Library",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Cockatoo_public_Leah",
+    "Cockatoo_public_Valerie"
+   ],
+   "key": "Cockatoo|Public services|Library|over 20,000"
+  },
+  "L2-062": {
+   "fields": {
+    "use": "Religious worship",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Religious building",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Cockatoo_religion_Diedre"
+   ],
+   "key": "Cockatoo|Religious worship|Religious building|2,000 to 5,000"
+  },
+  "L2-063": {
+   "fields": {
+    "use": "Technology/science",
+    "climate": {
+     "mean": 9.3,
+     "p5": -7.9,
+     "p95": 23.1
+    },
+    "sub_use": "Data Center",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Cockatoo_science_Rex"
+   ],
+   "key": "Cockatoo|Technology/science|Data Center|5,000 to 10,000"
+  },
+  "L2-064": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Classroom",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Eagle_education_Lino"
+   ],
+   "key": "Eagle|Education|Classroom|10,000 to 20,000"
+  },
+  "L2-065": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Classroom",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Eagle_education_Eileen",
+    "Eagle_education_Paul",
+    "Eagle_education_Sheena"
+   ],
+   "key": "Eagle|Education|Classroom|2,000 to 5,000"
+  },
+  "L2-066": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_education_April",
+    "Eagle_education_Wesley"
+   ],
+   "key": "Eagle|Education|Classroom|5,000 to 10,000"
+  },
+  "L2-067": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Research",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Eagle_education_Alberto",
+    "Eagle_education_Jewell",
+    "Eagle_education_Luther",
+    "Eagle_education_Raul",
+    "Eagle_education_Roman",
+    "Eagle_education_Samantha",
+    "Eagle_education_Sherrill"
+   ],
+   "key": "Eagle|Education|Research|10,000 to 20,000"
+  },
+  "L2-068": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Research",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Eagle_education_Petra",
+    "Eagle_education_Shana"
+   ],
+   "key": "Eagle|Education|Research|2,000 to 5,000"
+  },
+  "L2-069": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Research",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_education_Norah",
+    "Eagle_education_Shanna",
+    "Eagle_education_Teresa",
+    "Eagle_education_Will"
+   ],
+   "key": "Eagle|Education|Research|5,000 to 10,000"
+  },
+  "L2-070": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Research",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Eagle_education_Peter",
+    "Eagle_education_Shante"
+   ],
+   "key": "Eagle|Education|Research|over 20,000"
+  },
+  "L2-071": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Athletic",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Eagle_assembly_Lacy",
+    "Eagle_assembly_Margret"
+   ],
+   "key": "Eagle|Entertainment/public assembly|Athletic|10,000 to 20,000"
+  },
+  "L2-072": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Athletic",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_assembly_Josie"
+   ],
+   "key": "Eagle|Entertainment/public assembly|Athletic|5,000 to 10,000"
+  },
+  "L2-073": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Athletic",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Eagle_assembly_Ian",
+    "Eagle_assembly_Latrina"
+   ],
+   "key": "Eagle|Entertainment/public assembly|Athletic|over 20,000"
+  },
+  "L2-074": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Athletic",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Eagle_assembly_Estelle"
+   ],
+   "key": "Eagle|Entertainment/public assembly|Athletic|under 2,000"
+  },
+  "L2-075": {
+   "fields": {
+    "use": "Food sales and service",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Dining",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_food_Kay"
+   ],
+   "key": "Eagle|Food sales and service|Dining|5,000 to 10,000"
+  },
+  "L2-076": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Patient Care",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Eagle_health_Gregoria",
+    "Eagle_health_Reba",
+    "Eagle_health_Reuben"
+   ],
+   "key": "Eagle|Healthcare|Patient Care|10,000 to 20,000"
+  },
+  "L2-077": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Patient Care",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Eagle_health_Margo",
+    "Eagle_health_Vincenza"
+   ],
+   "key": "Eagle|Healthcare|Patient Care|2,000 to 5,000"
+  },
+  "L2-078": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Support",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Eagle_health_Athena"
+   ],
+   "key": "Eagle|Healthcare|Support|10,000 to 20,000"
+  },
+  "L2-079": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Support",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_health_Amy"
+   ],
+   "key": "Eagle|Healthcare|Support|5,000 to 10,000"
+  },
+  "L2-080": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Support",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Eagle_health_Jodi"
+   ],
+   "key": "Eagle|Healthcare|Support|over 20,000"
+  },
+  "L2-081": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Housing",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_lodging_Andy",
+    "Eagle_lodging_Casey",
+    "Eagle_lodging_Dawn",
+    "Eagle_lodging_Edgardo",
+    "Eagle_lodging_Stephanie",
+    "Eagle_lodging_Tressa",
+    "Eagle_lodging_Trina"
+   ],
+   "key": "Eagle|Lodging/residential|Housing|5,000 to 10,000"
+  },
+  "L2-082": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Office",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Eagle_office_Francis",
+    "Eagle_office_Nereida",
+    "Eagle_office_Patrice",
+    "Eagle_office_Tia",
+    "Eagle_office_Yadira"
+   ],
+   "key": "Eagle|Office|Office|10,000 to 20,000"
+  },
+  "L2-083": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Eagle_office_Chantelle",
+    "Eagle_office_Efrain",
+    "Eagle_office_Isidro",
+    "Eagle_office_Lane",
+    "Eagle_office_Lillian",
+    "Eagle_office_Remedios",
+    "Eagle_office_Ryan",
+    "Eagle_office_Sheree"
+   ],
+   "key": "Eagle|Office|Office|2,000 to 5,000"
+  },
+  "L2-084": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Eagle_office_Demetra",
+    "Eagle_office_Donovan",
+    "Eagle_office_Freida",
+    "Eagle_office_Jackie",
+    "Eagle_office_Randolph",
+    "Eagle_office_Sonya"
+   ],
+   "key": "Eagle|Office|Office|5,000 to 10,000"
+  },
+  "L2-085": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Office",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Eagle_office_Chauncey"
+   ],
+   "key": "Eagle|Office|Office|over 20,000"
+  },
+  "L2-086": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Office",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Eagle_office_Jeff",
+    "Eagle_office_Mandi",
+    "Eagle_office_Phyllis"
+   ],
+   "key": "Eagle|Office|Office|under 2,000"
+  },
+  "L2-087": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Library",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Eagle_public_Pearle"
+   ],
+   "key": "Eagle|Public services|Library|over 20,000"
+  },
+  "L2-088": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 13.2,
+     "p5": -2.8,
+     "p95": 26.7
+    },
+    "sub_use": "Public Service",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Eagle_public_Henry",
+    "Eagle_public_Missy"
+   ],
+   "key": "Eagle|Public services|Public Service|under 2,000"
+  },
+  "L2-089": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Auditorium",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Fox_education_Kendrick"
+   ],
+   "key": "Fox|Education|Auditorium|under 2,000"
+  },
+  "L2-090": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_education_Eddy",
+    "Fox_education_Jacqueline",
+    "Fox_education_Long",
+    "Fox_education_Louie",
+    "Fox_education_Nilda"
+   ],
+   "key": "Fox|Education|College Classroom|10,000 to 20,000"
+  },
+  "L2-091": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_education_Suzan",
+    "Fox_education_Vernon"
+   ],
+   "key": "Fox|Education|College Classroom|2,000 to 5,000"
+  },
+  "L2-092": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Fox_education_Gayla",
+    "Fox_education_Kim",
+    "Fox_education_Ollie",
+    "Fox_education_Rosie",
+    "Fox_education_Shaun",
+    "Fox_education_Tonya"
+   ],
+   "key": "Fox|Education|College Classroom|5,000 to 10,000"
+  },
+  "L2-093": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_education_Leona"
+   ],
+   "key": "Fox|Education|College Classroom|over 20,000"
+  },
+  "L2-094": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_education_Andre",
+    "Fox_education_Claude",
+    "Fox_education_Geoffrey",
+    "Fox_education_Leota",
+    "Fox_education_Lilly",
+    "Fox_education_Melinda",
+    "Fox_education_Yolande"
+   ],
+   "key": "Fox|Education|College Laboratory|10,000 to 20,000"
+  },
+  "L2-095": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_education_Eldon"
+   ],
+   "key": "Fox|Education|College Laboratory|2,000 to 5,000"
+  },
+  "L2-096": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Fox_education_Carleen",
+    "Fox_education_Cynthia",
+    "Fox_education_Dominique",
+    "Fox_education_Jaclyn",
+    "Fox_education_Janina",
+    "Fox_education_Marlana",
+    "Fox_education_Virgil"
+   ],
+   "key": "Fox|Education|College Laboratory|5,000 to 10,000"
+  },
+  "L2-097": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_education_Otilia",
+    "Fox_education_Wendell"
+   ],
+   "key": "Fox|Education|College Laboratory|over 20,000"
+  },
+  "L2-098": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Student Union",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_education_Elvira"
+   ],
+   "key": "Fox|Education|Student Union|10,000 to 20,000"
+  },
+  "L2-099": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Student Union",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_education_Elizabeth"
+   ],
+   "key": "Fox|Education|Student Union|over 20,000"
+  },
+  "L2-100": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Student Union",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Fox_education_Ray"
+   ],
+   "key": "Fox|Education|Student Union|under 2,000"
+  },
+  "L2-101": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Fitness Center",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_assembly_Boyce"
+   ],
+   "key": "Fox|Entertainment/public assembly|Fitness Center|10,000 to 20,000"
+  },
+  "L2-102": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Fitness Center",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Fox_assembly_Carlos"
+   ],
+   "key": "Fox|Entertainment/public assembly|Fitness Center|5,000 to 10,000"
+  },
+  "L2-103": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Fitness Center",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_assembly_Johnnie"
+   ],
+   "key": "Fox|Entertainment/public assembly|Fitness Center|over 20,000"
+  },
+  "L2-104": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Museum",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_assembly_Cathy",
+    "Fox_assembly_Emma"
+   ],
+   "key": "Fox|Entertainment/public assembly|Museum|10,000 to 20,000"
+  },
+  "L2-105": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Planetarium",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_assembly_Renna"
+   ],
+   "key": "Fox|Entertainment/public assembly|Planetarium|10,000 to 20,000"
+  },
+  "L2-106": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Sports Stadium",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_assembly_Adrianne"
+   ],
+   "key": "Fox|Entertainment/public assembly|Sports Stadium|over 20,000"
+  },
+  "L2-107": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Theater",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Fox_assembly_Audrey"
+   ],
+   "key": "Fox|Entertainment/public assembly|Theater|under 2,000"
+  },
+  "L2-108": {
+   "fields": {
+    "use": "Food sales and service",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Restaurant",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_food_Francesco",
+    "Fox_food_Scott"
+   ],
+   "key": "Fox|Food sales and service|Restaurant|2,000 to 5,000"
+  },
+  "L2-109": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Health Services",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_health_Lorena"
+   ],
+   "key": "Fox|Healthcare|Health Services|2,000 to 5,000"
+  },
+  "L2-110": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_lodging_Frances"
+   ],
+   "key": "Fox|Lodging/residential|Dormitory|10,000 to 20,000"
+  },
+  "L2-111": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_lodging_Morris",
+    "Fox_lodging_Stephan",
+    "Fox_lodging_Warren"
+   ],
+   "key": "Fox|Lodging/residential|Dormitory|2,000 to 5,000"
+  },
+  "L2-112": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Fox_lodging_Alana",
+    "Fox_lodging_Jina",
+    "Fox_lodging_Stephen",
+    "Fox_lodging_Wallace",
+    "Fox_lodging_Winifred"
+   ],
+   "key": "Fox|Lodging/residential|Dormitory|5,000 to 10,000"
+  },
+  "L2-113": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_lodging_Angla",
+    "Fox_lodging_Helen"
+   ],
+   "key": "Fox|Lodging/residential|Dormitory|over 20,000"
+  },
+  "L2-114": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Office",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Fox_office_Alice",
+    "Fox_office_Demetrius",
+    "Fox_office_Essie",
+    "Fox_office_Thelma",
+    "Fox_office_Yong",
+    "Fox_office_Zachary"
+   ],
+   "key": "Fox|Office|Office|10,000 to 20,000"
+  },
+  "L2-115": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_office_Bernard",
+    "Fox_office_Berniece",
+    "Fox_office_Juana",
+    "Fox_office_Karima",
+    "Fox_office_Margarita"
+   ],
+   "key": "Fox|Office|Office|2,000 to 5,000"
+  },
+  "L2-116": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Fox_office_Carson",
+    "Fox_office_Edythe"
+   ],
+   "key": "Fox|Office|Office|5,000 to 10,000"
+  },
+  "L2-117": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Library",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Fox_public_Bart",
+    "Fox_public_Lauren",
+    "Fox_public_Rhonda"
+   ],
+   "key": "Fox|Public services|Library|5,000 to 10,000"
+  },
+  "L2-118": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Library",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Fox_public_Martin"
+   ],
+   "key": "Fox|Public services|Library|over 20,000"
+  },
+  "L2-119": {
+   "fields": {
+    "use": "Retail",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Retail",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_retail_Manie"
+   ],
+   "key": "Fox|Retail|Retail|2,000 to 5,000"
+  },
+  "L2-120": {
+   "fields": {
+    "use": "Utility",
+    "climate": {
+     "mean": 25.1,
+     "p5": 11.6,
+     "p95": 37.3
+    },
+    "sub_use": "Central Plant",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Fox_utility_Marian"
+   ],
+   "key": "Fox|Utility|Central Plant|2,000 to 5,000"
+  },
+  "L2-121": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Auditorium",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_education_Donnie",
+    "Hog_education_Madge"
+   ],
+   "key": "Hog|Education|Auditorium|5,000 to 10,000"
+  },
+  "L2-122": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Hog_education_Beth",
+    "Hog_education_Cathleen",
+    "Hog_education_Leandro",
+    "Hog_education_Luvenia",
+    "Hog_education_Odell",
+    "Hog_education_Sonia"
+   ],
+   "key": "Hog|Education|College Laboratory|10,000 to 20,000"
+  },
+  "L2-123": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Hog_education_Hallie",
+    "Hog_education_Haywood"
+   ],
+   "key": "Hog|Education|College Laboratory|2,000 to 5,000"
+  },
+  "L2-124": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_education_George",
+    "Hog_education_Martha",
+    "Hog_education_Mathilda",
+    "Hog_education_Wayne"
+   ],
+   "key": "Hog|Education|College Laboratory|5,000 to 10,000"
+  },
+  "L2-125": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Hog_education_Caridad",
+    "Hog_education_Casandra"
+   ],
+   "key": "Hog|Education|College Laboratory|over 20,000"
+  },
+  "L2-126": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Student Union",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_education_Jewel"
+   ],
+   "key": "Hog|Education|Student Union|5,000 to 10,000"
+  },
+  "L2-127": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Hog_assembly_Maribel"
+   ],
+   "key": "Hog|Entertainment/public assembly|Gymnasium|10,000 to 20,000"
+  },
+  "L2-128": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_assembly_Jasmine"
+   ],
+   "key": "Hog|Entertainment/public assembly|Gymnasium|5,000 to 10,000"
+  },
+  "L2-129": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Hog_assembly_Pedro"
+   ],
+   "key": "Hog|Entertainment/public assembly|Gymnasium|over 20,000"
+  },
+  "L2-130": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Gymnasium",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Hog_assembly_Edward"
+   ],
+   "key": "Hog|Entertainment/public assembly|Gymnasium|under 2,000"
+  },
+  "L2-131": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Hospital",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Hog_health_Hisako"
+   ],
+   "key": "Hog|Healthcare|Hospital|10,000 to 20,000"
+  },
+  "L2-132": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Hospital",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_health_Jenny"
+   ],
+   "key": "Hog|Healthcare|Hospital|5,000 to 10,000"
+  },
+  "L2-133": {
+   "fields": {
+    "use": "Healthcare",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Hospital",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Hog_health_May"
+   ],
+   "key": "Hog|Healthcare|Hospital|over 20,000"
+  },
+  "L2-134": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Hog_lodging_Shanti",
+    "Hog_lodging_Shonda"
+   ],
+   "key": "Hog|Lodging/residential|Dormitory|over 20,000"
+  },
+  "L2-135": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Office",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Hog_office_Candi",
+    "Hog_office_Catharine",
+    "Hog_office_Corie",
+    "Hog_office_Darlene",
+    "Hog_office_Eloise",
+    "Hog_office_Josefina",
+    "Hog_office_Lanell",
+    "Hog_office_Napoleon",
+    "Hog_office_Rolando",
+    "Hog_office_Sarah",
+    "Hog_office_Shawna"
+   ],
+   "key": "Hog|Office|Office|10,000 to 20,000"
+  },
+  "L2-136": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Hog_office_Catalina",
+    "Hog_office_Mary",
+    "Hog_office_Simon"
+   ],
+   "key": "Hog|Office|Office|2,000 to 5,000"
+  },
+  "L2-137": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_office_Bessie",
+    "Hog_office_Charla",
+    "Hog_office_Elizbeth",
+    "Hog_office_Elke",
+    "Hog_office_Guadalupe",
+    "Hog_office_Gustavo",
+    "Hog_office_Leanne",
+    "Hog_office_Marlene",
+    "Hog_office_Myles",
+    "Hog_office_Richelle",
+    "Hog_office_Roger",
+    "Hog_office_Shon"
+   ],
+   "key": "Hog|Office|Office|5,000 to 10,000"
+  },
+  "L2-138": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Office",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Hog_office_Betsy",
+    "Hog_office_Byron",
+    "Hog_office_Cornell",
+    "Hog_office_Garrett",
+    "Hog_office_Joey",
+    "Hog_office_Nia",
+    "Hog_office_Terry"
+   ],
+   "key": "Hog|Office|Office|over 20,000"
+  },
+  "L2-139": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Office",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Hog_office_Emmanuel",
+    "Hog_office_Miriam"
+   ],
+   "key": "Hog|Office|Office|under 2,000"
+  },
+  "L2-140": {
+   "fields": {
+    "use": "Parking",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Parking: Enclosed Garage",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_parking_Bernardo"
+   ],
+   "key": "Hog|Parking|Parking: Enclosed Garage|5,000 to 10,000"
+  },
+  "L2-141": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Library",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Hog_public_Octavia"
+   ],
+   "key": "Hog|Public services|Library|10,000 to 20,000"
+  },
+  "L2-142": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Library",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Hog_public_Gerard"
+   ],
+   "key": "Hog|Public services|Library|5,000 to 10,000"
+  },
+  "L2-143": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 9.6,
+     "p5": -11.8,
+     "p95": 25.2
+    },
+    "sub_use": "Library",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Hog_public_Brad",
+    "Hog_public_Crystal",
+    "Hog_public_Kevin"
+   ],
+   "key": "Hog|Public services|Library|over 20,000"
+  },
+  "L2-144": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 7.6,
+     "p5": -12.8,
+     "p95": 23.2
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Moose_education_Ricardo"
+   ],
+   "key": "Moose|Education|College Classroom|10,000 to 20,000"
+  },
+  "L2-145": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 7.6,
+     "p5": -12.8,
+     "p95": 23.2
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Moose_education_Dennis",
+    "Moose_education_Sasha"
+   ],
+   "key": "Moose|Education|College Classroom|5,000 to 10,000"
+  },
+  "L2-146": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 7.6,
+     "p5": -12.8,
+     "p95": 23.2
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Moose_education_Florence",
+    "Moose_education_Marlon",
+    "Moose_education_Omar",
+    "Moose_education_Rene"
+   ],
+   "key": "Moose|Education|College Classroom|over 20,000"
+  },
+  "L2-147": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Classroom",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Panther_education_Quintin"
+   ],
+   "key": "Panther|Education|Classroom|10,000 to 20,000"
+  },
+  "L2-148": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Panther_education_Annetta",
+    "Panther_education_Emily",
+    "Panther_education_Enriqueta",
+    "Panther_education_Ivan",
+    "Panther_education_Neal",
+    "Panther_education_Teofila"
+   ],
+   "key": "Panther|Education|Classroom|5,000 to 10,000"
+  },
+  "L2-149": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Research",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Panther_education_Jerome"
+   ],
+   "key": "Panther|Education|Research|10,000 to 20,000"
+  },
+  "L2-150": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Residence Hall",
+    "sqm_bin": "10,000 to 20,000"
+   },
+   "meters": [
+    "Panther_lodging_Kara",
+    "Panther_lodging_Kirk",
+    "Panther_lodging_Marisol"
+   ],
+   "key": "Panther|Lodging/residential|Residence Hall|10,000 to 20,000"
+  },
+  "L2-151": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Panther_office_Garth"
+   ],
+   "key": "Panther|Office|Office|2,000 to 5,000"
+  },
+  "L2-152": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Panther_office_Graham"
+   ],
+   "key": "Panther|Office|Office|5,000 to 10,000"
+  },
+  "L2-153": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 22.8,
+     "p5": 13.6,
+     "p95": 28.5
+    },
+    "sub_use": "Office",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Panther_office_Brent",
+    "Panther_office_Christian",
+    "Panther_office_Lavinia"
+   ],
+   "key": "Panther|Office|Office|under 2,000"
+  },
+  "L2-154": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Peacock_education_Patience"
+   ],
+   "key": "Peacock|Education|College Classroom|2,000 to 5,000"
+  },
+  "L2-155": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Peacock_education_Dustin",
+    "Peacock_education_Forest"
+   ],
+   "key": "Peacock|Education|College Classroom|5,000 to 10,000"
+  },
+  "L2-156": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "College Classroom",
+    "sqm_bin": "under 2,000"
+   },
+   "meters": [
+    "Peacock_education_Anita"
+   ],
+   "key": "Peacock|Education|College Classroom|under 2,000"
+  },
+  "L2-157": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Peacock_education_Pasquale",
+    "Peacock_education_Yolanda"
+   ],
+   "key": "Peacock|Education|College Laboratory|2,000 to 5,000"
+  },
+  "L2-158": {
+   "fields": {
+    "use": "Education",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "College Laboratory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Peacock_education_Lucie"
+   ],
+   "key": "Peacock|Education|College Laboratory|over 20,000"
+  },
+  "L2-159": {
+   "fields": {
+    "use": "Entertainment/public assembly",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "Swimming Pool",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Peacock_assembly_Russ"
+   ],
+   "key": "Peacock|Entertainment/public assembly|Swimming Pool|5,000 to 10,000"
+  },
+  "L2-160": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Peacock_lodging_James",
+    "Peacock_lodging_Matthew",
+    "Peacock_lodging_Wes"
+   ],
+   "key": "Peacock|Lodging/residential|Dormitory|5,000 to 10,000"
+  },
+  "L2-161": {
+   "fields": {
+    "use": "Lodging/residential",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "Dormitory",
+    "sqm_bin": "over 20,000"
+   },
+   "meters": [
+    "Peacock_lodging_Jamaal"
+   ],
+   "key": "Peacock|Lodging/residential|Dormitory|over 20,000"
+  },
+  "L2-162": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "Office",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Peacock_office_Jonathon",
+    "Peacock_office_Norman"
+   ],
+   "key": "Peacock|Office|Office|2,000 to 5,000"
+  },
+  "L2-163": {
+   "fields": {
+    "use": "Office",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "Office",
+    "sqm_bin": "5,000 to 10,000"
+   },
+   "meters": [
+    "Peacock_office_Effie",
+    "Peacock_office_Naomi"
+   ],
+   "key": "Peacock|Office|Office|5,000 to 10,000"
+  },
+  "L2-164": {
+   "fields": {
+    "use": "Public services",
+    "climate": {
+     "mean": 15.3,
+     "p5": 0.1,
+     "p95": 27.3
+    },
+    "sub_use": "Library",
+    "sqm_bin": "2,000 to 5,000"
+   },
+   "meters": [
+    "Peacock_public_Linda"
+   ],
+   "key": "Peacock|Public services|Library|2,000 to 5,000"
+  }
+ }
+}
