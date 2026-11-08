@@ -327,6 +327,95 @@ class ShapeStageChecks(unittest.TestCase):
         self.assertIsNone(ss.loc_item([it], "evap", "cap"))            # world without a cap
 
 
+class Shape2StageChecks(unittest.TestCase):
+    """Shape stage 2 (ccpp-shape-elicitation-2.md §2-§4): twin truth, prompts, parser, scorer on known answers."""
+
+    def test_twin_truth_shapes(self):
+        import numpy as np
+        from ccpp_twin import simulate, with_modules
+        ap, v = 1012.94, 52.08   # CCPP medians (AP, V)
+
+        def slope(cfg, lo, hi, rh=50.0):
+            a = np.linspace(lo, hi, 21)
+            pe = simulate(a, np.full(21, ap), np.full(21, rh), np.full(21, v), cfg)["pe_clean"]
+            return np.polyfit(a, pe, 1)[0]
+        base, chill, gen = with_modules(), with_modules(inlet_chill=True), with_modules(hot_gen_limit=True)
+        normal = slope(base, 10, 18)
+        self.assertLess(normal, -2.0)
+        for cfg in (chill, gen):                              # inside the boundary the worlds match base
+            self.assertAlmostEqual(slope(cfg, 10, 16), slope(base, 10, 16), delta=0.1)
+        self.assertLess(abs(slope(chill, 22, 35)), 0.1 * abs(normal))             # near_zero
+        self.assertLess(slope(gen, 30, 37), 1.2 * slope(base, 30, 37))             # same_or_stronger (steeper)
+        x = np.array([5.0, 15.0, 25.0, 35.0])
+        same = simulate(x, np.full(4, ap), np.full(4, 50.0), np.full(4, v))["pe"]
+        self.assertTrue(np.allclose(same, simulate(x, np.full(4, ap), np.full(4, 50.0), np.full(4, v),
+                                                   with_modules())["pe"]))   # default config unchanged
+
+    def test_jobs_and_prompts(self):
+        from collect import jobs_shape, jobs_shape2
+        from prompts import QUESTION_SHAPE, QUESTION_SHAPE2, SHAPE2_WORLDS, check_no_leak
+        js = jobs_shape2()
+        self.assertEqual(len(js), 10)
+        self.assertEqual({j["world"] for j in js}, set(SHAPE2_WORLDS))
+        self.assertEqual(check_no_leak(QUESTION_SHAPE2), [])
+        self.assertEqual(QUESTION_SHAPE2.replace(' or "inlet_chilling"', "")
+                         .replace(", inlet_chilling is an inlet chiller", ""), QUESTION_SHAPE)
+        for j in js:
+            text = j["messages"][-1]["content"]
+            self.assertTrue(text.endswith(QUESTION_SHAPE2))
+            desc = text.split("Question:")[0]
+            self.assertEqual(check_no_leak(desc), [])
+            self.assertIn("no inlet anti-icing system", desc)
+            for word in ("near zero", "barely", "constant", "steeper", "faster", "stronger", "weaker"):
+                self.assertNotIn(word, desc.lower(), (j["world"], word))
+        for j in jobs_shape():                               # stage-1 prompts unchanged
+            self.assertTrue(j["messages"][-1]["content"].endswith(QUESTION_SHAPE))
+
+    def test_parse_mechanisms(self):
+        from parse_score import MECHANISMS2, parse_shape
+        t = '{"boundaries": [{"side": "above", "at_c": 20, "mechanism": "inlet chilling", "response_beyond": "near_zero"}]}'
+        self.assertEqual(parse_shape(t)["items"][0]["mechanism"], "other")          # stage-1 parsing unchanged
+        self.assertEqual(parse_shape(t, MECHANISMS2)["items"][0]["mechanism"], "inlet_chilling")
+
+    def test_scorer_on_mock_answers(self):
+        import tempfile
+        from collect import call_mock, jobs_shape2
+        import score_shape2 as s2
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "shape2").mkdir()
+            for tag in s2.TAGS:
+                with open(Path(d) / "shape2" / f"{tag}.jsonl", "w") as f:
+                    for j in jobs_shape2():
+                        for k in range(21):
+                            text, _ = call_mock(j["messages"], 0.7, k)
+                            f.write(json.dumps({"world": j["world"], "level": j["level"], "response": text,
+                                                "error": None}) + "\n")
+            rows = s2.load(Path(d))
+        # mock: chill near_zero (correct), gen_hot power_cap near_zero (wrong), evap weaker, cap near_zero (correct)
+        v = s2.verdicts(rows)
+        m = "gpt-oss-120b"
+        self.assertEqual(v["Q1"]["by_model"][m]["n"], 42)
+        self.assertEqual(v["Q2"]["by_model"][m]["n"], 21)                           # gen_hot judged on L2 only
+        self.assertAlmostEqual(v["Q1"]["by_model"][m]["shape_rate"], 1.0)
+        self.assertAlmostEqual(v["Q2"]["by_model"][m]["shape_rate"], 0.0)
+        self.assertEqual(v["Q3"]["by_model"][m]["responses"], {"near_zero": v["Q3"]["by_model"][m]["n"]})
+        self.assertEqual((v["Q1"]["pass"], v["Q2"]["pass"], v["Q3"]["pass"], v["Q4"]["pass"]),
+                         (False, True, False, True))
+        self.assertAlmostEqual(v["Q5"]["evap"], 1.0)
+        rep = s2.reports(rows)[m]
+        self.assertEqual(rep["base_false_alarm_rate"], 0.0)
+        self.assertAlmostEqual(rep["by_level"]["cap"]["L1"]["shape_rate"], 1.0)
+
+    def test_location_rule(self):
+        import score_shape2 as s2
+        it = {"mechanism": "inlet_chilling", "side": "above", "at_c": 22.5, "response_beyond": "near_zero"}
+        self.assertIsNotNone(s2.loc_item([it], "chill"))
+        self.assertIsNone(s2.loc_item([dict(it, at_c=23.5)], "chill"))              # 3.5 > 3
+        self.assertIsNone(s2.loc_item([dict(it, mechanism="evap_cooling")], "chill"))
+        self.assertIsNotNone(s2.loc_item([dict(it, mechanism="evap_cooling")], "chill", any_mechanism=True))
+        self.assertIsNone(s2.loc_item([dict(it, side="below")], "chill"))
+
+
 if __name__ == '__main__':
     unittest.main()
 

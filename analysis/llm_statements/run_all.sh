@@ -11,19 +11,23 @@
 #              docs/research/ccpp-anti-icing-world.md §6). With ICE=0 the script behaves exactly as before.
 #         SHAPE (default 0; 1 adds the beyond-boundary shape stage, 252 calls -> runs/shape/<tag>.jsonl,
 #                docs/research/ccpp-shape-elicitation.md §3). With SHAPE=0 nothing changes.
+#         SHAPE2 (default 0; 1 adds shape stage 2, 210 calls -> runs/shape2/<tag>.jsonl,
+#                 docs/research/ccpp-shape-elicitation-2.md §3). With SHAPE2=0 nothing changes.
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TP="${TP:-4}"; PORT="${PORT:-8000}"; WORKERS="${WORKERS:-16}"; MAXTOK="${MAXTOK:-4096}"
 STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"; ICE="${ICE:-0}"
-SHAPE="${SHAPE:-0}"
+SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"
 BASE="http://localhost:$PORT/v1"
 MAIN_N=1596
 STRAT_N=$((2 * 2 * 5 * (STRAT_SAMPLES + 1)))
 ICE_N=630
 SHAPE_N=252
+SHAPE2_N=210
 mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
 [ "$ICE" = 1 ] && mkdir -p "$HERE/runs/ice"
 [ "$SHAPE" = 1 ] && mkdir -p "$HERE/runs/shape"
+[ "$SHAPE2" = 1 ] && mkdir -p "$HERE/runs/shape2"
 
 lines() { [ -f "$1" ] && wc -l < "$1" | tr -d ' ' || echo 0; }
 VLLM_PID=""
@@ -41,8 +45,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   ice_done=1; [ "$ICE" = 1 ] && [ "$(lines "$ICEF")" -lt "$ICE_N" ] && ice_done=0
   SHAPEF="$HERE/runs/shape/$TAG.jsonl"
   shape_done=1; [ "$SHAPE" = 1 ] && [ "$(lines "$SHAPEF")" -lt "$SHAPE_N" ] && shape_done=0
+  SHAPE2F="$HERE/runs/shape2/$TAG.jsonl"
+  shape2_done=1; [ "$SHAPE2" = 1 ] && [ "$(lines "$SHAPE2F")" -lt "$SHAPE2_N" ] && shape2_done=0
   if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ] && [ "$ice_done" = 1 ] \
-     && [ "$shape_done" = 1 ]; then
+     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ]; then
     echo "== $TAG: already complete, skip"; summary+=("$TAG: complete (skipped)"); continue
   fi
   # Keep the original environment record when only the anti-icing stage is left to run.
@@ -51,6 +57,9 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   # Shape-only runs get their own record too, so the anti-icing record is not overwritten.
   if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$SHAPE" = 1 ] && [ "$ice_done" = 1 ]; then
     ENVF="$HERE/runs/env/$TAG-shape.txt"; fi
+  # Shape stage 2 gets its own record (takes precedence when both shape stages are requested).
+  if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$SHAPE2" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ]; then
+    ENVF="$HERE/runs/env/$TAG-shape2.txt"; fi
   echo "== $TAG ($MODEL): starting vLLM (TP=$TP), log $LOG"
   # shellcheck disable=SC2086
   vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS $EXTRA_VARGS > "$LOG" 2>&1 < /dev/null &
@@ -113,7 +122,23 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
       summary+=("$TAG: shape smoke test FAILED (see output above)")
     fi
   fi
+  if [ "$SHAPE2" = 1 ] && [ "$(lines "$SHAPE2F")" -lt "$SHAPE2_N" ]; then
+    echo "-- $TAG: shape stage 2 ($SHAPE2_N calls)"
+    S2SMOKE="$HERE/runs/logs/smoke-shape2-$TAG.jsonl"; rm -f "$S2SMOKE"
+    python3 "$HERE/collect.py" --stage shape2 --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+      --max-tokens "$MAXTOK" --samples 0 --out "$S2SMOKE" > /dev/null
+    if python3 "$HERE/check_shape.py" "$S2SMOKE" --smoke; then
+      python3 "$HERE/collect.py" --stage shape2 --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+        --max-tokens "$MAXTOK" --workers "$WORKERS" --out "$SHAPE2F" | tail -1
+      python3 "$HERE/check_shape.py" "$SHAPE2F"
+    else
+      summary+=("$TAG: shape2 smoke test FAILED (see output above)")
+    fi
+  fi
   stop_server
+  if [ "$SHAPE2" = 1 ]; then
+    summary+=("$TAG: shape2 $(lines "$SHAPE2F")/$SHAPE2_N")
+  fi
   if [ "$SHAPE" = 1 ]; then
     summary+=("$TAG: shape $(lines "$SHAPEF")/$SHAPE_N")
   fi

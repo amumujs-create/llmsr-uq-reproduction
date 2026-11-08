@@ -104,11 +104,15 @@ def parse_mech(text: str) -> dict:
 SHAPE_RESPONSES = ("weaker", "near_zero", "opposite", "same_or_stronger")
 
 
-def parse_shape(text: str) -> dict:
+MECHANISMS2 = MECHANISMS + ("inlet_chilling",)  # shape stage 2 (ccpp-shape-elicitation-2.md §4)
+
+
+def parse_shape(text: str, mechanisms: tuple = MECHANISMS) -> dict:
     """Parse the shape-stage answer (prompts.QUESTION_SHAPE, ccpp-shape-elicitation.md §4).
 
     Same rules as parse_mech: innermost boundary kept per (side, mechanism); unknown mechanisms become "other";
     an unknown response_beyond becomes None (kept, scored as wrong). A null or non-numeric at_c is a parse failure.
+    Stage 2 passes mechanisms=MECHANISMS2; the default keeps stage-1 parsing unchanged.
     """
     text = re.sub(r"<think>.*?</think>", "", text or "", flags=re.S)
     m = re.search(r"\{.*\}", text, re.S)
@@ -126,7 +130,7 @@ def parse_shape(text: str) -> dict:
             mech = str(b.get("mechanism") or "other").strip().lower().replace("-", "_").replace(" ", "_")
             resp = b.get("response_beyond")
             resp = str(resp).strip().lower().replace("-", "_").replace(" ", "_") if resp is not None else None
-            items.append({"mechanism": mech if mech in MECHANISMS else "other", "side": side,
+            items.append({"mechanism": mech if mech in mechanisms else "other", "side": side,
                           "at_c": float(b["at_c"]), "rh_above": _opt_float(b.get("rh_above")),
                           "response_beyond": resp if resp in SHAPE_RESPONSES else None,
                           "confidence": _opt_float(b.get("confidence"))})

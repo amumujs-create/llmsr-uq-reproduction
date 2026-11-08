@@ -48,6 +48,17 @@ class TwinConfig:
     ice_rh_on: float = 70.0
     ice_rh_width: float = 3.0
     ice_bleed_per_k: float = 0.0025
+    # Shape stage 2 (docs/research/ccpp-shape-elicitation-2.md §2). Inlet chiller: above chill_set_c the intake is
+    # cooled to chill_set_c (smooth min, chiller power draw not modelled). Hot generator limit: an air-cooled
+    # generator whose capability is gen_hot_mw at gen_hot_on_c and falls by gen_hot_mw_per_k per K; 316.1 MW is the
+    # uncapped GT power at 28 degC with AP and V at their CCPP medians and RH 50%.
+    inlet_chill: bool = False
+    chill_set_c: float = 20.0
+    chill_softness_k: float = 0.5
+    hot_gen_limit: bool = False
+    gen_hot_on_c: float = 28.0
+    gen_hot_mw: float = 316.1
+    gen_hot_mw_per_k: float = 3.0
     noise_sd_mw: float = 0.0
 
 
@@ -81,6 +92,10 @@ def simulate(at_c, ap_mbar, rh_pct, v_cmhg, config: TwinConfig = TwinConfig(), *
         cooling_k = ramp * c.evap_effectiveness * np.clip(at_c - wet_bulb_c(at_c, rh_pct), 0.0, None)
         t_intake_c = at_c - cooling_k
         rh_pct = np.full_like(rh_pct, 95.0) * ramp + rh_pct * (1.0 - ramp)
+    if c.inlet_chill:
+        chilled = _softmin(t_intake_c, np.full_like(t_intake_c, c.chill_set_c), c.chill_softness_k)
+        cooling_k = cooling_k + (t_intake_c - chilled)
+        t_intake_c = chilled
     heat_k = np.zeros_like(at_c)
     if c.anti_icing:
         gate = 1.0 / (1.0 + np.exp(-(rh_pct - c.ice_rh_on) / c.ice_rh_width))
@@ -109,6 +124,9 @@ def simulate(at_c, ap_mbar, rh_pct, v_cmhg, config: TwinConfig = TwinConfig(), *
     p_gt_uncapped = p_gt.copy()
     if c.cold_cap:
         p_gt = _softmin(p_gt, np.full_like(p_gt, c.gt_cap_mw), c.cap_softness_mw)
+    if c.hot_gen_limit:
+        limit = c.gen_hot_mw - c.gen_hot_mw_per_k * (at_c - c.gen_hot_on_c)
+        p_gt = _softmin(p_gt, limit, c.cap_softness_mw)
     # Gas flow scales down with the cap (reduced firing/IGV), so recovered heat does too.
     flow_scale = p_gt / p_gt_uncapped
     q_recovered = flow_scale * m_gas * c.cp_gas * np.clip(t4 - c.stack_k, 0.0, None) / 1e6

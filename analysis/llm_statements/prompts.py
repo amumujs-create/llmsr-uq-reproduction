@@ -103,6 +103,31 @@ QUESTION_SHAPE = (
     "Use an empty list if you expect no such temperature."
 )
 
+# Shape stage 2 (docs/research/ccpp-shape-elicitation-2.md §3): two worlds whose beyond-boundary shape is neither
+# "weaker" nor written in the description, plus three control worlds from stage 1. The question is QUESTION_SHAPE with
+# one more mechanism name; nothing else changes.
+SHAPE2_NEW = ("chill", "gen_hot")
+SHAPE2_WORLDS = ("base", "cap_mild", "evap", "chill", "gen_hot")
+L1_NEW = {
+    "chill": "The plant has an inlet chiller in front of the compressor. In warm weather it cools the intake air "
+             "down to a fixed set temperature. Over this ambient range the gas turbine stays below the rated limit "
+             "of its generator.",
+    "gen_hot": "The plant has no inlet air conditioning. The gas turbine generator is cooled with ambient air, so "
+               "its capability falls as ambient temperature rises, and in hot weather the generator capability "
+               "limits gas turbine output.",
+}
+L2_NEW = {
+    "chill": "The chiller set temperature is about 20 degC; the chiller runs whenever ambient temperature is above it.",
+    "gen_hot": "The generator capability is about 316 MW at 28 degC ambient and falls by about 3 MW for each degC "
+               "above that.",
+}
+_SHAPE2_OLD = ('"evap_cooling" or "other"', "evap_cooling is inlet evaporative cooling. ")
+_SHAPE2_NEW = ('"evap_cooling" or "inlet_chilling" or "other"',
+               "evap_cooling is inlet evaporative cooling, inlet_chilling is an inlet chiller. ")
+assert all(QUESTION_SHAPE.count(o) == 1 for o in _SHAPE2_OLD)
+QUESTION_SHAPE2 = QUESTION_SHAPE.replace(_SHAPE2_OLD[0], _SHAPE2_NEW[0]).replace(_SHAPE2_OLD[1], _SHAPE2_NEW[1])
+
+
 def _l1_key(world: str) -> str:
     return {"base": "base", "cap_mild": "cap", "cap_strong": "cap", "evap": "evap", "evap+cap_mild": "evap+cap",
             **_ICE_BASE}[world]
@@ -162,3 +187,16 @@ def build_shape_prompt(world: str, level: str) -> list[dict]:
     """Shape stage (ccpp-shape-elicitation.md §3): original worlds carry the 'no anti-icing' sentence."""
     text = describe(world, level, ice_note=world not in ICE_WORLDS)
     return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"{text}\n\n{QUESTION_SHAPE}"}]
+
+
+def build_shape2_prompt(world: str, level: str) -> list[dict]:
+    """Shape stage 2 (ccpp-shape-elicitation-2.md §3). Control worlds use stage-1 descriptions (with the 'no
+    anti-icing' sentence); new worlds use L0 + L1_NEW (+ L2_GT + L2_NEW at L2) + the same sentence."""
+    if world in SHAPE2_NEW:
+        parts = [L0, L1_NEW[world], NO_ICE]
+        if level == "L2":
+            parts += [L2_GT, L2_NEW[world]]
+        text = " ".join(parts)
+    else:
+        text = describe(world, level, ice_note=True)
+    return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"{text}\n\n{QUESTION_SHAPE2}"}]
