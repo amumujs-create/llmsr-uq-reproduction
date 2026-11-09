@@ -1,0 +1,14 @@
+tag=llama33-70b
+model=meta-llama/Llama-3.3-70B-Instruct
+extra_body={}
+stage=bdg2
+vllm_args=--tensor-parallel-size 1 --max-model-len 16384  --pipeline-parallel-size 5 --distributed-executor-backend ray --enforce-eager --gpu-memory-utilization 0.85 --max-model-len 8192 --max-num-seqs 4
+date=2026-11-09T08:44:40Z
+host=wa-nb-ad
+vllm=0.19.1
+hf_revision=
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H100L-3-47C, 48128 MiB
