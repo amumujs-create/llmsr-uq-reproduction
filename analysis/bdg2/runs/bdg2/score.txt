@@ -1,0 +1,129 @@
+BDG2 chilled-water extrapolation (bdg2-regime-extrapolation.md); relative RMSE = rule / R0
+
+=== fixed ===
+             rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+R0             1.0000     1.0000  0.0000  0.000000e+00        1.0000       1.0000             1.0000
+R_cp           1.4125     0.9881  0.0263 -3.924642e+13        5.5844       1.0000             1.0000
+ORACLE         0.8394     0.7945  0.0307  1.000000e+00        0.7613       0.8439             0.8567
+ORACLE_half    0.9087     0.8979  0.0153  7.362000e-01        0.8744       0.9115             0.9137
+D              0.9446     0.8667  0.1171 -8.010609e+12        0.9206       0.9411             0.9640
+D_site         0.8540     0.7965  0.0696 -2.196157e+12        0.7713       0.8595             0.8700
+P|4            0.9639     0.9555  0.0069  4.181885e+11        0.8994       0.9875             0.9207
+P|6            0.9506     0.9370  0.0114  5.603216e+11        0.8806       0.9758             0.9046
+P|8            0.9344     0.9141  0.0175  5.517184e+11        0.8596       0.9556             0.9022
+P|10           0.9161     0.8880  0.0248 -1.641923e+11        0.8600       0.9272             0.9056
+P|12           0.8984     0.8568  0.0414 -2.515136e+11        0.8564       0.9013             0.9061
+P|14           0.8980     0.8439  0.0638 -1.559356e+12        0.8750       0.8930             0.9212
+P|16           0.9050     0.8340  0.0947 -4.624048e+12        0.9029       0.8962             0.9312
+P|18           0.9377     0.8581  0.1152 -8.116685e+12        0.9236       0.9318             0.9601
+P|20           0.9548     0.8803  0.1173 -7.825437e+12        0.9239       0.9521             0.9743
+P|22           0.9626     0.9001  0.0990 -9.480519e+12        0.9496       0.9522             0.9979
+P|24           0.9981     0.9528  0.0887 -8.817215e+12        0.9845       0.9962             1.0088
+P|26           1.0206     0.9877  0.0795 -1.038096e+13        0.9951       1.0267             1.0125
+
+=== gpt-oss-120b|M ===
+   rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+M    0.9016     0.8603  0.0409 -2.529194e+11        0.8639       0.9033             0.9111
+
+=== gpt-oss-120b|L1|HA ===
+         rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+HA         0.8795     0.8296  0.0559 -7.310704e+11        0.8195       0.8861             0.8837
+HA_half    0.9249     0.9126  0.0291 -1.814921e+10        0.8995       0.9276             0.9270
+
+=== gpt-oss-120b|L2|HA ===
+         rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+HA         0.8840     0.8349  0.0520 -1.249184e+12        0.8405       0.8884             0.8881
+HA_half    0.9277     0.9156  0.0271 -2.611398e+11        0.9099       0.9286             0.9318
+
+=== qwen3-30b-a3b-instruct|M ===
+   rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+M       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== qwen3-30b-a3b-instruct|L1|HA ===
+         rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+HA            1.0        1.0   0.0     0.0           1.0          1.0                1.0
+HA_half       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== qwen3-30b-a3b-instruct|L2|HA ===
+         rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+HA            1.0        1.0   0.0     0.0           1.0          1.0                1.0
+HA_half       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== gpt-oss-20b|M ===
+   rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+M    0.9016     0.8603  0.0409 -2.529194e+11        0.8639       0.9033             0.9111
+
+=== gpt-oss-20b|L1|HA ===
+         rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+HA         0.9135     0.8797  0.0302 -4.945691e+11        0.8612       0.9199             0.9150
+HA_half    0.9487     0.9406  0.0149 -1.146633e+10        0.9275       0.9509             0.9505
+
+=== gpt-oss-20b|L2|HA ===
+         rel_mean  rel_gmean    harm        filled  rel_evidence  rel_outside  rel_inside_hidden
+HA         0.9462     0.9211  0.0236 -1.878741e+11        0.9181       0.9505             0.9444
+HA_half    0.9673     0.9612  0.0124  7.286721e+09        0.9532       0.9692             0.9673
+
+=== gemma3-27b|M ===
+   rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+M       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== gemma3-27b|L1|HA ===
+         rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+HA            1.0        1.0   0.0     0.0           1.0          1.0                1.0
+HA_half       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== gemma3-27b|L2|HA ===
+         rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+HA            1.0        1.0   0.0     0.0           1.0          1.0                1.0
+HA_half       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== llama33-70b|M ===
+   rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+M       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== llama33-70b|L1|HA ===
+         rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+HA            1.0        1.0   0.0     0.0           1.0          1.0                1.0
+HA_half       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== llama33-70b|L2|HA ===
+         rel_mean  rel_gmean  harm  filled  rel_evidence  rel_outside  rel_inside_hidden
+HA            1.0        1.0   0.0     0.0           1.0          1.0                1.0
+HA_half       1.0        1.0   0.0     0.0           1.0          1.0                1.0
+
+=== structure: median |S0maj - tc| and empty share by tag/level ===
+                              abs_err_median  empty
+tag                    level                       
+gemma3-27b             L1                NaN  1.000
+                       L2                NaN  1.000
+gpt-oss-120b           L1              3.167  0.000
+                       L2              3.040  0.000
+gpt-oss-20b            L1              3.256  0.254
+                       L2              3.304  0.485
+llama33-70b            L1                NaN  1.000
+                       L2                NaN  1.000
+qwen3-30b-a3b-instruct L1                NaN  1.000
+                       L2                NaN  1.000
+
+=== verdicts ===
+{
+ "n_cells": 6,
+ "wins": {
+  "B1": "6",
+  "B3": "1",
+  "B4_M": "0",
+  "B4_P": "1",
+  "B5": "0",
+  "B6a": "0"
+ },
+ "P_mean_rel": 0.9450068418381276,
+ "B1": true,
+ "B2": true,
+ "B3": false,
+ "B4": false,
+ "B5": false,
+ "B6": false,
+ "B6b_Rcp_gain_with_evidence": false,
+ "B7": false,
+ "B7_wins": 0
+}
