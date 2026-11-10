@@ -54,16 +54,16 @@ def side_placebos(side):
     return {name: st for name, st in placebo_statements().items() if st[0][0] == word}
 
 
-def noise_seed(world, sigma, rep):
-    return _seed(f"{SEED_PREFIX}|noise|{world}|{sigma}|{rep}")
+def noise_seed(world, sigma, rep, prefix=SEED_PREFIX):
+    return _seed(f"{prefix}|noise|{world}|{sigma}|{rep}")
 
 
-def sample_seed(task, delta, w, n, rep):
-    return _seed(f"{SEED_PREFIX}|sample|{task}|{delta:g}|{w:g}|{n}|{rep}")
+def sample_seed(task, delta, w, n, rep, prefix=SEED_PREFIX):
+    return _seed(f"{prefix}|sample|{task}|{delta:g}|{w:g}|{n}|{rep}")
 
 
 def run_task(args):
-    task, sigma, x, reps, ext, cfg = args
+    task, sigma, x, reps, ext, cfg, prefix = args
     warnings.filterwarnings("ignore")
     world, side, k, _ = TASKS[task]
     at, v, ap, rh = x["AT"], x["V"], x["AP"], x["RH"]
@@ -87,8 +87,8 @@ def run_task(args):
                 if len(pool) < n:
                     raise RuntimeError(f"{task} delta={delta} w={w}: pool {len(pool)} < n {n}")
                 for rep in range(reps):
-                    pe = clean + np.random.default_rng(noise_seed(world, sigma, rep)).normal(0.0, sigma, len(at))
-                    idx = np.random.default_rng(sample_seed(task, delta, w, n, rep)).choice(pool, n, replace=False)
+                    pe = clean + np.random.default_rng(noise_seed(world, sigma, rep, prefix)).normal(0.0, sigma, len(at))
+                    idx = np.random.default_rng(sample_seed(task, delta, w, n, rep, prefix)).choice(pool, n, replace=False)
                     Xtr, ytr = feats[idx], pe[idx]
                     b, se = ols(Xtr, ytr)
                     slope_phys = -ytr.mean() / (at[idx].mean() + 273.15)
@@ -110,10 +110,10 @@ def run_task(args):
     return rows
 
 
-def run(x, ext_by_world, reps=20, workers=8):
+def run(x, ext_by_world, reps=20, workers=8, prefix=SEED_PREFIX):
     worlds, _ = build_worlds(x)
     cfg = {w["module"]: w["cfg"] for w in worlds}
-    jobs = [(t, s, x, reps, ext_by_world[TASKS[t][0]], cfg[TASKS[t][0]]) for t in TASKS for s in SIGMAS]
+    jobs = [(t, s, x, reps, ext_by_world[TASKS[t][0]], cfg[TASKS[t][0]], prefix) for t in TASKS for s in SIGMAS]
     rows = []
     with ProcessPoolExecutor(workers) as ex:
         for r in ex.map(run_task, jobs):
