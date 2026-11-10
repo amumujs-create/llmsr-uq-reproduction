@@ -321,6 +321,11 @@ def verdicts(rel):
     return out
 
 
+def iv_statement_names(df):
+    """Statement names of the IV|<name>|<stat> columns; <name> itself may contain '|' (LLM cells)."""
+    return sorted({c[3:].rsplit("|", 1)[0] for c in df.columns if c.startswith("IV|")})
+
+
 def _mm(g, cols):
     """mean and median of relative RMSE per column, as one row."""
     return pd.concat([g[cols].mean().add_suffix("_mean"), g[cols].median().add_suffix("_median")])
@@ -395,7 +400,7 @@ def summarize(df):
     out["I_decile_curve"] = t.round(4).to_dict("index")
 
     # 7. report-only intervals
-    iv_names = sorted({c.split("|")[1] for c in df.columns if c.startswith("IV|")})
+    iv_names = iv_statement_names(df)
     lines.append("\n=== report-only constraint-class intervals (no guard, no blend): coverage / mean width MW / midpoint rel RMSE, "
                  "by axis x delta (pooled) ===")
     for stat in ("cov", "width", "mid"):
@@ -419,14 +424,18 @@ def main():
     ap.add_argument("--out", default=str(HERE / "runs" / "info_axis"))
     ap.add_argument("--reps", type=int, default=20)
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--from-cells", action="store_true",
+                    help="re-summarize the saved cells.csv (no computation; used after the 2026-11-10 summary fix)")
     a = ap.parse_args()
     s0, s2 = load(Path(a.runs))
     ext, meta, _ = build_external(s0, s2)
-    x = load_ccpp_inputs(a.xlsx)
-    df = run(x, ext, reps=a.reps, workers=a.workers)
     out_dir = Path(a.out)
     out_dir.mkdir(parents=True, exist_ok=True)
-    df.to_csv(out_dir / "cells.csv", index=False)
+    if a.from_cells:
+        df = pd.read_csv(out_dir / "cells.csv")
+    else:
+        df = run(load_ccpp_inputs(a.xlsx), ext, reps=a.reps, workers=a.workers)
+        df.to_csv(out_dir / "cells.csv", index=False)
     out, text = summarize(df)
     out["cells"] = meta
     json.dump(out, open(out_dir / "summary.json", "w"), indent=1, default=str)

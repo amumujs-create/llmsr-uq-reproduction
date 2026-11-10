@@ -147,6 +147,11 @@ class IntervalChecks(unittest.TestCase):
         lo_o, hi_o = ia.interval([("below", 9.0)], "hot", edge, at, y_edge, L)
         np.testing.assert_allclose(hi_o - lo_o, hi_n - lo_n)             # other side: unchanged
 
+    def test_iv_column_names_keep_cell_pipes(self):
+        import pandas as pd
+        df = pd.DataFrame(columns=["IV|none|cov", "IV|gemma3-27b|L1|cov", "IV|gemma3-27b|L1|width", "R0"])
+        self.assertEqual(ia.iv_statement_names(df), ["gemma3-27b|L1", "none"])
+
     def test_interval_stats(self):
         st = ia.interval_stats(np.array([0.0, 0.0]), np.array([2.0, 2.0]), np.array([1.0, 3.0]), 1.0)
         self.assertAlmostEqual(st["cov"], 0.5)
