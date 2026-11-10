@@ -1,0 +1,39 @@
+POST-HOC diagnosis of the silent cold-cap statement. Not a verdict.
+range (2.0, 37.0), sensitivity gate (0.4, 1.2) %/degC, majority needs more than half of the S2 answers.
+
+=== cap_strong (truth [('below', 9.0)]) ===
+gemma3-27b|L1: S2 answers 10; 3 implied temperature out of range: 4, 4 sensitivity gate: 6; kept median at None; medians lim 290.0 sens -0.8 pct 0.27 implied at 2.5; S0 answers 20 majority [('above', 25.0)]; HA []
+gemma3-27b|L2: S2 answers 10; 3 implied temperature out of range: 10; kept median at None; medians lim 357.0 sens -0.8 pct 0.23 implied at -2.5; S0 answers 20 majority [('above', 25.0)]; HA []
+llama33-70b|L1: S2 answers 10; 3 implied temperature out of range: 10; kept median at None; medians lim 250.0 sens -0.5 pct 0.21 implied at -5.0; S0 answers 20 majority [('above', 15.0)]; HA []
+llama33-70b|L2: S2 answers 10; 3 implied temperature out of range: 10; kept median at None; medians lim 357.0 sens -0.5 pct 0.15 implied at -13.0; S0 answers 20 majority [('below', 15.0)]; HA []
+gpt-oss-20b|L1: S2 answers 10; 3 implied temperature out of range: 3, 4 sensitivity gate: 3, 5 kept: 4; kept median at 9.2; medians lim 375.0 sens -1.25 pct 0.41 implied at 5.0; S0 answers 20 majority [('below', 8.0)]; HA []
+gpt-oss-20b|L2: S2 answers 10; 1 not claimed reached: 1, 3 implied temperature out of range: 4, 4 sensitivity gate: 5; kept median at None; medians lim 357.0 sens -1.04 pct 0.31 implied at 2.04; S0 answers 20 majority [('below', 5.0)]; HA []
+gpt-oss-120b|L1: S2 answers 10; 3 implied temperature out of range: 2, 5 kept: 8; kept median at 6.9; medians lim 205.0 sens -0.9 pct 0.47 implied at 5.0; S0 answers 20 majority [('below', 10.0)]; HA [('below', 6.875)]
+gpt-oss-120b|L2: S2 answers 10; 3 implied temperature out of range: 1, 5 kept: 9; kept median at 6.8; medians lim 357.0 sens -1.7 pct 0.5 implied at 6.76; S0 answers 20 majority [('below', 7.0)]; HA [('below', 6.76470588235294)]
+qwen3-30b-a3b-instruct|L1: S2 answers 10; 5 kept: 10; kept median at 6.7; medians lim 160.0 sens -1.2 pct 0.8 implied at 6.67; S0 answers 20 majority [('above', 30.0)]; HA [('below', 6.666666666666666)]
+qwen3-30b-a3b-instruct|L2: S2 answers 10; 4 sensitivity gate: 1, 5 kept: 9; kept median at 8.0; medians lim 357.0 sens -1.9 pct 0.55 implied at 7.61; S0 answers 20 majority [('above', 30.0)]; HA [('below', 8.0)]
+
+=== cap_mild (truth [('below', 6.0)]) ===
+gemma3-27b|L1: S2 answers 10; 3 implied temperature out of range: 4, 4 sensitivity gate: 6; kept median at None; medians lim 290.0 sens -0.8 pct 0.27 implied at 2.5; S0 answers 20 majority [('above', 25.0)]; HA []
+gemma3-27b|L2: S2 answers 10; 3 implied temperature out of range: 10; kept median at None; medians lim 364.0 sens -0.8 pct 0.23 implied at -11.25; S0 answers 20 majority [('above', 25.0)]; HA []
+llama33-70b|L1: S2 answers 10; 3 implied temperature out of range: 10; kept median at None; medians lim 250.0 sens -0.5 pct 0.21 implied at -5.0; S0 answers 20 majority [('above', 15.0)]; HA []
+llama33-70b|L2: S2 answers 10; 3 implied temperature out of range: 10; kept median at None; medians lim 364.0 sens -0.5 pct 0.15 implied at -27.0; S0 answers 20 majority [('below', 15.0)]; HA []
+gpt-oss-20b|L1: S2 answers 10; 3 implied temperature out of range: 5, 4 sensitivity gate: 3, 5 kept: 2; kept median at 6.2; medians lim 350.0 sens -1.2 pct 0.38 implied at 2.08; S0 answers 20 majority [('below', 10.0)]; HA []
+gpt-oss-20b|L2: S2 answers 10; 1 not claimed reached: 1, 3 implied temperature out of range: 8, 5 kept: 1; kept median at 3.9; medians lim 364.0 sens -1.5 pct 0.44 implied at 1.0; S0 answers 20 majority [('below', 8.5)]; HA []
+gpt-oss-120b|L1: S2 answers 10; 3 implied temperature out of range: 1, 5 kept: 9; kept median at 7.3; medians lim 200.0 sens -1.0 pct 0.5 implied at 7.15; S0 answers 20 majority [('below', 12.0)]; HA [('below', 7.307692307692308)]
+gpt-oss-120b|L2: S2 answers 10; 3 implied temperature out of range: 1, 5 kept: 9; kept median at 2.6; medians lim 364.0 sens -1.7 pct 0.5 implied at 2.65; S0 answers 20 majority [('below', 4.0)]; HA [('below', 5.0)]
+qwen3-30b-a3b-instruct|L1: S2 answers 10; 5 kept: 10; kept median at 6.7; medians lim 160.0 sens -1.2 pct 0.8 implied at 6.67; S0 answers 20 majority [('above', 30.0)]; HA [('below', 6.666666666666666)]
+qwen3-30b-a3b-instruct|L2: S2 answers 10; 3 implied temperature out of range: 2, 5 kept: 8; kept median at 5.0; medians lim 364.0 sens -1.95 pct 0.57 implied at 4.17; S0 answers 20 majority [('above', 30.0)]; HA [('below', 5.0)]
+
+=== share of S2 answers claiming the GT limit is reached in range, by world (does the claim tell worlds apart?) ===
+cell                                     base       cap_mild     cap_strong           evap  evap+cap_mild
+gemma3-27b|L1                            0.00           1.00           1.00           0.00           1.00
+gemma3-27b|L2                            0.00           1.00           1.00           0.00           1.00
+llama33-70b|L1                           0.00           1.00           1.00           0.00           1.00
+llama33-70b|L2                           0.00           1.00           1.00           0.00           1.00
+gpt-oss-20b|L1                           0.00           1.00           1.00           0.00           1.00
+gpt-oss-20b|L2                           0.00           0.90           0.90           0.00           0.90
+gpt-oss-120b|L1                          0.00           1.00           1.00           0.00           1.00
+gpt-oss-120b|L2                          0.00           1.00           1.00           0.00           1.00
+qwen3-30b-a3b-instruct|L1                0.00           1.00           1.00           0.00           1.00
+qwen3-30b-a3b-instruct|L2                0.00           1.00           1.00           0.00           1.00
