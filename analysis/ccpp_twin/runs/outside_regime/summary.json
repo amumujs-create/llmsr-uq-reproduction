@@ -1,0 +1,216 @@
+{
+ "verdicts": {
+  "H0": {
+   "oracle_kink": 0.6228375038661259,
+   "dreal_nokink_harm": 0.5252314814814815,
+   "pass": true
+  },
+  "H1": {
+   "cells": 6,
+   "need": 5,
+   "pass": true
+  },
+  "H2": {
+   "cells": 4,
+   "need": 4,
+   "pass": true
+  },
+  "H3": {
+   "cells": 6,
+   "need": 4,
+   "pass": true
+  },
+  "H4": {
+   "cells": 3,
+   "need": 4,
+   "pass": false
+  },
+  "H5": {
+   "cells": 3,
+   "need": 4,
+   "pass": false
+  },
+  "stage1": false,
+  "strong": false,
+  "per_cell": {
+   "gemma3-27b|L1": {
+    "kink": 0.7757916575198802,
+    "all": 0.903910710365663,
+    "harm": 0.01970899470899471,
+    "H1": true,
+    "H2": true,
+    "H3": true,
+    "H4": true,
+    "H5": true
+   },
+   "gemma3-27b|L2": {
+    "kink": 1.0,
+    "all": 1.0,
+    "harm": 0.0,
+    "H1": true,
+    "H2": false,
+    "H3": true,
+    "H4": false,
+    "H5": false
+   },
+   "llama33-70b|L1": {
+    "kink": 0.7757916575198802,
+    "all": 0.903910710365663,
+    "harm": 0.01970899470899471,
+    "H1": true,
+    "H2": true,
+    "H3": true,
+    "H4": true,
+    "H5": true
+   },
+   "llama33-70b|L2": {
+    "kink": 0.7582095146398641,
+    "all": 0.8963755062742275,
+    "harm": 0.025661375661375663,
+    "H1": true,
+    "H2": true,
+    "H3": true,
+    "H4": true,
+    "H5": true
+   },
+   "gpt-oss-20b|L1": {
+    "kink": 1.0,
+    "all": 1.0,
+    "harm": 0.0,
+    "H1": true,
+    "H2": false,
+    "H3": true,
+    "H4": false,
+    "H5": false
+   },
+   "gpt-oss-20b|L2": {
+    "kink": 0.878543993923479,
+    "all": 0.9479474259672054,
+    "harm": 0.013095238095238096,
+    "H1": true,
+    "H2": true,
+    "H3": true,
+    "H4": false,
+    "H5": false
+   }
+  },
+  "reference": {
+   "ORACLE": {
+    "kink": 0.6228375038661259,
+    "all": 0.8383589302283397,
+    "harm_all": 0.026455026455026454,
+    "harm_nokink": 0.0
+   },
+   "D_real": {
+    "kink": 0.816243571096129,
+    "all": 1.3965287619849176,
+    "harm_all": 0.3051587301587302,
+    "harm_nokink": 0.5252314814814815
+   },
+   "D_aware": {
+    "kink": 0.816243571096129,
+    "all": 0.9212472447554838,
+    "harm_all": 0.0050264550264550265,
+    "harm_nokink": 0.0
+   },
+   "P_side": {
+    "kink": 0.8212729074736976,
+    "all": 2.035035085796784,
+    "harm_all": 0.5248677248677248,
+    "harm_nokink": 0.8699074074074075
+   }
+  }
+ },
+ "cells": {
+  "gemma3-27b|L1": {
+   "tag": "gemma3-27b",
+   "level": "L1",
+   "split": "validation"
+  },
+  "gemma3-27b|L2": {
+   "tag": "gemma3-27b",
+   "level": "L2",
+   "split": "validation"
+  },
+  "gpt-oss-120b|L1": {
+   "tag": "gpt-oss-120b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "gpt-oss-120b|L2": {
+   "tag": "gpt-oss-120b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "gpt-oss-20b|L1": {
+   "tag": "gpt-oss-20b",
+   "level": "L1",
+   "split": "validation"
+  },
+  "gpt-oss-20b|L2": {
+   "tag": "gpt-oss-20b",
+   "level": "L2",
+   "split": "validation"
+  },
+  "llama33-70b|L1": {
+   "tag": "llama33-70b",
+   "level": "L1",
+   "split": "validation"
+  },
+  "llama33-70b|L2": {
+   "tag": "llama33-70b",
+   "level": "L2",
+   "split": "validation"
+  },
+  "pilot-gemma3-12b|L1": {
+   "tag": "pilot-gemma3-12b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-gemma3-12b|L2": {
+   "tag": "pilot-gemma3-12b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-llama31-8b|L1": {
+   "tag": "pilot-llama31-8b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-llama31-8b|L2": {
+   "tag": "pilot-llama31-8b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-mistral7b|L1": {
+   "tag": "pilot-mistral7b",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-mistral7b|L2": {
+   "tag": "pilot-mistral7b",
+   "level": "L2",
+   "split": "dev"
+  },
+  "pilot-qwen35-9b-nothink|L1": {
+   "tag": "pilot-qwen35-9b-nothink",
+   "level": "L1",
+   "split": "dev"
+  },
+  "pilot-qwen35-9b-nothink|L2": {
+   "tag": "pilot-qwen35-9b-nothink",
+   "level": "L2",
+   "split": "dev"
+  },
+  "qwen3-30b-a3b-instruct|L1": {
+   "tag": "qwen3-30b-a3b-instruct",
+   "level": "L1",
+   "split": "dev"
+  },
+  "qwen3-30b-a3b-instruct|L2": {
+   "tag": "qwen3-30b-a3b-instruct",
+   "level": "L2",
+   "split": "dev"
+  }
+ }
+}
