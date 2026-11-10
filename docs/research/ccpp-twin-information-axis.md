@@ -93,7 +93,7 @@ V는 실제값(`realV`)만 쓴다(`fixedV`는 잡음을 낮추는 효과뿐이�
 
 ## 9. 결과 (2026-11-10, 한 번 계산)
 
-실행: `PYTHONSAFEPATH=1 python3 analysis/ccpp_twin/info_axis.py <xlsx> --reps 20 --workers 8` (커밋 ed9566d의 코드). 8,640행(48 창 × n 3 × σ 3 × 반복 20), 모든 칸 성립. 산출물 `analysis/ccpp_twin/runs/info_axis/{cells.csv.gz, summary.json, summary.txt, run.log}`. 요약 단계가 열 이름 파싱 버그(칸 이름 안의 `|`)로 한 번 실패해 `summarize`만 고치고 저장된 `cells.csv`에서 요약을 다시 만들었다(`--from-cells`, 재계산 없음, `summarize.log`). 검증 6칸: gemma3-27b·llama33-70b·gpt-oss-20b × L1·L2. 집계는 특별히 적지 않으면 σ·n·w 합산, 상대 RMSE 평균.
+실행: `PYTHONSAFEPATH=1 python3 analysis/ccpp_twin/info_axis.py <xlsx> --reps 20 --workers 8` (커밋 ed9566d의 코드). 8,640행(48 창 × n 3 × σ 3 × 반복 20), 모든 칸 성립. 산출물 `analysis/ccpp_twin/runs/info_axis/{cells.csv.gz, summary.json, summary.txt}` (실행 로그 `run.log`·`summarize.log`는 같은 폴더, `*.log`라 저장소 밖). 요약 단계가 열 이름 파싱 버그(칸 이름 안의 `|`)로 한 번 실패해 `summarize`만 고치고 저장된 `cells.csv`에서 요약을 다시 만들었다(`--from-cells`, 재계산 없음, `summarize.log`). 검증 6칸: gemma3-27b·llama33-70b·gpt-oss-20b × L1·L2. 집계는 특별히 적지 않으면 σ·n·w 합산, 상대 RMSE 평균.
 
 ### 9.1 판정
 
