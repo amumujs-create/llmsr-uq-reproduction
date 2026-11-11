@@ -1,0 +1,12 @@
+tag=phi4-14b
+model=microsoft/phi-4
+extra_body={}
+vllm_args=--tensor-parallel-size 1 --max-model-len 16384  --pipeline-parallel-size 4 --distributed-executor-backend ray --enforce-eager --gpu-memory-utilization 0.90
+date=2026-11-11T16:00:43Z
+host=wa-nb-ad
+vllm=0.31.0
+hf_revision=
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
