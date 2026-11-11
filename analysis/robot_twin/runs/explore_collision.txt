@@ -1,0 +1,34 @@
+assumptions: threshold 10% of twin torque limit; friction Fc 2% of limit, Fs/Fc 1.5, vs 0.03 rad/s; registered payload 10.0 kg
+
+1) peak residual / threshold vs speed override s  (y > 1 = false alarm)
+   move           dm s=0.1   s=0.25  s=0.5   s=0.75  s=1.0     max/min over s
+   lift_mid        1 0.22    0.22    0.22    0.22    0.22      1.00
+   lift_mid        3 0.65    0.65    0.65    0.65    0.65      1.00
+   lift_mid        5 1.08    1.08    1.08    1.08    1.08      1.00
+   lift_reach      1 0.20    0.21    0.23    0.26    0.30      1.48
+   lift_reach      3 0.61    0.62    0.68    0.77    0.91      1.48
+   lift_reach      5 1.02    1.04    1.13    1.29    1.51      1.48
+   elbow_out       1 0.28    0.28    0.28    0.28    0.27      1.03
+   elbow_out       3 0.65    0.64    0.64    0.63    0.66      1.04
+   elbow_out       5 1.08    1.07    1.06    1.05    1.09      1.04
+   swing_reach     1 0.22    0.22    0.22    0.22    0.22      1.00
+   swing_reach     3 0.65    0.65    0.65    0.65    0.65      1.00
+   swing_reach     5 1.08    1.08    1.08    1.08    1.08      1.00
+   swing_tuck      1 0.14    0.14    0.14    0.14    0.14      1.00
+   swing_tuck      3 0.42    0.42    0.42    0.42    0.42      1.00
+   swing_tuck      5 0.70    0.70    0.70    0.70    0.70      1.00
+   combo           1 0.26    0.26    0.26    0.26    0.27      1.01
+   combo           3 0.59    0.59    0.59    0.59    0.60      1.02
+   combo           5 0.91    0.91    0.92    0.92    0.94      1.03
+
+   speed sensitivity (max/min of y over s): median 1.01, max 1.48
+2) scenarios: alarm at every speed 4, never 14, crossing inside 0.1-1.0 0 (of 18)
+
+3) decomposition at s = 1.0 (peak residual / threshold of each part alone)
+   move           dm  payload gravity  payload total  friction
+   lift_mid        3             0.65           0.65      0.10
+   lift_reach      3             0.61           0.91      0.10
+   elbow_out       3             0.65           0.66      0.10
+   swing_reach     3             0.65           0.65      0.10
+   swing_tuck      3             0.42           0.42      0.10
+   combo           3             0.49           0.56      0.10

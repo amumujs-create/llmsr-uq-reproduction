@@ -1,0 +1,37 @@
+twin torque limits (Nm, assumption): [900. 900. 450. 160. 100.  50.]
+URDF velocity limits (deg/s): [100.  80. 100. 180. 180. 225.]
+payload offset (m): [0.  0.  0.1] 
+
+1) boundary s* (override where the torque limit binds; >1.00 = never within 0-100 %)
+move               0kg       5kg      10kg      15kg      20kg   static max |tau|/limit @20kg
+lift_mid          2.83      2.35      2.00      1.72      1.49     0.58
+lift_reach        2.40      1.88      1.51      1.23      0.99     0.72
+elbow_out         4.86      3.45      2.75      2.30      1.97     0.51
+swing_reach       3.29      2.77      2.44      2.21      1.81     0.71
+swing_tuck        6.09      4.77      4.09      3.68      3.40     0.38
+combo             2.74      2.37      2.12      1.94      1.79     0.65
+
+   cells with s* inside (0,1): 1/30; range 0.99-0.99, median 0.99
+   spec-sheet default (s* = 1.00, speed limit only): mean |error| 0.01
+   best single constant (median 0.99): mean |error| 0.00
+
+2) clean & important windows  (leak <= 1%, breakage >= 10%)
+   softness 0.00: 0/6 windows pass  (d=0.05: 0/2, d=0.1: 0/2, d=0.2: 0/2)
+   softness 0.05: 0/6 windows pass  (d=0.05: 0/2, d=0.1: 0/2, d=0.2: 0/2)
+   softness 0.15: 0/6 windows pass  (d=0.05: 0/2, d=0.1: 0/2, d=0.2: 0/2)
+
+3) sensitivity to the assumed torque limits (all limits scaled together)
+   x0.75 (J2 675 Nm): infeasible(static)  0, s* inside (0,1)  4/30, range 0.35-0.98
+   x0.80 (J2 720 Nm): infeasible(static)  0, s* inside (0,1)  2/30, range 0.55-0.85
+   x0.85 (J2 765 Nm): infeasible(static)  0, s* inside (0,1)  2/30, range 0.69-0.96
+   x0.90 (J2 810 Nm): infeasible(static)  0, s* inside (0,1)  1/30, range 0.80-0.80
+   x1.00 (J2 900 Nm): infeasible(static)  0, s* inside (0,1)  1/30, range 0.99-0.99
+   x1.20 (J2 1080 Nm): infeasible(static)  0, s* inside (0,1)  0/30, range -
+
+4) payload axis at 100 % override: payload p* where the torque limit starts to bind (0-40 kg)
+   lift_mid     p* =  32.7 kg
+   lift_reach   p* =  19.8 kg
+   elbow_out    p* =  39.9 kg
+   swing_reach  p* =  29.9 kg
+   swing_tuck   p* > 40 kg
+   combo        p* =  34.2 kg

@@ -1,0 +1,29 @@
+speed range 0.002-2.0 rad/s; leak <= 2% of fc, breakage >= 20% of fc
+k = highest speed where |regime - base| >= 5% of fc
+
+A) literature roll-off (DOWN): Franka Panda joints, Gaz et al. 2019 sigmoid
+   cell                   dir    fc[Nm]  k[rad/s]  tau(0.005)/fc  windows pass
+   panda_j1               DOWN    0.246     0.697           0.01  0/0
+   panda_j2               DOWN    0.385     0.392           0.03  1/1
+   panda_j3               DOWN    0.394     0.386           0.02  1/1
+   panda_j4               DOWN    0.575     0.638           0.02  0/0
+   panda_j5               DOWN    0.374     0.426           0.02  1/1
+   panda_j6               DOWN    0.179     0.224           0.04  2/2
+   panda_j7               DOWN    0.277     0.353           0.03  1/1
+   k range 0.224-0.697 rad/s (0.49 decades); best single constant 0.392: mean |log10 error| 0.11
+   clean & important windows: 6/6
+
+B) assumed Stribeck (UP): fc = 1, fv = 0.2, Fs/Fc and vs are assumptions
+   cell                   dir    fc[Nm]  k[rad/s]  tau(0.005)/fc  windows pass
+   strib_vs0.01_r1.3      UP      1.000     0.013           1.23  0/6
+   strib_vs0.01_r1.6      UP      1.000     0.016           1.47  6/6
+   strib_vs0.03_r1.3      UP      1.000     0.040           1.29  6/6
+   strib_vs0.03_r1.6      UP      1.000     0.047           1.58  6/6
+   strib_vs0.1_r1.3       UP      1.000     0.134           1.30  5/5
+   strib_vs0.1_r1.6       UP      1.000     0.157           1.60  5/5
+   strib_vs0.3_r1.3       UP      1.000     0.401           1.30  1/1
+   strib_vs0.3_r1.6       UP      1.000     0.472           1.60  0/0
+   k range 0.013-0.472 rad/s (1.55 decades); best single constant 0.079: mean |log10 error| 0.50
+   clean & important windows: 29/35
+
+C) control without regime (window 0.1-0.6 rad/s): extrapolation RMSE 0.000 fc (should be 0)
