@@ -103,3 +103,24 @@ tail -f run_new.log
 결과 돌려주기는 §6과 같다(`git add analysis/llm_statements/runs && git commit -m "LLM runs" && git push`).
 
 선택: 기존 다섯 모델도 새 세계 단계만 추가로 돌리려면 `NEWWORLD=1 bash analysis/llm_statements/run_all.sh`(모델당 128회, 판정에는 쓰지 않고 보고만 한다).
+
+## 8. 깨끗한 창 단계 (2026-11-12 추가)
+
+설계: [docs/research/ccpp-twin-clean-collection.md](../../docs/research/ccpp-twin-clean-collection.md). 제한 값과 설정 온도가 다른 발전소 6개를 묻는다. 모델당 192회, `runs/cleanworld/<tag>.jsonl`.
+
+새 모델 네 개(§7 수집과 한 번에):
+
+```bash
+MODELS=models_new.tsv NEWWORLD=1 CLEANWORLD=1 nohup bash analysis/llm_statements/run_all.sh > run_new.log 2>&1 &
+```
+
+기존 다섯 모델(새 세계 128회 + 깨끗한 창 192회만 추가로 돈다):
+
+```bash
+NEWWORLD=1 CLEANWORLD=1 nohup bash analysis/llm_statements/run_all.sh > run_old.log 2>&1 &
+```
+
+- 두 명령은 같은 GPU를 쓰므로 하나가 끝난 뒤 다음을 실행한다.
+- §7을 이미 돌렸다면 같은 명령에 `CLEANWORLD=1`만 붙여 다시 실행한다. 끝난 부분은 건너뛴다.
+- `CLEANWORLD=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
+- 결과 돌려주기는 §6과 같다.

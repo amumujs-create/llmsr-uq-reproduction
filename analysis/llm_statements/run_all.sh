@@ -15,12 +15,14 @@
 #                 docs/research/ccpp-shape-elicitation-2.md §3). With SHAPE2=0 nothing changes.
 #         NEWWORLD (default 0; 1 adds the new-world stage, 128 calls -> runs/newworld/<tag>.jsonl,
 #                   docs/research/ccpp-twin-outside-confirmation.md §4). With NEWWORLD=0 nothing changes.
+#         CLEANWORLD (default 0; 1 adds the clean-world stage, 192 calls -> runs/cleanworld/<tag>.jsonl,
+#                     docs/research/ccpp-twin-clean-collection.md). With CLEANWORLD=0 nothing changes.
 #         MODELS (default models.tsv; a file name in this directory, e.g. models_new.tsv).
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TP="${TP:-4}"; PORT="${PORT:-8000}"; WORKERS="${WORKERS:-16}"; MAXTOK="${MAXTOK:-4096}"
 STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"; ICE="${ICE:-0}"
-SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"; NEWWORLD="${NEWWORLD:-0}"; MODELS="${MODELS:-models.tsv}"
+SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"; NEWWORLD="${NEWWORLD:-0}"; CLEANWORLD="${CLEANWORLD:-0}"; MODELS="${MODELS:-models.tsv}"
 BASE="http://localhost:$PORT/v1"
 MAIN_N=1596
 STRAT_N=$((2 * 2 * 5 * (STRAT_SAMPLES + 1)))
@@ -28,11 +30,13 @@ ICE_N=630
 SHAPE_N=252
 SHAPE2_N=210
 NEWWORLD_N=128
+CLEANWORLD_N=192
 mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
 [ "$ICE" = 1 ] && mkdir -p "$HERE/runs/ice"
 [ "$SHAPE" = 1 ] && mkdir -p "$HERE/runs/shape"
 [ "$SHAPE2" = 1 ] && mkdir -p "$HERE/runs/shape2"
 [ "$NEWWORLD" = 1 ] && mkdir -p "$HERE/runs/newworld"
+[ "$CLEANWORLD" = 1 ] && mkdir -p "$HERE/runs/cleanworld"
 
 lines() { [ -f "$1" ] && wc -l < "$1" | tr -d ' ' || echo 0; }
 VLLM_PID=""
@@ -54,8 +58,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   shape2_done=1; [ "$SHAPE2" = 1 ] && [ "$(lines "$SHAPE2F")" -lt "$SHAPE2_N" ] && shape2_done=0
   NEWF="$HERE/runs/newworld/$TAG.jsonl"
   new_done=1; [ "$NEWWORLD" = 1 ] && [ "$(lines "$NEWF")" -lt "$NEWWORLD_N" ] && new_done=0
+  CLEANF="$HERE/runs/cleanworld/$TAG.jsonl"
+  clean_done=1; [ "$CLEANWORLD" = 1 ] && [ "$(lines "$CLEANF")" -lt "$CLEANWORLD_N" ] && clean_done=0
   if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ] && [ "$ice_done" = 1 ] \
-     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ]; then
+     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ]; then
     echo "== $TAG: already complete, skip"; summary+=("$TAG: complete (skipped)"); continue
   fi
   # Keep the original environment record when only the anti-icing stage is left to run.
@@ -71,6 +77,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$NEWWORLD" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ] \
      && [ "$shape2_done" = 1 ]; then
     ENVF="$HERE/runs/env/$TAG-newworld.txt"; fi
+  # A clean-world-only run (everything else already complete) gets its own record.
+  if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$CLEANWORLD" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ] \
+     && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ]; then
+    ENVF="$HERE/runs/env/$TAG-cleanworld.txt"; fi
   echo "== $TAG ($MODEL): starting vLLM (TP=$TP), log $LOG"
   # shellcheck disable=SC2086
   vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS $EXTRA_VARGS > "$LOG" 2>&1 < /dev/null &
@@ -159,7 +169,23 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
       summary+=("$TAG: new-world smoke test FAILED (see output above)")
     fi
   fi
+  if [ "$CLEANWORLD" = 1 ] && [ "$(lines "$CLEANF")" -lt "$CLEANWORLD_N" ]; then
+    echo "-- $TAG: clean-world stage ($CLEANWORLD_N calls)"
+    CSMOKE="$HERE/runs/logs/smoke-cleanworld-$TAG.jsonl"; rm -f "$CSMOKE"
+    python3 "$HERE/collect_cleanworld.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+      --max-tokens "$MAXTOK" --samples 0 --out "$CSMOKE" > /dev/null
+    if python3 "$HERE/collect_cleanworld.py" --check "$CSMOKE" --smoke; then
+      python3 "$HERE/collect_cleanworld.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+        --max-tokens "$MAXTOK" --workers "$WORKERS" --out "$CLEANF" | tail -1
+      python3 "$HERE/collect_cleanworld.py" --check "$CLEANF"
+    else
+      summary+=("$TAG: clean-world smoke test FAILED (see output above)")
+    fi
+  fi
   stop_server
+  if [ "$CLEANWORLD" = 1 ]; then
+    summary+=("$TAG: cleanworld $(lines "$CLEANF")/$CLEANWORLD_N")
+  fi
   if [ "$NEWWORLD" = 1 ]; then
     summary+=("$TAG: newworld $(lines "$NEWF")/$NEWWORLD_N")
   fi
