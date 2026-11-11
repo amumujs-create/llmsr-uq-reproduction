@@ -1,0 +1,12 @@
+tag=granite33-8b
+model=ibm-granite/granite-3.3-8b-instruct
+extra_body={}
+vllm_args=--tensor-parallel-size 1 --max-model-len 16384  --pipeline-parallel-size 4 --distributed-executor-backend ray --enforce-eager --gpu-memory-utilization 0.90
+date=2026-11-11T11:59:56Z
+host=wa-nb-ad
+vllm=0.31.0
+hf_revision=
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
