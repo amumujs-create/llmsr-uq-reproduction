@@ -76,3 +76,30 @@ git push
 `runs/env/*.txt`에 환경이 자동 기록되므로 따로 알려 줄 것은 없다. 실패한 모델이 있으면 summary 부분만 알려 준다.
 
 분석은 이쪽에서 한다.
+
+## 7. 창 밖 구간 확증 수집 (2026-11-11 추가)
+
+설계: [docs/research/ccpp-twin-outside-confirmation.md](../../docs/research/ccpp-twin-outside-confirmation.md). 새 모델 네 개에 기존 수집 전부와 새 세계 단계를 돌린다.
+
+```bash
+git pull
+```
+
+```bash
+MODELS=models_new.tsv NEWWORLD=1 nohup bash analysis/llm_statements/run_all.sh > run_new.log 2>&1 &
+```
+
+```bash
+tail -f run_new.log
+```
+
+- 모델마다: 본 수집 1,596회 + S1/S2 220회 + 새 세계 128회. 끝난 부분은 건너뛰므로 끊기면 같은 명령을 다시 실행한다.
+- 모델 목록은 `models_new.tsv`다(Mistral Small 3.2 24B, Phi-4, Granite 3.3 8B, DeepSeek-R1-Distill-Qwen-32B). 네 개 모두 Hugging Face 동의가 필요 없다(2026-11-11 확인).
+- **모델을 바꾸고 싶으면 수집 전에 알려 준다.** 등록 문서의 표를 먼저 고쳐야 한다. 수집을 시작한 뒤에는 바꾸지 않는다.
+- `deepseek-r1d-32b`는 추론형이라 답이 잘릴 수 있다. 점검에서 실패하면 그 모델만 `ONLY=deepseek-r1d-32b MAXTOK=8192 MODELS=models_new.tsv NEWWORLD=1 bash analysis/llm_statements/run_all.sh`로 다시 돌린다.
+- Mistral은 `models_new.tsv`에 적힌 vLLM 옵션(`--tokenizer_mode mistral --config_format mistral --load_format mistral`, 모델 카드 권장)으로 뜬다. 안 뜨면 `runs/logs/vllm-mistral-small32-24b.log` 끝부분을 알려 준다.
+- 뜨지 않는 모델이 있어도 나머지는 계속 돈다. 두 개 이상 끝나면 판정할 수 있다.
+
+결과 돌려주기는 §6과 같다(`git add analysis/llm_statements/runs && git commit -m "LLM runs" && git push`).
+
+선택: 기존 다섯 모델도 새 세계 단계만 추가로 돌리려면 `NEWWORLD=1 bash analysis/llm_statements/run_all.sh`(모델당 128회, 판정에는 쓰지 않고 보고만 한다).

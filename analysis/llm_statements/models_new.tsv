@@ -1,0 +1,7 @@
+# tag	hf_model	extra_body(JSON or -)	extra vllm args (or -)
+# New models for the outside-regime confirmation (docs/research/ccpp-twin-outside-confirmation.md §3).
+# Fixed before collection. Run: MODELS=models_new.tsv NEWWORLD=1 bash analysis/llm_statements/run_all.sh
+mistral-small32-24b	mistralai/Mistral-Small-3.2-24B-Instruct-2506	-	--tokenizer_mode mistral --config_format mistral --load_format mistral
+phi4-14b	microsoft/phi-4	-	-
+granite33-8b	ibm-granite/granite-3.3-8b-instruct	-	-
+deepseek-r1d-32b	deepseek-ai/DeepSeek-R1-Distill-Qwen-32B	-	-
