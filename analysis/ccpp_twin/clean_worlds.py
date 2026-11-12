@@ -1,6 +1,6 @@
 """Twin configurations for the clean-window task set (docs/research/ccpp-twin-clean-collection.md).
 
-DRAFT until the experiment is registered: these are the candidates found by explore/clean_tasks.py. A world is
+Registered 2026-11-12 (docs/research/ccpp-twin-clean-diagnostic.md); found by explore/clean_tasks.py. A world is
 "sharp" when its regime switches on quickly (cap_softness_mw 0.5 instead of 2.0, evap_ramp_c 0.3 instead of 3.0),
 so that a training window short of the kink carries no trace of the regime.
 

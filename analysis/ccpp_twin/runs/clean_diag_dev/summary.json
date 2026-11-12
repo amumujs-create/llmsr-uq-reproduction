@@ -1,0 +1,1001 @@
+{
+ "verdicts": {
+  "C1": {
+   "hinge_tasks": 6,
+   "quad_tasks": 6,
+   "hinge_kept": 0.018333333333333333,
+   "pass": true
+  },
+  "C2": {
+   "tasks": 6,
+   "pass": true
+  },
+  "C3": {
+   "tasks": 6,
+   "bound_share": 1.0,
+   "pass": true
+  },
+  "C4": {
+   "cells": 29,
+   "of": 30,
+   "pass": true
+  },
+  "C5": {
+   "cells": 14,
+   "of": 30,
+   "pass": true
+  },
+  "C6": {
+   "models": 3,
+   "of": 5,
+   "pass": true
+  },
+  "C7": {
+   "safe_models": 5,
+   "small_gain_models": 5,
+   "of": 5,
+   "pass": true
+  },
+  "P1": {
+   "models": 3,
+   "of": 5,
+   "pass": true
+  },
+  "P2": {
+   "models": 3,
+   "of": 5,
+   "pass": true
+  },
+  "P3": {
+   "models": 3,
+   "of": 5,
+   "read_kink": 0.7954034638016768,
+   "pass": true
+  },
+  "per_model": {
+   "gpt-oss-120b": {
+    "FROZEN": {
+     "kink": 0.7652075779737478,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S0": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.931986531986532,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.931986531986532,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.4531061834376963,
+     "harm_nokink": 0.3082491582491583,
+     "safe": false,
+     "gainful": true
+    }
+   },
+   "qwen3-30b-a3b-instruct": {
+    "FROZEN": {
+     "kink": 0.7735024931131599,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S0": {
+     "kink": 0.7135363814090252,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.527314286344675,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.8265272264185944,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": false
+    },
+    "OR": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.8265272264185944,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": false
+    }
+   },
+   "gpt-oss-20b": {
+    "FROZEN": {
+     "kink": 0.7954034638016768,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S0": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.7584175084175084,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.7584175084175084,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.42143608208528427,
+     "harm_nokink": 0.21531986531986533,
+     "safe": false,
+     "gainful": true
+    }
+   },
+   "gemma3-27b": {
+    "FROZEN": {
+     "kink": 0.9326955478387319,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": false
+    },
+    "S0": {
+     "kink": 0.7135363814090252,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.7135363814090252,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.7135363814090252,
+     "harm_nokink": 0.43956228956228954,
+     "safe": false,
+     "gainful": true
+    }
+   },
+   "llama33-70b": {
+    "FROZEN": {
+     "kink": 0.7954034638016768,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S0": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.4143234413351058,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.4718260591752001,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    }
+   }
+  },
+  "diagnostic": true,
+  "positive": true
+ },
+ "cells": {
+  "cap353|cold": [
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap353|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap350|cold": [
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap350|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ]
+  ],
+  "cap346|cold": [
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap346|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ]
+  ],
+  "evap22|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "evap22|cold": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ]
+  ],
+  "evap26|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "evap26|cold": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "chill24|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "chill24|cold": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ]
+ },
+ "lines": {
+  "gpt-oss-120b": 192,
+  "qwen3-30b-a3b-instruct": 192,
+  "gpt-oss-20b": 192,
+  "gemma3-27b": 192,
+  "llama33-70b": 192
+ },
+ "unparsed": {
+  "gpt-oss-120b": {
+   "S0": [
+    3,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  },
+  "qwen3-30b-a3b-instruct": {
+   "S0": [
+    0,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  },
+  "gpt-oss-20b": {
+   "S0": [
+    0,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  },
+  "gemma3-27b": {
+   "S0": [
+    0,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  },
+  "llama33-70b": {
+   "S0": [
+    1,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  }
+ },
+ "shares": {
+  "gpt-oss-120b|cap353|below": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-120b|cap353|above": [
+   0.0,
+   0.9
+  ],
+  "gpt-oss-120b|cap350|below": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-120b|cap350|above": [
+   0.0,
+   0.7
+  ],
+  "gpt-oss-120b|cap346|below": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-120b|cap346|above": [
+   0.0,
+   0.6
+  ],
+  "gpt-oss-120b|evap22|below": [
+   0.05555555555555555,
+   1.0
+  ],
+  "gpt-oss-120b|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-120b|evap26|below": [
+   0.05263157894736842,
+   1.0
+  ],
+  "gpt-oss-120b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-120b|chill24|below": [
+   0.1,
+   0.8
+  ],
+  "gpt-oss-120b|chill24|above": [
+   1.0,
+   0.6
+  ],
+  "qwen3-30b-a3b-instruct|cap353|below": [
+   0.0,
+   1.0
+  ],
+  "qwen3-30b-a3b-instruct|cap353|above": [
+   1.0,
+   0.0
+  ],
+  "qwen3-30b-a3b-instruct|cap350|below": [
+   0.0,
+   1.0
+  ],
+  "qwen3-30b-a3b-instruct|cap350|above": [
+   1.0,
+   0.0
+  ],
+  "qwen3-30b-a3b-instruct|cap346|below": [
+   0.0,
+   1.0
+  ],
+  "qwen3-30b-a3b-instruct|cap346|above": [
+   1.0,
+   0.0
+  ],
+  "qwen3-30b-a3b-instruct|evap22|below": [
+   0.0,
+   0.0
+  ],
+  "qwen3-30b-a3b-instruct|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "qwen3-30b-a3b-instruct|evap26|below": [
+   0.0,
+   0.0
+  ],
+  "qwen3-30b-a3b-instruct|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "qwen3-30b-a3b-instruct|chill24|below": [
+   0.0,
+   0.0
+  ],
+  "qwen3-30b-a3b-instruct|chill24|above": [
+   1.0,
+   0.0
+  ],
+  "gpt-oss-20b|cap353|below": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-20b|cap353|above": [
+   0.0,
+   1.0
+  ],
+  "gpt-oss-20b|cap350|below": [
+   0.9,
+   1.0
+  ],
+  "gpt-oss-20b|cap350|above": [
+   0.0,
+   0.8
+  ],
+  "gpt-oss-20b|cap346|below": [
+   1.0,
+   0.9
+  ],
+  "gpt-oss-20b|cap346|above": [
+   0.0,
+   0.8
+  ],
+  "gpt-oss-20b|evap22|below": [
+   0.2,
+   0.7
+  ],
+  "gpt-oss-20b|evap22|above": [
+   0.95,
+   1.0
+  ],
+  "gpt-oss-20b|evap26|below": [
+   0.0,
+   0.1
+  ],
+  "gpt-oss-20b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "gpt-oss-20b|chill24|below": [
+   0.05,
+   0.6
+  ],
+  "gpt-oss-20b|chill24|above": [
+   1.0,
+   1.0
+  ],
+  "gemma3-27b|cap353|below": [
+   0.0,
+   1.0
+  ],
+  "gemma3-27b|cap353|above": [
+   1.0,
+   1.0
+  ],
+  "gemma3-27b|cap350|below": [
+   0.0,
+   1.0
+  ],
+  "gemma3-27b|cap350|above": [
+   1.0,
+   1.0
+  ],
+  "gemma3-27b|cap346|below": [
+   0.0,
+   1.0
+  ],
+  "gemma3-27b|cap346|above": [
+   1.0,
+   1.0
+  ],
+  "gemma3-27b|evap22|below": [
+   0.0,
+   0.0
+  ],
+  "gemma3-27b|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "gemma3-27b|evap26|below": [
+   0.0,
+   0.0
+  ],
+  "gemma3-27b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "gemma3-27b|chill24|below": [
+   0.0,
+   0.0
+  ],
+  "gemma3-27b|chill24|above": [
+   1.0,
+   1.0
+  ],
+  "llama33-70b|cap353|below": [
+   0.65,
+   1.0
+  ],
+  "llama33-70b|cap353|above": [
+   0.35,
+   0.0
+  ],
+  "llama33-70b|cap350|below": [
+   0.65,
+   1.0
+  ],
+  "llama33-70b|cap350|above": [
+   0.35,
+   0.0
+  ],
+  "llama33-70b|cap346|below": [
+   0.8421052631578947,
+   1.0
+  ],
+  "llama33-70b|cap346|above": [
+   0.15789473684210525,
+   0.0
+  ],
+  "llama33-70b|evap22|below": [
+   0.0,
+   0.0
+  ],
+  "llama33-70b|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "llama33-70b|evap26|below": [
+   0.0,
+   0.0
+  ],
+  "llama33-70b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "llama33-70b|chill24|below": [
+   0.0,
+   0.0
+  ],
+  "llama33-70b|chill24|above": [
+   1.0,
+   1.0
+  ]
+ },
+ "frozen": {
+  "gpt-oss-120b|cap353": [
+   [
+    "below",
+    9.117647058823529
+   ]
+  ],
+  "gpt-oss-120b|cap350": [
+   [
+    "below",
+    10.882352941176471
+   ]
+  ],
+  "gpt-oss-120b|cap346": [
+   [
+    "below",
+    13.235294117647058
+   ]
+  ],
+  "gpt-oss-120b|evap22": [
+   [
+    "above",
+    22.0
+   ]
+  ],
+  "gpt-oss-120b|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "gpt-oss-120b|chill24": [],
+  "qwen3-30b-a3b-instruct|cap353": [
+   [
+    "below",
+    8.333333333333332
+   ]
+  ],
+  "qwen3-30b-a3b-instruct|cap350": [
+   [
+    "below",
+    11.11111111111111
+   ]
+  ],
+  "qwen3-30b-a3b-instruct|cap346": [
+   [
+    "below",
+    13.333333333333334
+   ]
+  ],
+  "qwen3-30b-a3b-instruct|evap22": [
+   [
+    "above",
+    22.0
+   ]
+  ],
+  "qwen3-30b-a3b-instruct|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "qwen3-30b-a3b-instruct|chill24": [],
+  "gpt-oss-20b|cap353": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "gpt-oss-20b|cap350": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "gpt-oss-20b|cap346": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "gpt-oss-20b|evap22": [
+   [
+    "above",
+    22.0
+   ]
+  ],
+  "gpt-oss-20b|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "gpt-oss-20b|chill24": [
+   [
+    "above",
+    24.0
+   ]
+  ],
+  "gemma3-27b|cap353": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "gemma3-27b|cap350": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "gemma3-27b|cap346": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "gemma3-27b|evap22": [
+   [
+    "above",
+    30.0
+   ]
+  ],
+  "gemma3-27b|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "gemma3-27b|chill24": [
+   [
+    "above",
+    31.0
+   ]
+  ],
+  "llama33-70b|cap353": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "llama33-70b|cap350": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "llama33-70b|cap346": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "llama33-70b|evap22": [
+   [
+    "above",
+    22.0
+   ]
+  ],
+  "llama33-70b|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "llama33-70b|chill24": [
+   [
+    "above",
+    24.0
+   ]
+  ]
+ }
+}

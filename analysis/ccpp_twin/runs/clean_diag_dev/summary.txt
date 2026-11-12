@@ -1,0 +1,119 @@
+Clean-window diagnostic confirmation [DEVELOPMENT, not a verdict]. relative RMSE = rule / R0. rows=11340 seeds=cleandiag1
+models: ['gpt-oss-120b', 'qwen3-30b-a3b-instruct', 'gpt-oss-20b', 'gemma3-27b', 'llama33-70b']
+collection lines (need 192): {'gpt-oss-120b': 192, 'qwen3-30b-a3b-instruct': 192, 'gpt-oss-20b': 192, 'gemma3-27b': 192, 'llama33-70b': 192}
+unparsed [failed, total]: {'gpt-oss-120b': {'S0': [3, 120], 'S2': [0, 60]}, 'qwen3-30b-a3b-instruct': {'S0': [0, 120], 'S2': [0, 60]}, 'gpt-oss-20b': {'S0': [0, 120], 'S2': [0, 60]}, 'gemma3-27b': {'S0': [0, 120], 'S2': [0, 60]}, 'llama33-70b': {'S0': [1, 120], 'S2': [0, 60]}}
+task cells (delta, w): cap353|cold 4; cap353|hot 6; cap350|cold 4; cap350|hot 5; cap346|cold 4; cap346|hot 5; evap22|hot 6; evap22|cold 5; evap26|hot 6; evap26|cold 6; chill24|hot 6; chill24|cold 6
+
+=== verdicts ===
+C1 data-only bending models do not help: HINGE >= 0.95 on 6/6, QUAD on 6/6 kink tasks (need 5), hinge kept 0.018 (<= 0.1) -> PASS
+C2 existence alone is enough: EDGE_h <= 0.8 on 6/6 kink tasks (need 5) -> PASS
+C3 a false alarm is costly and bounded: EDGE_h harm >= 0.8 on 6/6 no-kink tasks (need 5), bound holds in 1.0000 of rows (>= 0.99) -> PASS
+C4 presence is known: S2 says yes on the true side in 29/30 cells (need 18) -> PASS
+C5 the decomposition question raises false alarms: S2 yes on the false side in 14/30 cells (need 8) -> PASS
+C6 the S2-only rule is unsafe: no-kink harm > 0.1 in 3/5 models (need 2) -> PASS
+C7 the frozen rule is safe but gains little: safe 5/5, kink mean >= 0.7 in 5/5 (need 3 each) -> PASS
+DIAGNOSTIC CLAIMS (C1-C7): ALL HOLD
+
+P1 the AND rule is safe (no-kink harm <= 0.1) and gainful (kink mean <= 0.8) in 3/5 models (need 2) -> PASS
+P2 safe and at least 0.1 below the frozen rule on kink tasks in 3/5 models (need 2) -> PASS
+P3 safe and below reading the description (READ kink 0.795) in 3/5 models (need 2) -> PASS
+POSITIVE CLAIM (P1-P3): HOLDS
+
+=== reference rules, task mean ===
+task    cap353|cold  cap353|hot  cap350|cold  cap350|hot  cap346|cold  cap346|hot  evap22|hot  evap22|cold  evap26|hot  evap26|cold  chill24|hot  chill24|cold
+ORACLE        0.603       1.000        0.607       1.000        0.570       1.000       0.643        1.000       0.692        1.000        0.534         1.000
+READ          0.911       1.000        0.993       1.000        1.000       1.000       0.643        1.000       0.692        1.000        0.534         1.000
+EDGE_h        0.375       5.729        0.402       6.128        0.428       5.900       0.493        7.473       0.467        7.615        0.322         7.645
+HINGE         1.174       1.347        1.071       1.199        1.046       1.081       1.054        1.522       1.047        1.312        1.027         1.177
+QUAD          1.648       6.143        1.751       6.207        1.877       6.069       1.660        6.413       1.429        5.669        1.477         6.305
+
+harm share (> 1.10):
+task    cap353|cold  cap353|hot  cap350|cold  cap350|hot  cap346|cold  cap346|hot  evap22|hot  evap22|cold  evap26|hot  evap26|cold  chill24|hot  chill24|cold
+ORACLE        0.006       0.000        0.012       0.000        0.019       0.000       0.018        0.000       0.004        0.000        0.007         0.000
+READ          0.000       0.000        0.000       0.000        0.000       0.000       0.018        0.000       0.004        0.000        0.007         0.000
+EDGE_h        0.011       0.902        0.024       0.911        0.035       0.908       0.036        0.956       0.006        0.955        0.015         0.957
+HINGE         0.012       0.015        0.014       0.009        0.008       0.011       0.018        0.017       0.011        0.015        0.010         0.013
+QUAD          0.551       0.801        0.540       0.817        0.588       0.783       0.468        0.820       0.435        0.780        0.433         0.821
+
+R0 absolute RMSE (MW): cap353|cold 11.71  cap353|hot 2.31  cap350|cold 11.47  cap350|hot 2.31  cap346|cold 10.13  cap346|hot 2.26  evap22|hot 9.90  evap22|cold 2.26  evap26|hot 12.45  evap26|cold 2.34  chill24|hot 10.58  chill24|cold 2.33
+
+=== side judgment: share of answers saying yes (pS0 / pS2); true side first, then false side ===
+gpt-oss-120b               cap353 1.00/1.00 | 0.00/0.90  cap350 1.00/1.00 | 0.00/0.70  cap346 1.00/1.00 | 0.00/0.60  evap22 1.00/1.00 | 0.06/1.00  evap26 1.00/1.00 | 0.05/1.00  chill24 1.00/0.60 | 0.10/0.80
+qwen3-30b-a3b-instruct     cap353 0.00/1.00 | 1.00/0.00  cap350 0.00/1.00 | 1.00/0.00  cap346 0.00/1.00 | 1.00/0.00  evap22 1.00/1.00 | 0.00/0.00  evap26 1.00/1.00 | 0.00/0.00  chill24 1.00/0.00 | 0.00/0.00
+gpt-oss-20b                cap353 1.00/1.00 | 0.00/1.00  cap350 0.90/1.00 | 0.00/0.80  cap346 1.00/0.90 | 0.00/0.80  evap22 0.95/1.00 | 0.20/0.70  evap26 1.00/1.00 | 0.00/0.10  chill24 1.00/1.00 | 0.05/0.60
+gemma3-27b                 cap353 0.00/1.00 | 1.00/1.00  cap350 0.00/1.00 | 1.00/1.00  cap346 0.00/1.00 | 1.00/1.00  evap22 1.00/1.00 | 0.00/0.00  evap26 1.00/1.00 | 0.00/0.00  chill24 1.00/1.00 | 0.00/0.00
+llama33-70b                cap353 0.65/1.00 | 0.35/0.00  cap350 0.65/1.00 | 0.35/0.00  cap346 0.84/1.00 | 0.16/0.00  evap22 1.00/1.00 | 0.00/0.00  evap26 1.00/1.00 | 0.00/0.00  chill24 1.00/1.00 | 0.00/0.00
+
+=== rules by model (macro over tasks; harm and MW pooled over rows) ===
+                                kink  nokink  harm_kink  harm_nokink  abs_kink_MW  abs_nokink_MW
+model                  rule                                                                     
+gpt-oss-120b           FROZEN  0.765   1.000      0.008        0.000        8.469          2.305
+                       S0      0.414   1.000      0.021        0.000        4.358          2.305
+                       S2      0.414   6.748      0.021        0.932        4.358          7.577
+                       AND     0.414   1.000      0.021        0.000        4.358          2.305
+                       OR      0.414   6.748      0.021        0.932        4.358          7.577
+                       CONF    0.453   1.119      0.019        0.308        4.892          2.400
+qwen3-30b-a3b-instruct FROZEN  0.774   1.000      0.008        0.000        8.547          2.305
+                       S0      0.714   3.459      0.011        0.440        7.143          4.418
+                       S2      0.527   1.000      0.018        0.000        5.835          2.305
+                       AND     0.827   1.000      0.008        0.000        8.619          2.305
+                       OR      0.414   3.459      0.021        0.440        4.358          4.418
+                       CONF    0.827   1.000      0.008        0.000        8.619          2.305
+gpt-oss-20b            FROZEN  0.795   1.000      0.006        0.000        8.429          2.305
+                       S0      0.414   1.000      0.021        0.000        4.358          2.305
+                       S2      0.414   5.646      0.021        0.758        4.358          6.442
+                       AND     0.414   1.000      0.021        0.000        4.358          2.305
+                       OR      0.414   5.646      0.021        0.758        4.358          6.442
+                       CONF    0.421   1.180      0.019        0.215        4.454          2.426
+gemma3-27b             FROZEN  0.933   1.000      0.001        0.000       10.118          2.305
+                       S0      0.714   3.459      0.011        0.440        7.143          4.418
+                       S2      0.414   3.459      0.021        0.440        4.358          4.418
+                       AND     0.714   3.459      0.011        0.440        7.143          4.418
+                       OR      0.414   3.459      0.021        0.440        4.358          4.418
+                       CONF    0.714   3.459      0.011        0.440        7.143          4.418
+llama33-70b            FROZEN  0.795   1.000      0.006        0.000        8.429          2.305
+                       S0      0.414   1.000      0.021        0.000        4.358          2.305
+                       S2      0.414   1.000      0.021        0.000        4.358          2.305
+                       AND     0.414   1.000      0.021        0.000        4.358          2.305
+                       OR      0.414   1.000      0.021        0.000        4.358          2.305
+                       CONF    0.472   1.000      0.018        0.000        4.962          2.305
+
+=== frozen-rule statements by model and plant ===
+gpt-oss-120b               cap353 [('below', 9.117647058823529)]  cap350 [('below', 10.882352941176471)]  cap346 [('below', 13.235294117647058)]  evap22 [('above', 22.0)]  evap26 [('above', 26.0)]  chill24 []
+qwen3-30b-a3b-instruct     cap353 [('below', 8.333333333333332)]  cap350 [('below', 11.11111111111111)]  cap346 [('below', 13.333333333333334)]  evap22 [('above', 22.0)]  evap26 [('above', 26.0)]  chill24 []
+gpt-oss-20b                cap353 [('below', 8.0)]  cap350 [('below', 8.0)]  cap346 [('below', 8.0)]  evap22 [('above', 22.0)]  evap26 [('above', 26.0)]  chill24 [('above', 24.0)]
+gemma3-27b                 cap353 [('below', 8.0)]  cap350 [('below', 8.0)]  cap346 [('below', 8.0)]  evap22 [('above', 30.0)]  evap26 [('above', 26.0)]  chill24 [('above', 31.0)]
+llama33-70b                cap353 [('below', 8.0)]  cap350 [('below', 8.0)]  cap346 [('below', 8.0)]  evap22 [('above', 22.0)]  evap26 [('above', 26.0)]  chill24 [('above', 24.0)]
+
+=== task mean of every model rule ===
+task                           cap353|cold  cap353|hot  cap350|cold  cap350|hot  cap346|cold  cap346|hot  evap22|hot  evap22|cold  evap26|hot  evap26|cold  chill24|hot  chill24|cold
+gpt-oss-120b|FROZEN                  0.796       1.000        0.766       1.000        0.695         1.0       0.643        1.000       0.692        1.000        1.000         1.000
+qwen3-30b-a3b-instruct|FROZEN        0.879       1.000        0.743       1.000        0.684         1.0       0.643        1.000       0.692        1.000        1.000         1.000
+gpt-oss-20b|FROZEN                   0.911       1.000        0.993       1.000        1.000         1.0       0.643        1.000       0.692        1.000        0.534         1.000
+gemma3-27b|FROZEN                    0.911       1.000        0.993       1.000        1.000         1.0       1.000        1.000       0.692        1.000        1.000         1.000
+llama33-70b|FROZEN                   0.911       1.000        0.993       1.000        1.000         1.0       0.643        1.000       0.692        1.000        0.534         1.000
+gpt-oss-120b|S0                      0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+gpt-oss-120b|S2                      0.375       5.729        0.402       6.128        0.428         5.9       0.493        7.473       0.467        7.615        0.322         7.645
+gpt-oss-120b|AND                     0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+gpt-oss-120b|OR                      0.375       5.729        0.402       6.128        0.428         5.9       0.493        7.473       0.467        7.615        0.322         7.645
+gpt-oss-120b|CONF                    0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.161       0.467        1.173        0.555         1.381
+qwen3-30b-a3b-instruct|S0            1.000       5.729        1.000       6.128        1.000         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+qwen3-30b-a3b-instruct|S2            0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        1.000         1.000
+qwen3-30b-a3b-instruct|AND           1.000       1.000        1.000       1.000        1.000         1.0       0.493        1.000       0.467        1.000        1.000         1.000
+qwen3-30b-a3b-instruct|OR            0.375       5.729        0.402       6.128        0.428         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+qwen3-30b-a3b-instruct|CONF          1.000       1.000        1.000       1.000        1.000         1.0       0.493        1.000       0.467        1.000        1.000         1.000
+gpt-oss-20b|S0                       0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+gpt-oss-20b|S2                       0.375       5.729        0.402       6.128        0.428         5.9       0.493        7.473       0.467        1.000        0.322         7.645
+gpt-oss-20b|AND                      0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+gpt-oss-20b|OR                       0.375       5.729        0.402       6.128        0.428         5.9       0.493        7.473       0.467        1.000        0.322         7.645
+gpt-oss-20b|CONF                     0.375       1.000        0.432       1.000        0.437         1.0       0.496        1.932       0.467        1.000        0.322         1.148
+gemma3-27b|S0                        1.000       5.729        1.000       6.128        1.000         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+gemma3-27b|S2                        0.375       5.729        0.402       6.128        0.428         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+gemma3-27b|AND                       1.000       5.729        1.000       6.128        1.000         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+gemma3-27b|OR                        0.375       5.729        0.402       6.128        0.428         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+gemma3-27b|CONF                      1.000       5.729        1.000       6.128        1.000         5.9       0.493        1.000       0.467        1.000        0.322         1.000
+llama33-70b|S0                       0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+llama33-70b|S2                       0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+llama33-70b|AND                      0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+llama33-70b|OR                       0.375       1.000        0.402       1.000        0.428         1.0       0.493        1.000       0.467        1.000        0.322         1.000
+llama33-70b|CONF                     0.545       1.000        0.554       1.000        0.450         1.0       0.493        1.000       0.467        1.000        0.322         1.000
