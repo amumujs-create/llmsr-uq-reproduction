@@ -20,12 +20,15 @@
 #         CLEANCITE (default 0; 1 adds the evidence-citation exploration stage, 301 calls ->
 #                    runs/cleancite/<tag>.jsonl, docs/research/ccpp-twin-explore-cite.md). Development models
 #                    only (models.tsv). With CLEANCITE=0 nothing changes.
+#         SPEC (default 0; 1 adds the indirect-specification exploration stage, 608 calls ->
+#               runs/spec/<tag>.jsonl, docs/research/ccpp-twin-indirect-spec-design.md). Development models
+#               only (models.tsv). With SPEC=0 nothing changes.
 #         MODELS (default models.tsv; a file name in this directory, e.g. models_new.tsv).
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TP="${TP:-4}"; PORT="${PORT:-8000}"; WORKERS="${WORKERS:-16}"; MAXTOK="${MAXTOK:-4096}"
 STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"; ICE="${ICE:-0}"
-SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"; NEWWORLD="${NEWWORLD:-0}"; CLEANWORLD="${CLEANWORLD:-0}"; CLEANCITE="${CLEANCITE:-0}"; MODELS="${MODELS:-models.tsv}"
+SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"; NEWWORLD="${NEWWORLD:-0}"; CLEANWORLD="${CLEANWORLD:-0}"; CLEANCITE="${CLEANCITE:-0}"; SPEC="${SPEC:-0}"; MODELS="${MODELS:-models.tsv}"
 BASE="http://localhost:$PORT/v1"
 MAIN_N=1596
 STRAT_N=$((2 * 2 * 5 * (STRAT_SAMPLES + 1)))
@@ -35,6 +38,7 @@ SHAPE2_N=210
 NEWWORLD_N=128
 CLEANWORLD_N=192
 CLEANCITE_N=301
+SPEC_N=608
 mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
 [ "$ICE" = 1 ] && mkdir -p "$HERE/runs/ice"
 [ "$SHAPE" = 1 ] && mkdir -p "$HERE/runs/shape"
@@ -44,6 +48,9 @@ mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
 if [ "$CLEANCITE" = 1 ] && [ "$MODELS" != "models.tsv" ]; then
   echo "CLEANCITE is an exploration on the development models only: use MODELS=models.tsv"; exit 1; fi
 [ "$CLEANCITE" = 1 ] && mkdir -p "$HERE/runs/cleancite"
+if [ "$SPEC" = 1 ] && [ "$MODELS" != "models.tsv" ]; then
+  echo "SPEC is an exploration on the development models only: use MODELS=models.tsv"; exit 1; fi
+[ "$SPEC" = 1 ] && mkdir -p "$HERE/runs/spec"
 
 lines() { [ -f "$1" ] && wc -l < "$1" | tr -d ' ' || echo 0; }
 VLLM_PID=""
@@ -69,8 +76,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   clean_done=1; [ "$CLEANWORLD" = 1 ] && [ "$(lines "$CLEANF")" -lt "$CLEANWORLD_N" ] && clean_done=0
   CITEF="$HERE/runs/cleancite/$TAG.jsonl"
   cite_done=1; [ "$CLEANCITE" = 1 ] && [ "$(lines "$CITEF")" -lt "$CLEANCITE_N" ] && cite_done=0
+  SPECF="$HERE/runs/spec/$TAG.jsonl"
+  spec_done=1; [ "$SPEC" = 1 ] && [ "$(lines "$SPECF")" -lt "$SPEC_N" ] && spec_done=0
   if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ] && [ "$ice_done" = 1 ] \
-     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ] && [ "$cite_done" = 1 ]; then
+     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ] && [ "$cite_done" = 1 ] && [ "$spec_done" = 1 ]; then
     echo "== $TAG: already complete, skip"; summary+=("$TAG: complete (skipped)"); continue
   fi
   # Keep the original environment record when only the anti-icing stage is left to run.
@@ -93,6 +102,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$CLEANCITE" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ] \
      && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ]; then
     ENVF="$HERE/runs/env/$TAG-cleancite.txt"; fi
+  # A specification-only run (everything else already complete) gets its own record.
+  if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$SPEC" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ] \
+     && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ] && [ "$cite_done" = 1 ]; then
+    ENVF="$HERE/runs/env/$TAG-spec.txt"; fi
   echo "== $TAG ($MODEL): starting vLLM (TP=$TP), log $LOG"
   # shellcheck disable=SC2086
   vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS $EXTRA_VARGS > "$LOG" 2>&1 < /dev/null &
@@ -207,7 +220,23 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
       summary+=("$TAG: cleancite smoke test FAILED (see output above)")
     fi
   fi
+  if [ "$SPEC" = 1 ] && [ "$(lines "$SPECF")" -lt "$SPEC_N" ]; then
+    echo "-- $TAG: indirect-specification exploration stage ($SPEC_N calls)"
+    PSMOKE="$HERE/runs/logs/smoke-spec-$TAG.jsonl"; rm -f "$PSMOKE"
+    python3 "$HERE/collect_spec.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+      --max-tokens "$MAXTOK" --samples 0 --out "$PSMOKE" > /dev/null
+    if python3 "$HERE/collect_spec.py" --check "$PSMOKE" --smoke; then
+      python3 "$HERE/collect_spec.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+        --max-tokens "$MAXTOK" --workers "$WORKERS" --out "$SPECF" | tail -1
+      python3 "$HERE/collect_spec.py" --check "$SPECF"
+    else
+      summary+=("$TAG: spec smoke test FAILED (see output above)")
+    fi
+  fi
   stop_server
+  if [ "$SPEC" = 1 ]; then
+    summary+=("$TAG: spec $(lines "$SPECF")/$SPEC_N")
+  fi
   if [ "$CLEANCITE" = 1 ]; then
     summary+=("$TAG: cleancite $(lines "$CITEF")/$CLEANCITE_N")
   fi

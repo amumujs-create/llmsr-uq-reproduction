@@ -137,3 +137,17 @@ CLEANCITE=1 nohup bash analysis/llm_statements/run_all.sh > run_cite.log 2>&1 &
 - `MODELS=models_new.tsv`와 함께 쓰면 스크립트가 멈춘다. 새 모델은 이 탐색에 쓰지 않는다.
 - `CLEANCITE=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
 - 결과 돌려주기는 §6과 같다. 돌려받은 뒤 분석: `PYTHONSAFEPATH=1 python3 analysis/ccpp_twin/explore/cite_check.py`
+
+## 10. 간접 사양 탐색 단계 (2026-11-13 추가)
+
+설계: [docs/research/ccpp-twin-indirect-spec-design.md](../../docs/research/ccpp-twin-indirect-spec-design.md). 탐색이다. 기존 다섯 모델만 돌린다. 모델당 608회, `runs/spec/<tag>.jsonl`.
+
+```bash
+SPEC=1 nohup bash analysis/llm_statements/run_all.sh > run_spec.log 2>&1 &
+```
+
+- 이미 끝난 단계는 건너뛰고 608회만 추가로 돈다.
+- `MODELS=models_new.tsv`와 함께 쓰면 스크립트가 멈춘다. 새 모델은 이 탐색에 쓰지 않는다.
+- `SPEC=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
+- 끝나면 요약에 모델마다 `spec 608/608`이 나와야 한다. 점검 줄의 `errors`가 0이 아니면 그 모델의 로그 끝을 알려 준다. 오류 기록은 다시 돌려도 재시도되지 않는다.
+- 결과 돌려주기는 §6과 같다. 돌려받은 뒤 분석: `PYTHONSAFEPATH=1 python3 analysis/ccpp_twin/explore/spec_check.py`
