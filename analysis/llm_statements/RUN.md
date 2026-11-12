@@ -124,3 +124,16 @@ NEWWORLD=1 CLEANWORLD=1 nohup bash analysis/llm_statements/run_all.sh > run_old.
 - §7을 이미 돌렸다면 같은 명령에 `CLEANWORLD=1`만 붙여 다시 실행한다. 끝난 부분은 건너뛴다.
 - `CLEANWORLD=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
 - 결과 돌려주기는 §6과 같다.
+
+## 9. 근거 인용 탐색 단계 (2026-11-12 추가)
+
+설계: [docs/research/ccpp-twin-explore-cite.md](../../docs/research/ccpp-twin-explore-cite.md). 탐색이다. 기존 다섯 모델만 돌린다. 모델당 224회, `runs/cleancite/<tag>.jsonl`.
+
+```bash
+CLEANCITE=1 nohup bash analysis/llm_statements/run_all.sh > run_cite.log 2>&1 &
+```
+
+- 이미 끝난 단계는 건너뛰고 224회만 추가로 돈다.
+- `MODELS=models_new.tsv`와 함께 쓰면 스크립트가 멈춘다. 새 모델은 이 탐색에 쓰지 않는다.
+- `CLEANCITE=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
+- 결과 돌려주기는 §6과 같다. 돌려받은 뒤 분석: `PYTHONSAFEPATH=1 python3 analysis/ccpp_twin/explore/cite_check.py`
