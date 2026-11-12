@@ -1,0 +1,144 @@
+EXPLORATION (post-hoc). Worst case of the statement rule and bending data-only baselines. relative RMSE = rule / R0. rows=9720 seeds=explore_robust1. No LLM answers used.
+
+=== Part 1: worst single statement per task (ADV_fixed = worst task mean; ADV_row = worst per row) ===
+
+--- blend lam = 0.25 ---
+                   ADV_fixed      stmt  harm_fixed  ADV_row_mean  ADV_row_p95  ADV_row_max  excess_MW_mean  excess_MW_max
+task                                                                                                                     
+evap|hot               1.000  below|15       0.000         1.027        1.149        3.026           0.080          5.225
+evap+cap_mild|hot      1.000  below|16       0.001         1.035        1.264        2.132           0.105          4.072
+cap_strong|cold        1.000   below|2       0.000         1.002        1.000        1.427           0.010          1.473
+chill|hot              1.000   below|2       0.000         1.007        1.000        2.287           0.034          5.206
+base|hot               2.791  above|21       0.733         3.047        8.097       23.339           1.877          5.684
+base|cold              3.938  below|12       0.889         4.179       10.980       37.485           2.904          5.237
+cap_strong|hot         2.843  above|21       0.745         3.104        8.492       28.911           1.940          6.096
+cap_mild|hot           2.899  above|21       0.756         3.156        8.742       24.265           1.944          5.721
+gen_hot|hot            2.313  above|25       0.933         2.427        4.002        7.131           3.160          5.653
+
+--- blend lam = 0.5 ---
+                   ADV_fixed      stmt  harm_fixed  ADV_row_mean  ADV_row_p95  ADV_row_max  excess_MW_mean  excess_MW_max
+task                                                                                                                     
+evap|hot               1.000  below|15       0.000         1.129        1.965        5.205           0.409         11.188
+evap+cap_mild|hot      1.000  below|16       0.001         1.140        1.993        4.406           0.434          8.247
+cap_strong|cold        1.000   below|2       0.000         1.011        1.000        2.155           0.048          3.907
+chill|hot              1.000   below|2       0.000         1.023        1.000        3.685           0.107         11.130
+base|hot               5.780  above|21       0.906         6.114       16.728       46.695           5.261         12.463
+base|cold              7.440  below|12       0.958         7.853       21.752       75.385           6.474         10.616
+cap_strong|hot         5.904  above|21       0.932         6.263       16.894       57.314           5.380         12.375
+cap_mild|hot           5.986  above|21       0.927         6.339       16.919       48.326           5.381         11.606
+gen_hot|hot            3.927  above|25       0.976         4.131        7.538       14.218           6.869         11.422
+
+--- blend lam = 0.75 ---
+                   ADV_fixed      stmt  harm_fixed  ADV_row_mean  ADV_row_p95  ADV_row_max  excess_MW_mean  excess_MW_max
+task                                                                                                                     
+evap|hot               1.242  above|20       0.394         1.411        2.870        7.403           1.597         17.238
+evap+cap_mild|hot      1.247  above|20       0.424         1.437        2.907        6.824           1.684         12.448
+cap_strong|cold        1.000   below|2       0.000         1.033        1.076        3.029           0.152          6.733
+chill|hot              1.000   below|2       0.000         1.057        1.173        5.104           0.270         17.409
+base|hot               8.831  above|21       0.964         9.293       25.362       70.058           9.066         19.725
+base|cold             10.978  below|12       0.980        11.578       32.384      113.289          10.227         16.012
+cap_strong|hot         9.018  above|21       0.971         9.528       25.135       85.720           9.189         18.705
+cap_mild|hot           9.131  above|21       0.969         9.627       25.271       72.394           9.187         17.944
+gen_hot|hot            5.576  above|25       0.987         5.873       11.109       21.328          10.702         17.201
+
+--- blend lam = 1.0 ---
+                   ADV_fixed      stmt  harm_fixed  ADV_row_mean  ADV_row_p95  ADV_row_max  excess_MW_mean  excess_MW_max
+task                                                                                                                     
+evap|hot               1.781  above|21       0.824         1.938        3.843        9.608           4.313         23.315
+evap+cap_mild|hot      1.835  above|21       0.849         1.984        3.831        9.258           4.486         17.738
+cap_strong|cold        1.033  below|17       0.088         1.105        1.557        4.228           0.653         10.538
+chill|hot              1.015  above|12       0.045         1.124        1.801        6.531           0.700         23.880
+base|hot              11.891  above|21       0.986        12.498       33.663       93.424          13.026         27.079
+base|cold             14.523  below|12       0.995        15.318       42.919      151.194          14.078         21.631
+cap_strong|hot        12.142  above|21       0.987        12.813       33.598      114.128          13.113         25.056
+cap_mild|hot          12.285  above|21       0.989        12.936       33.916       96.463          13.120         24.628
+gen_hot|hot            7.234  above|25       0.994         7.627       14.813       28.444          14.589         22.982
+
+share of the 72 adversarial statements rejected by the window guard, task mean:
+task
+evap|hot             0.470
+evap+cap_mild|hot    0.470
+cap_strong|cold      0.474
+chill|hot            0.471
+base|hot             0.470
+base|cold            0.474
+cap_strong|hot       0.470
+cap_mild|hot         0.470
+gen_hot|hot          0.468
+
+R0 absolute RMSE (MW), task mean / mean distance of the test band from the window edge (degC):
+                   R0_abs  dist
+task                           
+evap|hot             6.18  6.06
+evap+cap_mild|hot    6.07  6.06
+cap_strong|cold     10.08  5.80
+chill|hot           10.99  6.16
+base|hot             2.30  6.06
+base|cold            2.24  5.80
+cap_strong|hot       2.24  6.06
+cap_mild|hot         2.23  6.07
+gen_hot|hot          3.11  5.93
+
+=== Part 1b: gain when right (ORACLE) against worst case when wrong (ADV_fixed), by blend ===
+                                  0.25   0.50    0.75    1.00
+ORACLE kink mean                 0.755  0.599   0.572   0.668
+ADV_fixed kink mean              1.000  1.000   1.122   1.416
+ADV_fixed nokink mean            3.118  6.277   9.490  12.710
+ADV_fixed worst task             3.938  7.440  10.978  14.523
+excess MW worst task (row mean)  2.904  6.474  10.227  14.078
+
+=== Part 2: data-only baselines, task mean ===
+task        evap|hot  evap+cap_mild|hot  cap_strong|cold  chill|hot  base|hot  base|cold  cap_strong|hot  cap_mild|hot  gen_hot|hot
+ORACLE@0.5     0.620              0.638            0.597      0.541     1.000      1.000           1.000         1.000        1.000
+ORACLE@1.0     1.018              1.063            0.372      0.219     1.000      1.000           1.000         1.000        1.000
+EDGE           1.912              1.962            0.762      0.685    12.495     15.318          12.811        12.935        7.625
+EDGE_h         0.777              0.802            0.437      0.342     6.081      7.836           6.236         6.310        4.121
+HINGE          1.233              1.040            1.263      1.022     1.261      1.257           1.211         1.230        1.138
+QUAD           2.168              2.129            1.538      1.509     6.057      6.076           6.049         6.430        3.932
+
+harm share (> 1.10):
+task        evap|hot  evap+cap_mild|hot  cap_strong|cold  chill|hot  base|hot  base|cold  cap_strong|hot  cap_mild|hot  gen_hot|hot
+ORACLE@0.5     0.079              0.099            0.008      0.016     0.000      0.000           0.000         0.000        0.000
+ORACLE@1.0     0.323              0.336            0.022      0.035     0.000      0.000           0.000         0.000        0.000
+EDGE           0.859              0.885            0.184      0.136     0.988      0.996           0.988         0.990        0.994
+EDGE_h         0.174              0.176            0.020      0.030     0.918      0.960           0.934         0.936        0.977
+HINGE          0.019              0.012            0.021      0.008     0.012      0.013           0.013         0.014        0.019
+QUAD           0.476              0.478            0.459      0.443     0.796      0.807           0.817         0.811        0.751
+
+share of rows where the hinge was kept:
+task
+evap|hot             0.049
+evap+cap_mild|hot    0.048
+cap_strong|cold      0.031
+chill|hot            0.017
+base|hot             0.013
+base|cold            0.014
+cap_strong|hot       0.015
+cap_mild|hot         0.016
+gen_hot|hot          0.022
+
+macro means: ORACLE@0.5 kink 0.599 / primary 0.799  ORACLE@1.0 kink 0.668 / primary 0.834  EDGE kink 1.330 / primary 7.360  EDGE_h kink 0.589 / primary 3.603  HINGE kink 1.139 / primary 1.189  QUAD kink 1.836 / primary 3.994
+
+=== Part 2b: kink tasks by delta (B/C split: does a bending model recover the regime from the window?) ===
+task       cap_strong|cold               chill|hot               evap+cap_mild|hot               evap|hot              
+delta                  1.0    2.0    4.0       1.0    2.0    4.0               1.0    2.0    4.0      1.0    2.0    4.0
+ORACLE@0.5           0.586  0.595  0.611     0.521  0.540  0.562             0.705  0.620  0.589    0.641  0.637  0.581
+ORACLE@1.0           0.347  0.358  0.410     0.175  0.230  0.252             1.351  1.071  0.767    1.203  1.078  0.773
+EDGE                 0.437  0.638  1.211     0.359  0.634  1.062             1.846  1.912  2.129    1.659  1.912  2.164
+EDGE_h               0.480  0.413  0.418     0.404  0.343  0.279             0.817  0.782  0.806    0.724  0.794  0.813
+HINGE                1.082  1.118  1.589     1.051  1.007  1.008             1.049  1.039  1.031    1.353  1.268  1.077
+QUAD                 1.161  1.621  1.832     1.253  1.519  1.753             1.752  2.093  2.542    1.880  2.127  2.496
+
+=== Part 2c: kink tasks by n (does more data help the data-only models?) ===
+task       cap_strong|cold               chill|hot               evap+cap_mild|hot               evap|hot              
+n                      50     150    500       50     150    500               50     150    500      50     150    500
+HINGE                1.543  1.249  0.997     1.076  0.994  0.997             1.130  1.005  0.985    1.666  1.032  0.999
+QUAD                 2.105  1.394  1.116     2.076  1.409  1.041             3.142  2.100  1.144    3.047  2.233  1.223
+HINGE_kept           0.067  0.019  0.006     0.028  0.017  0.006             0.058  0.039  0.047    0.050  0.033  0.064
+
+=== Part 2d: evap|hot by delta and n, HINGE ===
+n        50     150    500
+delta                     
+1.0    1.966  1.080  1.012
+2.0    1.803  1.008  0.993
+4.0    1.229  1.009  0.994
