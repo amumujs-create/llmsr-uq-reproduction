@@ -1,0 +1,12 @@
+tag=qwen3-30b-a3b-instruct
+model=Qwen/Qwen3-30B-A3B-Instruct-2507
+extra_body={}
+vllm_args=--tensor-parallel-size 1 --max-model-len 16384  --pipeline-parallel-size 4 --distributed-executor-backend ray --enforce-eager --gpu-memory-utilization 0.90
+date=2026-11-12T06:55:06Z
+host=wa-nb-ad
+vllm=0.31.0
+hf_revision=
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
+gpu=NVIDIA H200-2-35C, 35840 MiB
