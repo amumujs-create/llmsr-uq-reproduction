@@ -4,6 +4,7 @@ docs/research/ccpp-twin-explore-cite.md. Development models only (models.tsv). C
   before : runs/cleanworld/<tag>.jsonl  (S0, S2; the questions without the evidence field)
   after  : runs/cleancite/<tag>.jsonl   (S0C, S2C; same descriptions, evidence field added)
   checked: after, keeping a claim only when its evidence passes collect_cleancite.quote_ok
+  nostate: runs/cleancite/<tag>.jsonl   (S2N; no evidence field, each item may be answered "not stated")
 
 A claim "on a side" is an S0 boundary with that side, or an S2 device that points to that side. The true side of a
 plant is the side its device acts on; the base plant has no true side. Temperature-0 calls are left out, as in
@@ -79,7 +80,7 @@ def rows(recs, variant):
     """One row per parsed answer and side: claimed or not, and whether that side is the plant's true side."""
     out, unparsed, quoted = [], Counter(), Counter()
     for r in recs:
-        kind = r["strategy"][:2]                                      # S0C -> S0, S2C -> S2
+        kind = r["strategy"][:2]                                      # S0C -> S0, S2C / S2N -> S2
         desc = ct.describe_cite(r["world"]) if variant == "checked" else None
         if kind == "S0":
             sides, items = sides_s0(r["response"], desc), None
@@ -117,6 +118,22 @@ def item_table(recs):
     return pd.Series({k: c[k] / n[k] for k in sorted(n)})
 
 
+def not_stated_table(recs):
+    """Share of S2N answers whose flag for an item is the string 'not stated' (any case, _ or space)."""
+    n, c = Counter(), Counter()
+    for r in recs:
+        obj = _json(r["response"])
+        if obj is None:
+            continue
+        ts = true_side(r["world"])
+        for item, side in ITEM_SIDE.items():
+            flag = (obj.get(item) or {}).get(ct.S2_FLAG[item])
+            key = (item, "true" if side == ts else "false")
+            n[key] += 1
+            c[key] += isinstance(flag, str) and flag.strip().lower().replace("_", " ") == "not stated"
+    return pd.Series({k: c[k] / n[k] for k in sorted(n)})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--runs", default=str(HERE.parent.parent / "llm_statements" / "runs"))
@@ -125,9 +142,13 @@ def main():
     a = ap.parse_args()
     tags = dev_tags(a.models)
     before = load(a.runs, "cleanworld", tags)
-    after = load(a.runs, "cleancite", tags)
+    cite = load(a.runs, "cleancite", tags)
+    after = [r for r in cite if r["strategy"] in ("S0C", "S2C")]
+    nostate = [r for r in cite if r["strategy"] == "S2N"]
+    if not after or not nostate:
+        raise RuntimeError(f"cleancite answers incomplete: S0C/S2C {len(after)}, S2N {len(nostate)}")
     parts, notes = [], []
-    for recs, variant in ((before, "before"), (after, "after"), (after, "checked")):
+    for recs, variant in ((before, "before"), (after, "after"), (after, "checked"), (nostate, "nostate")):
         r, unparsed, quoted = rows(recs, variant)
         parts += r
         notes.append(f"{variant}: answers {len(recs)}, unparsed {dict(unparsed)}")
@@ -138,7 +159,7 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_dir / "claims.csv.gz", index=False)
     pd.set_option("display.width", 220)
-    order = ["before", "after", "checked"]
+    order = ["before", "after", "checked", "nostate"]
     device = df[~df["base"]]
     L = ["EXPLORATION (not a verdict). Share of answers claiming a boundary / device on a side. "
          f"models={tags}", *notes, "",
@@ -154,8 +175,11 @@ def main():
          "=== base plant (no device; every claim is a false alarm), by model and side ===",
          df[df["base"]].pivot_table(index=["tag", "kind", "side"], columns="variant", values="claimed")
          .reindex(columns=[v for v in order if v != "before"]).round(3).to_string(), "",
-         "=== S2 items claimed, share of answers (before = S2, after = S2C, no quote check) ===",
-         pd.DataFrame({"before": item_table(before), "after": item_table(after)}).round(3).to_string()]
+         "=== S2 items claimed, share of answers (before = S2, after = S2C without quote check, nostate = S2N) ===",
+         pd.DataFrame({"before": item_table(before), "after": item_table(after),
+                       "nostate": item_table(nostate)}).round(3).to_string(), "",
+         "=== S2N: share of answers that say 'not stated', by item and true/false side ===",
+         not_stated_table(nostate).round(3).to_string()]
     text = "\n".join(L) + "\n"
     (out_dir / "summary.txt").write_text(text)
     print(text)

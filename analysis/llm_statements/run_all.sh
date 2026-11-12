@@ -17,7 +17,7 @@
 #                   docs/research/ccpp-twin-outside-confirmation.md §4). With NEWWORLD=0 nothing changes.
 #         CLEANWORLD (default 0; 1 adds the clean-world stage, 192 calls -> runs/cleanworld/<tag>.jsonl,
 #                     docs/research/ccpp-twin-clean-collection.md). With CLEANWORLD=0 nothing changes.
-#         CLEANCITE (default 0; 1 adds the evidence-citation exploration stage, 224 calls ->
+#         CLEANCITE (default 0; 1 adds the evidence-citation exploration stage, 301 calls ->
 #                    runs/cleancite/<tag>.jsonl, docs/research/ccpp-twin-explore-cite.md). Development models
 #                    only (models.tsv). With CLEANCITE=0 nothing changes.
 #         MODELS (default models.tsv; a file name in this directory, e.g. models_new.tsv).
@@ -34,7 +34,7 @@ SHAPE_N=252
 SHAPE2_N=210
 NEWWORLD_N=128
 CLEANWORLD_N=192
-CLEANCITE_N=224
+CLEANCITE_N=301
 mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
 [ "$ICE" = 1 ] && mkdir -p "$HERE/runs/ice"
 [ "$SHAPE" = 1 ] && mkdir -p "$HERE/runs/shape"

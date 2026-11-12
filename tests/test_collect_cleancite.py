@@ -16,9 +16,10 @@ from prompts import QUESTION, check_no_leak, describe  # noqa: E402
 
 def test_call_count_and_unique_ids():
     t = ct.tasks("m")
-    assert len(t) == ct.N_CALLS == 224
-    assert len({x[0] for x in t}) == 224
-    assert sum(x[4] == 0.0 for x in t) == 14          # one temperature-0 call per world and question
+    assert len(t) == ct.N_CALLS == 301
+    assert len({x[0] for x in t}) == 301
+    assert sum(x[1] == "S2N" for x in t) == 77
+    assert sum(x[4] == 0.0 for x in t) == 21          # one temperature-0 call per world and question
 
 
 def test_descriptions_are_the_collected_ones():
@@ -42,6 +43,24 @@ def test_questions_differ_from_the_originals_only_by_the_evidence_text():
     for world in ct.WORLDS:
         assert ct.messages(world, "S0C")[1]["content"].endswith(ct.S0C_QUESTION)
         assert ct.messages(world, "S2C")[1]["content"].endswith(ct.S2C_QUESTION)
+        assert ct.messages(world, "S2N")[1]["content"].endswith(ct.S2N_QUESTION)
+
+
+def test_not_stated_question_differs_only_by_the_added_option():
+    q = ct.S2N_QUESTION
+    assert q.count(ct.NOT_STATED) == 4 and "evidence" not in q
+    assert q.replace(ct.NOT_STATED_NOTE, "").replace(ct.NOT_STATED, "true or false") == S2_QUESTION
+    assert check_no_leak(ct.NOT_STATED_NOTE) == []
+
+
+def test_not_stated_answer_is_not_a_claim():
+    obj = {"gt_generator_limit": {"reached_in_range": True},
+           "inlet_anti_icing_heating": {"active": "not stated", "below_c": 5},
+           "exhaust_or_steam_side_limit": {"active": "true", "above_c": 30}}
+    ev = ct.s2c_evidence(obj)
+    assert ev["gt_generator_limit"][0] is True
+    assert ev["inlet_anti_icing_heating"][0] is False
+    assert ev["exhaust_or_steam_side_limit"][0] is False      # only a JSON true counts, as in the scored rule
 
 
 def test_insert_refuses_ambiguous_anchor():
@@ -90,12 +109,13 @@ def test_check_counts(tmp_path, capsys):
     recs = [{"strategy": "S0C", "error": None, "response": good0},
             {"strategy": "S0C", "error": None, "response": "garbage"},
             {"strategy": "S2C", "error": None, "response": good2},
+            {"strategy": "S2N", "error": None, "response": good2},
             {"strategy": "S2C", "error": "Timeout", "response": None}]
     p = tmp_path / "x.jsonl"
     p.write_text("\n".join(json.dumps(r) for r in recs) + "\n")
     assert ct.check(str(p), smoke=False) == 0
     out = capsys.readouterr().out
-    assert "4 calls, 1 errors, S0C unparsed 1/2, S2C unparsed 0/1" in out
+    assert "5 calls, 1 errors, S0C unparsed 1/2, S2C unparsed 0/1" in out and "S2N unparsed 0/1" in out
     assert ct.check(str(p), smoke=True) == 1          # an error makes the smoke test fail
 
 

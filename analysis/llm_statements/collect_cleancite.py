@@ -1,9 +1,11 @@
-"""EXPLORATION stage (docs/research/ccpp-twin-explore-cite.md): the clean-world questions with one added field.
+"""EXPLORATION stage (docs/research/ccpp-twin-explore-cite.md): the clean-world questions with one change each.
 
 Every claimed boundary (S0C) or device (S2C) must carry "evidence": one sentence of the plant description copied word
 for word, or null. Descriptions are the clean-world ones unchanged, plus the device-free base plant at L2 (the plant
 with the most false alarms so far). Development models only (models.tsv). Not a registered verdict.
-7 worlds x (21 S0C + 11 S2C) = 224 calls per model.
+A second, simpler variant (S2N) has no evidence field: each device item may be answered "not stated" instead of
+true or false. It separates the effect of quoting from the effect of being allowed to say the description is silent.
+7 worlds x (21 S0C + 11 S2C + 11 S2N) = 301 calls per model.
 
 quote_ok() is the mechanical check fixed before any answer is collected: the evidence must be a word-for-word part of
 the description and at least MIN_WORDS words long. It does not judge whether the sentence is relevant.
@@ -33,7 +35,7 @@ from prompts import QUESTION, SYSTEM, describe  # noqa: E402
 BASE_WORLD = "base"
 WORLDS = (BASE_WORLD,) + tuple(CLEAN_WORLDS)
 LEVEL = "L2"
-SAMPLES = {"S0C": 20, "S2C": 10}        # plus one temperature-0 call each
+SAMPLES = {"S0C": 20, "S2C": 10, "S2N": 10}        # plus one temperature-0 call each
 TEMP = 0.7
 N_CALLS = len(WORLDS) * sum(n + 1 for n in SAMPLES.values())
 MIN_WORDS = 4
@@ -66,8 +68,21 @@ def _s2c() -> str:
     return _insert(q, "Reply with JSON only, in this form:\n", EVIDENCE_NOTE, before=True)
 
 
+NOT_STATED = 'true, false or "not stated"'
+NOT_STATED_NOTE = 'Answer "not stated" for an item the plant description above says nothing about. '
+
+
+def _s2n() -> str:
+    if S2_QUESTION.count("true or false") != len(S2_ITEMS):
+        raise ValueError("expected one 'true or false' per S2 item")
+    q = S2_QUESTION.replace("true or false", NOT_STATED)
+    return _insert(q, "Reply with JSON only, in this form:\n", NOT_STATED_NOTE, before=True)
+
+
 S0C_QUESTION = _s0c()
 S2C_QUESTION = _s2c()
+S2N_QUESTION = _s2n()
+QUESTIONS = {"S0C": S0C_QUESTION, "S2C": S2C_QUESTION, "S2N": S2N_QUESTION}
 
 
 def describe_cite(world: str) -> str:
@@ -75,7 +90,7 @@ def describe_cite(world: str) -> str:
 
 
 def messages(world: str, kind: str) -> list[dict]:
-    q = S0C_QUESTION if kind == "S0C" else S2C_QUESTION
+    q = QUESTIONS[kind]
     return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"{describe_cite(world)}\n\n{q}"}]
 
 
@@ -101,7 +116,7 @@ def s0c_evidence(text: str):
 
 
 def s2c_evidence(obj: dict) -> dict:
-    """{item: (claimed, evidence)} for one S2C answer."""
+    """{item: (claimed, evidence)} for one S2 / S2C / S2N answer; only a JSON true counts as claimed."""
     out = {}
     for item in S2_ITEMS:
         d = obj.get(item) or {}
@@ -112,7 +127,7 @@ def s2c_evidence(obj: dict) -> dict:
 def tasks(tag: str, samples: dict | None = None) -> list[tuple]:
     samples = SAMPLES if samples is None else samples
     out = []
-    for kind in ("S0C", "S2C"):
+    for kind in SAMPLES:
         for world in WORLDS:
             n = samples[kind]
             for k in range(n + 1):
@@ -126,14 +141,18 @@ def check(path: str, smoke: bool) -> int:
     err = [r for r in recs if r["error"]]
     s0 = [r for r in recs if r["strategy"] == "S0C" and not r["error"]]
     s2 = [r for r in recs if r["strategy"] == "S2C" and not r["error"]]
+    sn = [r for r in recs if r["strategy"] == "S2N" and not r["error"]]
+    sn_bad = [r for r in sn if _json(r["response"]) is None]
     s0_bad = [r for r in s0 if not parse(r["response"])["ok"]]
     s2_bad = [r for r in s2 if _json(r["response"]) is None]
     s0_ev = sum('"evidence"' in (r["response"] or "") for r in s0)
     s2_ev = sum('"evidence"' in (r["response"] or "") for r in s2)
     print(f"cleancite: {len(recs)} calls, {len(err)} errors, S0C unparsed {len(s0_bad)}/{len(s0)}, "
-          f"S2C unparsed {len(s2_bad)}/{len(s2)}, evidence field present S0C {s0_ev}/{len(s0)} S2C {s2_ev}/{len(s2)}")
-    if smoke and (err or not s0 or not s2 or len(s0_bad) == len(s0) or len(s2_bad) == len(s2)):
-        bad = err + s0_bad + s2_bad
+          f"S2C unparsed {len(s2_bad)}/{len(s2)}, evidence field present S0C {s0_ev}/{len(s0)} S2C {s2_ev}/{len(s2)}, "
+          f"S2N unparsed {len(sn_bad)}/{len(sn)}")
+    if smoke and (err or not s0 or not s2 or not sn or len(s0_bad) == len(s0) or len(s2_bad) == len(s2)
+                  or len(sn_bad) == len(sn)):
+        bad = err + s0_bad + s2_bad + sn_bad
         if bad:
             print("error:", bad[0]["error"])
             print("response head:", (bad[0]["response"] or "")[:400])
