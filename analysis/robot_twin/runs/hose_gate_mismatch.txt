@@ -1,0 +1,36 @@
+reps 20; gate chi2 4.0; window 0.5 k0; strict wrong = sign_flip; 9 cells (those in the cable file)
+
+== torque noise sigma 0.2 Nm
+   truth         | accept correct / sign_flip: nom, cal, cal_infl | MAE correct: R0 gate_nom gate_cal gate_cal_infl est_nom est_cal safe R2 | p*: gate_nom gate_cal gate_cal_infl
+   exact         | 0.35/0.03 0.35/0.04 0.34/0.03 |   6.9   3.1   3.2   3.2   3.8   3.9   1.5   0.0 | 0.1 0.1 0.1
+                   default_shrink accept nom/cal/infl 0.23 0.23 0.22 | sign_flip MAE gate_cal 7.2 infl 7.2 R0 6.9
+   torque x1.25  | 0.31/0.15 0.41/0.04 0.41/0.04 |   6.9   6.1   2.6   2.6   8.3   3.4   1.5   0.0 | 0.2 0.1 0.1
+                   default_shrink accept nom/cal/infl 0.41 0.25 0.25 | sign_flip MAE gate_cal 7.2 infl 7.2 R0 6.9
+   EI x3         | 0.31/0.33 0.58/0.06 0.57/0.06 |   6.9   7.8   1.3   1.4  10.2   1.7   1.5   0.0 | None 0.1 0.1
+                   default_shrink accept nom/cal/infl 0.36 0.27 0.27 | sign_flip MAE gate_cal 7.5 infl 7.5 R0 6.9
+   EI /3         | 0.39/0.69 0.15/0.00 0.15/0.00 |   6.9   5.4   4.6   4.6  13.8   6.8   1.5   0.0 | 0.85 0.05 0.05
+                   default_shrink accept nom/cal/infl 0.40 0.13 0.13 | sign_flip MAE gate_cal 6.9 infl 6.9 R0 6.9
+   shape         | 0.35/0.22 0.35/0.13 0.27/0.02 |   7.4   4.1   4.0   4.5   9.2   8.7   2.3   0.9 | 0.4 0.2 0.05
+                   default_shrink accept nom/cal/infl 0.33 0.44 0.37 | sign_flip MAE gate_cal 8.0 infl 7.5 R0 7.4
+   cable         | 0.36/0.26 0.43/0.15 0.18/0.01 |   8.6   6.5   4.6   6.3  13.0  12.8   3.7   1.7 | 0.4 0.2 0.1
+                   default_shrink accept nom/cal/infl 0.42 0.50 0.16 | sign_flip MAE gate_cal 9.6 infl 8.7 R0 8.6
+   cable+wrap    | 0.37/0.18 0.42/0.24 0.10/0.04 |   8.8   5.7   5.3   7.2  12.1  12.5   4.6   3.1 | 0.25 0.35 0.25
+                   default_shrink accept nom/cal/infl 0.72 0.74 0.09 | sign_flip MAE gate_cal 10.5 infl 9.3 R0 8.8
+
+== torque noise sigma 1.0 Nm
+   truth         | accept correct / sign_flip: nom, cal, cal_infl | MAE correct: R0 gate_nom gate_cal gate_cal_infl est_nom est_cal safe R2 | p*: gate_nom gate_cal gate_cal_infl
+   exact         | 0.07/0.00 0.08/0.00 0.08/0.00 |   7.0   5.6   5.6   5.6   8.1   8.2   1.8   0.4 | 0.0 0.05 0.05
+                   default_shrink accept nom/cal/infl 0.07 0.09 0.08 | sign_flip MAE gate_cal 7.0 infl 7.0 R0 7.0
+   torque x1.25  | 0.12/0.01 0.10/0.00 0.10/0.00 |   7.0   6.7   5.2   5.2   9.7   7.4   1.7   0.3 | 0.0 0.05 0.05
+                   default_shrink accept nom/cal/infl 0.20 0.11 0.11 | sign_flip MAE gate_cal 7.0 infl 7.0 R0 7.0
+   EI x3         | 0.27/0.25 0.24/0.01 0.24/0.01 |   6.9   8.3   4.1   4.1  10.5   5.4   1.6   0.1 | None 0.05 0.05
+                   default_shrink accept nom/cal/infl 0.35 0.18 0.18 | sign_flip MAE gate_cal 7.0 infl 7.0 R0 6.9
+   EI /3         | 0.12/0.21 0.03/0.00 0.03/0.00 |   7.1   7.3   6.5   6.5  14.5  10.8   2.0   0.6 | None 0.05 0.05
+                   default_shrink accept nom/cal/infl 0.17 0.03 0.03 | sign_flip MAE gate_cal 7.1 infl 7.1 R0 7.1
+   shape         | 0.08/0.00 0.07/0.00 0.07/0.00 |   7.4   6.2   6.3   6.4  10.5  10.2   2.3   1.0 | 0.1 0.05 0.05
+                   default_shrink accept nom/cal/infl 0.12 0.12 0.10 | sign_flip MAE gate_cal 7.4 infl 7.4 R0 7.4
+   cable         | 0.18/0.05 0.20/0.05 0.10/0.01 |   8.6   7.6   6.3   6.9  13.8  13.5   3.5   1.6 | 0.2 0.15 0.05
+                   default_shrink accept nom/cal/infl 0.30 0.30 0.09 | sign_flip MAE gate_cal 8.9 infl 8.7 R0 8.6
+   cable+wrap    | 0.13/0.02 0.15/0.04 0.05/0.00 |   8.8   8.0   7.9   8.0  13.8  14.0   4.6   3.1 | 0.1 0.15 0.05
+                   default_shrink accept nom/cal/infl 0.25 0.29 0.06 | sign_flip MAE gate_cal 8.9 infl 8.8 R0 8.8
+

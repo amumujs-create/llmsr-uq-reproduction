@@ -1,0 +1,76 @@
+reps 20, gate chi2 4.0, overshoot = predicted k > true k + 2.0 deg
+pressure worlds eps [-0.04, -0.02, 0.0, 0.02]; hose EI 0.3 N m^2
+
+== Task B: predict k at full pressure (statement = length change eps)
+-- torque noise sigma = 0.2 Nm. cells: MAE deg / overshoot rate / max added error vs R0 (deg)
+   statement                        R0                  R2           blend_0.5            budget_5           budget_10                safe                gate                 est
+   correct              8.1/0.50/  0.0      0.0/0.00/  0.0      4.0/0.46/  0.0      4.5/0.31/  0.0      2.3/0.21/  0.0      1.9/0.00/  0.0      4.3/0.23/  0.0      5.0/0.25/ 59.0   gate acc 0.32
+   default_shrink       8.1/0.50/  0.0     12.4/0.00/ 33.0      8.4/0.25/ 16.5      8.2/0.31/  5.0      9.3/0.21/ 10.0     12.4/0.00/ 33.0      5.3/0.29/ 20.0      5.0/0.25/ 59.0   gate acc 0.21
+   double               8.1/0.50/  0.0      8.3/0.25/ 12.0      0.9/0.10/  0.0      4.6/0.31/  0.0      3.7/0.38/  0.0      8.1/0.00/  9.0      8.1/0.47/ 12.0      5.0/0.25/ 59.0   gate acc 0.11
+   false_shrink         3.9/0.00/  0.0     20.5/0.00/ 33.0     12.2/0.00/ 16.5      8.9/0.00/  5.0     13.3/0.00/ 10.0     20.5/0.00/ 33.0      4.1/0.00/ 20.0      5.9/0.26/ 59.0   gate acc 0.01
+   half                 8.1/0.50/  0.0      4.2/0.46/  0.0      6.1/0.50/  0.0      5.2/0.46/  0.0      4.4/0.46/  0.0      5.1/0.46/  0.0      6.6/0.47/  0.0      5.0/0.25/ 59.0   gate acc 0.25
+   miss                 8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      5.0/0.25/ 59.0   gate acc 0.00
+   sign_flip            8.1/0.50/  0.0     18.0/0.75/ 59.0     13.0/0.69/ 29.5     12.8/0.75/  5.0     15.4/0.75/ 10.0     10.0/0.50/ 18.0      8.3/0.50/ 17.5      5.0/0.25/ 59.0   gate acc 0.03
+   break-even reliability p* (strict wrong set), L(correct), L(wrong):
+     R0           p*  None   L_correct    8.1   L_wrong    8.1
+     R2           p*   0.6   L_correct    0.0   L_wrong   18.0
+     blend_0.5    p*   0.6   L_correct    4.0   L_wrong   13.0
+     budget_5     p*   0.6   L_correct    4.5   L_wrong   12.8
+     budget_10    p*   0.6   L_correct    2.3   L_wrong   15.4
+     safe         p*  0.25   L_correct    1.9   L_wrong   10.0
+     gate         p*   0.1   L_correct    4.3   L_wrong    8.3
+     est          p*   0.0   L_correct    5.0   L_wrong    5.0
+-- torque noise sigma = 1.0 Nm. cells: MAE deg / overshoot rate / max added error vs R0 (deg)
+   statement                        R0                  R2           blend_0.5            budget_5           budget_10                safe                gate                 est
+   correct              8.1/0.50/  0.0      0.0/0.00/  0.0      4.0/0.46/  0.0      4.5/0.31/  0.0      2.3/0.21/  0.0      1.9/0.00/  0.0      7.0/0.44/  0.0     12.6/0.42/ 59.0   gate acc 0.06
+   default_shrink       8.1/0.50/  0.0     12.4/0.00/ 33.0      8.4/0.25/ 16.5      8.2/0.31/  5.0      9.3/0.21/ 10.0     12.4/0.00/ 33.0      7.1/0.44/ 30.0     12.6/0.42/ 59.0   gate acc 0.06
+   double               8.1/0.50/  0.0      8.3/0.25/ 12.0      0.9/0.10/  0.0      4.6/0.31/  0.0      3.7/0.38/  0.0      8.1/0.00/  9.0      8.1/0.49/  5.0     12.6/0.42/ 59.0   gate acc 0.01
+   false_shrink         3.9/0.00/  0.0     20.5/0.00/ 33.0     12.2/0.00/ 16.5      8.9/0.00/  5.0     13.3/0.00/ 10.0     20.5/0.00/ 33.0      4.0/0.00/ 30.0     13.5/0.39/ 59.0   gate acc 0.01
+   half                 8.1/0.50/  0.0      4.2/0.46/  0.0      6.1/0.50/  0.0      5.2/0.46/  0.0      4.4/0.46/  0.0      5.1/0.46/  0.0      7.8/0.50/  0.0     12.6/0.42/ 59.0   gate acc 0.03
+   miss                 8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0      8.1/0.50/  0.0     12.6/0.42/ 59.0   gate acc 0.00
+   sign_flip            8.1/0.50/  0.0     18.0/0.75/ 59.0     13.0/0.69/ 29.5     12.8/0.75/  5.0     15.4/0.75/ 10.0     10.0/0.50/ 18.0      8.1/0.50/  0.0     12.6/0.42/ 59.0   gate acc 0.00
+   break-even reliability p* (strict wrong set), L(correct), L(wrong):
+     R0           p*  None   L_correct    8.1   L_wrong    8.1
+     R2           p*   0.6   L_correct    0.0   L_wrong   18.0
+     blend_0.5    p*   0.6   L_correct    4.0   L_wrong   13.0
+     budget_5     p*   0.6   L_correct    4.5   L_wrong   12.8
+     budget_10    p*   0.6   L_correct    2.3   L_wrong   15.4
+     safe         p*  0.25   L_correct    1.9   L_wrong   10.0
+     gate         p*  0.05   L_correct    7.0   L_wrong    8.1
+     est          p*  None   L_correct   12.6   L_wrong   12.6
+
+== Task A: predict k from a slack window (statement = k)
+-- torque noise sigma = 0.2 Nm. cells: MAE deg / overshoot rate / max added error vs R0 (deg)
+   statement                        R0                  R2           blend_0.5            budget_5           budget_10                safe                gate               trend
+   correct             14.7/0.00/  0.0      0.0/0.00/-10.0      7.3/0.00/ -5.0      9.7/0.00/ -5.0      4.7/0.00/-10.0     14.7/0.00/  0.0      0.0/0.00/-10.0    103.3/0.81/315.0   gate acc 1.00
+   early_10            14.7/0.00/  0.0     10.0/0.00/  0.0     12.3/0.00/  0.0     12.3/0.00/  0.0     10.0/0.00/  0.0     14.7/0.00/  0.0     10.0/0.00/  0.0    103.3/0.81/315.0   gate acc 0.47
+   early_20            14.7/0.00/  0.0     20.0/0.00/ 10.0     17.3/0.00/  5.0     17.3/0.00/  5.0     20.0/0.00/ 10.0     20.0/0.00/ 10.0     14.7/0.00/  0.0    103.3/0.81/315.0   gate acc 0.00
+   inside_window       14.7/0.00/  0.0     19.7/0.00/  5.0     17.2/0.00/  2.5     19.7/0.00/  5.0     19.7/0.00/  5.0     19.7/0.00/  5.0     14.7/0.00/  0.0    103.3/0.81/315.0   gate acc 0.00
+   late_10             14.7/0.00/  0.0     10.0/1.00/  0.0      2.3/0.00/-10.0      9.7/0.00/ -5.0      4.7/0.00/-10.0     14.7/0.00/  0.0     10.0/1.00/  0.0    103.3/0.81/315.0   gate acc 1.00
+   late_20             14.7/0.00/  0.0     20.0/1.00/ 10.0      2.7/0.53/ -5.0      9.7/0.00/ -5.0      4.7/0.00/-10.0     14.7/0.00/  0.0     20.0/1.00/ 10.0    103.3/0.81/315.0   gate acc 1.00
+   break-even reliability p* (strict wrong set), L(correct), L(wrong):
+     R0           p*  None   L_correct   14.7   L_wrong   14.7
+     R2           p*   0.3   L_correct    0.0   L_wrong   20.0
+     blend_0.5    p*   0.0   L_correct    7.3   L_wrong   10.0
+     budget_5     p*   0.0   L_correct    9.7   L_wrong   13.5
+     budget_10    p*   0.0   L_correct    4.7   L_wrong   12.3
+     safe         p*  None   L_correct   14.7   L_wrong   17.3
+     gate         p*   0.2   L_correct    0.0   L_wrong   17.3
+     trend        p*  None   L_correct  103.3   L_wrong  103.3
+-- torque noise sigma = 1.0 Nm. cells: MAE deg / overshoot rate / max added error vs R0 (deg)
+   statement                        R0                  R2           blend_0.5            budget_5           budget_10                safe                gate               trend
+   correct             14.7/0.00/  0.0      0.0/0.00/-10.0      7.3/0.00/ -5.0      9.7/0.00/ -5.0      4.7/0.00/-10.0     14.7/0.00/  0.0      0.0/0.00/-10.0    127.2/0.69/315.0   gate acc 1.00
+   early_10            14.7/0.00/  0.0     10.0/0.00/  0.0     12.3/0.00/  0.0     12.3/0.00/  0.0     10.0/0.00/  0.0     14.7/0.00/  0.0     10.0/0.00/  0.0    127.2/0.69/315.0   gate acc 0.47
+   early_20            14.7/0.00/  0.0     20.0/0.00/ 10.0     17.3/0.00/  5.0     17.3/0.00/  5.0     20.0/0.00/ 10.0     20.0/0.00/ 10.0     14.7/0.00/  0.0    127.2/0.69/315.0   gate acc 0.00
+   inside_window       14.7/0.00/  0.0     19.7/0.00/  5.0     17.2/0.00/  2.5     19.7/0.00/  5.0     19.7/0.00/  5.0     19.7/0.00/  5.0     14.7/0.00/  0.0    127.2/0.69/315.0   gate acc 0.00
+   late_10             14.7/0.00/  0.0     10.0/1.00/  0.0      2.3/0.00/-10.0      9.7/0.00/ -5.0      4.7/0.00/-10.0     14.7/0.00/  0.0     10.0/1.00/  0.0    127.2/0.69/315.0   gate acc 1.00
+   late_20             14.7/0.00/  0.0     20.0/1.00/ 10.0      2.7/0.53/ -5.0      9.7/0.00/ -5.0      4.7/0.00/-10.0     14.7/0.00/  0.0     20.0/1.00/ 10.0    127.2/0.69/315.0   gate acc 1.00
+   break-even reliability p* (strict wrong set), L(correct), L(wrong):
+     R0           p*  None   L_correct   14.7   L_wrong   14.7
+     R2           p*   0.3   L_correct    0.0   L_wrong   20.0
+     blend_0.5    p*   0.0   L_correct    7.3   L_wrong   10.0
+     budget_5     p*   0.0   L_correct    9.7   L_wrong   13.5
+     budget_10    p*   0.0   L_correct    4.7   L_wrong   12.3
+     safe         p*  None   L_correct   14.7   L_wrong   17.3
+     gate         p*   0.2   L_correct    0.0   L_wrong   17.3
+     trend        p*  None   L_correct  127.2   L_wrong  127.2

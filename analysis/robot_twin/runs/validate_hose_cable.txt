@@ -1,0 +1,109 @@
+mujoco 3.2.3; hose radius 0.0075 m, 0.4 kg/m, 25 segments; EI grid [0.1, 0.3, 1.0] N m^2; force + = pulls tool, - = pushes
+
+(1) slack curve fit, F L^2/(C_EULER EI) = -tanh((e - alpha e0)/e_c), rms in Euler-load units
+   all poses: alpha 0.08, e_c 0.0225, rms 0.115   (hose.py: alpha 0.08, e_c 0.025)
+   hold out j5_30: fit alpha 0.08 e_c 0.0275 (train rms 0.118) -> held-out rms 0.121
+   hold out j5_60: fit alpha 0.10 e_c 0.0225 (train rms 0.119) -> held-out rms 0.108
+   hold out j5_90: fit alpha 0.08 e_c 0.0200 (train rms 0.095) -> held-out rms 0.146
+
+(2) hose.py (chord only, EI set per run) vs cable; k_cable = first angle with tension > 20 N
+   pose   slack   EI  k_geom  k_model  k_cable   F@0 cable  F@0 model  tau6 cable/model
+   j5_30   1.05  0.1    60.5     58.0     59.5       -17.4      -15.5    1.52
+   j5_30   1.05  0.3    60.5     58.0     58.5       -52.2      -46.4    1.56
+   j5_30   1.05  1.0    60.5     58.0     58.0      -173.7     -154.8    1.55
+   j5_30   1.10  0.1    92.0     87.0     90.0       -16.1      -14.9    1.22
+   j5_30   1.10  0.3    92.0     87.0     88.5       -48.3      -44.8    1.25
+   j5_30   1.10  1.0    92.0     87.0     88.0      -161.0     -149.5    1.26
+   j5_60   1.05  0.1    43.0     41.0     42.0       -29.9      -26.5    1.57
+   j5_60   1.05  0.3    43.0     41.0     41.5       -89.7      -79.9    1.54
+   j5_60   1.05  1.0    43.0     41.0     41.5      -298.5     -266.4    1.51
+   j5_60   1.10  0.1    63.0     60.0     61.5       -27.7      -25.7    1.25
+   j5_60   1.10  0.3    63.0     60.0     61.0       -83.1      -77.2    1.25
+   j5_60   1.10  1.0    63.0     60.0     60.5      -276.6     -257.3    1.26
+   j5_60   1.20  0.1    97.5     92.0     95.0       -24.0      -21.7    1.14
+   j5_60   1.20  0.3    97.5     92.0     94.0       -71.8      -65.0    1.16
+   j5_60   1.20  1.0    97.5     92.0     93.5      -239.2     -216.7    1.17
+   j5_90   1.05  0.1    29.5     28.5     29.0       -73.6      -64.7    1.68
+   j5_90   1.05  0.3    29.5     28.5     29.0      -220.1     -195.9    1.50
+   j5_90   1.05  1.0    29.5     28.5     28.5      -726.1     -655.3    1.22
+   j5_90   1.10  0.1    43.0     41.0     41.5       -68.2      -63.3    1.34
+   j5_90   1.10  0.3    43.0     41.0     41.0      -204.0     -190.0    1.32
+   j5_90   1.10  1.0    43.0     41.0     41.0      -673.7     -633.4    1.23
+   j5_90   1.20  0.1    63.5     60.5     61.5       -58.9      -53.4    1.29
+   j5_90   1.20  0.3    63.5     60.5     61.0      -176.4     -160.1    1.28
+   j5_90   1.20  1.0    63.5     60.5     60.5      -583.7     -533.6    1.25
+   j5_90   1.35  0.1    92.0     86.5     88.5       -48.1      -42.2    1.23
+   j5_90   1.35  0.3    92.0     86.5     87.5      -144.0     -126.5    1.23
+   j5_90   1.35  1.0    92.0     86.5     87.0      -477.4     -421.6    1.21
+   k_cable - k_geom: median -2.0 deg, range -5.0 to -0.5
+   k_cable - k_model: median +0.5 deg, range +0.0 to +3.0
+
+(3) gravity on (0.4 kg/m) vs off: shift of k_cable
+   j5_30 slack 1.05 EI 0.1: off  59.5, on  59.5, F@0 off   -17.4 on   -17.0
+   j5_30 slack 1.05 EI 1.0: off  58.0, on  58.0, F@0 off  -173.7 on  -173.3
+   j5_60 slack 1.05 EI 0.1: off  42.0, on  42.0, F@0 off   -29.9 on   -29.9
+   j5_60 slack 1.05 EI 1.0: off  41.5, on  41.5, F@0 off  -298.5 on  -298.5
+   j5_60 slack 1.20 EI 0.1: off  95.0, on  95.0, F@0 off   -24.0 on   -24.1
+   j5_60 slack 1.20 EI 1.0: off  93.5, on  93.5, F@0 off  -239.2 on  -239.4
+   j5_90 slack 1.05 EI 0.1: off  29.0, on  29.0, F@0 off   -73.6 on   -73.8
+   j5_90 slack 1.05 EI 1.0: off  28.5, on  28.5, F@0 off  -726.1 on  -726.3
+   j5_90 slack 1.20 EI 0.1: off  61.5, on  61.5, F@0 off   -58.9 on   -59.2
+   j5_90 slack 1.20 EI 1.0: off  60.5, on  60.5, F@0 off  -583.7 on  -584.0
+
+(4) slack-window trend -> guessed k (no gravity); window ends d deg before k_cable, width w
+   j5_30 slack 1.05 EI 0.1: k_cable  59.5, window [ 29.5, 49.5], F   -15.1->  -11.2 N, linear guess  113.5, quadratic   73.9
+   j5_30 slack 1.05 EI 0.1: k_cable  59.5, window [  9.5, 49.5], F   -16.5->  -11.2 N, linear guess  149.8, quadratic   85.2
+   j5_30 slack 1.05 EI 0.1: k_cable  59.5, window [ 19.5, 39.5], F   -16.0->  -13.8 N, linear guess  167.7, quadratic   94.3
+   j5_30 slack 1.05 EI 1.0: k_cable  58.0, window [ 28.0, 48.0], F  -151.7-> -114.3 N, linear guess  115.8, quadratic   74.1
+   j5_30 slack 1.05 EI 1.0: k_cable  58.0, window [  8.0, 48.0], F  -168.3-> -114.3 N, linear guess  151.6, quadratic   86.2
+   j5_30 slack 1.05 EI 1.0: k_cable  58.0, window [ 18.0, 38.0], F  -160.8-> -139.0 N, linear guess  169.1, quadratic   94.8
+   j5_30 slack 1.10 EI 0.1: k_cable  90.0, window [ 60.0, 80.0], F   -12.4->   -8.0 N, linear guess  122.4, quadratic   96.8
+   j5_30 slack 1.10 EI 0.1: k_cable  90.0, window [ 40.0, 80.0], F   -14.1->   -8.0 N, linear guess  151.3, quadratic  105.2
+   j5_30 slack 1.10 EI 0.1: k_cable  90.0, window [ 50.0, 70.0], F   -13.3->  -11.0 N, linear guess  168.0, quadratic  112.3
+   j5_30 slack 1.10 EI 0.1: k_cable  90.0, window [ 30.0, 70.0], F   -14.6->  -11.0 N, linear guess  202.4, quadratic  124.7
+   j5_30 slack 1.10 EI 1.0: k_cable  88.0, window [ 58.0, 78.0], F  -125.5->  -86.2 N, linear guess  127.3, quadratic   98.0
+   j5_30 slack 1.10 EI 1.0: k_cable  88.0, window [ 38.0, 78.0], F  -141.4->  -86.2 N, linear guess  157.5, quadratic  107.0
+   j5_30 slack 1.10 EI 1.0: k_cable  88.0, window [ 48.0, 68.0], F  -134.5-> -112.3 N, linear guess  173.1, quadratic  113.7
+   j5_30 slack 1.10 EI 1.0: k_cable  88.0, window [ 28.0, 68.0], F  -147.3-> -112.3 N, linear guess  207.9, quadratic  126.3
+   j5_60 slack 1.05 EI 0.1: k_cable  42.0, window [ 12.0, 32.0], F   -28.0->  -22.2 N, linear guess  115.1, quadratic   64.1
+   j5_60 slack 1.05 EI 0.1: k_cable  42.0, window [  2.0, 22.0], F   -30.2->  -25.9 N, linear guess  132.1, quadratic    inf
+   j5_60 slack 1.05 EI 1.0: k_cable  41.5, window [ 11.5, 31.5], F  -279.3-> -216.8 N, linear guess  107.9, quadratic   60.8
+   j5_60 slack 1.05 EI 1.0: k_cable  41.5, window [  1.5, 21.5], F  -300.9-> -257.5 N, linear guess  152.5, quadratic  113.8
+   j5_60 slack 1.10 EI 0.1: k_cable  61.5, window [ 31.5, 51.5], F   -23.9->  -18.0 N, linear guess  119.6, quadratic   77.8
+   j5_60 slack 1.10 EI 0.1: k_cable  61.5, window [ 11.5, 51.5], F   -26.5->  -18.0 N, linear guess  154.9, quadratic   90.0
+   j5_60 slack 1.10 EI 0.1: k_cable  61.5, window [ 21.5, 41.5], F   -25.3->  -21.9 N, linear guess  172.0, quadratic   98.5
+   j5_60 slack 1.10 EI 0.1: k_cable  61.5, window [  1.5, 41.5], F   -27.9->  -21.9 N, linear guess  188.7, quadratic  152.6
+   j5_60 slack 1.10 EI 1.0: k_cable  60.5, window [ 30.5, 50.5], F  -239.1-> -181.0 N, linear guess  119.2, quadratic   77.3
+   j5_60 slack 1.10 EI 1.0: k_cable  60.5, window [ 10.5, 50.5], F  -265.5-> -181.0 N, linear guess  154.3, quadratic   89.4
+   j5_60 slack 1.10 EI 1.0: k_cable  60.5, window [ 20.5, 40.5], F  -253.5-> -219.0 N, linear guess  171.0, quadratic   97.7
+   j5_60 slack 1.10 EI 1.0: k_cable  60.5, window [  0.5, 40.5], F  -277.1-> -219.0 N, linear guess  201.1, quadratic  119.4
+   j5_60 slack 1.20 EI 0.1: k_cable  95.0, window [ 65.0, 85.0], F   -18.1->  -12.2 N, linear guess  132.4, quadratic  104.1
+   j5_60 slack 1.20 EI 0.1: k_cable  95.0, window [ 45.0, 85.0], F   -20.5->  -12.2 N, linear guess  161.4, quadratic  113.1
+   j5_60 slack 1.20 EI 0.1: k_cable  95.0, window [ 55.0, 75.0], F   -19.4->  -16.1 N, linear guess  177.1, quadratic  120.3
+   j5_60 slack 1.20 EI 0.1: k_cable  95.0, window [ 35.0, 75.0], F   -21.4->  -16.1 N, linear guess  208.8, quadratic  133.1
+   j5_60 slack 1.20 EI 1.0: k_cable  93.5, window [ 63.5, 83.5], F  -182.2-> -127.3 N, linear guess  135.2, quadratic  104.6
+   j5_60 slack 1.20 EI 1.0: k_cable  93.5, window [ 43.5, 83.5], F  -205.6-> -127.3 N, linear guess  164.8, quadratic  114.0
+   j5_60 slack 1.20 EI 1.0: k_cable  93.5, window [ 53.5, 73.5], F  -195.2-> -163.4 N, linear guess  179.8, quadratic  120.8
+   j5_60 slack 1.20 EI 1.0: k_cable  93.5, window [ 33.5, 73.5], F  -214.6-> -163.4 N, linear guess  211.6, quadratic  133.9
+   j5_90 slack 1.10 EI 0.1: k_cable  41.5, window [ 11.5, 31.5], F   -63.3->  -48.4 N, linear guess  102.1, quadratic   60.5
+   j5_90 slack 1.10 EI 0.1: k_cable  41.5, window [  1.5, 21.5], F   -67.6->  -57.9 N, linear guess  144.0, quadratic   82.6
+   j5_90 slack 1.10 EI 1.0: k_cable  41.0, window [ 11.0, 31.0], F  -621.6-> -434.4 N, linear guess   83.6, quadratic   52.0
+   j5_90 slack 1.10 EI 1.0: k_cable  41.0, window [  1.0, 21.0], F  -669.2-> -558.8 N, linear guess  125.5, quadratic   72.7
+   j5_90 slack 1.20 EI 0.1: k_cable  61.5, window [ 31.5, 51.5], F   -49.3->  -35.6 N, linear guess  109.0, quadratic   75.3
+   j5_90 slack 1.20 EI 0.1: k_cable  61.5, window [ 11.5, 51.5], F   -55.9->  -35.6 N, linear guess  136.9, quadratic   85.9
+   j5_90 slack 1.20 EI 0.1: k_cable  61.5, window [ 21.5, 41.5], F   -52.9->  -44.5 N, linear guess  150.3, quadratic   93.4
+   j5_90 slack 1.20 EI 0.1: k_cable  61.5, window [  1.5, 41.5], F   -58.5->  -44.5 N, linear guess  176.2, quadratic  106.4
+   j5_90 slack 1.20 EI 1.0: k_cable  60.5, window [ 30.5, 50.5], F  -488.1-> -342.8 N, linear guess  103.0, quadratic   72.3
+   j5_90 slack 1.20 EI 1.0: k_cable  60.5, window [ 10.5, 50.5], F  -555.3-> -342.8 N, linear guess  130.2, quadratic   82.1
+   j5_90 slack 1.20 EI 1.0: k_cable  60.5, window [ 20.5, 40.5], F  -524.8-> -437.6 N, linear guess  143.9, quadratic   89.4
+   j5_90 slack 1.20 EI 1.0: k_cable  60.5, window [  0.5, 40.5], F  -582.4-> -437.6 N, linear guess  169.9, quadratic  102.3
+   j5_90 slack 1.35 EI 0.1: k_cable  88.5, window [ 58.5, 78.5], F   -35.3->  -23.3 N, linear guess  122.2, quadratic   97.0
+   j5_90 slack 1.35 EI 0.1: k_cable  88.5, window [ 38.5, 78.5], F   -40.7->  -23.3 N, linear guess  146.5, quadratic  105.5
+   j5_90 slack 1.35 EI 0.1: k_cable  88.5, window [ 48.5, 68.5], F   -38.3->  -31.2 N, linear guess  159.3, quadratic  112.1
+   j5_90 slack 1.35 EI 0.1: k_cable  88.5, window [ 28.5, 68.5], F   -42.9->  -31.2 N, linear guess  183.8, quadratic  123.7
+   j5_90 slack 1.35 EI 1.0: k_cable  87.0, window [ 57.0, 77.0], F  -353.2-> -237.0 N, linear guess  122.4, quadratic   96.7
+   j5_90 slack 1.35 EI 1.0: k_cable  87.0, window [ 37.0, 77.0], F  -406.9-> -237.0 N, linear guess  146.5, quadratic  105.0
+   j5_90 slack 1.35 EI 1.0: k_cable  87.0, window [ 47.0, 67.0], F  -382.7-> -312.3 N, linear guess  158.6, quadratic  111.2
+   j5_90 slack 1.35 EI 1.0: k_cable  87.0, window [ 27.0, 67.0], F  -428.2-> -312.3 N, linear guess  183.0, quadratic  122.6
+   degree 1: guess - k_cable median +80.1 deg, range +32.4 to +140.6
+   degree 2: guess - k_cable median +24.8 deg, range +6.8 to +inf

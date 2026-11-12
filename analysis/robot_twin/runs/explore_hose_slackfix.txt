@@ -1,0 +1,35 @@
+assumptions: wrap radius 0.06 m, taut stiffness 20000 N/m, length change at full pressure -4%
+
+taut angle k of J6 (deg, positive side) by pose / slack / pressure
+   pose   slack   p=0.0   p=0.5   p=1.0    shift p0->p1
+   j5_30   1.05     49.5    37.0    19.5     30.0
+   j5_30   1.10     72.5    63.0    52.5     20.0
+   j5_30   1.20    112.0   102.5    93.5     18.5
+   j5_30   1.35    187.0   169.0   154.0     33.0
+   j5_60   1.05     36.0    27.0    14.0     22.0
+   j5_60   1.10     52.0    45.5    38.0     14.0
+   j5_60   1.20     77.0    71.5    65.5     11.5
+   j5_60   1.35    112.5   106.0    99.5     13.0
+   j5_90   1.05     24.5    18.5    10.0     14.5
+   j5_90   1.10     35.0    30.5    26.0      9.0
+   j5_90   1.20     51.0    47.5    44.0      7.0
+   j5_90   1.35     71.0    67.5    64.0      7.0
+
+   k range 10.0-187.0 deg; robot spec J6 limit +-360 deg
+   pressure shift (k at p=0 minus k at p=1): 7.0-33.0 deg, median 14.2
+   -> "geometry at zero pressure" default is off by that shift at full pressure
+
+(i) angle extrapolation windows (leak <= 2%, breakage >= 20% of torque at k+30)
+   j5_30 slack 1.05 p=0: k  49.5, torque@k+30  20.24 Nm, pass 0/0, max leak nan
+   j5_30 slack 1.10 p=0: k  72.5, torque@k+30  23.11 Nm, pass 2/2, max leak 0.002
+   j5_30 slack 1.20 p=0: k 112.0, torque@k+30  18.11 Nm, pass 5/5, max leak 0.002
+   j5_30 slack 1.35 p=0: k 187.0, torque@k+30   3.40 Nm, pass 4/6, max leak 0.036
+   j5_60 slack 1.05 p=0: k  36.0, torque@k+30  30.95 Nm, pass 0/0, max leak nan
+   j5_60 slack 1.10 p=0: k  52.0, torque@k+30  37.17 Nm, pass 1/1, max leak 0.001
+   j5_60 slack 1.20 p=0: k  77.0, torque@k+30  37.89 Nm, pass 2/2, max leak 0.000
+   j5_60 slack 1.35 p=0: k 112.5, torque@k+30  27.25 Nm, pass 5/5, max leak 0.001
+   j5_90 slack 1.05 p=0: k  24.5, torque@k+30  44.86 Nm, pass 0/0, max leak nan
+   j5_90 slack 1.10 p=0: k  35.0, torque@k+30  52.38 Nm, pass 0/0, max leak nan
+   j5_90 slack 1.20 p=0: k  51.0, torque@k+30  57.82 Nm, pass 1/1, max leak 0.000
+   j5_90 slack 1.35 p=0: k  71.0, torque@k+30  55.90 Nm, pass 2/2, max leak 0.000
+   all cells: 63/65 windows pass

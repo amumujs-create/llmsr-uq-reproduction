@@ -1,0 +1,41 @@
+reps 20; gate chi2 4.0; strict wrong = sign_flip; nominal hose EI 0.3
+
+E1 torque noise (window 0.5 k0, model exact, k0 known)
+   sigma 0.05             gate acc correct 0.65 sign_flip 0.05 | MAE correct: R0   8.1 gate   0.8 est   1.3 (over 0.10) | default_shrink gate   3.9 | p* gate 0.1
+   sigma 0.1              gate acc correct 0.52 sign_flip 0.04 | MAE correct: R0   8.1 gate   2.1 est   2.7 (over 0.19) | default_shrink gate   4.2 | p* gate 0.1
+   sigma 0.2              gate acc correct 0.32 sign_flip 0.03 | MAE correct: R0   8.1 gate   4.2 est   4.8 (over 0.25) | default_shrink gate   5.3 | p* gate 0.1
+   sigma 0.5              gate acc correct 0.14 sign_flip 0.01 | MAE correct: R0   8.1 gate   6.1 est   8.8 (over 0.33) | default_shrink gate   6.3 | p* gate 0.05
+   sigma 1.0              gate acc correct 0.06 sign_flip 0.00 | MAE correct: R0   8.1 gate   7.0 est  12.8 (over 0.40) | default_shrink gate   7.1 | p* gate 0.05
+   sigma 2.0              gate acc correct 0.02 sign_flip 0.00 | MAE correct: R0   8.1 gate   7.6 est  14.6 (over 0.42) | default_shrink gate   7.7 | p* gate 0.05
+
+E2 pressurized window size (sigma 0.5)
+   window 0.25 k0         gate acc correct 0.03 sign_flip 0.00 | MAE correct: R0   8.1 gate   7.6 est  13.7 (over 0.46) | default_shrink gate   7.7 | p* gate 0.05
+   window 0.5 k0          gate acc correct 0.12 sign_flip 0.00 | MAE correct: R0   8.1 gate   6.2 est   9.2 (over 0.32) | default_shrink gate   6.4 | p* gate 0.05
+   window 0.75 k0         gate acc correct 0.34 sign_flip 0.02 | MAE correct: R0   8.1 gate   3.9 est   5.2 (over 0.26) | default_shrink gate   5.0 | p* gate 0.05
+   window 0.9 k0          gate acc correct 0.60 sign_flip 0.01 | MAE correct: R0   8.1 gate   1.4 est   2.2 (over 0.16) | default_shrink gate   3.9 | p* gate 0.05
+
+E3 model mismatch (sigma 0.2, window 0.5 k0); truth differs, predictor uses hose.py nominal
+   exact                  gate acc correct 0.33 sign_flip 0.02 | MAE correct: R0   8.1 gate   4.1 est   4.8 (over 0.24) | default_shrink gate   5.1 | p* gate 0.05
+   torque x1.25           gate acc correct 0.38 sign_flip 0.17 | MAE correct: R0   8.1 gate   3.4 est  15.2 (over 0.19) | default_shrink gate   8.5 | p* gate 0.25
+   EI x3                  gate acc correct 0.44 sign_flip 0.31 | MAE correct: R0   8.1 gate   3.0 est  16.0 (over 0.21) | default_shrink gate   8.5 | p* gate 0.35
+   EI /3                  gate acc correct 0.38 sign_flip 0.62 | MAE correct: R0   8.1 gate   3.7 est  17.8 (over 0.66) | default_shrink gate   8.6 | p* gate 0.65
+
+E4 k0 and hose length fitted from a noisy p=0 sweep (window 0.5 k0)
+   sigma 0.2              gate acc correct 0.33 sign_flip 0.03 | MAE correct: R0   8.1 gate   4.1 est   4.8 (over 0.25) | default_shrink gate   5.1 | p* gate 0.1 | R2 correct  0.0
+   sigma 1.0              gate acc correct 0.06 sign_flip 0.00 | MAE correct: R0   8.1 gate   7.0 est  12.4 (over 0.40) | default_shrink gate   7.1 | p* gate 0.05 | R2 correct  0.2
+   sigma 0.2, torque x1.25 gate acc correct 0.35 sign_flip 0.17 | MAE correct: R0   8.1 gate   6.2 est  15.2 (over 0.22) | default_shrink gate  11.0 | p* gate 0.3 | R2 correct  4.4
+   sigma 0.2, EI x3       gate acc correct 0.36 sign_flip 0.29 | MAE correct: R0   8.4 gate   6.4 est  17.0 (over 0.23) | default_shrink gate  11.6 | p* gate 0.35 | R2 correct  5.5
+
+E5 asymmetric cost: loss = undershoot + c * overshoot; best rule by reliability p (k0 known)
+   sigma 0.2 c  1: p* R2=0.6 blend_0.5=0.6 budget_5=0.6 budget_10=0.6 safe=0.25 gate=0.05 est=0.0
+                  best p0.1:est(4.7)  p0.3:est(4.7)  p0.5:est(4.7)  p0.7:safe(4.4)  p0.9:R2(1.8)
+   sigma 0.2 c  3: p* R2=0.6 blend_0.5=0.6 budget_5=0.6 budget_10=0.6 safe=0.1 gate=0.05 est=0.0
+                  best p0.1:est(9.6)  p0.3:est(9.6)  p0.5:est(9.6)  p0.7:safe(8.0)  p0.9:safe(4.0)
+   sigma 0.2 c 10: p* R2=0.6 blend_0.5=0.6 budget_5=0.6 budget_10=0.6 safe=0.05 gate=0.05 est=0.0
+                  best p0.1:est(26.5)  p0.3:est(26.5)  p0.5:est(26.5)  p0.7:safe(20.9)  p0.9:safe(8.3)
+   sigma 1.0 c  1: p* R2=0.6 blend_0.5=0.6 budget_5=0.6 budget_10=0.6 safe=0.25 gate=0.05 est=None
+                  best p0.1:gate(8.0)  p0.3:safe(7.6)  p0.5:safe(6.0)  p0.7:safe(4.4)  p0.9:R2(1.8)
+   sigma 1.0 c  3: p* R2=0.6 blend_0.5=0.6 budget_5=0.6 budget_10=0.6 safe=0.1 gate=0.05 est=None
+                  best p0.1:gate(20.0)  p0.3:safe(16.2)  p0.5:safe(12.1)  p0.7:safe(8.0)  p0.9:safe(4.0)
+   sigma 1.0 c 10: p* R2=0.6 blend_0.5=0.6 budget_5=0.6 budget_10=0.6 safe=0.05 gate=0.05 est=None
+                  best p0.1:safe(58.8)  p0.3:safe(46.2)  p0.5:safe(33.5)  p0.7:safe(20.9)  p0.9:safe(8.3)

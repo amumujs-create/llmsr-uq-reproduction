@@ -206,6 +206,93 @@ class HoseTwinChecks(unittest.TestCase):
         self.assertLess(np.max(np.abs(reg - base)), 0.02 * post)
         self.assertGreater(post, 10 * np.max(np.abs(base)))
 
+    def test_slack_hose_pushes_with_euler_load(self):
+        """Deep in slack the axial force is minus the clamped-pinned Euler load, linear in EI."""
+        import hose
+        cell = hose.HoseCell('e', self.pose, 1.35)
+        L = cell.l_eff(self.chain)
+        f = cell.tension(0.80 * L, L, cell.e0(self.chain), regime=False)   # e* >> E_C
+        p_e = hose.C_EULER * hose.EI_HOSE / L ** 2
+        self.assertLess(f, 0.0)
+        self.assertAlmostEqual(f / -p_e, 1.0, places=3)
+        ei = hose.EI_HOSE
+        try:
+            hose.EI_HOSE = 2 * ei
+            self.assertAlmostEqual(cell.tension(0.80 * L, L, cell.e0(self.chain), regime=False), 2 * f)
+        finally:
+            hose.EI_HOSE = ei
+
+    def test_taut_point_is_shifted_before_geometric_length(self):
+        """Taut length is L (1 - ALPHA e0) < L, and the taut term there is softplus(0)."""
+        import hose
+        cell = hose.HoseCell('f', self.pose, 1.20)
+        L, e0, lt = cell.l_eff(self.chain), cell.e0(self.chain), cell.l_taut(self.chain)
+        self.assertGreater(e0, 0.0)
+        self.assertAlmostEqual(lt, L * (1 - hose.ALPHA_SHIFT * e0))
+        jump = cell.tension(lt, L, e0) - cell.tension(lt, L, e0, regime=False)
+        self.assertAlmostEqual(jump, hose.K_TAUT * hose.SOFT_M * np.log(2.0))
+
+    def test_statement_rules_bound_added_error(self):
+        """budget_b adds at most b deg of error over R0 for any truth; safe never widens R0."""
+        from hose_statements import BUDGETS, apply_rules
+        rng = np.random.default_rng(0)
+        for _ in range(500):
+            k0, ks, kt = rng.uniform(0, 200, 3)
+            pred = apply_rules(k0, ks, accepted=bool(rng.integers(2)))
+            for b in BUDGETS:
+                self.assertLessEqual(abs(pred[f'budget_{b:g}'] - kt) - abs(k0 - kt), b + 1e-9)
+            self.assertLessEqual(pred['safe'], k0)
+
+    def test_sweep_recovers_truth_without_noise_or_mismatch(self):
+        """Known answer: no noise, exact model, fitted hose length -> a correct statement under R2 is exact."""
+        import hose
+        from hose_statements_sweep import Model, run_b
+        rows = run_b(Model(self.chain), 1, np.random.default_rng(0), sigma=1e-6, estimate_k0=True)
+        err = [r[2] for r in rows if r[0] == 'correct' and r[1] == 'R2']
+        self.assertTrue(err)
+        np.testing.assert_allclose(err, 0.0, atol=1e-9)
+        self.assertEqual(hose.EI_HOSE, 0.3)   # Model.get restores the global
+
+    def test_two_coefficient_fit_known_answer(self):
+        from hose_gate_mismatch import fit_two
+        rng = np.random.default_rng(1)
+        A, B = rng.normal(size=40), rng.normal(size=40)
+        rss, c = fit_two(2.0 * A + 3.0 * B, A, B)
+        np.testing.assert_allclose(c, [2.0, 3.0], atol=1e-10)
+        self.assertLess(rss, 1e-20)
+        _, c = fit_two(-1.0 * A + 1.0 * B, A, B)    # negative gain is not allowed
+        self.assertTrue(np.all(c >= 0))
+
+    def test_calibration_absorbs_gain_and_stiffness(self):
+        """Truth = hose.py with torque x1.25 and EI x3: the split A/B fit gives c1 = 1.25*3*EI, c2 = 1.25."""
+        import hose
+        from hose_gate_mismatch import Basis, fit_gains, fit_two, model_truth
+        a0 = np.arange(0.0, 120.0, 2.0)
+        y0, _ = model_truth(self.chain, 'j5_60', 1.20, 0.0, a0, dict(scale=1.25, EI_HOSE=3 * hose.EI_HOSE))
+        A, B, _ = Basis(self.chain).get('j5_60', 1.20, 0.0, a0)
+        for fit in (fit_two, fit_gains):
+            rss, c = fit(y0, A, B)
+            np.testing.assert_allclose(c, [1.25 * 3 * hose.EI_HOSE, 1.25], rtol=1e-6)
+        self.assertEqual(hose.EI_HOSE, 0.3)
+
+    def test_bounded_gain_fit_clips_taut_gain(self):
+        from hose_gate_mismatch import GAIN_BOUNDS, fit_gains
+        rng = np.random.default_rng(2)
+        A, B = np.abs(rng.normal(size=40)), np.abs(rng.normal(size=40))
+        _, c = fit_gains(0.3 * A + 5.0 * B, A, B)
+        self.assertEqual(c[1], GAIN_BOUNDS[1])
+        self.assertGreaterEqual(c[0], 0.0)
+
+    def test_eps_cell_matches_pressure_cell(self):
+        """cell_eps(eps) is the full-pressure cell with length change eps; eps=0 gives k0."""
+        import hose
+        from hose_statements import POSES, cell_eps
+        k0 = hose.HoseCell('j5_60', POSES['j5_60'], 1.20, 0.0).taut_angle(self.chain)
+        self.assertEqual(cell_eps('j5_60', 1.20, 0.0).taut_angle(self.chain), k0)
+        c = cell_eps('j5_60', 1.20, -0.04)
+        base = hose.HoseCell('x', POSES['j5_60'], 1.20, 0.0).l_eff(self.chain)
+        self.assertAlmostEqual(c.l_eff(self.chain), base * 0.96)
+
 
 if __name__ == '__main__':
     unittest.main()
