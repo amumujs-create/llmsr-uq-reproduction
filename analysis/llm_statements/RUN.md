@@ -124,3 +124,24 @@ NEWWORLD=1 CLEANWORLD=1 nohup bash analysis/llm_statements/run_all.sh > run_old.
 - §7을 이미 돌렸다면 같은 명령에 `CLEANWORLD=1`만 붙여 다시 실행한다. 끝난 부분은 건너뛴다.
 - `CLEANWORLD=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
 - 결과 돌려주기는 §6과 같다.
+
+## 9. 툴 호스 단계 (2026-11-12 추가, 브랜치 `robot-twin-exploration`)
+
+설계: [docs/research/robot-twin-hose-llm-preregistration.md](../../docs/research/robot-twin-hose-llm-preregistration.md). 압력을 걸었을 때 호스 길이가 어떻게 바뀌는지 묻는다. 프롬프트 6개 × 21회 = 모델당 126회, 출력은 `runs/hose/<tag>.jsonl`. 데이터 파일이 없어도 돈다.
+
+**사전 등록 문서를 연구자가 승인하고 커밋한 뒤에만 실행한다.**
+
+기존 다섯 모델(다른 단계가 끝났으면 호스 126회만 돈다):
+
+```bash
+HOSE=1 nohup bash analysis/llm_statements/run_all.sh > run_hose.log 2>&1 &
+```
+
+- 모델마다 먼저 1회짜리 점검(`--samples 0`)을 하고, 실패하면 그 모델은 건너뛴다.
+- `HOSE=0`(기본)이면 스크립트는 이전과 똑같이 동작한다.
+- 결과 돌려주기는 §6과 같다.
+- 채점은 로컬에서 한다. 채점에는 `data/robot/h2017.urdf`와 `analysis/robot_twin/runs/hose_cable_truth.npz`가 필요하다. npz는 `hose_cable_truth.py`로 다시 만든다(MuJoCo 필요, 약 2.5분).
+
+```bash
+python3 analysis/llm_statements/score_hose.py analysis/llm_statements/runs/hose/*.jsonl --outcome --out analysis/llm_statements/hose_summary.txt
+```

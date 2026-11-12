@@ -17,12 +17,14 @@
 #                   docs/research/ccpp-twin-outside-confirmation.md §4). With NEWWORLD=0 nothing changes.
 #         CLEANWORLD (default 0; 1 adds the clean-world stage, 192 calls -> runs/cleanworld/<tag>.jsonl,
 #                     docs/research/ccpp-twin-clean-collection.md). With CLEANWORLD=0 nothing changes.
+#         HOSE (default 0; 1 adds the tool-hose stage, 126 calls -> runs/hose/<tag>.jsonl,
+#               docs/research/robot-twin-hose-llm-preregistration.md). With HOSE=0 nothing changes.
 #         MODELS (default models.tsv; a file name in this directory, e.g. models_new.tsv).
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 TP="${TP:-4}"; PORT="${PORT:-8000}"; WORKERS="${WORKERS:-16}"; MAXTOK="${MAXTOK:-4096}"
 STRAT_SAMPLES="${STRAT_SAMPLES:-10}"; ONLY="${ONLY:-}"; EXTRA_VARGS="${EXTRA_VARGS:-}"; ICE="${ICE:-0}"
-SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"; NEWWORLD="${NEWWORLD:-0}"; CLEANWORLD="${CLEANWORLD:-0}"; MODELS="${MODELS:-models.tsv}"
+SHAPE="${SHAPE:-0}"; SHAPE2="${SHAPE2:-0}"; NEWWORLD="${NEWWORLD:-0}"; CLEANWORLD="${CLEANWORLD:-0}"; HOSE="${HOSE:-0}"; MODELS="${MODELS:-models.tsv}"
 BASE="http://localhost:$PORT/v1"
 MAIN_N=1596
 STRAT_N=$((2 * 2 * 5 * (STRAT_SAMPLES + 1)))
@@ -31,12 +33,14 @@ SHAPE_N=252
 SHAPE2_N=210
 NEWWORLD_N=128
 CLEANWORLD_N=192
+HOSE_N=126
 mkdir -p "$HERE/runs/strategy" "$HERE/runs/env" "$HERE/runs/logs"
 [ "$ICE" = 1 ] && mkdir -p "$HERE/runs/ice"
 [ "$SHAPE" = 1 ] && mkdir -p "$HERE/runs/shape"
 [ "$SHAPE2" = 1 ] && mkdir -p "$HERE/runs/shape2"
 [ "$NEWWORLD" = 1 ] && mkdir -p "$HERE/runs/newworld"
 [ "$CLEANWORLD" = 1 ] && mkdir -p "$HERE/runs/cleanworld"
+[ "$HOSE" = 1 ] && mkdir -p "$HERE/runs/hose"
 
 lines() { [ -f "$1" ] && wc -l < "$1" | tr -d ' ' || echo 0; }
 VLLM_PID=""
@@ -60,8 +64,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   new_done=1; [ "$NEWWORLD" = 1 ] && [ "$(lines "$NEWF")" -lt "$NEWWORLD_N" ] && new_done=0
   CLEANF="$HERE/runs/cleanworld/$TAG.jsonl"
   clean_done=1; [ "$CLEANWORLD" = 1 ] && [ "$(lines "$CLEANF")" -lt "$CLEANWORLD_N" ] && clean_done=0
+  HOSEF="$HERE/runs/hose/$TAG.jsonl"
+  hose_done=1; [ "$HOSE" = 1 ] && [ "$(lines "$HOSEF")" -lt "$HOSE_N" ] && hose_done=0
   if [ "$(lines "$MAIN")" -ge "$MAIN_N" ] && [ "$(lines "$STRAT")" -ge "$STRAT_N" ] && [ "$ice_done" = 1 ] \
-     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ]; then
+     && [ "$shape_done" = 1 ] && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ] && [ "$hose_done" = 1 ]; then
     echo "== $TAG: already complete, skip"; summary+=("$TAG: complete (skipped)"); continue
   fi
   # Keep the original environment record when only the anti-icing stage is left to run.
@@ -81,6 +87,10 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
   if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$CLEANWORLD" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ] \
      && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ]; then
     ENVF="$HERE/runs/env/$TAG-cleanworld.txt"; fi
+  # A hose-only run (everything else already complete) gets its own record.
+  if [ "$ENVF" != "$HERE/runs/env/$TAG.txt" ] && [ "$HOSE" = 1 ] && [ "$ice_done" = 1 ] && [ "$shape_done" = 1 ] \
+     && [ "$shape2_done" = 1 ] && [ "$new_done" = 1 ] && [ "$clean_done" = 1 ]; then
+    ENVF="$HERE/runs/env/$TAG-hose.txt"; fi
   echo "== $TAG ($MODEL): starting vLLM (TP=$TP), log $LOG"
   # shellcheck disable=SC2086
   vllm serve "$MODEL" --port "$PORT" --tensor-parallel-size "$TP" --max-model-len 16384 $VARGS $EXTRA_VARGS > "$LOG" 2>&1 < /dev/null &
@@ -182,7 +192,23 @@ while IFS=$'\t' read -r TAG MODEL EXTRA VARGS <&3; do
       summary+=("$TAG: clean-world smoke test FAILED (see output above)")
     fi
   fi
+  if [ "$HOSE" = 1 ] && [ "$(lines "$HOSEF")" -lt "$HOSE_N" ]; then
+    echo "-- $TAG: tool-hose stage ($HOSE_N calls)"
+    HSMOKE="$HERE/runs/logs/smoke-hose-$TAG.jsonl"; rm -f "$HSMOKE"
+    python3 "$HERE/collect_hose.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+      --max-tokens "$MAXTOK" --samples 0 --out "$HSMOKE" > /dev/null
+    if python3 "$HERE/collect_hose.py" --check "$HSMOKE" --smoke; then
+      python3 "$HERE/collect_hose.py" --base-url "$BASE" --model "$MODEL" --tag "$TAG" --extra-body "$EXTRA" \
+        --max-tokens "$MAXTOK" --workers "$WORKERS" --out "$HOSEF" | tail -1
+      python3 "$HERE/collect_hose.py" --check "$HOSEF"
+    else
+      summary+=("$TAG: hose smoke test FAILED (see output above)")
+    fi
+  fi
   stop_server
+  if [ "$HOSE" = 1 ]; then
+    summary+=("$TAG: hose $(lines "$HOSEF")/$HOSE_N")
+  fi
   if [ "$CLEANWORLD" = 1 ]; then
     summary+=("$TAG: cleanworld $(lines "$CLEANF")/$CLEANWORLD_N")
   fi
