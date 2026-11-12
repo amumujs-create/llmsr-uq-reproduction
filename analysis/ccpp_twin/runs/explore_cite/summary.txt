@@ -1,0 +1,99 @@
+EXPLORATION (not a verdict). Share of answers claiming a boundary / device on a side. models=['gpt-oss-120b', 'qwen3-30b-a3b-instruct', 'gpt-oss-20b', 'gemma3-27b', 'llama33-70b']
+before: answers 900, unparsed {('gpt-oss-120b', 'S0'): 3, ('llama33-70b', 'S0'): 1}
+after: answers 1050, unparsed {('gpt-oss-120b', 'S0'): 2}
+checked: answers 1050, unparsed {('gpt-oss-120b', 'S0'): 2}
+checked: S2C claims that passed the quote check, by item: {'gt_generator_limit': 149, 'inlet_evaporative_cooling': 126, 'exhaust_or_steam_side_limit': 40}
+nostate: answers 350, unparsed {}
+
+=== device plants, pooled over models (rows: question, true/false side) ===
+variant     before  after  checked  nostate
+kind truth                                 
+S0   false   0.245  0.219    0.216      NaN
+     true    0.765  0.776    0.768      NaN
+S2   false   0.400  0.080    0.080    0.100
+     true    0.950  0.937    0.917    0.903
+
+=== device plants, by model ===
+variant                            before  after  checked  nostate
+tag                    kind truth                                 
+gemma3-27b             S0   false   0.500  0.500    0.483      NaN
+                            true    0.500  0.500    0.500      NaN
+                       S2   false   0.500  0.400    0.400    0.500
+                            true    1.000  1.000    0.917    1.000
+gpt-oss-120b           S0   false   0.034  0.000    0.000      NaN
+                            true    1.000  0.983    0.983      NaN
+                       S2   false   0.833  0.000    0.000    0.000
+                            true    0.933  0.867    0.867    0.867
+gpt-oss-20b            S0   false   0.042  0.008    0.008      NaN
+                            true    0.975  0.983    0.942      NaN
+                       S2   false   0.667  0.000    0.000    0.000
+                            true    0.983  0.983    0.967    0.950
+llama33-70b            S0   false   0.143  0.083    0.083      NaN
+                            true    0.857  0.917    0.917      NaN
+                       S2   false   0.000  0.000    0.000    0.000
+                            true    1.000  1.000    1.000    0.867
+qwen3-30b-a3b-instruct S0   false   0.500  0.500    0.500      NaN
+                            true    0.500  0.500    0.500      NaN
+                       S2   false   0.000  0.000    0.000    0.000
+                            true    0.833  0.833    0.833    0.833
+
+=== device plants, by plant (false side only) ===
+variant       before  after  checked  nostate
+world   kind                                 
+cap346  S0     0.434  0.404    0.394      NaN
+        S2     0.480  0.160    0.160      0.2
+cap350  S0     0.470  0.450    0.450      NaN
+        S2     0.500  0.200    0.200      0.2
+cap353  S0     0.470  0.450    0.440      NaN
+        S2     0.580  0.120    0.120      0.2
+chill24 S0     0.030  0.000    0.000      NaN
+        S2     0.280  0.000    0.000      0.0
+evap22  S0     0.051  0.010    0.010      NaN
+        S2     0.340  0.000    0.000      0.0
+evap26  S0     0.010  0.000    0.000      NaN
+        S2     0.220  0.000    0.000      0.0
+
+=== base plant (no device; every claim is a false alarm), by model and side ===
+variant                            after  checked  nostate
+tag                    kind side                          
+gemma3-27b             S0   above   1.00     1.00      NaN
+                            below   0.00     0.00      NaN
+                       S2   above   0.90     0.90      1.0
+                            below   0.00     0.00      0.0
+gpt-oss-120b           S0   above   0.00     0.00      NaN
+                            below   0.00     0.00      NaN
+                       S2   above   0.00     0.00      0.0
+                            below   0.00     0.00      0.0
+gpt-oss-20b            S0   above   0.05     0.00      NaN
+                            below   0.05     0.05      NaN
+                       S2   above   0.00     0.00      0.0
+                            below   0.00     0.00      0.0
+llama33-70b            S0   above   1.00     1.00      NaN
+                            below   0.00     0.00      NaN
+                       S2   above   0.00     0.00      0.0
+                            below   0.00     0.00      0.0
+qwen3-30b-a3b-instruct S0   above   1.00     1.00      NaN
+                            below   0.00     0.00      NaN
+                       S2   above   0.00     0.00      0.0
+                            below   0.00     0.00      0.0
+
+=== S2 items claimed, share of answers (before = S2, after = S2C without quote check, nostate = S2N) ===
+                                   before  after  nostate
+exhaust_or_steam_side_limit false   0.493  0.165    0.200
+                            true    0.427  0.047    0.087
+gt_generator_limit          false   0.000  0.000    0.000
+                            true    0.987  1.000    0.993
+inlet_anti_icing_heating    false   0.280  0.000    0.000
+                            true    0.267  0.007    0.000
+inlet_evaporative_cooling   false   0.147  0.000    0.000
+                            true    0.900  0.873    0.773
+
+=== S2N: share of answers that say 'not stated', by item and true/false side ===
+exhaust_or_steam_side_limit  false    0.515
+                             true     0.860
+gt_generator_limit           false    0.010
+                             true     0.000
+inlet_anti_icing_heating     false    0.830
+                             true     0.360
+inlet_evaporative_cooling    false    0.140
+                             true     0.100

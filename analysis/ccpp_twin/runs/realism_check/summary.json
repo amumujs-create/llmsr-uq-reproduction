@@ -1,0 +1,38 @@
+{
+ "verdict": {
+  "hot": {
+   "real": "kink-like",
+   "base": "no-kink-like",
+   "kink": "kink-like",
+   "references_ok": true
+  },
+  "cold": {
+   "real": "no-kink-like",
+   "base": "no-kink-like",
+   "kink": "kink-like",
+   "references_ok": true
+  }
+ },
+ "slopes": {
+  "real": {
+   "below": -2.403357675075291,
+   "middle": -2.0371260708857273,
+   "above": -0.7743259507756436
+  },
+  "base|hot": {
+   "below": -2.931559492018551,
+   "middle": -2.6690650868207757,
+   "above": -2.2844486391076164
+  },
+  "kink|hot": {
+   "below": -3.101612056274768,
+   "middle": -2.6664678703465783,
+   "above": 0.3710894168243635
+  },
+  "kink|cold": {
+   "below": 0.9381890754908995,
+   "middle": -2.5811952892131007,
+   "above": -2.45673194746583
+  }
+ }
+}

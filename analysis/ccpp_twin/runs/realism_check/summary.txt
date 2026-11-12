@@ -1,0 +1,52 @@
+Twin realism check. relative RMSE = rule / R0, against each world's observed output. rows=2160 seeds=realism1
+
+=== hot side: EDGE@0.5 by (delta, w) cell ===
+world        base   kink   real
+delta w                        
+1.0   5.0   1.469  0.641  0.929
+      10.0  1.458  0.639  0.756
+2.0   5.0   1.670  0.571  0.801
+      10.0  1.627  0.566  0.756
+4.0   5.0   1.867  0.469  0.712
+      10.0  1.950  0.460  0.866
+classification: real kink-like, base no-kink-like, kink kink-like; references behave as designed: True
+
+=== cold side: EDGE@0.5 by (delta, w) cell ===
+world        base   kink   real
+delta w                        
+1.0   5.0   1.723  0.635  1.052
+      10.0  1.721  0.611  1.374
+2.0   5.0   1.872  0.559  1.237
+      10.0  1.929  0.564  1.597
+4.0   5.0   2.289  0.506  1.779
+      10.0  2.417  0.509  1.830
+classification: real no-kink-like, base no-kink-like, kink kink-like; references behave as designed: True
+
+=== mean relative RMSE by world and side (NaN = rule not defined on that side) ===
+            EDGE@0.5  EDGE@1.0  POS_24@1.0  POS_26@1.0  POS_28@1.0  POS_30@1.0  POS_32@1.0  POS_12@1.0  POS_10@1.0  POS_8@1.0  POS_6@1.0
+side world                                                                                                                              
+cold base      1.992     3.460         NaN         NaN         NaN         NaN         NaN       3.278       2.748      1.786      1.111
+     kink      0.564     0.725         NaN         NaN         NaN         NaN         NaN       0.657       0.531      0.596      0.900
+     real      1.478     2.439         NaN         NaN         NaN         NaN         NaN       2.322       1.970      1.344      1.017
+hot  base      1.674     3.122       2.856       2.774       1.963       1.202       0.994         NaN         NaN        NaN        NaN
+     kink      0.558     0.441       0.534       0.393       0.487       0.754       0.977         NaN         NaN        NaN        NaN
+     real      0.803     1.269       1.227       1.113       0.849       0.811       0.976         NaN         NaN        NaN        NaN
+
+=== R0 absolute RMSE (MW), window AT coefficient, guard rejection of EDGE ===
+            R0_abs  slope_window  EDGE_rejected
+side world                                     
+cold base    5.014        -2.631            0.0
+     kink   11.597        -2.630            0.0
+     real    5.736        -2.191            0.0
+hot  base    4.918        -2.577            0.0
+     kink   15.089        -2.642            0.0
+     real    6.434        -1.721            0.0
+
+=== report only: AT slope by segment with V, AP, RH controls (MW/degC) ===
+           below  middle  above
+real      -2.403  -2.037 -0.774
+base|hot  -2.932  -2.669 -2.284
+kink|hot  -3.102  -2.666  0.371
+kink|cold  0.938  -2.581 -2.457
+
+VERDICT: {"hot": {"real": "kink-like", "base": "no-kink-like", "kink": "kink-like", "references_ok": true}, "cold": {"real": "no-kink-like", "base": "no-kink-like", "kink": "kink-like", "references_ok": true}}
