@@ -1,0 +1,105 @@
+Clean-window diagnostic confirmation [CONFIRMATION]. relative RMSE = rule / R0. rows=11340 seeds=cleandiag2
+models: ['mistral-small32-24b', 'phi4-14b', 'granite33-8b', 'deepseek-r1d-32b']
+collection lines (need 192): {'mistral-small32-24b': 192, 'phi4-14b': 192, 'granite33-8b': 192, 'deepseek-r1d-32b': 192}
+unparsed [failed, total]: {'mistral-small32-24b': {'S0': [0, 120], 'S2': [0, 60]}, 'phi4-14b': {'S0': [0, 120], 'S2': [1, 60]}, 'granite33-8b': {'S0': [3, 120], 'S2': [1, 60]}, 'deepseek-r1d-32b': {'S0': [0, 120], 'S2': [0, 60]}}
+task cells (delta, w): cap353|cold 4; cap353|hot 6; cap350|cold 4; cap350|hot 5; cap346|cold 4; cap346|hot 5; evap22|hot 6; evap22|cold 5; evap26|hot 6; evap26|cold 6; chill24|hot 6; chill24|cold 6
+
+=== verdicts ===
+C1 data-only bending models do not help: HINGE >= 0.95 on 6/6, QUAD on 6/6 kink tasks (need 5), hinge kept 0.018 (<= 0.1) -> PASS
+C2 existence alone is enough: EDGE_h <= 0.8 on 6/6 kink tasks (need 5) -> PASS
+C3 a false alarm is costly and bounded: EDGE_h harm >= 0.8 on 6/6 no-kink tasks (need 5), bound holds in 1.0000 of rows (>= 0.99) -> PASS
+C4 presence is known: S2 says yes on the true side in 23/24 cells (need 18) -> PASS
+C5 the decomposition question raises false alarms: S2 yes on the false side in 19/24 cells (need 8) -> PASS
+C6 the S2-only rule is unsafe: no-kink harm > 0.1 in 4/4 models (need 2) -> PASS
+C7 the frozen rule is safe but gains little: safe 3/4, kink mean >= 0.7 in 4/4 (need 3 each) -> PASS
+DIAGNOSTIC CLAIMS (C1-C7): ALL HOLD
+
+P1 the AND rule is safe (no-kink harm <= 0.1) and gainful (kink mean <= 0.8) in 1/4 models (need 2) -> FAIL
+P2 safe and at least 0.1 below the frozen rule on kink tasks in 1/4 models (need 2) -> FAIL
+P3 safe and below reading the description (READ kink 0.797) in 1/4 models (need 2) -> FAIL
+POSITIVE CLAIM (P1-P3): DOES NOT HOLD
+
+=== reference rules, task mean ===
+task    cap353|cold  cap353|hot  cap350|cold  cap350|hot  cap346|cold  cap346|hot  evap22|hot  evap22|cold  evap26|hot  evap26|cold  chill24|hot  chill24|cold
+ORACLE        0.610       1.000        0.609       1.000        0.563       1.000       0.642        1.000       0.694        1.000        0.539         1.000
+READ          0.911       1.000        0.994       1.000        1.000       1.000       0.642        1.000       0.694        1.000        0.539         1.000
+EDGE_h        0.396       6.012        0.392       5.840        0.422       6.163       0.499        7.646       0.468        7.446        0.338         7.219
+HINGE         1.127       1.157        1.083       1.306        1.049       1.424       1.034        1.488       1.064        1.523        1.329         1.147
+QUAD          1.779       6.235        1.627       6.141        1.868       6.766       1.627        6.251       1.398        5.717        1.656         5.567
+
+harm share (> 1.10):
+task    cap353|cold  cap353|hot  cap350|cold  cap350|hot  cap346|cold  cap346|hot  evap22|hot  evap22|cold  evap26|hot  evap26|cold  chill24|hot  chill24|cold
+ORACLE        0.017       0.000        0.004       0.000        0.014       0.000       0.018        0.000       0.004        0.000        0.014         0.000
+READ          0.000       0.000        0.000       0.000        0.000       0.000       0.018        0.000       0.004        0.000        0.014         0.000
+EDGE_h        0.029       0.908        0.015       0.920        0.026       0.931       0.036        0.958       0.007        0.958        0.021         0.949
+HINGE         0.011       0.017        0.017       0.013        0.015       0.019       0.009        0.023       0.013        0.019        0.011         0.010
+QUAD          0.558       0.805        0.554       0.791        0.582       0.814       0.476        0.803       0.414        0.795        0.438         0.807
+
+R0 absolute RMSE (MW): cap353|cold 11.62  cap353|hot 2.24  cap350|cold 11.82  cap350|hot 2.26  cap346|cold 9.96  cap346|hot 2.14  evap22|hot 9.87  evap22|cold 2.28  evap26|hot 12.73  evap26|cold 2.18  chill24|hot 10.34  chill24|cold 2.31
+
+=== side judgment: share of answers saying yes (pS0 / pS2); true side first, then false side ===
+mistral-small32-24b        cap353 0.45/1.00 | 0.60/0.80  cap350 0.55/1.00 | 0.45/0.80  cap346 0.55/1.00 | 0.45/0.80  evap22 1.00/1.00 | 0.00/0.50  evap26 1.00/1.00 | 0.00/0.60  chill24 1.00/0.10 | 0.00/0.60
+phi4-14b                   cap353 0.95/1.00 | 0.20/0.90  cap350 0.95/1.00 | 0.20/0.90  cap346 0.95/1.00 | 0.15/0.90  evap22 1.00/1.00 | 0.75/0.89  evap26 1.00/1.00 | 0.70/0.90  chill24 1.00/1.00 | 0.90/0.10
+granite33-8b               cap353 0.05/0.90 | 0.16/0.80  cap350 0.05/0.90 | 0.37/0.70  cap346 0.05/0.90 | 0.32/0.80  evap22 0.55/1.00 | 0.20/0.10  evap26 0.60/1.00 | 0.15/0.10  chill24 0.75/1.00 | 0.20/0.00
+deepseek-r1d-32b           cap353 1.00/1.00 | 0.45/0.60  cap350 0.95/1.00 | 0.55/0.60  cap346 0.95/1.00 | 0.40/0.60  evap22 1.00/1.00 | 0.40/1.00  evap26 1.00/1.00 | 0.30/0.90  chill24 1.00/0.60 | 0.35/0.70
+
+=== rules by model (macro over tasks; harm and MW pooled over rows) ===
+                             kink  nokink  harm_kink  harm_nokink  abs_kink_MW  abs_nokink_MW
+model               rule                                                                     
+mistral-small32-24b FROZEN  0.846   1.407      0.005        0.157        9.147          2.617
+                    S0      0.520   1.835      0.019        0.165        5.378          3.067
+                    S2      0.530   5.613      0.018        0.792        5.837          6.716
+                    AND     0.630   1.835      0.014        0.165        6.814          3.067
+                    OR      0.419   5.613      0.022        0.792        4.401          6.716
+                    CONF    0.628   1.944      0.014        0.356        6.791          2.813
+phi4-14b            FROZEN  0.863   1.000      0.004        0.000        9.835          2.235
+                    S0      0.419   4.218      0.022        0.492        4.401          5.414
+                    S2      0.419   5.684      0.022        0.765        4.401          6.465
+                    AND     0.419   3.182      0.022        0.319        4.401          4.279
+                    OR      0.419   6.721      0.022        0.938        4.401          7.600
+                    CONF    0.425   2.677      0.022        0.629        4.469          3.539
+granite33-8b        FROZEN  0.984   1.000      0.000        0.000       10.897          2.235
+                    S0      0.718   1.000      0.013        0.000        7.171          2.235
+                    S2      0.419   3.502      0.022        0.446        4.401          4.421
+                    AND     0.718   1.000      0.013        0.000        7.171          2.235
+                    OR      0.419   3.502      0.022        0.446        4.401          4.421
+                    CONF    0.771   1.458      0.008        0.466        8.102          2.367
+deepseek-r1d-32b    FROZEN  0.873   1.000      0.004        0.000        9.405          2.235
+                    S0      0.419   1.807      0.022        0.139        4.401          2.900
+                    S2      0.419   6.721      0.022        0.938        4.401          7.600
+                    AND     0.419   1.807      0.022        0.139        4.401          2.900
+                    OR      0.419   6.721      0.022        0.938        4.401          7.600
+                    CONF    0.459   2.796      0.021        0.770        4.950          3.494
+
+=== frozen-rule statements by model and plant ===
+mistral-small32-24b        cap353 [('below', 8.0)]  cap350 [('below', 10.333333333333332)]  cap346 [('below', 8.0)]  evap22 [('above', 22.0)]  evap26 [('above', 26.0)]  chill24 [('below', 8.0)]
+phi4-14b                   cap353 [('below', 10.0)]  cap350 [('below', 10.882352941176471)]  cap346 [('below', 13.089171974522293)]  evap22 [('above', 30.0)]  evap26 [('above', 30.0)]  chill24 [('above', 30.0)]
+granite33-8b               cap353 [('below', 8.0)]  cap350 [('below', 8.0)]  cap346 [('below', 8.0)]  evap22 []  evap26 []  chill24 []
+deepseek-r1d-32b           cap353 [('below', 8.0)]  cap350 [('below', 8.0)]  cap346 [('below', 8.0)]  evap22 [('above', 22.0)]  evap26 [('above', 26.0)]  chill24 []
+
+=== task mean of every model rule ===
+task                        cap353|cold  cap353|hot  cap350|cold  cap350|hot  cap346|cold  cap346|hot  evap22|hot  evap22|cold  evap26|hot  evap26|cold  chill24|hot  chill24|cold
+mistral-small32-24b|FROZEN        0.911       1.000        0.826       1.000        1.000       1.000       0.642        1.000       0.694        1.000        1.000         3.439
+phi4-14b|FROZEN                   0.708       1.000        0.769       1.000        0.706       1.000       1.000        1.000       0.996        1.000        1.000         1.000
+granite33-8b|FROZEN               0.911       1.000        0.994       1.000        1.000       1.000       1.000        1.000       1.000        1.000        1.000         1.000
+deepseek-r1d-32b|FROZEN           0.911       1.000        0.994       1.000        1.000       1.000       0.642        1.000       0.694        1.000        1.000         1.000
+mistral-small32-24b|S0            1.000       6.012        0.392       1.000        0.422       1.000       0.499        1.000       0.468        1.000        0.338         1.000
+mistral-small32-24b|S2            0.396       6.012        0.392       5.840        0.422       6.163       0.499        1.000       0.468        7.446        1.000         7.219
+mistral-small32-24b|AND           1.000       6.012        0.392       1.000        0.422       1.000       0.499        1.000       0.468        1.000        1.000         1.000
+mistral-small32-24b|OR            0.396       6.012        0.392       5.840        0.422       6.163       0.499        1.000       0.468        7.446        0.338         7.219
+mistral-small32-24b|CONF          0.681       3.486        0.616       2.511        0.581       2.665       0.499        1.000       0.468        1.000        0.923         1.000
+phi4-14b|S0                       0.396       1.000        0.392       1.000        0.422       1.000       0.499        7.646       0.468        7.446        0.338         7.219
+phi4-14b|S2                       0.396       6.012        0.392       5.840        0.422       6.163       0.499        7.646       0.468        7.446        0.338         1.000
+phi4-14b|AND                      0.396       1.000        0.392       1.000        0.422       1.000       0.499        7.646       0.468        7.446        0.338         1.000
+phi4-14b|OR                       0.396       6.012        0.392       5.840        0.422       6.163       0.499        7.646       0.468        7.446        0.338         7.219
+phi4-14b|CONF                     0.411       1.230        0.408       1.224        0.424       1.089       0.499        5.822       0.468        5.333        0.338         1.362
+granite33-8b|S0                   1.000       1.000        1.000       1.000        1.000       1.000       0.499        1.000       0.468        1.000        0.338         1.000
+granite33-8b|S2                   0.396       6.012        0.392       5.840        0.422       6.163       0.499        1.000       0.468        1.000        0.338         1.000
+granite33-8b|AND                  1.000       1.000        1.000       1.000        1.000       1.000       0.499        1.000       0.468        1.000        0.338         1.000
+granite33-8b|OR                   0.396       6.012        0.392       5.840        0.422       6.163       0.499        1.000       0.468        1.000        0.338         1.000
+granite33-8b|CONF                 0.961       1.080        0.961       2.049        0.956       1.871       0.633        1.375       0.655        1.372        0.462         1.000
+deepseek-r1d-32b|S0               0.396       1.000        0.392       5.840        0.422       1.000       0.499        1.000       0.468        1.000        0.338         1.000
+deepseek-r1d-32b|S2               0.396       6.012        0.392       5.840        0.422       6.163       0.499        7.646       0.468        7.446        0.338         7.219
+deepseek-r1d-32b|AND              0.396       1.000        0.392       5.840        0.422       1.000       0.499        1.000       0.468        1.000        0.338         1.000
+deepseek-r1d-32b|OR               0.396       6.012        0.392       5.840        0.422       6.163       0.499        7.646       0.468        7.446        0.338         7.219
+deepseek-r1d-32b|CONF             0.396       2.569        0.408       3.099        0.424       2.362       0.499        3.310       0.468        2.583        0.560         2.850

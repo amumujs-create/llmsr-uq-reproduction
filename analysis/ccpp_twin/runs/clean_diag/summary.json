@@ -1,0 +1,858 @@
+{
+ "verdicts": {
+  "C1": {
+   "hinge_tasks": 6,
+   "quad_tasks": 6,
+   "hinge_kept": 0.01814814814814815,
+   "pass": true
+  },
+  "C2": {
+   "tasks": 6,
+   "pass": true
+  },
+  "C3": {
+   "tasks": 6,
+   "bound_share": 1.0,
+   "pass": true
+  },
+  "C4": {
+   "cells": 23,
+   "of": 24,
+   "pass": true
+  },
+  "C5": {
+   "cells": 19,
+   "of": 24,
+   "pass": true
+  },
+  "C6": {
+   "models": 4,
+   "of": 4,
+   "pass": true
+  },
+  "C7": {
+   "safe_models": 3,
+   "small_gain_models": 4,
+   "of": 4,
+   "pass": true
+  },
+  "P1": {
+   "models": 1,
+   "of": 4,
+   "pass": false
+  },
+  "P2": {
+   "models": 1,
+   "of": 4,
+   "pass": false
+  },
+  "P3": {
+   "models": 1,
+   "of": 4,
+   "read_kink": 0.7966368525851696,
+   "pass": false
+  },
+  "per_model": {
+   "mistral-small32-24b": {
+    "FROZEN": {
+     "kink": 0.8455986928149507,
+     "harm_nokink": 0.1574074074074074,
+     "safe": false,
+     "gainful": false
+    },
+    "S0": {
+     "kink": 0.5198758548371151,
+     "harm_nokink": 0.16515151515151516,
+     "safe": false,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.529515213880413,
+     "harm_nokink": 0.7924242424242425,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.6301616374463018,
+     "harm_nokink": 0.16515151515151516,
+     "safe": false,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.7924242424242425,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.6279482300484271,
+     "harm_nokink": 0.35589225589225587,
+     "safe": false,
+     "gainful": true
+    }
+   },
+   "phi4-14b": {
+    "FROZEN": {
+     "kink": 0.8632546371630356,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": false
+    },
+    "S0": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.4919191919191919,
+     "safe": false,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.764983164983165,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.31936026936026934,
+     "safe": false,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.9375420875420876,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.4247217878811902,
+     "harm_nokink": 0.6292929292929293,
+     "safe": false,
+     "gainful": true
+    }
+   },
+   "granite33-8b": {
+    "FROZEN": {
+     "kink": 0.9841540213631484,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": false
+    },
+    "S0": {
+     "kink": 0.7175968729976924,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.44562289562289564,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.7175968729976924,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.44562289562289564,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.7714303009705182,
+     "harm_nokink": 0.4658249158249158,
+     "safe": false,
+     "gainful": true
+    }
+   },
+   "deepseek-r1d-32b": {
+    "FROZEN": {
+     "kink": 0.8734724816724594,
+     "harm_nokink": 0.0,
+     "safe": true,
+     "gainful": false
+    },
+    "S0": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.1393939393939394,
+     "safe": false,
+     "gainful": true
+    },
+    "S2": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.9375420875420876,
+     "safe": false,
+     "gainful": true
+    },
+    "AND": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.1393939393939394,
+     "safe": false,
+     "gainful": true
+    },
+    "OR": {
+     "kink": 0.41922943127122614,
+     "harm_nokink": 0.9375420875420876,
+     "safe": false,
+     "gainful": true
+    },
+    "CONF": {
+     "kink": 0.4590426410997954,
+     "harm_nokink": 0.7695286195286195,
+     "safe": false,
+     "gainful": true
+    }
+   }
+  },
+  "diagnostic": true,
+  "positive": false
+ },
+ "cells": {
+  "cap353|cold": [
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap353|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap350|cold": [
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap350|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ]
+  ],
+  "cap346|cold": [
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "cap346|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ]
+  ],
+  "evap22|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "evap22|cold": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ]
+  ],
+  "evap26|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "evap26|cold": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "chill24|hot": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ],
+  "chill24|cold": [
+   [
+    1.0,
+    5.0
+   ],
+   [
+    1.0,
+    10.0
+   ],
+   [
+    2.0,
+    5.0
+   ],
+   [
+    2.0,
+    10.0
+   ],
+   [
+    4.0,
+    5.0
+   ],
+   [
+    4.0,
+    10.0
+   ]
+  ]
+ },
+ "lines": {
+  "mistral-small32-24b": 192,
+  "phi4-14b": 192,
+  "granite33-8b": 192,
+  "deepseek-r1d-32b": 192
+ },
+ "unparsed": {
+  "mistral-small32-24b": {
+   "S0": [
+    0,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  },
+  "phi4-14b": {
+   "S0": [
+    0,
+    120
+   ],
+   "S2": [
+    1,
+    60
+   ]
+  },
+  "granite33-8b": {
+   "S0": [
+    3,
+    120
+   ],
+   "S2": [
+    1,
+    60
+   ]
+  },
+  "deepseek-r1d-32b": {
+   "S0": [
+    0,
+    120
+   ],
+   "S2": [
+    0,
+    60
+   ]
+  }
+ },
+ "shares": {
+  "mistral-small32-24b|cap353|below": [
+   0.45,
+   1.0
+  ],
+  "mistral-small32-24b|cap353|above": [
+   0.6,
+   0.8
+  ],
+  "mistral-small32-24b|cap350|below": [
+   0.55,
+   1.0
+  ],
+  "mistral-small32-24b|cap350|above": [
+   0.45,
+   0.8
+  ],
+  "mistral-small32-24b|cap346|below": [
+   0.55,
+   1.0
+  ],
+  "mistral-small32-24b|cap346|above": [
+   0.45,
+   0.8
+  ],
+  "mistral-small32-24b|evap22|below": [
+   0.0,
+   0.5
+  ],
+  "mistral-small32-24b|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "mistral-small32-24b|evap26|below": [
+   0.0,
+   0.6
+  ],
+  "mistral-small32-24b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "mistral-small32-24b|chill24|below": [
+   0.0,
+   0.6
+  ],
+  "mistral-small32-24b|chill24|above": [
+   1.0,
+   0.1
+  ],
+  "phi4-14b|cap353|below": [
+   0.95,
+   1.0
+  ],
+  "phi4-14b|cap353|above": [
+   0.2,
+   0.9
+  ],
+  "phi4-14b|cap350|below": [
+   0.95,
+   1.0
+  ],
+  "phi4-14b|cap350|above": [
+   0.2,
+   0.9
+  ],
+  "phi4-14b|cap346|below": [
+   0.95,
+   1.0
+  ],
+  "phi4-14b|cap346|above": [
+   0.15,
+   0.9
+  ],
+  "phi4-14b|evap22|below": [
+   0.75,
+   0.8888888888888888
+  ],
+  "phi4-14b|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "phi4-14b|evap26|below": [
+   0.7,
+   0.9
+  ],
+  "phi4-14b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "phi4-14b|chill24|below": [
+   0.9,
+   0.1
+  ],
+  "phi4-14b|chill24|above": [
+   1.0,
+   1.0
+  ],
+  "granite33-8b|cap353|below": [
+   0.05263157894736842,
+   0.9
+  ],
+  "granite33-8b|cap353|above": [
+   0.15789473684210525,
+   0.8
+  ],
+  "granite33-8b|cap350|below": [
+   0.05263157894736842,
+   0.9
+  ],
+  "granite33-8b|cap350|above": [
+   0.3684210526315789,
+   0.7
+  ],
+  "granite33-8b|cap346|below": [
+   0.05263157894736842,
+   0.9
+  ],
+  "granite33-8b|cap346|above": [
+   0.3157894736842105,
+   0.8
+  ],
+  "granite33-8b|evap22|below": [
+   0.2,
+   0.1
+  ],
+  "granite33-8b|evap22|above": [
+   0.55,
+   1.0
+  ],
+  "granite33-8b|evap26|below": [
+   0.15,
+   0.1
+  ],
+  "granite33-8b|evap26|above": [
+   0.6,
+   1.0
+  ],
+  "granite33-8b|chill24|below": [
+   0.2,
+   0.0
+  ],
+  "granite33-8b|chill24|above": [
+   0.75,
+   1.0
+  ],
+  "deepseek-r1d-32b|cap353|below": [
+   1.0,
+   1.0
+  ],
+  "deepseek-r1d-32b|cap353|above": [
+   0.45,
+   0.6
+  ],
+  "deepseek-r1d-32b|cap350|below": [
+   0.95,
+   1.0
+  ],
+  "deepseek-r1d-32b|cap350|above": [
+   0.55,
+   0.6
+  ],
+  "deepseek-r1d-32b|cap346|below": [
+   0.95,
+   1.0
+  ],
+  "deepseek-r1d-32b|cap346|above": [
+   0.4,
+   0.6
+  ],
+  "deepseek-r1d-32b|evap22|below": [
+   0.4,
+   1.0
+  ],
+  "deepseek-r1d-32b|evap22|above": [
+   1.0,
+   1.0
+  ],
+  "deepseek-r1d-32b|evap26|below": [
+   0.3,
+   0.9
+  ],
+  "deepseek-r1d-32b|evap26|above": [
+   1.0,
+   1.0
+  ],
+  "deepseek-r1d-32b|chill24|below": [
+   0.35,
+   0.7
+  ],
+  "deepseek-r1d-32b|chill24|above": [
+   1.0,
+   0.6
+  ]
+ },
+ "frozen": {
+  "mistral-small32-24b|cap353": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "mistral-small32-24b|cap350": [
+   [
+    "below",
+    10.333333333333332
+   ]
+  ],
+  "mistral-small32-24b|cap346": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "mistral-small32-24b|evap22": [
+   [
+    "above",
+    22.0
+   ]
+  ],
+  "mistral-small32-24b|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "mistral-small32-24b|chill24": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "phi4-14b|cap353": [
+   [
+    "below",
+    10.0
+   ]
+  ],
+  "phi4-14b|cap350": [
+   [
+    "below",
+    10.882352941176471
+   ]
+  ],
+  "phi4-14b|cap346": [
+   [
+    "below",
+    13.089171974522293
+   ]
+  ],
+  "phi4-14b|evap22": [
+   [
+    "above",
+    30.0
+   ]
+  ],
+  "phi4-14b|evap26": [
+   [
+    "above",
+    30.0
+   ]
+  ],
+  "phi4-14b|chill24": [
+   [
+    "above",
+    30.0
+   ]
+  ],
+  "granite33-8b|cap353": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "granite33-8b|cap350": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "granite33-8b|cap346": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "granite33-8b|evap22": [],
+  "granite33-8b|evap26": [],
+  "granite33-8b|chill24": [],
+  "deepseek-r1d-32b|cap353": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "deepseek-r1d-32b|cap350": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "deepseek-r1d-32b|cap346": [
+   [
+    "below",
+    8.0
+   ]
+  ],
+  "deepseek-r1d-32b|evap22": [
+   [
+    "above",
+    22.0
+   ]
+  ],
+  "deepseek-r1d-32b|evap26": [
+   [
+    "above",
+    26.0
+   ]
+  ],
+  "deepseek-r1d-32b|chill24": []
+ }
+}
