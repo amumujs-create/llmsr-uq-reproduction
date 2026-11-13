@@ -26,7 +26,6 @@ from prompts_hose import NEUTRAL_TOL_PCT, NEUTRAL_WRONG_PCT, WORLDS  # noqa: E40
 
 EPS_CLIP = (-0.08, 0.04)
 EPS_ROUND = 0.0025
-DIR_TOL_PCT = 0.5
 OUTCOME_TRUTHS = ("exact", "cable", "cable+wrap")
 OUTCOME_SIGMAS = (0.2, 1.0)
 OUTCOME_RULES = ("R0", "R2", "safe", "gate_nom", "gate_cal", "gate_cal_infl")
@@ -54,7 +53,9 @@ def parse(text) -> dict:
     if not isinstance(obj, dict) or _num(obj.get("length_change_pct")) is None:
         return {"ok": False}
     pct = _num(obj["length_change_pct"])
-    sign_dir = "shorter" if pct < -DIR_TOL_PCT else "longer" if pct > DIR_TOL_PCT else "unchanged"
+    # Preregistration §4: inconsistency = direction disagrees with the SIGN of length_change_pct (no tolerance;
+    # fixed 2026-11-14, the first version used +-0.5 % and flagged e.g. -0.3 % 'shorter' as inconsistent).
+    sign_dir = "shorter" if pct < 0 else "longer" if pct > 0 else "unchanged"
     want_range = {"shorter": "narrower", "longer": "wider", "unchanged": "unchanged"}
     d, r = obj.get("direction"), obj.get("j6_range")
     return {"ok": True, "pct": pct, "direction": d, "j6_range": r, "confidence": _num(obj.get("confidence")),
@@ -116,7 +117,7 @@ def structure_table(recs) -> list[str]:
         for w in WORLDS:
             samp = [r["parsed"]["pct"] for r in recs if r["tag"] == tag and r["level"] == "L2" and r["world"] == w
                     and r["parsed"]["ok"] and r["temperature"] > 0]
-            dirs.append('-' if not samp else 'S' if np.median(samp) < -DIR_TOL_PCT else 'L' if np.median(samp) > DIR_TOL_PCT else '0')
+            dirs.append('-' if not samp else 'S' if np.median(samp) < 0 else 'L' if np.median(samp) > 0 else '0')
         lines.append(f"   {tag:24s} " + ' '.join(f'{w}:{d}' for w, d in zip(WORLDS, dirs))
                      + f"  -> {'same direction in every world' if len(set(dirs)) == 1 else 'varies'}")
     return lines

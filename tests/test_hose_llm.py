@@ -46,6 +46,9 @@ def test_parse():
     assert bad["ok"] and bad["dir_mismatch"]
     rng = sh.parse('{"length_change_pct": 2, "direction": "longer", "j6_range": "narrower"}')
     assert rng["range_mismatch"]
+    small = sh.parse('{"length_change_pct": -0.3, "direction": "shorter", "j6_range": "narrower"}')
+    assert not small["dir_mismatch"]                    # sign only, no tolerance (preregistration §4)
+    assert sh.parse('{"length_change_pct": 0.2, "direction": "shorter"}')["dir_mismatch"]
     assert not sh.parse('{"direction": "shorter"}')["ok"]
     assert not sh.parse('{"length_change_pct": "about two"}')["ok"]
     assert not sh.parse("no json here")["ok"]
